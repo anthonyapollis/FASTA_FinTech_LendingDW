@@ -1,0 +1,41 @@
+name: 'fasta_lending_dw'
+version: '1.0.0'
+config-version: 2
+
+profile: 'fasta_fabric'
+
+model-paths: ["models"]
+test-paths:  ["tests"]
+seed-paths:  ["seeds"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  fasta_lending_dw:
+    staging:
+      +materialized: view
+      +schema: staging
+      +tags: ['silver', 'daily']
+    intermediate:
+      +materialized: table
+      +schema: intermediate
+      +tags: ['intermediate', 'daily']
+    marts:
+      +materialized: table
+      +schema: gold
+      +tags: ['gold', 'daily']
+      mart_channel_roi:
+        +materialized: incremental
+
+vars:
+  start_date: '2024-01-01'
+  end_date:   '2027-12-31'
+  default_threshold_days: 45
+  dsr_nca_limit: 0.45
+  channel_quality_weights:
+    default_free:    0.35
+    pct_low_risk:    0.25
+    collection_rate: 0.20
+    credit_score:    0.20

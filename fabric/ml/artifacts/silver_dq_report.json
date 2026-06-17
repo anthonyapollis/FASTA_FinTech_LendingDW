@@ -1,0 +1,107 @@
+{
+  "customers": {
+    "raw_rows": 2083,
+    "after_dedup": 2000,
+    "duplicates_removed": 83,
+    "null_amounts": {
+      "net_income_zar": 126
+    },
+    "negative_amounts": {
+      "net_income_zar": 0
+    },
+    "bot_rows_removed": 0
+  },
+  "loan_applications": {
+    "raw_rows": 3283,
+    "after_dedup": 3200,
+    "duplicates_removed": 83,
+    "null_amounts": {
+      "application_status": 0
+    },
+    "negative_amounts": {
+      "application_status": 0
+    },
+    "bot_rows_removed": 0
+  },
+  "credit_checks": {
+    "raw_rows": 2800,
+    "after_dedup": 2800,
+    "duplicates_removed": 0,
+    "null_amounts": {
+      "credit_score": 241
+    },
+    "negative_amounts": {
+      "credit_score": 0
+    },
+    "bot_rows_removed": 0
+  },
+  "affordability_assessments": {
+    "raw_rows": 2600,
+    "after_dedup": 2600,
+    "duplicates_removed": 0,
+    "null_amounts": {
+      "net_income_zar": 119
+    },
+    "negative_amounts": {
+      "net_income_zar": 40
+    },
+    "bot_rows_removed": 0
+  },
+  "loan_contracts": {
+    "raw_rows": 1829,
+    "after_dedup": 1800,
+    "duplicates_removed": 29,
+    "null_amounts": {
+      "principal_amount_zar": 21
+    },
+    "negative_amounts": {
+      "principal_amount_zar": 32
+    },
+    "bot_rows_removed": 0
+  },
+  "payments": {
+    "raw_rows": 5698,
+    "after_dedup": 5500,
+    "duplicates_removed": 198,
+    "null_amounts": {
+      "payment_amount_zar": 0
+    },
+    "negative_amounts": {
+      "payment_amount_zar": 214
+    },
+    "bot_rows_removed": 0,
+    "future_dates_nulled": 705
+  },
+  "repayment_schedule": {
+    "raw_rows": 6247,
+    "after_dedup": 6247,
+    "duplicates_removed": 0,
+    "null_amounts": {
+      "instalment_amount_zar": 101
+    },
+    "negative_amounts": {
+      "instalment_amount_zar": 134
+    },
+    "bot_rows_removed": 0
+  },
+  "web_sessions": {
+    "raw_rows": 8362,
+    "after_dedup": 8000,
+    "duplicates_removed": 362,
+    "null_amounts": {},
+    "negative_amounts": {},
+    "bot_rows_removed": 577
+  },
+  "web_events": {
+    "raw_rows": 26539,
+    "after_dedup": 25000,
+    "duplicates_removed": 1539,
+    "null_amounts": {
+      "event_value_zar": 20294
+    },
+    "negative_amounts": {
+      "event_value_zar": 123
+    },
+    "bot_rows_removed": 0
+  }
+}

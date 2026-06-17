@@ -1,0 +1,172 @@
+{
+  "checklist": "FASTA_FinTech_ML_Pipeline_Deployment",
+  "version": "1.0",
+  "prepared_by": "Anthony Apollis",
+  "prepared_at": "2026-06-17",
+  "target_workspace": "FASTA_DW (Microsoft Fabric)",
+  "first_live_run": "2026-06-20 02:00 SAST",
+
+  "phases": [
+
+    {
+      "phase": "1",
+      "title": "Pre-Deployment — Workspace Setup",
+      "owner": "Data Engineer",
+      "items": [
+        { "id": "1.1", "task": "Confirm Fabric workspace 'FASTA_DW' is provisioned and active",          "done": false },
+        { "id": "1.2", "task": "Confirm FastaLakehouse is created with bronze / silver / gold schemas",  "done": false },
+        { "id": "1.3", "task": "Run sql/ddl/01_bronze_tables.sql against bronze schema",                 "done": false },
+        { "id": "1.4", "task": "Run sql/ddl/02_silver_tables.sql against silver schema",                 "done": false },
+        { "id": "1.5", "task": "Run sql/ddl/03_gold_star_schema.sql against gold schema",               "done": false },
+        { "id": "1.6", "task": "Run sql/ddl/04_gold_views.sql to create reporting views",               "done": false },
+        { "id": "1.7", "task": "Run fabric/lakehouse/ddl/lakehouse_tables.sql (OneLake Delta DDL)",      "done": false },
+        { "id": "1.8", "task": "Confirm MLflow experiment 'fasta_lending_weekly_score' exists in Fabric","done": false },
+        { "id": "1.9", "task": "Confirm Unity Catalog namespace 'fasta.models' exists",                  "done": false },
+        { "id": "1.10","task": "Create linked service 'ls_fabric_lakehouse' in Data Factory",            "done": false }
+      ]
+    },
+
+    {
+      "phase": "2",
+      "title": "Upload Notebooks to Fabric",
+      "owner": "Data Engineer / Data Scientist",
+      "notebook_target_path": "/Workspaces/FASTA_DW/Notebooks/",
+      "items": [
+        { "id": "2.1", "task": "Upload nb_fabric_ml_01_credit_risk.py → convert to Fabric notebook",         "source": "fabric/ml/notebooks/nb_fabric_ml_01_credit_risk.py",     "done": false },
+        { "id": "2.2", "task": "Upload nb_fabric_ml_02_affordability.py → convert to Fabric notebook",       "source": "fabric/ml/notebooks/nb_fabric_ml_02_affordability.py",   "done": false },
+        { "id": "2.3", "task": "Upload nb_fabric_ml_03_churn_collections.py → convert to Fabric notebook",   "source": "fabric/ml/notebooks/nb_fabric_ml_03_churn_collections.py","done": false },
+        { "id": "2.4", "task": "Upload nb_fabric_ml_04_channel_roi.py → convert to Fabric notebook",         "source": "fabric/ml/notebooks/nb_fabric_ml_04_channel_roi.py",     "done": false },
+        { "id": "2.5", "task": "Upload nb_fabric_ml_retrain_full.py → convert to Fabric notebook",           "source": "fabric/ml/notebooks/nb_fabric_ml_retrain_full.py",        "done": false },
+        { "id": "2.6", "task": "Verify all 5 notebooks appear in FASTA_DW workspace",                        "done": false },
+        { "id": "2.7", "task": "Run each notebook manually (non-Fabric path) to confirm no import errors",   "done": false,
+          "note": "Use Spark runtime 1.2 (Spark 3.4); SynapseML 1.0+ required for LightGBM path" }
+      ]
+    },
+
+    {
+      "phase": "3",
+      "title": "Deploy Pipeline Configs",
+      "owner": "Data Engineer",
+      "items": [
+        { "id": "3.1", "task": "Import pl_01_bronze_ingest.json to Fabric Data Factory",     "source": "fabric/data_factory/pipelines/pl_01_bronze_ingest.json",  "done": false },
+        { "id": "3.2", "task": "Import pl_02_silver_cleanse.json",                           "source": "fabric/data_factory/pipelines/pl_02_silver_cleanse.json", "done": false },
+        { "id": "3.3", "task": "Import pl_03_gold_marts.json",                               "source": "fabric/data_factory/pipelines/pl_03_gold_marts.json",     "done": false },
+        { "id": "3.4", "task": "Import pl_04_ml_scoring.json",                               "source": "fabric/data_factory/pipelines/pl_04_ml_scoring.json",     "done": false },
+        { "id": "3.5", "task": "Import df_silver_customers.json dataflow",                   "source": "fabric/data_factory/dataflows/df_silver_customers.json",   "done": false },
+        { "id": "3.6", "task": "Validate all pipeline activity dependencies in Fabric UI",    "done": false }
+      ]
+    },
+
+    {
+      "phase": "4",
+      "title": "Configure Global Parameters & Secrets",
+      "owner": "Data Engineer",
+      "items": [
+        { "id": "4.1", "task": "Set globalParameter: teams_webhook_url (Teams Incoming Webhook for ML alerts)", "done": false },
+        { "id": "4.2", "task": "Set globalParameter: pbi_workspace_id (Power BI workspace GUID)",               "done": false },
+        { "id": "4.3", "task": "Set globalParameter: pbi_ml_dataset_id (FASTA_ML_Analytics semantic model ID)", "done": false },
+        { "id": "4.4", "task": "Set globalParameter: pbi_dataset_id (main FASTA_DW semantic model ID)",         "done": false },
+        { "id": "4.5", "task": "Assign Fabric pipeline MSI 'Power BI Contributor' role on workspace",           "done": false,
+          "note": "Required for ACT_Refresh_PBI_ML_Report and ACT_Refresh_PowerBI_Dataset (MSI auth)" },
+        { "id": "4.6", "task": "Confirm ls_fabric_lakehouse linked service can reach FastaLakehouse",           "done": false }
+      ]
+    },
+
+    {
+      "phase": "5",
+      "title": "Activate Triggers",
+      "owner": "Data Engineer",
+      "items": [
+        { "id": "5.1", "task": "Import tr_daily_bronze_ingest.json trigger",    "source": "fabric/data_factory/triggers/tr_daily_bronze_ingest.json",  "done": false },
+        { "id": "5.2", "task": "Import tr_saturday_ml_scoring.json trigger",    "source": "fabric/data_factory/triggers/tr_saturday_ml_scoring.json", "done": false },
+        { "id": "5.3", "task": "Activate tr_daily_bronze_ingest (Mon-Fri 03:00 SAST)", "done": false },
+        { "id": "5.4", "task": "Activate tr_saturday_ml_scoring (Sat 02:00 SAST)",     "done": false },
+        { "id": "5.5", "task": "Confirm trigger next-fire times in Fabric UI",          "done": false }
+      ]
+    },
+
+    {
+      "phase": "6",
+      "title": "Smoke Test",
+      "owner": "Data Engineer + Data Scientist",
+      "items": [
+        { "id": "6.1", "task": "Run pl_04_ml_scoring manually with force_run=true",                             "done": false },
+        { "id": "6.2", "task": "Confirm all 4 notebook activities complete (green in Fabric monitor)",           "done": false },
+        { "id": "6.3", "task": "Confirm gold.mart_credit_risk_scores row count > 0",                            "done": false },
+        { "id": "6.4", "task": "Confirm gold.mart_affordability_scores row count > 0",                          "done": false },
+        { "id": "6.5", "task": "Confirm gold.mart_churn_scores row count > 0",                                  "done": false },
+        { "id": "6.6", "task": "Confirm gold.mart_channel_roi row count > 0",                                   "done": false },
+        { "id": "6.7", "task": "Confirm gold._pipeline_audit has SUCCESS row for pl_04",                        "done": false },
+        { "id": "6.8", "task": "Confirm MLflow experiment has run entries for all 4 models",                    "done": false },
+        { "id": "6.9", "task": "Confirm fasta.models.* has registered model versions",                          "done": false },
+        { "id": "6.10","task": "Confirm Power BI FASTA_ML_Analytics report refreshed",                          "done": false }
+      ]
+    },
+
+    {
+      "phase": "7",
+      "title": "Retrain Branch Test",
+      "owner": "Data Scientist",
+      "items": [
+        { "id": "7.1", "task": "Run pl_04 with force_run=true and retrain_threshold_auc=0.99 to force retrain", "done": false },
+        { "id": "7.2", "task": "Confirm Teams webhook fires with model degradation card",                        "done": false },
+        { "id": "7.3", "task": "Confirm nb_fabric_ml_retrain_full completes (expect ~90 min)",                  "done": false },
+        { "id": "7.4", "task": "Confirm new model version appears in fasta.models.credit_risk",                 "done": false },
+        { "id": "7.5", "task": "Confirm gold._model_health_log has RETRAINED row",                              "done": false },
+        { "id": "7.6", "task": "Reset retrain_threshold_auc back to 0.70 after test",                          "done": false }
+      ]
+    },
+
+    {
+      "phase": "8",
+      "title": "Post Go-Live Monitoring",
+      "owner": "Data Scientist + Data Engineer",
+      "items": [
+        { "id": "8.1", "task": "First Saturday live run: 2026-06-20 02:00 SAST — monitor Fabric pipeline runs", "done": false },
+        { "id": "8.2", "task": "Check pipeline_run_log / gold._pipeline_audit next morning",                    "done": false },
+        { "id": "8.3", "task": "Set up weekly AUC drift alerting on gold._model_health_log",                    "done": false },
+        { "id": "8.4", "task": "Schedule quarterly manual retrain review (end of each quarter)",                "done": false },
+        { "id": "8.5", "task": "Tag deployment in git: v1.0-fasta-ml-pipeline",                                "done": false }
+      ]
+    }
+  ],
+
+  "rollback_plan": {
+    "trigger": "Any notebook fails after 1 retry, or pipeline_status stays RUNNING > 6h",
+    "steps": [
+      "Deactivate tr_saturday_ml_scoring trigger",
+      "Check Fabric monitor for failed activity and error message",
+      "Re-run failed notebook manually in Fabric for faster iteration",
+      "Roll back gold mart scores to previous week snapshot via Delta time-travel: RESTORE TABLE gold.mart_credit_risk_scores TO VERSION AS OF <prev_version>",
+      "Raise incident in tracking system; fix and re-deploy"
+    ]
+  },
+
+  "artifact_manifest": {
+    "pipelines": [
+      "fabric/data_factory/pipelines/pl_01_bronze_ingest.json",
+      "fabric/data_factory/pipelines/pl_02_silver_cleanse.json",
+      "fabric/data_factory/pipelines/pl_03_gold_marts.json",
+      "fabric/data_factory/pipelines/pl_04_ml_scoring.json"
+    ],
+    "triggers": [
+      "fabric/data_factory/triggers/tr_daily_bronze_ingest.json",
+      "fabric/data_factory/triggers/tr_saturday_ml_scoring.json"
+    ],
+    "notebooks": [
+      "fabric/ml/notebooks/nb_fabric_ml_01_credit_risk.py",
+      "fabric/ml/notebooks/nb_fabric_ml_02_affordability.py",
+      "fabric/ml/notebooks/nb_fabric_ml_03_churn_collections.py",
+      "fabric/ml/notebooks/nb_fabric_ml_04_channel_roi.py",
+      "fabric/ml/notebooks/nb_fabric_ml_retrain_full.py"
+    ],
+    "test_results": "fabric/ml/artifacts/test_results.json",
+    "ml_artifacts": [
+      "fabric/ml/artifacts/credit_risk_metrics.json",
+      "fabric/ml/artifacts/affordability_metrics.json",
+      "fabric/ml/artifacts/churn_collections_metrics.json",
+      "fabric/ml/artifacts/channel_roi_metrics.json",
+      "fabric/ml/artifacts/pipeline_run_log.json"
+    ]
+  }
+}

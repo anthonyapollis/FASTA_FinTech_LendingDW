@@ -1,0 +1,63 @@
+{
+  "name": "tr_saturday_fasta_ml_scoring",
+  "objectType": "Trigger",
+  "description": "Weekly Saturday trigger — fires at 02:00 SAST (00:00 UTC) every Saturday. Kicks off pl_04_fasta_ml_scoring (credit risk, affordability, churn, channel ROI notebooks). Pipeline has its own Saturday gate so this trigger is safe to enable without risk of mid-week firing.",
+
+  "properties": {
+    "type": "ScheduleTrigger",
+    "typeProperties": {
+      "recurrence": {
+        "frequency": "Week",
+        "interval": 1,
+        "startTime": "2026-06-20T00:00:00Z",
+        "timeZone": "South Africa Standard Time",
+        "schedule": {
+          "weekDays": ["Saturday"],
+          "hours": [2],
+          "minutes": [0]
+        }
+      }
+    },
+    "pipelines": [
+      {
+        "pipelineReference": {
+          "referenceName": "pl_04_fasta_ml_scoring",
+          "type": "PipelineReference"
+        },
+        "parameters": {
+          "run_date": "@formatDateTime(trigger().scheduledTime, 'yyyy-MM-dd')",
+          "force_run": false,
+          "gold_schema": "gold",
+          "silver_schema": "silver",
+          "mlflow_experiment": "fasta_lending_weekly_score",
+          "model_registry": "fasta.models",
+          "retrain_threshold_auc": "0.70"
+        }
+      }
+    ],
+    "runtimeState": "Started",
+    "annotations": [
+      "FASTA_FinTech",
+      "ML_Scoring",
+      "Weekly_Saturday",
+      "Anthony_Apollis"
+    ]
+  },
+
+  "dependsOn": {
+    "note": "Trigger fires independently. pl_03_gold_marts is invoked daily Mon-Fri via tr_daily_fasta_bronze_ingest. On Saturdays, pl_03 also fires (pl_01 -> pl_02 -> pl_03), and pl_03 internally triggers pl_04 via ACT_Trigger_ML_Scoring. This trigger acts as a direct fallback / standalone Saturday ML run.",
+    "upstream_trigger": "tr_daily_fasta_bronze_ingest",
+    "upstream_pipeline": "pl_03_fasta_gold_marts"
+  },
+
+  "schedulingMetadata": {
+    "timezone": "Africa/Johannesburg",
+    "local_fire_time": "02:00 SAST",
+    "utc_fire_time": "00:00 UTC",
+    "day_of_week": "Saturday",
+    "cadence": "Weekly",
+    "first_run": "2026-06-20T00:00:00Z",
+    "estimated_duration_minutes": 210,
+    "window_end_latest": "06:00 SAST"
+  }
+}

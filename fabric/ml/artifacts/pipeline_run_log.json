@@ -1,0 +1,48 @@
+{
+  "pipeline": "FASTA_FinTech_FabricML_Local",
+  "run_date": "2026-06-17 01:11:11",
+  "total_seconds": 202.94,
+  "steps_ok": 6,
+  "steps_fail": 0,
+  "notebook_runs": [
+    {
+      "notebook": "nb_fabric_ml_01_credit_risk.py",
+      "label": "Credit Risk Classifier",
+      "status": "SUCCESS",
+      "elapsed_sec": 96.59,
+      "run_at": "2026-06-17T01:12:53.171734"
+    },
+    {
+      "notebook": "nb_fabric_ml_02_affordability.py",
+      "label": "Affordability Regression + Stress Test",
+      "status": "SUCCESS",
+      "elapsed_sec": 35.54,
+      "run_at": "2026-06-17T01:13:28.709010"
+    },
+    {
+      "notebook": "nb_fabric_ml_03_churn_collections.py",
+      "label": "Churn + Promise-to-Pay",
+      "status": "SUCCESS",
+      "elapsed_sec": 38.63,
+      "run_at": "2026-06-17T01:14:07.340643"
+    },
+    {
+      "notebook": "nb_fabric_ml_04_channel_roi.py",
+      "label": "Channel ROI + Budget Optimiser",
+      "status": "SUCCESS",
+      "elapsed_sec": 26.84,
+      "run_at": "2026-06-17T01:14:34.175942"
+    }
+  ],
+  "fabric_equivalent": {
+    "workspace": "FASTA_DW",
+    "pipelines": [
+      "pl_01_fasta_bronze_ingest",
+      "pl_02_fasta_silver_cleanse",
+      "pl_03_fasta_gold_marts",
+      "pl_04_fasta_ml_scoring"
+    ],
+    "lakehouse": "FastaLakehouse",
+    "ml_registry": "fasta.models.*"
+  }
+}

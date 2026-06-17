@@ -1,0 +1,61 @@
+campaign_id,brand_name,channel_name,campaign_name,campaign_objective,start_date,end_date,budget_zar,spend_zar,impressions,clicks,created_at
+1,JustMoney,Email,Campaign 1 - Retargeting,Debt Counselling Lead Gen,2025-04-05,2025-07-07,94952.6,,240502,7225,2026-03-05 09:19:16
+2,FASTA,Facebook,Campaign 2 - Financial Education,Loan Application Acquisition,2024-05-15,2024-10-30,71598.33,,3054112,9177,2025-05-26 09:57:39
+3,JustMoney,Facebook,Campaign 3 - Calculator Engagemen,Loan Application Acquisition,2024-07-06,2024-08-07,45083.27,143761.61,1587686,41834,2024-10-19 17:12:33
+4,DebtBusters,Google Sponsored Search,Campaign 4 - Debt Counselling Lea,Debt Counselling Lead Gen,2024-04-28,2024-10-21,175630.56,173905.79,230727,36573,2024-08-18 20:34:46
+5,JustMoney,Organic Search,Campaign 5 - Financial Education,Calculator Engagement,04 Apr 2025,,163344.76,199304.43,2375208,,2024-11-21 15:43:15
+6,DebtBusters,Organic Search,Campaign 6 - Calculator Engagemen,Debt Counselling Lead Gen,2025-10-19,,242248.97,89566.61,2586149,41548,2024-02-05 14:32:36
+7,DebtBusters,Facebook,Campaign 7 - Retargeting,Financial Education,2024-08-01,2024-12-17,42056.92,146153.79,2483783,10382,2026-02-15 21:04:24
+8,JustMoney,Google Sponsored Search,Campaign 8 - Financial Education,Calculator Engagement,2024-10-21,2025-01-20,14791.65,101641.05,2979021,32829,2025-08-08 10:46:57
+9,FASTA,Facebook,Campaign 9 - Calculator Engagemen,Financial Education,2025-10-13,2025-11-27,90608.57,111863.77,881100,4655,2024-02-25 13:09:47
+10,JustMoney,Google Sponsored Search,Campaign 10 - Calculator Engagemen,Debt Counselling Lead Gen,2024-03-24,2024-05-19,27413.74,92206.73,839055,9749,2025-11-09 14:13:06
+11,DebtBusters,WhatsApp,Campaign 11 - Loan Application Acq,Debt Counselling Lead Gen,2024-05-26,2024-07-31,219309.1,132875.98,634551,23397,2024-10-25 08:17:50
+12,FASTA,Google Sponsored Search,Campaign 12 - Debt Counselling Lea,Debt Counselling Lead Gen,2024-09-08,2025-02-27,165642.02,43352.33,3172081,15885,2025-09-21 13:24:17
+13,JustMoney,WhatsApp,Campaign 13 - Debt Counselling Lea,Financial Education,2026-03-03,2026-06-30,,73818.3,4396998,30689,2024-06-02 18:29:38
+14,JustMoney,Direct,Campaign 14 - Retargeting,Brand Awareness,2024-03-30,2024-05-13,36689.86,130873.12,3793574,8788,2024-02-04 22:00:04
+15,DebtBusters,,Campaign 15 - Financial Education,Retargeting,2024-05-18,2024-06-20,122349.39,103494.93,1878630,32487,2024-12-08 22:32:52
+16,JustMoney,Google Sponsored Search,Campaign 16 - Brand Awareness,Retargeting,2025-11-08,2026-01-29,174985.68,181851.21,4034076,12489,2026-04-16 19:59:30
+17,FASTA,Organic Search,Campaign 17 - Loan Application Acq,Calculator Engagement,2026-04-22,,231658.46,137499.75,,12709,2025-05-09 11:11:12
+18,FASTA,WhatsApp,Campaign 18 - Loan Application Acq,Debt Counselling Lead Gen,2025-10-17,2026-03-14,95303.75,,4520742,32163,2025-10-10 16:21:36
+19,DebtBusters,WhatsApp,Campaign 19 - Retargeting,Calculator Engagement,19/01/2026,2026-03-21,,120485.52,4419948,4312,2024-12-29 18:08:52
+20,DebtBusters,Google Sponsored Search,Campaign 20 - Financial Education,Financial Education,2024-12-09,2025-03-07,225760.25,40106.32,3910267,48112,2025-02-23 08:42:11
+21,FASTA,Organic Search,Campaign 21 - Brand Awareness,Brand Awareness,2025-04-26,2025-09-24,162788.34,101179.67,3391491,12967,2025-09-30 11:32:52
+22,JustMoney,Facebook,Campaign 22 - Calculator Engagemen,Debt Counselling Lead Gen,12-19-2024,2025-05-07,38671.99,130470.01,3681755,,2026-05-25 08:44:37
+23,FASTA,WhatsApp,Campaign 23 - Retargeting,Loan Application Acquisition,2024-10-27,2025-03-24,158095.18,16254.39,707834,18105,2025-02-20 21:12:49
+24,DebtBusters,Email,Campaign 24 - Brand Awareness,Retargeting,2024-01-16,2024-05-25,,194097.24,830446,29993,2024-09-20 10:30:27
+25,DebtBusters,WhatsApp,Campaign 25 - Brand Awareness,Brand Awareness,2024-11-29,03-20-2025,123231.26,21951.1,998911,49948,2025-03-02 11:15:15
+26,FASTA,Direct,Campaign 26 - Retargeting,Loan Application Acquisition,20240730,2024-10-28,205925.78,,4904999,7855,2025-01-01 09:12:03
+27,JustMoney,Organic Search,Campaign 27 - Loan Application Acq,Calculator Engagement,15 May 2025,,155440.3,5989.0,4012258,2284,2024-07-20 11:52:42
+28,FASTA,Google Sponsored Search,Campaign 28 - Brand Awareness,Calculator Engagement,2024-06-07,2024-07-07,105317.4,146023.17,3379348,41386,2025-10-23 22:39:56
+29,DebtBusters,Organic Search,Campaign 29 - Loan Application Acq,Calculator Engagement,2025-07-02,09-01-2025,17618.58,120918.48,3120093,,2024-03-30 16:57:01
+30,FASTA,Google Sponsored Search,Campaign 30 - Loan Application Acq,Financial Education,20240623,2024-10-20,22665.3,,4302606,16131,2024-10-09 18:16:08
+31,DebtBusters,Organic Search,Campaign 31 - Loan Application Acq,Calculator Engagement,2025-11-08,,,78882.8,2301723,31187,2025-10-29 20:21:28
+32,JustMoney,Organic Search,Campaign 32 - Financial Education,Loan Application Acquisition,2026-05-01,,,29553.54,692383,24773,2024-05-04 15:56:04
+33,JustMoney,Facebook,Campaign 33 - Retargeting,Brand Awareness,17 Feb 2024,2024-06-25,174659.73,,813223,20186,2024-12-06 14:50:29
+34,DebtBusters,WhatsApp,Campaign 34 - Retargeting,Retargeting,2024-01-03,2024-03-28,49845.08,151072.32,3193299,28850,2025-09-03 18:13:55
+35,DebtBusters,Google Sponsored Search,Campaign 35 - Loan Application Acq,Brand Awareness,2024-11-01,2025-03-01,,33099.84,2937941,17357,2025-09-25 14:55:00
+36,FASTA,Google Sponsored Search,Campaign 36 - Debt Counselling Lea,Loan Application Acquisition,2026-02-08,2026-04-10,11544.17,,1522299,4342,2025-01-29 10:03:37
+37,JustMoney,Email,Campaign 37 - Calculator Engagemen,Brand Awareness,2025-11-17,2025-12-18,100520.73,84843.55,3940719,1703,2025-08-08 13:06:27
+38,DebtBusters,Organic Search,Campaign 38 - Financial Education,Retargeting,2026-03-29,,94002.27,7845.8,2515526,,2025-03-29 10:20:21
+39,DebtBusters,Email,Campaign 39 - Brand Awareness,Brand Awareness,2025-02-23,,69139.41,,4481846,6648,2025-06-29 20:00:37
+40,DebtBusters,Email,Campaign 40 - Brand Awareness,Financial Education,2025-09-23,,151777.86,5858.45,1133568,7352,2024-12-21 11:04:28
+41,FASTA,Google Sponsored Search,Campaign 41 - Retargeting,Retargeting,2026-02-24,,63416.61,125809.49,,43305,2025-07-24 19:49:30
+42,FASTA,Organic Search,Campaign 42 - Debt Counselling Lea,Retargeting,2026-04-26,,48192.52,189129.81,4279767,35055,2025-04-13 14:50:54
+43,DebtBusters,Google Sponsored Search,Campaign 43 - Calculator Engagemen,Retargeting,2024-10-23,,114758.83,80108.47,4326803,28581,2024-12-13 22:03:05
+44,FASTA,Email,Campaign 44 - Calculator Engagemen,Calculator Engagement,2024-12-03,2025-03-16,227213.93,76104.53,,3124,2025-12-12 14:26:49
+45,DebtBusters,WhatsApp,Campaign 45 - Brand Awareness,Financial Education,2025-07-16,2025-08-28,65282.73,8296.78,4103596,,2026-03-14 15:59:41
+46,JustMoney,Organic Search,Campaign 46 - Retargeting,Loan Application Acquisition,2024-09-15,2024-11-01,18814.19,179264.13,434338,26882,2026-02-25 11:31:08
+47,JustMoney,Google Sponsored Search,Campaign 47 - Retargeting,Debt Counselling Lead Gen,2024-09-21,2024-12-31,116109.73,,2992565,44359,2026-04-06 18:21:44
+48,JustMoney,Direct,Campaign 48 - Retargeting,Loan Application Acquisition,2025-10-09,2026-02-02,,72829.06,2656249,,2025-11-11 15:01:30
+49,DebtBusters,WhatsApp,Campaign 49 - Debt Counselling Lea,Brand Awareness,2026-03-28,2026-06-16,7363.45,73568.05,1907142,42873,2024-10-19 12:12:35
+50,FASTA,Organic Search,Campaign 50 - Retargeting,Retargeting,20241102,,20314.56,98383.88,1026022,34270,2026-04-09 14:34:13
+51,JustMoney,Organic Search,Campaign 51 - Financial Education,Debt Counselling Lead Gen,2025-08-21,16 Dec 2025,18575.41,102437.53,3088912,34772,2024-01-07 15:55:39
+52,DebtBusters,Organic Search,Campaign 52 - Retargeting,Calculator Engagement,2026-01-22,2026-03-16,186258.99,114263.33,3476394,12436,2024-11-08 15:01:43
+53,DebtBusters,Email,Campaign 53 - Brand Awareness,Retargeting,2025-01-07,2025-07-01,64549.46,90259.5,1716302,15107,2025-06-20 08:20:53
+54,DebtBusters,WhatsApp,Campaign 54 - Retargeting,Calculator Engagement,2025-07-16,,,190918.48,2714446,,2024-12-16 20:31:17
+55,JustMoney,Organic Search,Campaign 55 - Debt Counselling Lea,Brand Awareness,2025-02-17,2025-05-04,73081.29,13859.47,4450592,2989,2025-11-15 10:38:09
+56,DebtBusters,Facebook,Campaign 56 - Brand Awareness,Brand Awareness,2025-09-27,,116554.28,115310.93,159861,29436,2024-04-26 14:53:00
+57,FASTA,Facebook,Campaign 57 - Retargeting,Loan Application Acquisition,2024-07-22,2024-12-09,119646.23,92130.97,3757456,1390,2026-01-19 12:31:47
+58,FASTA,Organic Search,Campaign 58 - Financial Education,Debt Counselling Lead Gen,2024-03-12,28/07/2024,,16677.34,4252756,40435,2026-02-02 09:35:25
+59,FASTA,WhatsApp,Campaign 59 - Loan Application Acq,Calculator Engagement,2025-03-19,2025-08-16,246643.6,52044.46,4677080,33315,2025-10-14 15:22:44
+60,JustMoney,WhatsApp,Campaign 60 - Calculator Engagemen,Loan Application Acquisition,2026-03-25,,243080.51,146497.01,3051576,32614,2025-08-06 12:57:52

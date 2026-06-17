@@ -1,0 +1,1201 @@
+collection_action_id,loan_id,action_date,action_type,action_outcome,agent_name,promise_to_pay_date,promise_amount_zar
+1,900,2025-05-01,WhatsApp,No Answer,Auto-Dialler,,1515.99
+2,1730,2026-05-06,Email Reminder,Handed Over,Auto-Dialler,,2939.29
+3,12,2025-06-28,Outbound Call,Wrong Number,,2026-09-03,
+4,1610,2025-03-17,Inbound Call,No Answer,Sipho Collections,2026-08-03,
+5,777,2026-03-31,Email Reminder,Partial Payment Received,System,,2534.48
+6,820,2026-04-28,Inbound Call,Wrong Number,System,2026-06-27,718.69
+7,883,2026-03-10,WhatsApp,Full Payment Received,Naledi Agent,,940.09
+8,1127,2025-04-23,Inbound Call,No Answer,Naledi Agent,2026-07-27,1892.34
+9,902,10/06/2025,Legal Letter,Promise to Pay,Sipho Collections,2026-10-15,2042.61
+10,454,2026-03-28,Email Reminder,Wrong Number,,2026-09-19,754.4
+11,1235,2026-04-17,WhatsApp,Disputed,Sipho Collections,,
+12,1453,2025-08-02,Outbound Call,Wrong Number,Sipho Collections,2026-06-20,1822.72
+13,1221,2025-10-23,Handover to Collections Agency,Handed Over,System,2026-10-17,
+14,169,2025-06-05,SMS Reminder,Promise to Pay,Auto-Dialler,2026-07-27,
+15,684,2025-06-12,Outbound Call,Partial Payment Received,,,2868.95
+16,1262,2025-10-09,SMS Reminder,Full Payment Received,Sipho Collections,,408.45
+17,1607,2026-05-07,Legal Letter,Wrong Number,Naledi Agent,,
+18,768,2025-08-18,Email Reminder,No Answer,Naledi Agent,,600.87
+19,478,2026-04-19,Inbound Call,Disputed,Auto-Dialler,,3600.35
+20,241,2025-12-10,WhatsApp,Wrong Number,Sipho Collections,,
+21,1268,2026-04-08,Inbound Call,Partial Payment Received,Auto-Dialler,,
+22,1497,2026-06-03,WhatsApp,Full Payment Received,Auto-Dialler,,
+23,1424,2025-03-16,Inbound Call,,Naledi Agent,,1709.29
+24,733,2026-02-24,Handover to Collections Agency,No Answer,System,,
+25,679,12 Sep 2025,WhatsApp,Partial Payment Received,Naledi Agent,,
+26,1607,2026-02-15,Email Reminder,Partial Payment Received,System,,
+27,195,2026-05-14,Outbound Call,Partial Payment Received,System,,
+28,1771,2026-04-15,Outbound Call,Promise to Pay,Sipho Collections,2026-12-09,1991.57
+29,790,07 Apr 2026,Email Reminder,Promise to Pay,Naledi Agent,,3632.55
+30,500,2025-08-17,WhatsApp,Full Payment Received,Sipho Collections,,2406.86
+31,1324,2025-09-29,Inbound Call,Partial Payment Received,System,,
+32,1720,2025-07-13,Email Reminder,Full Payment Received,System,2026-07-09,
+33,391,2025-10-26,WhatsApp,Wrong Number,Sipho Collections,,979.36
+34,695,2025-04-05,SMS Reminder,Handed Over,System,,2841.41
+35,628,2025-03-29,Legal Letter,Full Payment Received,System,2026-10-05,1873.1
+36,1276,2025-06-06,Legal Letter,Handed Over,,,
+37,1743,2026-01-26,Handover to Collections Agency,,,2026-10-27,406.63
+38,1386,2025-06-30,WhatsApp,Full Payment Received,Auto-Dialler,,
+39,1126,2026-05-03,Outbound Call,Handed Over,Auto-Dialler,2026-07-16,2319.91
+40,1387,2026-05-02,SMS Reminder,Promise to Pay,Auto-Dialler,2026-07-27,
+41,432,2026-06-10,Inbound Call,,System,,3684.31
+42,1794,2026-05-23,SMS Reminder,Partial Payment Received,Naledi Agent,,3297.65
+43,1050,2026-02-24,Email Reminder,Handed Over,Sipho Collections,,685.05
+44,635,2025-07-27,SMS Reminder,Disputed,,2026-12-21,3910.23
+45,1024,2025-04-11,Inbound Call,Handed Over,Naledi Agent,,
+46,1567,2025-03-29,Email Reminder,No Answer,,,2493.87
+47,443,2025-12-05,Legal Letter,Full Payment Received,Naledi Agent,,
+48,1759,2026-06-13,Legal Letter,Wrong Number,,,611.39
+49,1368,2026-03-20,Inbound Call,Handed Over,Auto-Dialler,2026-08-26,3708.83
+50,304,2025-11-23,WhatsApp,Wrong Number,Naledi Agent,,3556.3
+51,764,2025-07-09,SMS Reminder,,Auto-Dialler,2026-12-05,
+52,1111,2025-10-19,Inbound Call,Partial Payment Received,Auto-Dialler,2026-07-30,2044.54
+53,1351,2025-09-18,Email Reminder,Handed Over,,,
+54,1083,2026-04-07,Legal Letter,Handed Over,System,2026-09-25,
+55,331,2026-06-08,Outbound Call,,,2026-09-30,1685.82
+56,564,2025-10-07,Legal Letter,Promise to Pay,,,
+57,1155,2026-01-14,WhatsApp,Full Payment Received,,,876.79
+58,838,2025-09-18,SMS Reminder,No Answer,System,2026-11-07,
+59,282,2025-03-23,Legal Letter,Full Payment Received,Sipho Collections,,1304.83
+60,1033,2025-11-10,SMS Reminder,Partial Payment Received,Auto-Dialler,,1711.0
+61,1721,2025-12-12,Email Reminder,Wrong Number,,2026-09-29,
+62,1728,2025-11-04,Email Reminder,Handed Over,Naledi Agent,2026-08-13,
+63,174,2025-03-25,Email Reminder,Full Payment Received,,2026-12-06,
+64,1225,2025-09-02,WhatsApp,Handed Over,Naledi Agent,,
+65,752,2026-03-30,Handover to Collections Agency,Wrong Number,System,,3210.1
+66,36,2025-05-01,Email Reminder,No Answer,System,2026-11-13,
+67,1694,03-24-2026,Legal Letter,Wrong Number,System,,
+68,641,26 Mar 2025,Outbound Call,Full Payment Received,Auto-Dialler,,
+69,1319,2026-02-09,WhatsApp,Handed Over,Auto-Dialler,2026-07-25,
+70,1024,2025-04-22,SMS Reminder,No Answer,System,,3196.24
+71,84,2025-07-06,Legal Letter,Disputed,Naledi Agent,,227.43
+72,60,2025-03-19,Email Reminder,Wrong Number,Sipho Collections,2026-07-29,
+73,139,2025-12-23,Email Reminder,No Answer,System,2026-12-16,2121.17
+74,513,2025-08-06,WhatsApp,No Answer,Naledi Agent,2026-12-12,1341.46
+75,281,20251113,Handover to Collections Agency,Partial Payment Received,,2026-10-05,
+76,859,2025-07-24,WhatsApp,Partial Payment Received,Sipho Collections,,2018.44
+77,1494,2025-05-21,Outbound Call,Full Payment Received,System,,
+78,995,2025-11-25,WhatsApp,Handed Over,Naledi Agent,2026-09-09,
+79,53,2026-02-08,SMS Reminder,Partial Payment Received,System,,
+80,155,2025-03-03,SMS Reminder,No Answer,,,
+81,1257,2026-04-02,Email Reminder,No Answer,Auto-Dialler,,
+82,1580,2025-07-27,Handover to Collections Agency,No Answer,Sipho Collections,2026-08-07,1707.68
+83,1534,03-20-2025,Legal Letter,Partial Payment Received,System,,1327.6
+84,1727,2025-05-26,Email Reminder,Promise to Pay,,,1657.41
+85,869,2025-03-23,Outbound Call,Full Payment Received,Sipho Collections,,
+86,1268,2025-12-28,Inbound Call,Handed Over,,2026-08-12,2311.02
+87,847,2025-03-18,Legal Letter,Promise to Pay,Auto-Dialler,2026-07-22,
+88,69,09/10/2025,WhatsApp,Wrong Number,System,2026-09-17,
+89,868,2026-03-19,Legal Letter,Promise to Pay,,,
+90,99,2025-10-09,WhatsApp,Promise to Pay,,,
+91,329,2026-01-31,Email Reminder,Wrong Number,Auto-Dialler,2026-11-03,
+92,116,25/02/2026,Legal Letter,Handed Over,Auto-Dialler,,2545.87
+93,1669,2026-01-24,Handover to Collections Agency,Disputed,,,2383.49
+94,234,2025-11-28,Outbound Call,Handed Over,System,2026-07-24,1997.95
+95,1648,2025-06-17,Inbound Call,,Naledi Agent,,
+96,1352,2026-01-04,Legal Letter,Disputed,Auto-Dialler,,3572.91
+97,741,2025-11-17,Legal Letter,Full Payment Received,,,1256.77
+98,1780,2025-11-19,Handover to Collections Agency,Promise to Pay,System,,3676.2
+99,171,2026-02-14,WhatsApp,Partial Payment Received,Auto-Dialler,,703.68
+100,961,2025-03-30,SMS Reminder,,Auto-Dialler,2026-09-07,3950.35
+101,12,2026-04-04,Legal Letter,Partial Payment Received,System,,
+102,1220,2025-04-11,Outbound Call,Partial Payment Received,Auto-Dialler,,
+103,144,2025-09-17,Inbound Call,Disputed,,,3773.14
+104,1674,2025-04-06,Legal Letter,Partial Payment Received,,,
+105,691,2025-11-28,WhatsApp,Full Payment Received,Sipho Collections,2026-08-14,
+106,910,2025-09-13,Legal Letter,Wrong Number,System,,
+107,1295,2025-11-18,WhatsApp,Handed Over,Sipho Collections,2026-12-30,
+108,848,2026-03-09,Legal Letter,Disputed,Auto-Dialler,2026-08-24,
+109,1198,2025-07-16,WhatsApp,Full Payment Received,System,,
+110,867,2025-11-29,Outbound Call,Wrong Number,Auto-Dialler,,1067.39
+111,1550,2025-05-09,Legal Letter,,System,2026-06-30,3226.46
+112,46,2025-05-29,WhatsApp,,Naledi Agent,2026-10-06,
+113,678,2025-03-03,Outbound Call,No Answer,System,2026-07-26,
+114,1719,2026-05-28,SMS Reminder,Disputed,Auto-Dialler,2026-09-22,2628.55
+115,1745,2025-07-10,Legal Letter,Handed Over,Naledi Agent,,
+116,1482,2025-06-10,SMS Reminder,Wrong Number,,2026-07-14,2002.53
+117,1442,20251105,Email Reminder,Disputed,Sipho Collections,,
+118,1321,2026-03-13,Inbound Call,Promise to Pay,System,,
+119,458,2025-09-16,Legal Letter,Disputed,Auto-Dialler,,1782.08
+120,275,2025-08-27,Handover to Collections Agency,No Answer,,,
+121,1794,2026-05-13,Email Reminder,Full Payment Received,Naledi Agent,,941.4
+122,1623,2026-05-28,Outbound Call,Promise to Pay,System,2026-09-07,
+123,785,2026-02-25,Outbound Call,Full Payment Received,,,
+124,1237,08-20-2025,WhatsApp,,,,3569.34
+125,1530,2025-11-09,Outbound Call,Full Payment Received,System,,2466.4
+126,52,2025-10-28,Email Reminder,Handed Over,Naledi Agent,,
+127,72,2025-06-27,SMS Reminder,Handed Over,,2026-09-07,
+128,1149,2025-12-29,Outbound Call,Wrong Number,Auto-Dialler,,
+129,355,2025-10-18,SMS Reminder,Wrong Number,Naledi Agent,2026-07-14,
+130,298,2025-09-12,WhatsApp,Partial Payment Received,System,,
+131,871,2025-12-29,Inbound Call,,,,2819.0
+132,1438,2026-02-11,WhatsApp,No Answer,System,,
+133,576,2025-09-07,Legal Letter,Promise to Pay,,2026-11-23,714.45
+134,1243,2025-12-22,Email Reminder,Disputed,Auto-Dialler,2026-09-28,
+135,1165,2025-07-07,WhatsApp,Handed Over,,,
+136,509,2026-01-12,Inbound Call,No Answer,,2026-08-05,
+137,1672,2025-09-15,Inbound Call,Wrong Number,Naledi Agent,2026-10-12,
+138,322,2026-02-03,Legal Letter,Handed Over,,,1376.55
+139,766,2026-04-22,Email Reminder,Full Payment Received,Auto-Dialler,,
+140,851,2025-05-04,WhatsApp,Promise to Pay,Naledi Agent,2026-11-04,
+141,929,2026-02-18,Handover to Collections Agency,Handed Over,,,3938.73
+142,1681,2025-08-15,Outbound Call,No Answer,System,2026-08-01,
+143,393,2025-07-22,Outbound Call,Partial Payment Received,Naledi Agent,2026-09-01,
+144,1495,2026-02-23,Handover to Collections Agency,Wrong Number,Auto-Dialler,2026-08-19,
+145,891,2025-06-26,Handover to Collections Agency,Handed Over,Sipho Collections,,
+146,100,2026-01-22,Outbound Call,Full Payment Received,Auto-Dialler,,1533.77
+147,985,2025-10-31,Handover to Collections Agency,Promise to Pay,System,2026-07-20,
+148,13,2025-05-06,Outbound Call,No Answer,Auto-Dialler,2026-12-16,
+149,251,2026-03-23,Legal Letter,Partial Payment Received,,2026-11-23,
+150,279,07-10-2025,WhatsApp,Full Payment Received,,,2384.69
+151,677,25 Mar 2026,WhatsApp,Partial Payment Received,Naledi Agent,2026-09-26,393.39
+152,1323,2025-11-19,Inbound Call,No Answer,Sipho Collections,2026-11-22,3545.49
+153,1322,2026-04-01,Outbound Call,Wrong Number,Auto-Dialler,2026-10-08,
+154,1309,2025-03-10,Outbound Call,,Naledi Agent,2026-12-12,1314.92
+155,206,03-10-2025,Outbound Call,Disputed,System,2026-07-17,2119.72
+156,482,2025-08-05,SMS Reminder,Disputed,Sipho Collections,,
+157,1189,2025-03-05,Email Reminder,Promise to Pay,System,,
+158,162,2025-10-14,SMS Reminder,Partial Payment Received,Sipho Collections,,704.48
+159,1616,2025-07-24,Outbound Call,Partial Payment Received,Auto-Dialler,,
+160,961,2025-04-29,Email Reminder,Full Payment Received,Sipho Collections,,
+161,525,2025-07-16,Inbound Call,Full Payment Received,Auto-Dialler,2026-12-23,
+162,1565,2026-01-05,Outbound Call,,,,2660.88
+163,927,2025-07-16,WhatsApp,,,,
+164,1568,2025-11-14,Email Reminder,No Answer,System,,545.53
+165,472,2025-06-23,Outbound Call,No Answer,System,,
+166,330,2026-04-28,Email Reminder,Full Payment Received,Naledi Agent,,
+167,1379,2025-03-25,Outbound Call,Handed Over,Naledi Agent,2026-07-03,
+168,890,20250712,Handover to Collections Agency,No Answer,,,
+169,1004,2025-06-02,Outbound Call,Handed Over,Naledi Agent,,
+170,1571,2025-12-10,Email Reminder,Partial Payment Received,System,,1885.89
+171,1373,2025-04-28,Inbound Call,Disputed,,2026-09-04,
+172,897,2025-07-28,SMS Reminder,Promise to Pay,,,
+173,1289,2026-05-13,Email Reminder,,Auto-Dialler,,2143.48
+174,1103,2026-06-07,Inbound Call,Partial Payment Received,Auto-Dialler,2026-08-16,
+175,1332,2026-05-22,Outbound Call,Partial Payment Received,Sipho Collections,,832.63
+176,123,2026-04-29,Handover to Collections Agency,Disputed,,2026-08-05,
+177,728,2026-01-26,Handover to Collections Agency,Full Payment Received,Naledi Agent,,
+178,274,2026-04-13,WhatsApp,Disputed,Auto-Dialler,2026-06-18,
+179,1064,2025-10-23,SMS Reminder,,,,
+180,568,2025-09-18,Handover to Collections Agency,Partial Payment Received,Naledi Agent,2026-11-15,
+181,996,2025-06-27,Email Reminder,Full Payment Received,Sipho Collections,2026-08-22,
+182,1694,2026-02-13,Inbound Call,Promise to Pay,System,,2247.32
+183,1548,2025-09-24,Handover to Collections Agency,,Auto-Dialler,2026-07-31,1793.26
+184,463,2025-07-05,SMS Reminder,Promise to Pay,Sipho Collections,,
+185,1699,2025-03-09,Handover to Collections Agency,No Answer,System,2026-10-09,1326.97
+186,183,2026-02-02,WhatsApp,Partial Payment Received,,2026-10-04,
+187,668,2026-03-14,Email Reminder,Handed Over,,2026-09-11,3077.36
+188,1230,2026-04-11,SMS Reminder,Full Payment Received,Naledi Agent,,
+189,744,2025-11-18,Inbound Call,Promise to Pay,System,,
+190,607,2025-04-24,Inbound Call,Disputed,Naledi Agent,,
+191,1726,2025-10-07,WhatsApp,Handed Over,Naledi Agent,,
+192,1073,2025-04-29,Legal Letter,Wrong Number,Sipho Collections,,3859.92
+193,1160,2026-03-15,Outbound Call,Disputed,,,
+194,252,2025-09-16,SMS Reminder,Wrong Number,Auto-Dialler,,
+195,1021,2025-04-02,Inbound Call,No Answer,System,2026-08-15,942.81
+196,1065,2026-03-15,Legal Letter,Handed Over,System,2026-09-01,3048.42
+197,43,2025-11-04,SMS Reminder,Full Payment Received,System,,
+198,1046,2025-11-27,Handover to Collections Agency,No Answer,System,,
+199,228,2025-08-14,Outbound Call,Full Payment Received,Naledi Agent,,
+200,936,2025-11-27,Email Reminder,Full Payment Received,,2026-06-21,
+201,883,2025-09-17,Inbound Call,Full Payment Received,Sipho Collections,,
+202,1584,2025-04-15,Email Reminder,No Answer,System,,1953.03
+203,715,2026-02-01,WhatsApp,No Answer,Auto-Dialler,,
+204,1355,2025-07-13,WhatsApp,,Naledi Agent,,2998.26
+205,437,2025-09-05,Handover to Collections Agency,Disputed,,,
+206,402,2025-11-29,Legal Letter,Disputed,System,2026-11-03,1089.55
+207,575,2026-01-05,Handover to Collections Agency,Disputed,System,,
+208,1261,2026-06-13,Inbound Call,Partial Payment Received,Sipho Collections,,
+209,1634,2025-05-06,Email Reminder,Promise to Pay,Sipho Collections,,
+210,846,2025-05-30,SMS Reminder,No Answer,Sipho Collections,2026-10-03,844.49
+211,819,2026-02-07,WhatsApp,Wrong Number,Auto-Dialler,,2793.76
+212,753,2026-04-28,Inbound Call,Full Payment Received,System,2026-12-17,
+213,1713,2026-02-16,Outbound Call,Partial Payment Received,System,2026-10-07,
+214,917,2026-01-02,WhatsApp,No Answer,Sipho Collections,,
+215,817,2026-01-27,SMS Reminder,Handed Over,System,,
+216,717,2025-11-25,Email Reminder,Promise to Pay,,2026-08-21,
+217,281,2026-04-27,Email Reminder,No Answer,Sipho Collections,,
+218,1777,2025-03-27,SMS Reminder,Wrong Number,Auto-Dialler,,
+219,389,2026-06-02,Email Reminder,Full Payment Received,System,,
+220,1506,2026-01-21,WhatsApp,Partial Payment Received,,2026-08-01,
+221,1659,2026-05-14,WhatsApp,Partial Payment Received,,,
+222,707,2026-04-10,Outbound Call,Partial Payment Received,Naledi Agent,2026-11-27,720.08
+223,727,2025-10-21,SMS Reminder,Disputed,System,2026-10-26,729.67
+224,657,2025-03-26,Handover to Collections Agency,Partial Payment Received,,,
+225,222,2025-06-21,Inbound Call,No Answer,Sipho Collections,2026-10-13,
+226,1139,2026-03-24,SMS Reminder,Disputed,Naledi Agent,,2648.04
+227,775,2025-03-19,Inbound Call,Wrong Number,Sipho Collections,,286.19
+228,29,2025-08-28,Legal Letter,No Answer,Auto-Dialler,2026-10-04,2763.13
+229,1481,2025-05-22,Handover to Collections Agency,No Answer,Auto-Dialler,,3530.94
+230,1263,25 Apr 2026,Legal Letter,No Answer,Sipho Collections,,2473.24
+231,194,08/03/2026,Inbound Call,Full Payment Received,Sipho Collections,,
+232,665,2025-04-27,Email Reminder,Wrong Number,,,
+233,376,2025-08-24,SMS Reminder,Wrong Number,Sipho Collections,,1457.51
+234,1428,2025-03-22,Outbound Call,Wrong Number,,2026-12-19,
+235,436,2025-08-19,Outbound Call,No Answer,System,2026-11-12,3700.04
+236,1028,2026-01-30,Legal Letter,Promise to Pay,System,2026-07-20,3210.18
+237,1791,2025-11-24,SMS Reminder,No Answer,Naledi Agent,,
+238,1128,20250303,Email Reminder,Promise to Pay,Auto-Dialler,,
+239,1018,20250422,Handover to Collections Agency,Wrong Number,Naledi Agent,2026-11-17,
+240,541,2026-02-11,WhatsApp,Disputed,System,,
+241,83,2026-05-31,Handover to Collections Agency,Wrong Number,Naledi Agent,2026-06-29,
+242,889,2026-03-02,Outbound Call,Disputed,,2026-12-09,1069.85
+243,897,20250628,Handover to Collections Agency,Partial Payment Received,Sipho Collections,2026-09-25,
+244,1686,2025-07-05,Outbound Call,,Sipho Collections,,
+245,814,16 Jun 2026,Outbound Call,Disputed,Sipho Collections,,320.43
+246,205,2026-05-20,Email Reminder,Handed Over,,,719.13
+247,1001,2025-03-29,Handover to Collections Agency,Promise to Pay,Auto-Dialler,2026-11-19,920.4
+248,1462,2026-03-28,Outbound Call,No Answer,,2026-10-31,1846.69
+249,529,2025-09-15,Email Reminder,Promise to Pay,Sipho Collections,2026-09-11,1406.79
+250,1657,2025-11-08,WhatsApp,Handed Over,System,,
+251,1778,2025-05-15,Outbound Call,No Answer,,,
+252,1073,2025-05-09,Outbound Call,,,2026-08-29,
+253,1223,11 Oct 2025,Inbound Call,,,2026-09-06,2567.13
+254,1386,2025-06-30,WhatsApp,Wrong Number,Naledi Agent,,
+255,739,2025-10-10,Email Reminder,Partial Payment Received,System,2026-07-28,
+256,1526,2025-05-14,WhatsApp,No Answer,Auto-Dialler,2026-09-28,
+257,118,2025-10-09,Outbound Call,Disputed,Sipho Collections,,
+258,1259,2025-11-18,Legal Letter,No Answer,System,2026-08-05,1149.12
+259,1767,2025-05-05,Inbound Call,Wrong Number,Auto-Dialler,,1384.22
+260,1367,2025-10-28,Handover to Collections Agency,Handed Over,Sipho Collections,,506.39
+261,256,2025-07-23,WhatsApp,Promise to Pay,,2026-07-22,
+262,509,2025-10-20,Email Reminder,Disputed,System,,
+263,1489,2025-06-29,Legal Letter,Partial Payment Received,Naledi Agent,,2423.26
+264,1242,2025-06-08,Outbound Call,No Answer,Naledi Agent,,
+265,1365,2025-07-12,Outbound Call,No Answer,Auto-Dialler,,1465.28
+266,178,2025-08-11,Outbound Call,No Answer,Sipho Collections,,
+267,941,2025-08-05,Email Reminder,Partial Payment Received,,2026-10-25,
+268,524,2025-05-10,Legal Letter,Disputed,Naledi Agent,2026-11-15,
+269,1107,2026-02-14,Email Reminder,Disputed,System,2026-10-07,
+270,1416,2026-01-11,Inbound Call,Handed Over,Auto-Dialler,2026-11-08,817.76
+271,473,2026-03-31,Handover to Collections Agency,Partial Payment Received,Naledi Agent,2026-10-29,
+272,187,2026-01-05,Handover to Collections Agency,No Answer,Naledi Agent,2026-08-22,
+273,1029,2026-01-30,Handover to Collections Agency,Disputed,System,2026-07-08,2793.81
+274,1319,2025-09-21,SMS Reminder,Partial Payment Received,,,2299.94
+275,241,2025-08-19,Outbound Call,No Answer,Naledi Agent,2026-09-03,
+276,613,2025-09-07,Legal Letter,No Answer,,2026-09-27,
+277,914,2025-10-18,WhatsApp,Partial Payment Received,Naledi Agent,,1993.64
+278,157,24/01/2026,Handover to Collections Agency,No Answer,Sipho Collections,,3235.04
+279,269,2025-09-13,Outbound Call,Wrong Number,Auto-Dialler,,
+280,1203,04/01/2026,Email Reminder,Handed Over,Auto-Dialler,2026-07-04,
+281,682,2026-06-07,Handover to Collections Agency,No Answer,,2026-06-17,3964.04
+282,251,2025-06-28,Legal Letter,Partial Payment Received,Sipho Collections,,3814.3
+283,1426,2025-05-14,SMS Reminder,Handed Over,,,
+284,948,2025-09-26,Outbound Call,,Naledi Agent,2026-11-19,
+285,1391,2026-05-03,Inbound Call,Promise to Pay,,2026-12-19,366.81
+286,1766,01 Aug 2025,WhatsApp,Disputed,Naledi Agent,,
+287,1689,2025-11-12,SMS Reminder,Partial Payment Received,,2026-08-08,459.04
+288,454,2026-03-18,Email Reminder,No Answer,Auto-Dialler,,3210.26
+289,1474,2025-12-25,Outbound Call,Partial Payment Received,,2026-09-14,
+290,83,2025-10-09,Email Reminder,Disputed,System,,
+291,1218,2025-03-29,Legal Letter,Partial Payment Received,Auto-Dialler,2026-10-19,1078.61
+292,248,20260305,Outbound Call,Wrong Number,Sipho Collections,,
+293,550,2025-05-21,SMS Reminder,Wrong Number,,,
+294,1006,2026-01-12,Outbound Call,Partial Payment Received,System,,
+295,364,2025-08-16,Email Reminder,Handed Over,Naledi Agent,,
+296,477,2025-09-03,Legal Letter,Partial Payment Received,System,,3649.11
+297,28,2025-05-10,Outbound Call,Handed Over,Naledi Agent,,2261.5
+298,1,2025-06-08,Inbound Call,No Answer,System,,247.07
+299,1044,2026-05-18,Handover to Collections Agency,Disputed,Sipho Collections,2026-10-06,
+300,290,2025-04-19,Email Reminder,Wrong Number,,2026-11-19,1681.53
+301,262,2025-03-23,Email Reminder,No Answer,Sipho Collections,,
+302,952,2025-09-29,Inbound Call,Disputed,Naledi Agent,,3478.11
+303,642,2026-06-09,SMS Reminder,,Auto-Dialler,2026-07-02,
+304,1125,2026-06-04,WhatsApp,Wrong Number,Auto-Dialler,,
+305,1736,2026-03-10,Outbound Call,Partial Payment Received,Sipho Collections,2026-08-11,
+306,1661,27/05/2025,Legal Letter,Wrong Number,,2026-11-11,
+307,269,2026-01-08,Email Reminder,Promise to Pay,Naledi Agent,,1670.74
+308,899,2025-06-20,WhatsApp,Handed Over,Sipho Collections,,1516.55
+309,1102,2026-04-07,Handover to Collections Agency,No Answer,Naledi Agent,,
+310,249,2026-01-14,SMS Reminder,Handed Over,System,,3254.79
+311,244,2025-06-29,SMS Reminder,,,,
+312,205,2026-03-27,Inbound Call,Disputed,Naledi Agent,,
+313,229,2025-03-31,Email Reminder,Full Payment Received,Naledi Agent,2026-07-04,3685.0
+314,1322,2025-04-28,SMS Reminder,No Answer,Sipho Collections,,3421.13
+315,412,2025-11-12,Email Reminder,Full Payment Received,,,3689.36
+316,1165,2025-12-11,Email Reminder,Promise to Pay,System,2026-11-17,
+317,920,2026-02-06,Email Reminder,No Answer,Sipho Collections,,
+318,763,2026-04-15,WhatsApp,Wrong Number,Auto-Dialler,2026-12-21,
+319,181,2025-09-04,Handover to Collections Agency,Disputed,,2026-12-19,
+320,763,2026-06-15,Email Reminder,No Answer,,,
+321,720,2025-05-03,Inbound Call,No Answer,Sipho Collections,2026-09-21,
+322,1565,2026-02-26,Outbound Call,No Answer,System,2026-12-16,978.15
+323,261,2026-02-19,Inbound Call,Disputed,Naledi Agent,,3950.41
+324,279,2025-04-06,Handover to Collections Agency,Promise to Pay,,2026-10-21,
+325,1451,23 May 2025,WhatsApp,Handed Over,Auto-Dialler,,
+326,478,2025-10-29,Outbound Call,Full Payment Received,Sipho Collections,,2216.59
+327,280,2025-07-15,SMS Reminder,Wrong Number,,2026-07-13,3731.72
+328,437,2025-04-14,Handover to Collections Agency,Disputed,,,
+329,1506,2026-06-02,Email Reminder,Handed Over,Auto-Dialler,2026-10-21,885.16
+330,909,2025-12-17,Outbound Call,Wrong Number,System,,
+331,838,2025-03-02,Legal Letter,Wrong Number,Sipho Collections,,
+332,92,2026-06-06,SMS Reminder,Handed Over,,,
+333,1431,2025-04-30,Email Reminder,,Naledi Agent,,
+334,1699,2026-03-31,Outbound Call,Handed Over,Auto-Dialler,,
+335,136,2025-08-22,Outbound Call,Full Payment Received,System,,
+336,594,2026-05-09,SMS Reminder,Wrong Number,Auto-Dialler,2026-11-01,
+337,459,2025-10-10,Handover to Collections Agency,Partial Payment Received,System,2026-12-05,3951.7
+338,709,2026-03-11,WhatsApp,Full Payment Received,,2026-10-06,
+339,1437,2025-04-22,Outbound Call,Full Payment Received,Auto-Dialler,,201.92
+340,518,2025-05-19,Outbound Call,Handed Over,,,
+341,1683,2025-05-30,Handover to Collections Agency,Wrong Number,Sipho Collections,,625.32
+342,1594,2026-04-03,WhatsApp,Disputed,,,3623.85
+343,682,2026-02-12,Email Reminder,,,,
+344,492,20250904,SMS Reminder,Promise to Pay,Naledi Agent,2026-12-16,
+345,1138,2025-03-23,Legal Letter,Promise to Pay,Naledi Agent,,
+346,239,2025-04-13,Outbound Call,Full Payment Received,System,,
+347,174,2025-08-25,Handover to Collections Agency,Wrong Number,Naledi Agent,,
+348,1457,28/06/2025,Handover to Collections Agency,Disputed,Naledi Agent,2026-07-06,419.53
+349,193,2025-04-27,Email Reminder,Wrong Number,Sipho Collections,,3792.96
+350,227,2026-04-21,Outbound Call,Full Payment Received,System,,
+351,1513,2025-06-05,Handover to Collections Agency,Promise to Pay,Naledi Agent,,
+352,1202,2025-04-07,Email Reminder,Disputed,System,2026-12-06,
+353,66,2026-02-12,WhatsApp,Promise to Pay,,2026-10-14,
+354,1478,2026-04-06,Legal Letter,Handed Over,System,2026-08-14,
+355,403,2025-12-29,Outbound Call,No Answer,Naledi Agent,2026-10-17,760.48
+356,1202,2025-10-19,WhatsApp,No Answer,Naledi Agent,,3692.97
+357,857,2025-07-28,SMS Reminder,Handed Over,Naledi Agent,2026-08-29,
+358,750,2025-07-19,Handover to Collections Agency,Partial Payment Received,Naledi Agent,,
+359,495,2026-03-24,SMS Reminder,Full Payment Received,System,,553.9
+360,1343,2025-08-14,Handover to Collections Agency,Disputed,Naledi Agent,2026-12-08,
+361,137,2026-05-17,Inbound Call,Partial Payment Received,,,3915.31
+362,466,2025-05-23,WhatsApp,Disputed,Sipho Collections,,
+363,656,21 Aug 2025,Inbound Call,Handed Over,Auto-Dialler,,
+364,74,2025-04-21,Legal Letter,Handed Over,Naledi Agent,,1874.91
+365,1313,2025-04-04,Handover to Collections Agency,Full Payment Received,,2026-08-29,
+366,666,2025-06-09,WhatsApp,Promise to Pay,Auto-Dialler,,
+367,839,2025-05-08,Legal Letter,Disputed,Naledi Agent,,
+368,989,19 Dec 2025,WhatsApp,,,2026-11-01,251.11
+369,777,2025-08-16,Email Reminder,Disputed,Auto-Dialler,,
+370,1535,2025-12-23,Email Reminder,Promise to Pay,System,2026-09-26,288.6
+371,81,2025-05-27,Handover to Collections Agency,,,,
+372,635,2025-12-04,Handover to Collections Agency,Disputed,Sipho Collections,2026-08-15,2682.34
+373,944,2025-12-18,Outbound Call,Disputed,,2026-09-07,1253.75
+374,523,2026-01-19,Handover to Collections Agency,Full Payment Received,System,2026-12-05,1672.06
+375,837,04-04-2026,WhatsApp,Disputed,Sipho Collections,,277.83
+376,489,2025-12-24,Outbound Call,Handed Over,Auto-Dialler,,
+377,1131,2026-03-19,Inbound Call,No Answer,Naledi Agent,,
+378,1012,2025-03-25,SMS Reminder,Wrong Number,,,318.75
+379,781,2026-02-11,SMS Reminder,Promise to Pay,System,,2115.98
+380,1047,2025-12-24,Handover to Collections Agency,Wrong Number,,,3404.64
+381,1056,2025-06-19,WhatsApp,Disputed,Auto-Dialler,,2694.41
+382,514,25/05/2026,Outbound Call,Partial Payment Received,Naledi Agent,2026-10-09,
+383,895,2026-01-11,Email Reminder,Partial Payment Received,Auto-Dialler,,
+384,1243,2025-03-04,Inbound Call,Promise to Pay,System,2026-12-01,2930.1
+385,1070,20260605,Legal Letter,,,,
+386,1397,25/06/2025,Legal Letter,Full Payment Received,System,,3134.57
+387,248,2026-06-14,Legal Letter,,Sipho Collections,2026-11-23,
+388,1450,22/06/2025,SMS Reminder,No Answer,,2026-07-22,
+389,1046,2025-03-21,Email Reminder,Disputed,,2026-11-09,2572.64
+390,37,2025-06-09,Handover to Collections Agency,Partial Payment Received,System,,634.17
+391,91,2026-06-01,SMS Reminder,Handed Over,Sipho Collections,,
+392,172,2025-08-09,Inbound Call,Partial Payment Received,Sipho Collections,,2406.0
+393,1099,30/06/2025,Inbound Call,Full Payment Received,,2026-06-18,1139.8
+394,1042,2026-05-20,Handover to Collections Agency,,Auto-Dialler,2026-11-23,856.23
+395,1179,2026-05-07,Email Reminder,No Answer,System,2026-09-15,
+396,1021,2026-02-23,SMS Reminder,Promise to Pay,Naledi Agent,,2414.62
+397,369,2026-02-06,WhatsApp,Disputed,Sipho Collections,2026-08-24,
+398,1739,2026-04-27,SMS Reminder,Disputed,Sipho Collections,2026-11-24,1574.46
+399,999,2025-04-29,SMS Reminder,Disputed,,,984.97
+400,1426,2025-11-05,Inbound Call,No Answer,Auto-Dialler,,1013.32
+401,628,2026-01-30,Legal Letter,Handed Over,Naledi Agent,,
+402,1232,2025-08-07,Outbound Call,Full Payment Received,System,,
+403,1308,2025-09-30,Email Reminder,Wrong Number,,,2054.56
+404,1047,2025-09-05,Legal Letter,No Answer,,,643.17
+405,203,2026-04-21,Email Reminder,Wrong Number,Auto-Dialler,,2901.72
+406,1645,2026-04-18,Legal Letter,Full Payment Received,System,,
+407,1558,2025-07-28,SMS Reminder,Wrong Number,Naledi Agent,,
+408,642,2026-02-18,WhatsApp,Full Payment Received,Sipho Collections,,
+409,440,2026-05-28,Outbound Call,,Sipho Collections,2026-08-19,
+410,588,2025-08-25,Inbound Call,Wrong Number,Sipho Collections,,
+411,1184,2025-06-22,SMS Reminder,Promise to Pay,,,
+412,734,2026-02-04,Legal Letter,Promise to Pay,System,,
+413,334,2026-02-04,Email Reminder,Wrong Number,Sipho Collections,,
+414,239,2025-11-12,Email Reminder,Wrong Number,,2026-12-17,
+415,1095,2025-12-05,WhatsApp,Disputed,Auto-Dialler,,436.46
+416,649,2025-06-24,SMS Reminder,Disputed,System,,1445.63
+417,1336,2025-10-23,WhatsApp,Partial Payment Received,System,,
+418,1630,2026-03-10,Email Reminder,Disputed,Sipho Collections,,
+419,124,2025-10-03,Outbound Call,Disputed,System,2026-06-23,960.95
+420,453,2026-02-08,Inbound Call,Handed Over,Naledi Agent,2026-06-17,
+421,822,2026-02-05,SMS Reminder,,Auto-Dialler,2026-11-23,
+422,466,2025-08-02,Email Reminder,Disputed,Auto-Dialler,2026-07-06,
+423,1306,2025-09-20,Handover to Collections Agency,Partial Payment Received,,,3140.5
+424,1490,2025-08-06,Inbound Call,Full Payment Received,Auto-Dialler,2026-11-11,
+425,626,2026-06-08,WhatsApp,,Auto-Dialler,,
+426,547,2026-06-09,Outbound Call,No Answer,Sipho Collections,2026-11-07,760.06
+427,642,2025-05-31,Handover to Collections Agency,Disputed,Naledi Agent,,
+428,363,2026-01-24,Outbound Call,Partial Payment Received,Auto-Dialler,,
+429,8,2026-02-09,WhatsApp,Handed Over,Auto-Dialler,2026-07-02,2854.16
+430,782,2026-02-27,WhatsApp,Full Payment Received,,2026-07-26,
+431,1173,2025-07-09,Legal Letter,Handed Over,Naledi Agent,,621.3
+432,1251,2025-07-23,WhatsApp,Wrong Number,,,2702.64
+433,1149,27 Jul 2025,SMS Reminder,,Auto-Dialler,2026-07-30,
+434,683,2026-03-07,Inbound Call,Wrong Number,,,2900.48
+435,233,2025-05-24,Legal Letter,Handed Over,,2026-10-19,
+436,159,2025-09-24,Email Reminder,Promise to Pay,Naledi Agent,2026-12-10,1795.33
+437,1555,2026-04-10,Handover to Collections Agency,Disputed,Auto-Dialler,2026-12-09,
+438,1771,2026-01-09,Handover to Collections Agency,,,2026-12-12,
+439,781,2025-12-27,Outbound Call,No Answer,,2026-10-15,
+440,724,2025-10-04,Handover to Collections Agency,Full Payment Received,Sipho Collections,,2017.9
+441,1786,2025-03-23,SMS Reminder,Wrong Number,,,
+442,1130,2025-08-04,Legal Letter,Wrong Number,,,
+443,1526,2025-10-05,Inbound Call,Full Payment Received,,,
+444,1559,08-21-2025,WhatsApp,Wrong Number,Auto-Dialler,,1200.61
+445,615,2026-02-03,Email Reminder,No Answer,,,2444.93
+446,897,2025-11-30,SMS Reminder,No Answer,Naledi Agent,,
+447,1254,2025-05-11,Handover to Collections Agency,Handed Over,Naledi Agent,2026-07-16,
+448,927,2025-11-21,SMS Reminder,,,,748.57
+449,688,2025-11-21,Inbound Call,Partial Payment Received,Naledi Agent,2026-06-21,
+450,901,2025-12-09,SMS Reminder,Handed Over,Sipho Collections,,
+451,520,2026-03-02,Outbound Call,Wrong Number,System,2026-10-11,595.61
+452,773,14 May 2026,Handover to Collections Agency,Handed Over,Naledi Agent,,
+453,1532,2025-05-08,Inbound Call,Disputed,Naledi Agent,,
+454,504,2026-01-18,Email Reminder,Wrong Number,,,
+455,890,27/12/2025,Inbound Call,Promise to Pay,Naledi Agent,,
+456,1589,2026-02-27,Inbound Call,Full Payment Received,Sipho Collections,2026-10-20,
+457,270,2025-05-15,Legal Letter,Disputed,,,2722.48
+458,827,2025-06-30,Handover to Collections Agency,Handed Over,Naledi Agent,,
+459,1657,2025-08-07,Inbound Call,Wrong Number,Sipho Collections,2026-09-21,
+460,1741,02/01/2026,Handover to Collections Agency,Disputed,Auto-Dialler,2026-07-27,3543.45
+461,664,2025-12-24,WhatsApp,Full Payment Received,System,,
+462,438,2025-08-05,SMS Reminder,Wrong Number,,2026-09-15,1337.17
+463,1724,2026-03-15,WhatsApp,,Sipho Collections,,
+464,405,10/01/2026,Handover to Collections Agency,Wrong Number,Naledi Agent,2026-08-08,
+465,144,2026-04-20,Legal Letter,Wrong Number,Auto-Dialler,2026-09-24,2206.42
+466,1489,19 Apr 2026,Outbound Call,Full Payment Received,Naledi Agent,2026-06-25,2356.29
+467,712,2025-03-18,Legal Letter,No Answer,Auto-Dialler,2026-11-30,
+468,1729,2025-07-04,WhatsApp,Partial Payment Received,Auto-Dialler,2026-09-08,1983.32
+469,178,2026-01-16,Legal Letter,Promise to Pay,Sipho Collections,,
+470,106,2026-05-04,WhatsApp,Disputed,System,,
+471,536,2025-07-25,Legal Letter,No Answer,Auto-Dialler,,3296.96
+472,801,04/12/2025,Inbound Call,Wrong Number,Sipho Collections,2026-11-21,3225.78
+473,264,2026-03-23,Outbound Call,No Answer,Auto-Dialler,,2007.85
+474,941,2026-05-28,SMS Reminder,No Answer,,2026-12-27,1860.03
+475,1609,2026-06-13,Email Reminder,Handed Over,Naledi Agent,2026-11-14,
+476,1594,2026-04-18,Inbound Call,,Sipho Collections,,
+477,1302,2026-04-13,WhatsApp,Wrong Number,Naledi Agent,2026-08-26,3886.89
+478,1178,2026-03-18,Legal Letter,Disputed,,,
+479,334,2026-03-14,Handover to Collections Agency,Wrong Number,Naledi Agent,2026-09-23,
+480,841,06-08-2026,Legal Letter,No Answer,,,
+481,1438,2025-04-25,Legal Letter,Handed Over,,,
+482,1103,2026-04-20,Email Reminder,Partial Payment Received,,,1742.62
+483,356,2026-03-25,SMS Reminder,Handed Over,,2026-09-18,2492.83
+484,631,2025-06-13,Inbound Call,Wrong Number,Sipho Collections,,3913.3
+485,1042,2026-03-16,Email Reminder,Handed Over,,,
+486,980,2026-04-10,Inbound Call,Wrong Number,Sipho Collections,,2773.84
+487,1536,2026-03-17,SMS Reminder,,,,
+488,1147,2026-03-30,SMS Reminder,Wrong Number,Naledi Agent,,
+489,1467,2026-02-23,Handover to Collections Agency,Full Payment Received,Naledi Agent,,
+490,1313,2025-11-22,Email Reminder,Partial Payment Received,System,,
+491,1149,2025-08-12,Legal Letter,No Answer,System,2026-12-08,
+492,1623,2025-12-15,SMS Reminder,Full Payment Received,Naledi Agent,,
+493,1220,2025-09-27,Outbound Call,Full Payment Received,Sipho Collections,,
+494,934,14/04/2026,Inbound Call,,,,
+495,491,2025-12-26,Handover to Collections Agency,Wrong Number,System,2026-07-21,2400.14
+496,1623,2025-04-08,Email Reminder,Promise to Pay,Sipho Collections,2026-07-05,
+497,1758,04/01/2026,WhatsApp,Handed Over,Sipho Collections,,3333.13
+498,518,2025-11-23,Handover to Collections Agency,Partial Payment Received,Naledi Agent,,
+499,64,2026-03-01,Legal Letter,Disputed,Sipho Collections,2026-09-27,
+500,910,2026-05-24,SMS Reminder,No Answer,System,2026-09-18,
+501,91,2025-07-30,SMS Reminder,Disputed,Naledi Agent,,3981.19
+502,714,2026-01-14,SMS Reminder,Handed Over,Naledi Agent,,
+503,1128,2025-09-05,Inbound Call,Handed Over,,2026-07-31,
+504,1359,2026-01-17,Email Reminder,Wrong Number,,,
+505,879,2025-07-17,SMS Reminder,Full Payment Received,System,,
+506,204,2026-01-12,WhatsApp,No Answer,,2026-12-10,
+507,965,2026-03-31,Inbound Call,No Answer,Sipho Collections,,
+508,1686,2026-04-06,SMS Reminder,Full Payment Received,System,,
+509,569,2025-07-20,Outbound Call,Disputed,Auto-Dialler,2026-12-09,857.98
+510,1137,12-08-2025,Outbound Call,Wrong Number,Auto-Dialler,2026-09-23,
+511,936,2025-06-29,Outbound Call,Disputed,Sipho Collections,,2251.92
+512,514,2026-05-29,Legal Letter,Full Payment Received,System,,1956.09
+513,11,2025-10-04,Email Reminder,No Answer,Naledi Agent,,
+514,723,2025-04-20,WhatsApp,,System,2026-07-18,
+515,1473,2026-03-05,Inbound Call,No Answer,System,,
+516,650,2026-04-05,Handover to Collections Agency,Handed Over,System,,
+517,396,10 May 2026,Handover to Collections Agency,Partial Payment Received,Naledi Agent,2026-08-10,
+518,1546,2026-03-12,Inbound Call,,,,
+519,878,2025-12-01,Email Reminder,No Answer,Naledi Agent,2026-12-07,1625.22
+520,747,2025-09-04,WhatsApp,Disputed,Sipho Collections,,1246.85
+521,629,30 Apr 2025,WhatsApp,No Answer,Naledi Agent,,
+522,994,2026-01-08,Email Reminder,Wrong Number,System,,
+523,570,2025-05-23,Outbound Call,Promise to Pay,Naledi Agent,2026-09-06,
+524,631,2025-07-22,Inbound Call,Disputed,System,2026-11-09,461.23
+525,504,2025-03-22,Legal Letter,No Answer,Auto-Dialler,2026-07-02,
+526,985,2026-06-11,SMS Reminder,No Answer,,,2712.14
+527,217,2026-05-18,Legal Letter,Full Payment Received,Sipho Collections,,1282.41
+528,794,2025-08-05,Email Reminder,Full Payment Received,System,,2836.87
+529,1444,20251106,Email Reminder,Promise to Pay,Sipho Collections,2026-07-04,1842.81
+530,457,2026-01-12,Legal Letter,Full Payment Received,,,
+531,1780,2026-03-25,Handover to Collections Agency,Disputed,Sipho Collections,,
+532,1384,2026-06-11,WhatsApp,Full Payment Received,,2026-11-02,
+533,31,2025-04-24,Email Reminder,No Answer,,,403.49
+534,407,2025-07-31,Outbound Call,No Answer,System,,1668.4
+535,466,2025-05-12,Outbound Call,Wrong Number,Auto-Dialler,2026-11-10,578.37
+536,366,2026-04-03,Email Reminder,Wrong Number,,2026-11-12,3705.11
+537,55,2025-04-02,Email Reminder,No Answer,,,
+538,118,2025-11-09,Handover to Collections Agency,Disputed,Sipho Collections,2026-09-03,
+539,1714,19 Apr 2025,Handover to Collections Agency,Partial Payment Received,Auto-Dialler,,
+540,467,2026-01-13,Inbound Call,Partial Payment Received,,,
+541,926,2026-04-04,Email Reminder,Wrong Number,,,2733.26
+542,1380,20251127,SMS Reminder,Partial Payment Received,,2026-07-27,1137.44
+543,1527,2025-04-10,Email Reminder,,,2026-06-19,
+544,101,05/01/2026,SMS Reminder,Disputed,Naledi Agent,2026-12-18,3983.08
+545,690,2025-06-26,Legal Letter,Wrong Number,Naledi Agent,2026-08-02,1444.9
+546,390,2025-12-02,Handover to Collections Agency,Disputed,,,2377.36
+547,1047,08/05/2026,Email Reminder,Handed Over,Auto-Dialler,,
+548,375,22/05/2026,SMS Reminder,Handed Over,Sipho Collections,,
+549,1674,2025-03-02,WhatsApp,Partial Payment Received,Auto-Dialler,2026-10-08,3361.64
+550,1175,2026-04-24,WhatsApp,Disputed,,,
+551,1536,2026-06-09,Handover to Collections Agency,No Answer,,2026-11-13,2157.74
+552,124,2026-05-27,Handover to Collections Agency,Handed Over,Sipho Collections,2026-11-07,
+553,1687,2026-06-02,Outbound Call,,,,645.82
+554,696,2025-03-07,SMS Reminder,Handed Over,,,3403.54
+555,1741,2025-09-18,Inbound Call,Wrong Number,Naledi Agent,,2155.48
+556,300,05 May 2025,Legal Letter,No Answer,,2026-07-03,
+557,895,2025-07-18,SMS Reminder,Wrong Number,Naledi Agent,,
+558,1538,2025-11-28,Email Reminder,Promise to Pay,Naledi Agent,,
+559,1208,2025-05-31,Email Reminder,Handed Over,,2026-10-09,
+560,265,2025-10-13,SMS Reminder,,System,2026-08-15,
+561,277,2025-06-02,SMS Reminder,,,2026-12-29,
+562,1734,2026-04-20,Handover to Collections Agency,No Answer,Naledi Agent,,
+563,383,2025-05-13,WhatsApp,No Answer,System,2026-07-18,
+564,69,2025-07-06,Legal Letter,Wrong Number,Sipho Collections,,382.88
+565,1316,2025-05-25,Handover to Collections Agency,Full Payment Received,Naledi Agent,2026-09-17,
+566,848,2025-04-10,Inbound Call,,System,,
+567,414,2025-03-04,Legal Letter,Wrong Number,,,2807.75
+568,1687,20250930,Email Reminder,Handed Over,,2026-07-27,3464.21
+569,766,08 May 2026,Legal Letter,Handed Over,Auto-Dialler,,3384.32
+570,1597,2025-05-19,SMS Reminder,Disputed,,2026-12-25,
+571,1714,2026-01-19,Legal Letter,Partial Payment Received,System,2026-07-11,2866.01
+572,1678,2025-07-31,WhatsApp,Wrong Number,System,2026-10-27,
+573,128,2025-11-28,Email Reminder,Disputed,System,,
+574,1625,2025-12-09,Legal Letter,Wrong Number,,2026-11-20,
+575,110,2025-10-20,Inbound Call,Disputed,Naledi Agent,2026-12-21,
+576,495,2025-07-01,WhatsApp,Disputed,Auto-Dialler,2026-09-11,
+577,1589,2025-08-10,WhatsApp,Partial Payment Received,Sipho Collections,,
+578,1759,29/12/2025,SMS Reminder,Handed Over,System,2026-11-01,3800.98
+579,864,2026-01-02,Email Reminder,Full Payment Received,Naledi Agent,,
+580,88,2025-04-02,Outbound Call,Wrong Number,,,
+581,64,2025-12-30,Outbound Call,Partial Payment Received,Sipho Collections,2026-07-03,2694.16
+582,583,2025-05-25,Handover to Collections Agency,Disputed,Auto-Dialler,2026-07-31,
+583,264,2026-06-14,SMS Reminder,Handed Over,Sipho Collections,2026-09-28,
+584,1199,2025-09-10,SMS Reminder,Full Payment Received,Auto-Dialler,,
+585,1787,2026-01-05,SMS Reminder,,Auto-Dialler,,
+586,1085,2026-05-12,Handover to Collections Agency,Full Payment Received,Naledi Agent,,
+587,109,2025-12-22,Email Reminder,Wrong Number,Naledi Agent,2026-07-18,425.79
+588,1297,2026-04-28,Handover to Collections Agency,Handed Over,Naledi Agent,,
+589,659,03-23-2026,WhatsApp,Handed Over,Naledi Agent,2026-10-07,385.02
+590,134,2026-05-08,WhatsApp,Handed Over,Naledi Agent,2026-10-14,
+591,156,2025-11-02,Email Reminder,Full Payment Received,Naledi Agent,2026-07-13,
+592,141,2026-03-15,Handover to Collections Agency,No Answer,System,2026-08-25,
+593,819,2026-04-12,Handover to Collections Agency,Wrong Number,Sipho Collections,,3615.41
+594,605,2025-11-24,SMS Reminder,Handed Over,,,
+595,1607,2026-05-31,Handover to Collections Agency,Wrong Number,System,,
+596,310,2026-01-24,Email Reminder,Handed Over,Sipho Collections,2026-06-29,
+597,484,2026-01-14,Inbound Call,No Answer,System,,
+598,145,2025-07-03,WhatsApp,Wrong Number,,,531.23
+599,1491,2026-05-14,Legal Letter,Full Payment Received,System,,
+600,597,2025-03-30,Outbound Call,Disputed,Sipho Collections,2026-09-07,
+601,327,2026-04-19,Email Reminder,Full Payment Received,Auto-Dialler,,
+602,1,2026-04-27,Legal Letter,Full Payment Received,Sipho Collections,2026-12-26,
+603,64,2026-02-05,Outbound Call,Wrong Number,,2026-11-09,3586.45
+604,1493,2025-11-16,Inbound Call,Promise to Pay,,,3167.94
+605,484,2025-10-23,WhatsApp,Handed Over,System,,3337.02
+606,760,2025-04-05,WhatsApp,Promise to Pay,Sipho Collections,2026-11-11,3785.25
+607,1670,2025-06-28,Legal Letter,No Answer,Sipho Collections,,1829.94
+608,1191,2026-03-18,Outbound Call,Disputed,Sipho Collections,,
+609,1435,2026-04-29,SMS Reminder,No Answer,Auto-Dialler,,
+610,789,2025-08-23,Inbound Call,Handed Over,System,2026-08-19,239.83
+611,720,2025-04-05,SMS Reminder,Disputed,Auto-Dialler,2026-11-01,
+612,690,2025-07-25,Legal Letter,Wrong Number,System,,
+613,1085,2026-02-01,Outbound Call,Full Payment Received,Sipho Collections,,
+614,1452,2025-12-30,Legal Letter,Wrong Number,Naledi Agent,,2184.42
+615,213,2026-05-21,SMS Reminder,Promise to Pay,,2026-08-08,
+616,1137,2026-05-12,Handover to Collections Agency,Handed Over,,,
+617,1483,2025-06-29,SMS Reminder,Disputed,Naledi Agent,,
+618,1545,05-11-2026,Outbound Call,Full Payment Received,,2026-10-02,
+619,781,2025-05-25,Inbound Call,Handed Over,System,2026-07-17,
+620,859,2026-01-01,WhatsApp,Promise to Pay,,,
+621,1369,03 Jan 2026,SMS Reminder,Wrong Number,System,,
+622,330,2025-07-28,Handover to Collections Agency,Promise to Pay,,,2700.78
+623,1150,2025-03-02,Legal Letter,Full Payment Received,,,
+624,1331,2025-04-22,SMS Reminder,Promise to Pay,,2026-07-29,
+625,1586,2026-01-14,Handover to Collections Agency,Disputed,System,2026-08-23,
+626,855,2025-06-21,SMS Reminder,Partial Payment Received,Auto-Dialler,2026-12-02,
+627,789,2025-09-28,Inbound Call,,Sipho Collections,2026-07-18,
+628,1480,2025-12-17,Inbound Call,Disputed,,,
+629,1475,2026-04-02,Legal Letter,No Answer,,,3476.7
+630,901,2026-05-27,Handover to Collections Agency,,Sipho Collections,,
+631,1221,11-28-2025,Outbound Call,,,2026-08-06,2354.45
+632,1751,2026-05-10,SMS Reminder,Disputed,Naledi Agent,,
+633,1074,2025-09-08,Handover to Collections Agency,Promise to Pay,,,
+634,870,01-19-2026,Handover to Collections Agency,Partial Payment Received,,2026-07-18,
+635,26,2025-03-04,Handover to Collections Agency,Partial Payment Received,,2026-12-01,
+636,671,2025-09-05,Handover to Collections Agency,Promise to Pay,Naledi Agent,,1470.0
+637,580,2025-12-02,Handover to Collections Agency,Disputed,System,,
+638,875,2026-02-01,Inbound Call,No Answer,Auto-Dialler,,
+639,1356,2025-05-17,Inbound Call,Promise to Pay,Sipho Collections,,207.23
+640,436,2025-11-17,Legal Letter,Wrong Number,Naledi Agent,2026-06-21,
+641,1052,2025-08-07,Email Reminder,Promise to Pay,System,2026-08-23,1256.74
+642,483,2026-01-24,Handover to Collections Agency,Partial Payment Received,Auto-Dialler,,2954.54
+643,1017,2026-02-22,WhatsApp,Disputed,Sipho Collections,,
+644,841,2026-05-16,Outbound Call,Partial Payment Received,Auto-Dialler,,2934.78
+645,417,02-11-2026,WhatsApp,Promise to Pay,Auto-Dialler,,
+646,1584,2026-02-08,SMS Reminder,Handed Over,Auto-Dialler,2026-11-16,
+647,1071,2025-03-18,Outbound Call,No Answer,System,2026-07-24,
+648,606,2025-05-17,Legal Letter,,System,,2310.45
+649,609,2025-06-04,SMS Reminder,Promise to Pay,Auto-Dialler,,405.34
+650,648,2025-11-06,Handover to Collections Agency,No Answer,Naledi Agent,,
+651,1741,04-25-2026,WhatsApp,Promise to Pay,,2026-07-21,
+652,267,2026-02-08,WhatsApp,Full Payment Received,,,
+653,889,2026-02-19,Inbound Call,Promise to Pay,System,,
+654,180,2025-06-21,Outbound Call,Full Payment Received,Naledi Agent,2026-08-30,
+655,849,2025-03-18,SMS Reminder,Partial Payment Received,Naledi Agent,2026-09-08,
+656,1162,20260216,Email Reminder,No Answer,Auto-Dialler,2026-12-01,
+657,1061,2025-08-02,Handover to Collections Agency,Promise to Pay,System,,
+658,1578,2025-10-11,Inbound Call,Promise to Pay,Auto-Dialler,,
+659,1337,2026-02-17,Email Reminder,,Sipho Collections,2026-11-20,1661.92
+660,1667,2025-11-30,Outbound Call,Disputed,Auto-Dialler,,1642.74
+661,467,2026-06-16,WhatsApp,Full Payment Received,Sipho Collections,2026-06-28,
+662,1301,2025-05-17,Legal Letter,Partial Payment Received,Sipho Collections,,3493.54
+663,505,20251111,Outbound Call,Promise to Pay,Naledi Agent,,
+664,658,2026-02-07,Legal Letter,Partial Payment Received,Naledi Agent,,1084.89
+665,1159,2025-04-19,Outbound Call,Handed Over,Auto-Dialler,,
+666,518,2025-07-29,WhatsApp,Full Payment Received,Naledi Agent,,
+667,472,2026-01-01,SMS Reminder,Handed Over,,,2033.77
+668,604,01 Jun 2026,SMS Reminder,Promise to Pay,Naledi Agent,,953.53
+669,2,2026-03-12,Email Reminder,Disputed,System,,1477.63
+670,1106,2025-10-28,Legal Letter,No Answer,Auto-Dialler,2026-08-19,
+671,757,2025-07-25,Outbound Call,Handed Over,,2026-11-15,
+672,138,2025-03-18,Inbound Call,Disputed,,,
+673,1683,2025-08-09,WhatsApp,Full Payment Received,Naledi Agent,2026-07-17,
+674,231,2025-05-12,WhatsApp,Full Payment Received,,,830.51
+675,820,2025-07-01,Email Reminder,Disputed,Naledi Agent,2026-09-25,906.57
+676,524,2026-02-26,Inbound Call,,,2026-10-16,
+677,524,2025-12-24,Email Reminder,Partial Payment Received,Sipho Collections,,
+678,1493,2026-03-23,Email Reminder,Handed Over,Sipho Collections,2026-11-18,
+679,790,2025-05-09,Outbound Call,,Auto-Dialler,2026-10-03,
+680,1395,2025-11-08,Outbound Call,Disputed,Sipho Collections,,
+681,1289,2025-10-15,WhatsApp,,Auto-Dialler,2026-12-21,
+682,1057,2025-04-01,Email Reminder,No Answer,Sipho Collections,,437.82
+683,672,2025-05-18,WhatsApp,Promise to Pay,System,,
+684,470,2025-04-24,Email Reminder,Partial Payment Received,Sipho Collections,,
+685,872,2025-07-08,Email Reminder,Promise to Pay,Sipho Collections,2026-11-15,335.88
+686,1637,2026-03-26,Legal Letter,Full Payment Received,Auto-Dialler,,3693.28
+687,878,2025-07-20,Handover to Collections Agency,Full Payment Received,Sipho Collections,2026-09-25,1680.09
+688,371,2025-07-19,SMS Reminder,Full Payment Received,Auto-Dialler,2026-12-07,2488.29
+689,921,2025-03-02,SMS Reminder,Promise to Pay,Auto-Dialler,,500.81
+690,15,2025-08-13,Inbound Call,Promise to Pay,Naledi Agent,2026-11-30,
+691,1734,2025-09-17,Outbound Call,Partial Payment Received,System,,
+692,1415,2026-02-24,Email Reminder,Promise to Pay,,2026-06-24,1979.74
+693,1633,2025-03-20,WhatsApp,No Answer,Auto-Dialler,,2514.6
+694,12,2026-05-28,Inbound Call,Disputed,System,2026-10-07,
+695,571,2025-06-28,Email Reminder,Wrong Number,System,,1964.91
+696,728,2025-04-11,Outbound Call,Disputed,,,1395.84
+697,895,2026-01-27,Outbound Call,Promise to Pay,Naledi Agent,,1691.24
+698,82,2025-10-12,SMS Reminder,Handed Over,System,,
+699,1592,2025-09-17,Outbound Call,Handed Over,Auto-Dialler,2026-08-29,
+700,1356,2026-01-03,SMS Reminder,Disputed,Auto-Dialler,,1632.12
+701,1666,2025-07-29,WhatsApp,Wrong Number,,,
+702,1674,2025-10-31,WhatsApp,Wrong Number,Sipho Collections,,
+703,1618,2025-03-23,SMS Reminder,No Answer,Naledi Agent,,1192.92
+704,616,2025-06-06,Inbound Call,Full Payment Received,Auto-Dialler,,
+705,261,28 May 2026,Inbound Call,Wrong Number,Sipho Collections,2026-10-12,
+706,770,2025-10-10,Inbound Call,No Answer,Sipho Collections,,
+707,622,2026-02-25,SMS Reminder,No Answer,Sipho Collections,,3368.62
+708,1296,2026-05-10,Inbound Call,Full Payment Received,Naledi Agent,,
+709,1707,11-29-2025,Legal Letter,Partial Payment Received,,,
+710,118,2025-03-14,Handover to Collections Agency,Disputed,System,2026-09-11,
+711,1732,2026-01-30,Handover to Collections Agency,Promise to Pay,Naledi Agent,,
+712,826,09-21-2025,Handover to Collections Agency,No Answer,System,,
+713,1778,2025-04-13,Inbound Call,Wrong Number,Naledi Agent,,
+714,262,2025-07-03,SMS Reminder,Handed Over,System,2026-12-05,
+715,896,20260526,Legal Letter,Partial Payment Received,Auto-Dialler,,
+716,1187,2025-07-21,SMS Reminder,No Answer,Naledi Agent,2026-10-02,
+717,1386,2025-09-25,SMS Reminder,Full Payment Received,System,,2857.0
+718,1184,2025-07-26,Legal Letter,Disputed,System,2026-08-20,
+719,1593,2025-08-06,Inbound Call,Disputed,Sipho Collections,,
+720,1077,2025-07-08,WhatsApp,No Answer,,,2609.82
+721,1116,11-14-2025,WhatsApp,Partial Payment Received,Naledi Agent,2026-10-31,1103.29
+722,722,2026-01-18,Email Reminder,Promise to Pay,System,2026-11-09,
+723,1254,2025-10-06,Outbound Call,Partial Payment Received,System,,
+724,519,2025-07-13,Handover to Collections Agency,No Answer,,,
+725,1693,2025-09-07,Inbound Call,Full Payment Received,Naledi Agent,,1196.57
+726,44,2026-05-06,Inbound Call,Partial Payment Received,Naledi Agent,2026-12-01,
+727,1048,2025-07-26,Outbound Call,Promise to Pay,Auto-Dialler,,
+728,755,2026-01-05,WhatsApp,No Answer,Naledi Agent,2026-09-24,
+729,676,2025-04-07,WhatsApp,Disputed,Naledi Agent,,3100.57
+730,874,2025-09-23,Outbound Call,Promise to Pay,Naledi Agent,2026-07-07,2827.11
+731,1544,2025-08-05,Legal Letter,,,,2412.99
+732,677,2026-04-28,WhatsApp,Promise to Pay,Auto-Dialler,2026-08-03,
+733,173,2025-08-16,SMS Reminder,Promise to Pay,Auto-Dialler,2026-12-14,2311.23
+734,920,2025-10-13,Outbound Call,No Answer,,2026-11-22,994.94
+735,1622,2026-06-05,Outbound Call,Wrong Number,Sipho Collections,2026-07-22,1727.6
+736,1368,2026-06-03,Outbound Call,No Answer,,,3526.75
+737,894,21/03/2026,Email Reminder,Wrong Number,Naledi Agent,,
+738,571,2026-02-18,Legal Letter,No Answer,,,437.45
+739,849,2025-07-23,Email Reminder,Partial Payment Received,,2026-08-01,
+740,1775,2025-07-19,Email Reminder,Disputed,Auto-Dialler,,
+741,1581,2025-05-19,SMS Reminder,Full Payment Received,Auto-Dialler,,
+742,252,2026-04-23,Outbound Call,Wrong Number,,2026-09-30,
+743,1781,2025-04-11,SMS Reminder,Disputed,System,,
+744,1066,2025-03-13,Inbound Call,Partial Payment Received,System,2026-07-04,
+745,1522,2025-10-22,Inbound Call,No Answer,Sipho Collections,,
+746,782,2026-03-21,Legal Letter,Wrong Number,,,
+747,1080,2026-01-21,Inbound Call,Handed Over,,,
+748,227,2025-09-30,SMS Reminder,Handed Over,System,2026-10-18,3998.75
+749,1519,2025-10-30,SMS Reminder,Promise to Pay,Auto-Dialler,,
+750,990,2025-10-04,SMS Reminder,Partial Payment Received,Auto-Dialler,2026-10-08,
+751,868,2025-11-21,Inbound Call,Full Payment Received,Sipho Collections,2026-06-19,2265.9
+752,782,2026-03-06,Inbound Call,Promise to Pay,Naledi Agent,2026-07-01,
+753,1531,12 Apr 2025,SMS Reminder,Disputed,System,2026-09-02,
+754,1269,2026-03-10,Outbound Call,Partial Payment Received,Sipho Collections,2026-09-01,
+755,1663,2026-05-09,WhatsApp,Disputed,Naledi Agent,,
+756,1588,2026-06-08,Legal Letter,Disputed,Sipho Collections,,
+757,1460,2026-04-17,Legal Letter,No Answer,System,,
+758,1630,2026-04-20,Inbound Call,No Answer,,,2215.99
+759,913,2025-05-21,Outbound Call,,System,2026-08-12,
+760,1136,2025-06-01,Email Reminder,Partial Payment Received,Sipho Collections,2026-07-13,744.72
+761,746,2025-11-06,Legal Letter,Disputed,Sipho Collections,2026-07-29,3107.3
+762,1456,2026-04-17,Inbound Call,Partial Payment Received,System,2026-07-24,1147.35
+763,293,2025-08-29,SMS Reminder,Promise to Pay,Sipho Collections,,
+764,804,20251009,Email Reminder,No Answer,Sipho Collections,,601.0
+765,750,2025-04-05,Inbound Call,,Sipho Collections,,2625.93
+766,871,2026-01-10,Inbound Call,Promise to Pay,Auto-Dialler,,
+767,1664,2026-01-11,Inbound Call,Partial Payment Received,,2026-12-04,
+768,1681,2025-07-26,Legal Letter,Partial Payment Received,Naledi Agent,,2219.88
+769,882,2025-03-02,Email Reminder,Handed Over,,,2868.58
+770,1464,20251025,Handover to Collections Agency,Wrong Number,,,1409.22
+771,1339,2025-11-12,Legal Letter,Handed Over,Sipho Collections,2026-12-15,
+772,414,2026-04-01,WhatsApp,Full Payment Received,Naledi Agent,2026-11-06,
+773,1258,2025-11-21,Legal Letter,No Answer,System,,
+774,1301,13 Sep 2025,Email Reminder,Handed Over,System,2026-12-13,
+775,901,2026-02-07,SMS Reminder,Promise to Pay,Naledi Agent,,3363.29
+776,835,25 Jun 2025,WhatsApp,Disputed,System,,
+777,1667,03-09-2025,Email Reminder,Full Payment Received,,2026-12-15,2017.32
+778,1470,2025-07-05,Email Reminder,,System,2026-12-03,
+779,25,2026-01-13,Inbound Call,No Answer,System,,3989.07
+780,1629,2025-07-24,Email Reminder,Handed Over,Naledi Agent,,
+781,553,2025-08-24,WhatsApp,No Answer,Naledi Agent,,430.12
+782,547,2025-06-29,Outbound Call,Handed Over,,2026-12-26,2044.41
+783,1414,2025-08-05,Email Reminder,Disputed,Auto-Dialler,2026-12-25,2249.99
+784,1244,2025-03-23,Handover to Collections Agency,Wrong Number,Auto-Dialler,,2678.84
+785,78,2025-03-22,Email Reminder,No Answer,Auto-Dialler,,2078.76
+786,911,2026-01-06,Legal Letter,Disputed,Naledi Agent,2026-11-28,3619.34
+787,1449,2025-11-23,WhatsApp,Disputed,,,
+788,1365,2025-09-30,Legal Letter,Full Payment Received,Sipho Collections,2026-06-26,2163.47
+789,588,18/04/2026,Outbound Call,Partial Payment Received,System,,
+790,270,2025-10-30,Inbound Call,,Auto-Dialler,,
+791,1788,2025-07-14,WhatsApp,Full Payment Received,Auto-Dialler,2026-11-07,
+792,1771,2026-02-18,Outbound Call,Partial Payment Received,Auto-Dialler,,
+793,398,2025-05-20,Legal Letter,Promise to Pay,Naledi Agent,,
+794,1732,2026-01-21,Email Reminder,Promise to Pay,System,2026-08-25,
+795,33,2026-01-15,Handover to Collections Agency,Handed Over,Naledi Agent,,
+796,1496,2025-07-25,Legal Letter,Promise to Pay,,,2434.88
+797,573,2025-10-29,Email Reminder,Handed Over,Auto-Dialler,2026-12-24,
+798,91,2025-05-30,Email Reminder,Disputed,,2026-09-11,
+799,947,2025-06-18,Outbound Call,Handed Over,,2026-08-31,
+800,220,2026-05-15,Email Reminder,Disputed,Sipho Collections,,1943.31
+801,1364,2025-11-05,WhatsApp,Wrong Number,,2026-12-14,
+802,734,2026-03-27,SMS Reminder,Promise to Pay,Sipho Collections,,
+803,1459,2025-10-09,Inbound Call,Promise to Pay,,,1829.16
+804,1153,20250731,Email Reminder,Promise to Pay,,2026-10-19,
+805,1712,2025-10-23,SMS Reminder,,System,2026-11-04,968.82
+806,1085,2025-03-09,Outbound Call,,Auto-Dialler,,2852.55
+807,957,2025-06-24,WhatsApp,Disputed,Auto-Dialler,2026-08-04,
+808,1611,2026-01-24,SMS Reminder,Partial Payment Received,System,,2386.58
+809,1793,2026-02-23,SMS Reminder,,Auto-Dialler,,
+810,1033,2026-02-14,Outbound Call,No Answer,Auto-Dialler,,
+811,756,2025-09-30,WhatsApp,Full Payment Received,Sipho Collections,2026-08-06,551.04
+812,1099,2025-05-25,Legal Letter,Promise to Pay,Auto-Dialler,,2683.16
+813,1295,2025-04-02,Inbound Call,Wrong Number,Sipho Collections,2026-08-22,
+814,375,2026-05-13,Legal Letter,Handed Over,Naledi Agent,,
+815,1004,2026-04-05,WhatsApp,Promise to Pay,Auto-Dialler,2026-07-04,1224.05
+816,874,2026-01-13,WhatsApp,Handed Over,,2026-10-09,
+817,633,2025-08-06,SMS Reminder,Wrong Number,,,
+818,715,2026-03-25,Handover to Collections Agency,Partial Payment Received,Sipho Collections,2026-07-11,1457.71
+819,45,2025-04-28,Outbound Call,Full Payment Received,Naledi Agent,2026-08-26,
+820,1042,2026-03-28,Inbound Call,Promise to Pay,Naledi Agent,,
+821,259,2026-01-17,Handover to Collections Agency,No Answer,,2026-12-21,
+822,1436,2025-10-29,Email Reminder,No Answer,System,,2159.77
+823,1440,2025-09-14,Outbound Call,Wrong Number,Naledi Agent,2026-11-05,
+824,50,20250504,Inbound Call,Wrong Number,System,2026-07-06,
+825,361,2025-10-03,Email Reminder,Full Payment Received,,2026-09-09,
+826,1143,2025-06-27,Outbound Call,Handed Over,Sipho Collections,,
+827,1469,2025-12-31,Email Reminder,Handed Over,Sipho Collections,,
+828,1335,2025-10-15,Email Reminder,Partial Payment Received,Auto-Dialler,2026-09-18,1582.48
+829,1350,2026-01-14,Inbound Call,Handed Over,Sipho Collections,,2534.82
+830,1440,2025-12-01,SMS Reminder,No Answer,,,2741.4
+831,1700,2026-01-27,Legal Letter,Partial Payment Received,Sipho Collections,,2849.93
+832,1704,2025-12-16,Email Reminder,Handed Over,Naledi Agent,,
+833,457,2025-04-29,WhatsApp,Handed Over,System,2026-08-11,
+834,533,2026-05-13,Inbound Call,Handed Over,Naledi Agent,,1531.62
+835,974,2026-05-05,Outbound Call,Handed Over,Sipho Collections,,1435.28
+836,1189,2025-04-13,WhatsApp,Wrong Number,System,,
+837,774,2026-04-04,WhatsApp,Promise to Pay,,2026-11-24,
+838,587,2025-07-28,Handover to Collections Agency,Handed Over,System,,
+839,1217,2025-04-01,Outbound Call,No Answer,Auto-Dialler,,3713.58
+840,26,2025-04-06,Outbound Call,Handed Over,Sipho Collections,,
+841,1489,2025-05-12,Outbound Call,Promise to Pay,Sipho Collections,,1811.32
+842,623,2026-06-16,SMS Reminder,Partial Payment Received,Auto-Dialler,2026-09-21,3535.29
+843,490,2025-04-17,Inbound Call,Wrong Number,Naledi Agent,,
+844,209,2025-03-20,Email Reminder,Promise to Pay,Auto-Dialler,,
+845,798,2025-07-25,Outbound Call,Handed Over,Sipho Collections,,294.28
+846,551,2026-01-26,SMS Reminder,Wrong Number,System,,2013.52
+847,202,20260527,Legal Letter,Disputed,System,,
+848,197,2026-02-19,Email Reminder,Promise to Pay,Naledi Agent,,
+849,1342,2026-06-10,Handover to Collections Agency,No Answer,Auto-Dialler,,3206.97
+850,430,2026-04-19,WhatsApp,Handed Over,,,
+851,62,2026-04-10,Inbound Call,Wrong Number,,,2220.45
+852,1531,09-25-2025,Legal Letter,Full Payment Received,Sipho Collections,2026-08-28,3991.21
+853,567,2026-01-05,SMS Reminder,Full Payment Received,Auto-Dialler,,3071.83
+854,1027,2025-06-22,Inbound Call,Wrong Number,Naledi Agent,2026-10-17,
+855,1694,2025-12-26,Outbound Call,No Answer,Naledi Agent,2026-06-20,
+856,1284,2026-02-13,Email Reminder,Wrong Number,Auto-Dialler,,1561.31
+857,634,2025-07-06,WhatsApp,Wrong Number,Sipho Collections,2026-11-13,
+858,587,2025-06-28,Outbound Call,Handed Over,Naledi Agent,2026-07-30,
+859,826,2026-02-11,Inbound Call,Promise to Pay,Auto-Dialler,,
+860,1186,2025-11-22,Handover to Collections Agency,Promise to Pay,System,,
+861,982,14 May 2025,Email Reminder,No Answer,System,2026-06-18,
+862,833,2026-02-18,Handover to Collections Agency,Handed Over,Sipho Collections,,677.5
+863,1770,2025-08-10,Legal Letter,Partial Payment Received,,,
+864,235,2026-03-15,Email Reminder,No Answer,Auto-Dialler,2026-09-21,
+865,325,2026-01-19,Inbound Call,Partial Payment Received,,,
+866,800,2025-05-03,Legal Letter,No Answer,System,,
+867,65,2025-12-05,Outbound Call,No Answer,Auto-Dialler,,
+868,1685,2026-04-21,Handover to Collections Agency,Partial Payment Received,Naledi Agent,,3452.72
+869,258,22/11/2025,Outbound Call,Full Payment Received,,,2785.72
+870,1754,2025-08-01,Inbound Call,Promise to Pay,System,,3746.09
+871,712,2025-11-09,Handover to Collections Agency,No Answer,,,
+872,1417,2025-10-06,Inbound Call,No Answer,Naledi Agent,,3850.97
+873,1455,03-16-2026,Email Reminder,Handed Over,Naledi Agent,,
+874,698,2025-12-14,Handover to Collections Agency,Handed Over,Sipho Collections,,
+875,1673,2025-12-31,Outbound Call,No Answer,Naledi Agent,,1016.03
+876,576,2025-08-23,Handover to Collections Agency,No Answer,Auto-Dialler,,
+877,391,2025-06-21,Inbound Call,Wrong Number,Sipho Collections,,3342.1
+878,1649,2025-07-31,Inbound Call,Disputed,Auto-Dialler,,1637.24
+879,1672,2026-05-29,Email Reminder,Handed Over,Sipho Collections,,3127.09
+880,1642,2025-06-29,Email Reminder,Full Payment Received,,,
+881,117,03 May 2025,Email Reminder,Partial Payment Received,Auto-Dialler,2026-09-03,
+882,1187,2025-12-31,WhatsApp,Disputed,System,2026-12-06,
+883,1224,2025-09-08,Legal Letter,Wrong Number,Auto-Dialler,,
+884,474,2025-12-19,Legal Letter,Promise to Pay,System,2026-09-14,1034.53
+885,931,2026-01-02,Email Reminder,,System,,
+886,1145,03 Nov 2025,Outbound Call,Full Payment Received,,,
+887,629,2026-03-15,Outbound Call,Promise to Pay,Auto-Dialler,2026-07-03,1624.53
+888,737,2026-01-17,SMS Reminder,Promise to Pay,System,,2624.93
+889,1418,2025-11-30,Email Reminder,Promise to Pay,Auto-Dialler,,
+890,1173,29/07/2025,WhatsApp,Disputed,,2026-09-10,
+891,1138,2025-09-30,WhatsApp,Partial Payment Received,Auto-Dialler,,
+892,1247,2025-09-16,Inbound Call,No Answer,Sipho Collections,2026-07-07,
+893,1600,2025-10-17,Inbound Call,Promise to Pay,Sipho Collections,,2056.61
+894,1029,2025-12-26,WhatsApp,Disputed,Auto-Dialler,,
+895,529,2025-12-03,WhatsApp,Handed Over,,,1342.79
+896,689,2025-06-25,SMS Reminder,No Answer,System,,
+897,293,2025-06-28,Outbound Call,Partial Payment Received,Auto-Dialler,,3531.03
+898,1067,2025-12-31,Handover to Collections Agency,Promise to Pay,Auto-Dialler,,3870.99
+899,280,2026-05-04,Legal Letter,Promise to Pay,Auto-Dialler,,1815.17
+900,1365,2025-08-15,Email Reminder,Partial Payment Received,Sipho Collections,,
+901,1786,2026-02-01,Inbound Call,No Answer,Naledi Agent,2026-09-13,811.79
+902,941,2025-12-07,Handover to Collections Agency,Partial Payment Received,,2026-09-01,822.29
+903,1773,2026-04-16,SMS Reminder,Promise to Pay,,,
+904,969,2026-04-07,Legal Letter,Partial Payment Received,Auto-Dialler,2026-12-06,2851.37
+905,682,2026-03-05,WhatsApp,Handed Over,,,
+906,656,2025-10-31,Legal Letter,,Sipho Collections,2026-11-10,870.59
+907,251,2026-01-07,Legal Letter,Promise to Pay,System,,1664.59
+908,1692,2025-03-14,Email Reminder,Promise to Pay,Sipho Collections,,954.31
+909,133,2025-10-21,Inbound Call,,System,2026-11-23,1518.46
+910,557,2026-04-07,Handover to Collections Agency,Partial Payment Received,,,
+911,998,2026-03-20,Inbound Call,Promise to Pay,Auto-Dialler,,
+912,378,2025-09-15,SMS Reminder,Handed Over,Auto-Dialler,,2771.97
+913,1554,2025-08-03,Legal Letter,Full Payment Received,,2026-11-12,3736.71
+914,93,2025-10-15,Email Reminder,Disputed,,,
+915,1473,2026-04-08,SMS Reminder,No Answer,Sipho Collections,2026-10-13,
+916,1075,2025-05-12,Handover to Collections Agency,Wrong Number,,2026-12-25,
+917,606,2026-05-12,Outbound Call,,,,3873.97
+918,1274,2025-09-08,Email Reminder,Full Payment Received,Auto-Dialler,2026-12-22,
+919,908,2025-11-04,SMS Reminder,Disputed,System,,2741.69
+920,321,2025-09-08,Inbound Call,Wrong Number,Auto-Dialler,,
+921,4,2025-03-01,Outbound Call,Handed Over,Auto-Dialler,,
+922,1605,2025-11-28,Handover to Collections Agency,Wrong Number,Sipho Collections,,3119.73
+923,246,2025-12-17,Inbound Call,Wrong Number,Sipho Collections,2026-07-18,
+924,1691,2025-11-29,WhatsApp,Promise to Pay,Naledi Agent,,3109.65
+925,1530,2025-11-05,SMS Reminder,Partial Payment Received,System,2026-07-16,2588.44
+926,931,2026-06-15,Handover to Collections Agency,Partial Payment Received,Auto-Dialler,,1224.71
+927,551,2025-05-11,Handover to Collections Agency,No Answer,System,,
+928,216,2026-05-05,Email Reminder,Full Payment Received,Sipho Collections,,
+929,940,12/03/2026,Legal Letter,Full Payment Received,,2026-11-16,
+930,555,07-25-2025,Legal Letter,Wrong Number,,,660.37
+931,667,2026-02-09,Legal Letter,Full Payment Received,,2026-10-08,2005.62
+932,1391,2026-02-27,Handover to Collections Agency,Promise to Pay,Sipho Collections,,3717.41
+933,1290,2025-06-14,SMS Reminder,,Naledi Agent,,
+934,581,2025-09-13,Inbound Call,Full Payment Received,,2026-06-25,
+935,247,2026-04-07,WhatsApp,Handed Over,System,2026-09-17,1091.82
+936,1512,2025-06-25,SMS Reminder,Promise to Pay,Sipho Collections,2026-10-07,3012.67
+937,915,20251201,SMS Reminder,Disputed,,,
+938,441,2026-02-21,WhatsApp,Disputed,Naledi Agent,,3611.79
+939,176,2025-03-08,SMS Reminder,Partial Payment Received,,2026-12-04,
+940,1348,2025-10-04,Legal Letter,Partial Payment Received,,,
+941,771,25/04/2025,Inbound Call,,,2026-07-15,
+942,443,02-27-2026,WhatsApp,Wrong Number,Sipho Collections,,
+943,1767,2025-05-22,SMS Reminder,No Answer,Auto-Dialler,2026-12-31,
+944,872,2025-05-24,Legal Letter,Handed Over,,,
+945,1604,2026-01-18,Handover to Collections Agency,Partial Payment Received,Sipho Collections,2026-07-09,3034.31
+946,1631,2026-03-10,Legal Letter,Full Payment Received,Sipho Collections,2026-11-18,2279.29
+947,266,28/04/2026,Inbound Call,Full Payment Received,Auto-Dialler,2026-12-30,
+948,1217,2025-05-30,Legal Letter,Disputed,System,2026-12-18,3222.45
+949,624,2026-04-17,Legal Letter,Wrong Number,System,,
+950,1043,2026-01-31,Email Reminder,,,,
+951,383,2025-07-07,Email Reminder,Wrong Number,Auto-Dialler,,2828.26
+952,377,2025-08-26,WhatsApp,Promise to Pay,,,1536.05
+953,1657,2026-03-06,WhatsApp,,Auto-Dialler,,3563.73
+954,342,11 Apr 2025,Email Reminder,Wrong Number,System,,2643.57
+955,464,27/08/2025,SMS Reminder,Wrong Number,Naledi Agent,2026-12-19,
+956,1781,2025-09-15,Email Reminder,Promise to Pay,,,
+957,316,2025-08-30,SMS Reminder,Partial Payment Received,Naledi Agent,2026-12-25,
+958,1732,2026-01-01,SMS Reminder,Handed Over,Sipho Collections,,
+959,129,2026-04-06,Handover to Collections Agency,No Answer,Sipho Collections,2026-11-09,2530.71
+960,696,20250307,Outbound Call,,,,
+961,1277,19 Apr 2025,Email Reminder,Partial Payment Received,Naledi Agent,,2558.77
+962,1211,2025-09-16,Email Reminder,No Answer,,2026-09-05,2893.09
+963,954,2025-09-15,Outbound Call,Promise to Pay,Naledi Agent,2026-08-09,629.73
+964,607,2025-12-08,Handover to Collections Agency,Handed Over,Auto-Dialler,,
+965,1008,2025-05-23,Outbound Call,No Answer,Sipho Collections,2026-07-27,1681.9
+966,409,20260508,Handover to Collections Agency,No Answer,,,
+967,174,12 Dec 2025,Legal Letter,,Auto-Dialler,,
+968,1687,2026-02-14,Email Reminder,Disputed,Auto-Dialler,,1710.5
+969,86,2026-02-06,Email Reminder,Disputed,Sipho Collections,,
+970,1059,2025-10-17,Inbound Call,Handed Over,,,
+971,1157,2025-04-14,Inbound Call,No Answer,Naledi Agent,2026-11-23,
+972,511,2026-06-03,SMS Reminder,Handed Over,Sipho Collections,,3639.24
+973,947,20250528,Legal Letter,No Answer,,2026-06-26,3275.27
+974,340,2025-10-28,SMS Reminder,Disputed,Auto-Dialler,2026-08-14,
+975,269,2025-12-21,Handover to Collections Agency,Wrong Number,Auto-Dialler,2026-10-20,
+976,1258,2026-05-06,Email Reminder,Handed Over,System,2026-11-04,795.21
+977,1751,2026-01-08,Inbound Call,Partial Payment Received,,,
+978,1671,2026-02-14,WhatsApp,Disputed,,,747.52
+979,248,2026-03-19,Handover to Collections Agency,Disputed,,2026-11-26,3935.98
+980,1396,2025-06-30,Outbound Call,No Answer,Naledi Agent,,
+981,822,2025-06-12,Outbound Call,Disputed,System,,
+982,1212,2026-02-07,Legal Letter,Full Payment Received,Sipho Collections,2026-12-24,
+983,102,2025-04-20,SMS Reminder,Promise to Pay,Sipho Collections,,
+984,1425,2026-03-26,WhatsApp,Promise to Pay,Naledi Agent,,996.87
+985,103,2026-04-15,WhatsApp,Handed Over,Naledi Agent,,
+986,448,2025-04-28,Outbound Call,Disputed,Naledi Agent,,1814.97
+987,1502,16 Oct 2025,Outbound Call,Promise to Pay,Sipho Collections,,
+988,1127,2025-12-08,Legal Letter,Handed Over,System,,
+989,1026,2025-09-01,Email Reminder,No Answer,,2026-11-25,234.86
+990,267,2025-07-18,Legal Letter,Full Payment Received,System,,528.9
+991,1556,2025-09-22,Outbound Call,No Answer,Sipho Collections,2026-11-29,
+992,616,2025-03-07,Email Reminder,Promise to Pay,,2026-11-04,
+993,146,2026-01-24,Handover to Collections Agency,Full Payment Received,Sipho Collections,,
+994,161,2025-12-11,Handover to Collections Agency,No Answer,System,,
+995,1543,2026-05-18,Legal Letter,,System,,
+996,568,2025-07-12,SMS Reminder,Full Payment Received,Auto-Dialler,,1146.21
+997,1030,2026-04-23,Handover to Collections Agency,Full Payment Received,Naledi Agent,,495.42
+998,1788,02-21-2026,Legal Letter,Wrong Number,System,,792.23
+999,1343,2026-05-07,Handover to Collections Agency,Full Payment Received,,2026-08-24,
+1000,408,2026-04-22,Email Reminder,Full Payment Received,,2026-12-30,3298.39
+1001,685,2025-03-27,SMS Reminder,Partial Payment Received,Auto-Dialler,,896.87
+1002,1174,2026-04-29,SMS Reminder,Handed Over,,2026-12-10,
+1003,427,2026-05-20,Legal Letter,,Auto-Dialler,,1342.35
+1004,119,16/01/2026,SMS Reminder,Full Payment Received,Auto-Dialler,,928.15
+1005,815,2025-12-04,Inbound Call,No Answer,Auto-Dialler,,
+1006,1341,2026-02-14,WhatsApp,Disputed,Auto-Dialler,,
+1007,596,2025-10-21,WhatsApp,,Auto-Dialler,,701.43
+1008,1516,2025-11-15,SMS Reminder,Partial Payment Received,Sipho Collections,2026-12-08,3050.4
+1009,376,28 Mar 2025,Inbound Call,No Answer,Sipho Collections,2026-07-31,
+1010,214,2026-05-04,SMS Reminder,Handed Over,Sipho Collections,2026-08-24,
+1011,330,2025-07-22,Inbound Call,Wrong Number,Sipho Collections,2026-10-18,
+1012,1501,2026-02-04,Legal Letter,Wrong Number,System,2026-12-26,
+1013,1011,2025-04-24,Outbound Call,Wrong Number,Sipho Collections,,
+1014,1636,2026-02-21,Inbound Call,Full Payment Received,Naledi Agent,2026-08-19,
+1015,475,2026-01-21,Outbound Call,Full Payment Received,System,2026-06-23,
+1016,1461,06-03-2025,Legal Letter,Full Payment Received,Naledi Agent,2026-10-18,
+1017,148,2025-12-12,Legal Letter,Wrong Number,Sipho Collections,,
+1018,193,2025-11-15,Email Reminder,Wrong Number,,,
+1019,490,2025-05-16,Outbound Call,No Answer,System,2026-11-13,
+1020,953,2026-05-01,Legal Letter,Wrong Number,,,
+1021,395,2025-07-25,Outbound Call,Full Payment Received,Sipho Collections,,
+1022,809,2025-07-07,SMS Reminder,Promise to Pay,,2026-07-25,
+1023,960,2025-03-28,SMS Reminder,Wrong Number,,2026-10-27,3367.83
+1024,1639,2025-03-15,Handover to Collections Agency,,System,,1787.45
+1025,278,2025-08-06,WhatsApp,Partial Payment Received,Auto-Dialler,,
+1026,684,05-11-2025,SMS Reminder,No Answer,Sipho Collections,,2969.52
+1027,462,2025-05-22,Outbound Call,Partial Payment Received,Auto-Dialler,2026-09-14,
+1028,1012,2025-05-06,Handover to Collections Agency,,,2026-09-30,2962.15
+1029,1702,01-28-2026,Inbound Call,No Answer,Auto-Dialler,2026-09-15,
+1030,625,05 Mar 2026,WhatsApp,Full Payment Received,System,2026-11-22,
+1031,1781,2025-03-19,Inbound Call,No Answer,Sipho Collections,2026-09-01,3606.5
+1032,8,2025-12-01,SMS Reminder,,Sipho Collections,,
+1033,307,20250423,Legal Letter,Handed Over,,2026-09-28,2781.45
+1034,280,20260507,SMS Reminder,Handed Over,System,2026-07-15,
+1035,248,2025-03-03,Inbound Call,Disputed,Naledi Agent,,
+1036,392,2025-10-07,SMS Reminder,Wrong Number,Sipho Collections,,1700.65
+1037,119,2026-04-03,Handover to Collections Agency,Disputed,,2026-12-04,1295.28
+1038,86,2026-02-23,Email Reminder,No Answer,Naledi Agent,2026-09-01,
+1039,1539,2025-09-01,Email Reminder,Promise to Pay,Naledi Agent,,
+1040,110,2025-09-18,Handover to Collections Agency,Wrong Number,Sipho Collections,,
+1041,236,2025-06-18,Email Reminder,Disputed,Auto-Dialler,,
+1042,1537,2025-09-04,Inbound Call,,System,,537.54
+1043,864,2025-09-05,Inbound Call,Wrong Number,,,2630.29
+1044,873,2025-03-10,WhatsApp,Handed Over,,2026-11-26,
+1045,1326,2025-09-19,Legal Letter,Wrong Number,System,,3470.77
+1046,1743,2026-06-11,Legal Letter,Disputed,Sipho Collections,2026-07-01,
+1047,1565,21 Apr 2026,SMS Reminder,Wrong Number,,,
+1048,1682,2026-05-03,Inbound Call,Partial Payment Received,,2026-07-08,
+1049,89,2026-02-14,Outbound Call,Promise to Pay,Auto-Dialler,,
+1050,937,2025-09-10,Email Reminder,Disputed,Sipho Collections,,1473.02
+1051,309,27 Aug 2025,WhatsApp,Promise to Pay,,2026-12-01,
+1052,745,2026-06-03,Handover to Collections Agency,No Answer,,,3417.47
+1053,8,2025-05-17,Handover to Collections Agency,Full Payment Received,Auto-Dialler,,3998.15
+1054,1536,2025-07-20,WhatsApp,,,,609.71
+1055,38,2025-04-13,Outbound Call,Disputed,,2026-11-30,
+1056,1773,2026-06-06,Legal Letter,Partial Payment Received,,2026-12-20,
+1057,1442,2025-03-26,Handover to Collections Agency,Partial Payment Received,System,2026-12-04,869.98
+1058,882,2026-03-16,Email Reminder,Partial Payment Received,,2026-08-21,
+1059,1582,2025-09-27,Email Reminder,Full Payment Received,Sipho Collections,,1664.31
+1060,1087,2026-01-24,Email Reminder,Disputed,,,1861.92
+1061,491,2026-04-02,SMS Reminder,Partial Payment Received,,2026-12-12,
+1062,1168,2026-05-02,Handover to Collections Agency,Disputed,Naledi Agent,,
+1063,75,2025-04-28,WhatsApp,Handed Over,,,1818.44
+1064,1731,2025-12-02,SMS Reminder,Partial Payment Received,Sipho Collections,2026-09-16,
+1065,503,20250331,Email Reminder,Full Payment Received,Naledi Agent,,
+1066,1010,2025-05-12,SMS Reminder,Full Payment Received,Naledi Agent,2026-11-26,
+1067,197,2025-06-15,Email Reminder,Full Payment Received,Sipho Collections,,
+1068,411,2025-03-26,Outbound Call,Handed Over,,2026-06-18,
+1069,1562,2025-10-30,Outbound Call,Partial Payment Received,System,2026-11-28,
+1070,688,2025-06-27,Legal Letter,No Answer,Naledi Agent,,982.45
+1071,1128,2025-05-13,Outbound Call,Full Payment Received,Sipho Collections,2026-09-09,
+1072,15,2025-03-16,Outbound Call,No Answer,,2026-12-27,3447.29
+1073,1224,2025-05-12,WhatsApp,No Answer,Sipho Collections,,3119.23
+1074,256,2025-06-30,SMS Reminder,Partial Payment Received,Naledi Agent,2026-11-01,
+1075,1431,2025-10-03,Legal Letter,Disputed,Naledi Agent,2026-12-30,3332.24
+1076,261,2025-05-25,Outbound Call,Wrong Number,Naledi Agent,,
+1077,1313,2025-04-19,Email Reminder,,,,
+1078,1299,2025-11-14,WhatsApp,Wrong Number,,2026-09-03,
+1079,850,2026-03-04,Outbound Call,Wrong Number,Naledi Agent,2026-09-25,1154.3
+1080,1366,2026-01-10,SMS Reminder,Promise to Pay,Auto-Dialler,,
+1081,967,2025-12-26,SMS Reminder,Handed Over,,2026-10-06,231.97
+1082,1321,2025-04-21,SMS Reminder,Handed Over,Auto-Dialler,2026-07-08,
+1083,1126,2026-01-08,Inbound Call,,Auto-Dialler,,
+1084,1416,2025-05-14,Email Reminder,Promise to Pay,Sipho Collections,2026-10-20,
+1085,18,2026-06-16,Email Reminder,Handed Over,,,
+1086,1565,2025-05-06,Handover to Collections Agency,Handed Over,Naledi Agent,,3269.96
+1087,1288,2025-05-27,SMS Reminder,Wrong Number,,2026-08-07,1504.59
+1088,1146,2025-09-03,Outbound Call,No Answer,System,2026-08-04,3780.35
+1089,195,2026-05-07,Email Reminder,Promise to Pay,Naledi Agent,,2490.27
+1090,18,2026-06-07,Handover to Collections Agency,Wrong Number,Naledi Agent,,3054.99
+1091,1766,2025-06-02,Legal Letter,Wrong Number,Naledi Agent,,979.37
+1092,1555,20250314,Inbound Call,Full Payment Received,,,3226.38
+1093,16,2025-06-04,WhatsApp,Handed Over,Auto-Dialler,,1855.97
+1094,82,2025-03-02,Email Reminder,No Answer,Sipho Collections,2026-09-13,
+1095,1186,2025-09-04,SMS Reminder,Promise to Pay,Naledi Agent,,
+1096,745,2025-11-19,Email Reminder,Disputed,,2026-12-21,
+1097,277,2026-02-20,SMS Reminder,Wrong Number,Naledi Agent,,
+1098,1776,2025-04-19,Legal Letter,,Auto-Dialler,,
+1099,880,2025-10-04,WhatsApp,Promise to Pay,Auto-Dialler,2026-06-29,
+1100,590,2026-05-12,Inbound Call,Partial Payment Received,System,,3629.95
+1101,1275,2025-03-19,Outbound Call,Handed Over,Auto-Dialler,,
+1102,566,2025-07-11,Email Reminder,Full Payment Received,System,,2562.33
+1103,940,2026-04-02,WhatsApp,No Answer,,2026-07-23,
+1104,742,2025-04-30,Email Reminder,Wrong Number,Auto-Dialler,,
+1105,921,20250924,WhatsApp,Promise to Pay,Auto-Dialler,,
+1106,1180,2025-10-17,SMS Reminder,,Naledi Agent,2026-08-30,3931.19
+1107,1796,2025-11-03,Outbound Call,Handed Over,Auto-Dialler,2026-07-14,
+1108,546,2025-09-14,Legal Letter,Promise to Pay,Auto-Dialler,,
+1109,162,2026-03-14,Inbound Call,Promise to Pay,Sipho Collections,,1838.32
+1110,689,2026-03-04,SMS Reminder,,Naledi Agent,,2968.76
+1111,285,2026-05-17,WhatsApp,Handed Over,System,,
+1112,409,2025-08-11,Inbound Call,No Answer,Auto-Dialler,,
+1113,446,2025-10-30,WhatsApp,Promise to Pay,Sipho Collections,,
+1114,567,08 Feb 2026,Inbound Call,Promise to Pay,System,,1458.98
+1115,996,2025-04-04,Legal Letter,Handed Over,Sipho Collections,,
+1116,915,2025-04-07,Outbound Call,No Answer,Sipho Collections,2026-12-07,1567.39
+1117,912,2025-06-20,Handover to Collections Agency,,System,,
+1118,566,2025-03-09,Outbound Call,Handed Over,Auto-Dialler,,
+1119,14,2025-04-08,WhatsApp,Disputed,Sipho Collections,2026-08-06,
+1120,336,2025-03-15,SMS Reminder,Disputed,Sipho Collections,,
+1121,1701,2026-05-10,Email Reminder,,Naledi Agent,,1422.21
+1122,1452,2026-02-11,Handover to Collections Agency,Partial Payment Received,Sipho Collections,,2874.79
+1123,720,2025-03-09,Inbound Call,Full Payment Received,Sipho Collections,2026-09-03,
+1124,865,2025-11-17,Handover to Collections Agency,Handed Over,System,2026-07-04,3232.96
+1125,457,2025-11-27,WhatsApp,Partial Payment Received,Sipho Collections,,
+1126,1630,2026-04-27,Legal Letter,Disputed,Sipho Collections,,
+1127,622,2026-03-25,Inbound Call,Full Payment Received,Auto-Dialler,,
+1128,1277,2025-12-28,Outbound Call,Full Payment Received,,,3707.93
+1129,452,2026-03-08,Inbound Call,No Answer,System,2026-08-27,
+1130,409,2026-03-19,WhatsApp,Partial Payment Received,,2026-10-18,
+1131,247,2026-03-09,Email Reminder,Handed Over,Naledi Agent,2026-09-20,
+1132,1107,2025-11-07,SMS Reminder,Partial Payment Received,Naledi Agent,,
+1133,238,2025-07-31,Inbound Call,Promise to Pay,Auto-Dialler,2026-08-04,
+1134,1041,2025-11-08,Legal Letter,No Answer,Naledi Agent,2026-12-03,
+1135,1753,2025-05-10,Handover to Collections Agency,Disputed,System,2026-09-16,3363.89
+1136,914,2025-11-28,Handover to Collections Agency,Handed Over,Naledi Agent,,2770.23
+1137,1132,2026-02-10,WhatsApp,Partial Payment Received,System,,
+1138,1040,2026-03-18,Email Reminder,Partial Payment Received,Auto-Dialler,2026-10-17,
+1139,317,20250414,Outbound Call,Handed Over,Sipho Collections,,462.88
+1140,873,2025-05-09,Email Reminder,Promise to Pay,,,
+1141,70,2025-11-24,Outbound Call,Partial Payment Received,,,
+1142,1699,2025-07-01,Outbound Call,Partial Payment Received,Sipho Collections,,
+1143,1229,2026-05-31,WhatsApp,Partial Payment Received,Sipho Collections,2026-09-19,
+1144,1186,2025-05-21,Handover to Collections Agency,,System,,
+1145,16,2026-05-01,Outbound Call,Partial Payment Received,Auto-Dialler,2026-08-20,
+1146,803,2025-05-23,SMS Reminder,Promise to Pay,Sipho Collections,,
+1147,769,2025-07-10,Legal Letter,Full Payment Received,,2026-11-17,2190.05
+1148,531,2025-06-29,Inbound Call,No Answer,Auto-Dialler,2026-10-17,1677.91
+1149,1595,2026-06-06,Email Reminder,Disputed,Naledi Agent,2026-08-22,3831.53
+1150,44,2026-03-21,Handover to Collections Agency,No Answer,,2026-12-16,
+1151,166,2026-02-24,Legal Letter,Disputed,,2026-06-27,3216.61
+1152,1383,2025-03-23,Outbound Call,Promise to Pay,Auto-Dialler,2026-08-02,
+1153,1496,2025-07-26,Email Reminder,No Answer,Sipho Collections,,
+1154,206,2026-02-25,Email Reminder,Wrong Number,,,
+1155,719,2026-06-08,Legal Letter,Wrong Number,Auto-Dialler,,1948.88
+1156,970,2025-10-04,Legal Letter,Promise to Pay,Auto-Dialler,,354.38
+1157,1340,2026-04-23,WhatsApp,Full Payment Received,Naledi Agent,,
+1158,343,2026-04-19,Handover to Collections Agency,Handed Over,Auto-Dialler,2026-08-08,
+1159,1536,20260514,Inbound Call,Promise to Pay,,2026-09-08,
+1160,70,2025-09-18,Email Reminder,No Answer,,,
+1161,626,2025-05-23,Email Reminder,Disputed,,2026-06-25,1405.86
+1162,9,06-13-2026,Email Reminder,No Answer,Naledi Agent,,
+1163,1015,19/03/2025,Handover to Collections Agency,Wrong Number,,,3189.41
+1164,711,2025-08-13,Inbound Call,Promise to Pay,,,
+1165,1488,2026-04-23,Handover to Collections Agency,Handed Over,,,
+1166,1654,2026-01-29,Inbound Call,No Answer,,,
+1167,1025,2026-02-16,Legal Letter,Partial Payment Received,Auto-Dialler,,977.39
+1168,1466,2026-01-28,Handover to Collections Agency,Partial Payment Received,Auto-Dialler,2026-09-23,2199.08
+1169,175,2025-11-07,SMS Reminder,Handed Over,,,367.98
+1170,1083,2026-02-14,Legal Letter,Handed Over,Auto-Dialler,2026-09-14,
+1171,1607,2026-04-23,WhatsApp,Full Payment Received,Auto-Dialler,,3516.3
+1172,1578,2026-02-04,Email Reminder,Wrong Number,,,
+1173,1691,2026-06-02,SMS Reminder,,Sipho Collections,2026-06-26,1855.76
+1174,488,2025-09-30,SMS Reminder,Handed Over,Sipho Collections,,242.61
+1175,1396,2025-06-13,SMS Reminder,No Answer,,2026-12-25,
+1176,1390,2025-06-15,Email Reminder,Partial Payment Received,Auto-Dialler,,
+1177,803,2025-11-16,SMS Reminder,Promise to Pay,System,2026-06-20,
+1178,1037,2026-01-11,Handover to Collections Agency,,,2026-07-09,876.28
+1179,1215,2026-05-21,Inbound Call,Disputed,System,2026-11-15,
+1180,482,2025-10-01,Outbound Call,Wrong Number,,2026-08-19,
+1181,1798,2025-03-13,SMS Reminder,Disputed,Naledi Agent,2026-12-14,
+1182,383,2025-07-04,Outbound Call,Promise to Pay,,2026-12-21,
+1183,342,2026-02-23,Outbound Call,Handed Over,,,3367.02
+1184,1444,2025-09-26,Outbound Call,No Answer,Naledi Agent,2026-10-07,
+1185,1726,2025-08-24,Inbound Call,Wrong Number,Auto-Dialler,,1709.75
+1186,1406,2025-06-07,Outbound Call,Wrong Number,System,,981.55
+1187,1436,2025-06-09,Inbound Call,Promise to Pay,Naledi Agent,,
+1188,523,2025-11-07,Outbound Call,Disputed,,2026-08-08,3097.0
+1189,525,2025-12-09,Email Reminder,Promise to Pay,Sipho Collections,2026-10-01,
+1190,810,08-11-2025,Legal Letter,No Answer,System,,381.79
+1191,1702,2025-06-11,SMS Reminder,No Answer,Sipho Collections,,3794.75
+1192,1429,20250805,Outbound Call,Partial Payment Received,Naledi Agent,,
+1193,783,2026-05-05,Handover to Collections Agency,Promise to Pay,Naledi Agent,2026-06-23,
+1194,1177,2025-09-07,Legal Letter,Promise to Pay,System,,
+1195,860,2026-03-29,Inbound Call,Full Payment Received,Naledi Agent,2026-11-04,3756.85
+1196,885,2026-02-02,Handover to Collections Agency,Full Payment Received,System,,
+1197,332,2026-05-24,Legal Letter,Partial Payment Received,Auto-Dialler,,
+1198,357,2025-07-22,Outbound Call,Full Payment Received,,2026-12-15,
+1199,578,2025-10-18,SMS Reminder,,,,2484.49
+1200,890,2026-01-04,WhatsApp,Full Payment Received,System,,2643.12

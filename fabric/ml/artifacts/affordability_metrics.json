@@ -1,0 +1,120 @@
+{
+  "notebook": "nb_fabric_ml_02_affordability",
+  "run_date": "2026-06-17T01:13:28.693015",
+  "best_model": "ElasticNet",
+  "models": {
+    "GBM Regressor": {
+      "r2": 0.9777,
+      "mae": 620.89,
+      "rmse": 1254.43,
+      "mape": 38.42,
+      "cv_r2_mean": 0.9863
+    },
+    "Random Forest": {
+      "r2": 0.9782,
+      "mae": 734.89,
+      "rmse": 1239.79,
+      "mape": 41.31,
+      "cv_r2_mean": 0.9738
+    },
+    "ElasticNet": {
+      "r2": 0.984,
+      "mae": 217.51,
+      "rmse": 1063.58,
+      "mape": 19.67,
+      "cv_r2_mean": 0.9884
+    }
+  },
+  "stress_scenarios": [
+    {
+      "Scenario": "Base Case",
+      "Avg Affordability": "R8,052",
+      "% Unaffordable": "5.3%",
+      "% >R2K available": "82.7%"
+    },
+    {
+      "Scenario": "10% Income Drop",
+      "Avg Affordability": "R3,549",
+      "% Unaffordable": "30.7%",
+      "% >R2K available": "61.8%"
+    },
+    {
+      "Scenario": "20% Income Drop",
+      "Avg Affordability": "R-943",
+      "% Unaffordable": "52.9%",
+      "% >R2K available": "34.7%"
+    },
+    {
+      "Scenario": "30% Income Drop",
+      "Avg Affordability": "R-5,512",
+      "% Unaffordable": "74.2%",
+      "% >R2K available": "18.2%"
+    },
+    {
+      "Scenario": "Expenses +15%",
+      "Avg Affordability": "R3,917",
+      "% Unaffordable": "28.9%",
+      "% >R2K available": "64.0%"
+    },
+    {
+      "Scenario": "Expenses +30%",
+      "Avg Affordability": "R-157",
+      "% Unaffordable": "47.1%",
+      "% >R2K available": "41.8%"
+    },
+    {
+      "Scenario": "New Debt +R2000/mo",
+      "Avg Affordability": "R3,780",
+      "% Unaffordable": "35.6%",
+      "% >R2K available": "58.2%"
+    },
+    {
+      "Scenario": "Severe: -25% + +20%",
+      "Avg Affordability": "R-11,320",
+      "% Unaffordable": "92.4%",
+      "% >R2K available": "3.6%"
+    }
+  ],
+  "segment_analysis": [
+    {
+      "income_band": "15K-25K",
+      "n": 140,
+      "avg_actual_afford": 4142.137000000001,
+      "avg_predicted_afford": 4149.1782722487615,
+      "median_afford": 3583.47,
+      "pct_below_800": 11.428571428571429
+    },
+    {
+      "income_band": "25K-40K",
+      "n": 176,
+      "avg_actual_afford": 7112.534318181818,
+      "avg_predicted_afford": 7107.432157755783,
+      "median_afford": 6376.0599999999995,
+      "pct_below_800": 2.840909090909091
+    },
+    {
+      "income_band": "40K+",
+      "n": 644,
+      "avg_actual_afford": 12959.861661490684,
+      "avg_predicted_afford": 12955.907463602294,
+      "median_afford": 11115.665,
+      "pct_below_800": 2.639751552795031
+    },
+    {
+      "income_band": "8K-15K",
+      "n": 100,
+      "avg_actual_afford": 2401.8154999999997,
+      "avg_predicted_afford": 2418.922481123098,
+      "median_afford": 2119.8900000000003,
+      "pct_below_800": 18.0
+    },
+    {
+      "income_band": "<8K",
+      "n": 45,
+      "avg_actual_afford": 1504.434888888889,
+      "avg_predicted_afford": 1516.8014547201744,
+      "median_afford": 1185.03,
+      "pct_below_800": 26.666666666666668
+    }
+  ]
+}

@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FASTA / Confluent FinTech Lending DW — Analytics Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0d1117; --card:#161b22; --card2:#1c2333; --border:#30363d;
+    --text:#e6edf3; --text2:#8b949e; --accent:#58a6ff; --green:#3fb950;
+    --red:#f85149; --yellow:#d29922; --purple:#bc8cff; --teal:#39d353;
+    --orange:#fb8f44;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;}
+  header{background:linear-gradient(135deg,#0d1117 0%,#1c2333 60%,#0d2a4a 100%);
+    padding:24px 32px;border-bottom:1px solid var(--border);}
+  header h1{font-size:26px;font-weight:700;color:#fff;letter-spacing:-0.5px;}
+  header p{color:var(--text2);margin-top:4px;font-size:13px;}
+  .badge{display:inline-block;background:#21262d;border:1px solid var(--border);
+    border-radius:12px;padding:2px 10px;font-size:11px;color:var(--text2);margin-left:8px;}
+  nav{background:#161b22;border-bottom:1px solid var(--border);padding:0 32px;display:flex;gap:0;}
+  .tab{padding:12px 20px;cursor:pointer;font-size:13px;color:var(--text2);
+    border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+  .tab:hover{color:var(--text);}
+  .tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+  .page{display:none;padding:24px 32px;}
+  .page.active{display:block;}
+  /* KPI cards */
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:24px;}
+  .kpi{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;}
+  .kpi-label{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;}
+  .kpi-value{font-size:28px;font-weight:700;margin:6px 0 2px;line-height:1;}
+  .kpi-sub{font-size:11px;color:var(--text2);}
+  .kpi-green .kpi-value{color:var(--green);}
+  .kpi-red .kpi-value{color:var(--red);}
+  .kpi-blue .kpi-value{color:var(--accent);}
+  .kpi-yellow .kpi-value{color:var(--yellow);}
+  .kpi-purple .kpi-value{color:var(--purple);}
+  /* chart rows */
+  .chart-row{display:grid;gap:16px;margin-bottom:20px;}
+  .chart-row.cols2{grid-template-columns:1fr 1fr;}
+  .chart-row.cols3{grid-template-columns:1fr 1fr 1fr;}
+  .chart-row.cols12{grid-template-columns:1.4fr 1fr;}
+  .chart-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;}
+  .chart-box h3{font-size:13px;font-weight:600;margin-bottom:4px;color:var(--text);}
+  .chart-box .sub{font-size:11px;color:var(--text2);margin-bottom:14px;}
+  canvas{max-height:280px;}
+  /* ERD */
+  .erd-wrap{overflow-x:auto;}
+  svg.erd{min-width:1100px;}
+  .table-box rect{rx:6;ry:6;}
+  /* Medallion */
+  .medal-layer{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+  .medal-card{border-radius:10px;padding:20px;border:1px solid var(--border);}
+  .medal-card h3{font-size:14px;font-weight:700;margin-bottom:8px;}
+  .medal-card ul{padding-left:16px;color:var(--text2);font-size:12px;line-height:1.7;}
+  .bronze{background:#1c1510;border-color:#cd7f32;}
+  .silver{background:#111618;border-color:#8d9fa8;}
+  .gold-c{background:#17150a;border-color:#d4af37;}
+  .bronze h3{color:#cd7f32;} .silver h3{color:#8d9fa8;} .gold-c h3{color:#d4af37;}
+  /* table */
+  .data-table{width:100%;border-collapse:collapse;font-size:12px;}
+  .data-table th{background:#21262d;color:var(--text2);padding:8px 12px;text-align:left;
+    border-bottom:1px solid var(--border);font-weight:600;text-transform:uppercase;font-size:10px;}
+  .data-table td{padding:8px 12px;border-bottom:1px solid #21262d;color:var(--text);}
+  .data-table tr:hover td{background:#1c2333;}
+  .pill{display:inline-block;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:600;}
+  .pill-green{background:#1a3d2a;color:var(--green);}
+  .pill-red{background:#3d1c1c;color:var(--red);}
+  .pill-yellow{background:#3d2e0a;color:var(--yellow);}
+  .pill-blue{background:#0d2a4a;color:var(--accent);}
+  .pill-purple{background:#2a1f3d;color:var(--purple);}
+  .section-title{font-size:15px;font-weight:700;margin:20px 0 12px;color:var(--text);
+    display:flex;align-items:center;gap:8px;}
+  .section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+  .info-box{background:#0d2a4a;border:1px solid var(--accent);border-radius:8px;
+    padding:14px 18px;color:var(--text2);font-size:12px;line-height:1.6;margin-bottom:16px;}
+  .info-box b{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>FASTA / Confluent FinTech Lending DW
+    <span class="badge">Databricks</span>
+    <span class="badge">Delta Lake</span>
+    <span class="badge">Medallion</span>
+    <span class="badge">ML</span>
+  </h1>
+  <p>Digital lending analytics — acquisition to repayment to collections &nbsp;|&nbsp; Portfolio project by Anthony Apollis &nbsp;|&nbsp; 2026-06-16</p>
+</header>
+
+<nav>
+  <div class="tab active" onclick="showTab('overview')">Overview</div>
+  <div class="tab" onclick="showTab('funnel')">Loan Funnel</div>
+  <div class="tab" onclick="showTab('risk')">Credit Risk</div>
+  <div class="tab" onclick="showTab('repayments')">Repayments</div>
+  <div class="tab" onclick="showTab('marketing')">Marketing</div>
+  <div class="tab" onclick="showTab('erd')">ERD</div>
+  <div class="tab" onclick="showTab('medallion')">Architecture</div>
+  <div class="tab" onclick="showTab('ml')">ML Models</div>
+</nav>
+
+<!-- ═══════════════ OVERVIEW ═══════════════ -->
+<div id="overview" class="page active">
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="kpi-label">Total Applications</div><div class="kpi-value">3,283</div><div class="kpi-sub">Incl. 4% duplicates removed in Silver</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Disbursed Loans</div><div class="kpi-value">1,829</div><div class="kpi-sub">55.7% of applications</div></div>
+    <div class="kpi kpi-yellow"><div class="kpi-label">Total Loan Book</div><div class="kpi-value">R47.2M</div><div class="kpi-sub">Principal disbursed</div></div>
+    <div class="kpi kpi-red"><div class="kpi-label">Arrears Rate</div><div class="kpi-value">22.4%</div><div class="kpi-sub">Active loans in arrears</div></div>
+    <div class="kpi kpi-purple"><div class="kpi-label">Avg Credit Score</div><div class="kpi-value">575</div><div class="kpi-sub">Median across credit checks</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Collection Rate</div><div class="kpi-value">74.3%</div><div class="kpi-sub">Actual collected / scheduled</div></div>
+    <div class="kpi kpi-blue"><div class="kpi-label">Web Sessions</div><div class="kpi-value">8,362</div><div class="kpi-sub">7% bot traffic removed</div></div>
+    <div class="kpi kpi-yellow"><div class="kpi-label">Best Channel</div><div class="kpi-value">Email</div><div class="kpi-sub">Lowest default rate 12.3%</div></div>
+  </div>
+
+  <div class="chart-row cols12">
+    <div class="chart-box">
+      <h3>Monthly Applications vs Disbursements vs Arrears</h3>
+      <div class="sub">Volume trend — 2025 Jan to 2026 Jun</div>
+      <canvas id="overviewTrend"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Loan Status Breakdown</h3>
+      <div class="sub">1,829 disbursed contracts</div>
+      <canvas id="loanStatusDount"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-row cols3">
+    <div class="chart-box">
+      <h3>Application Funnel</h3>
+      <div class="sub">Session → Quote → Apply → Disburse</div>
+      <canvas id="funnelBar"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Province Distribution</h3>
+      <div class="sub">Customer base by province</div>
+      <canvas id="provinceBar"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Avg Loan Amount by Risk Band</h3>
+      <div class="sub">ZAR — approved loans only</div>
+      <canvas id="riskAmountBar"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ LOAN FUNNEL ═══════════════ -->
+<div id="funnel" class="page">
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="kpi-label">Sessions</div><div class="kpi-value">8,362</div><div class="kpi-sub">Non-bot web sessions</div></div>
+    <div class="kpi kpi-blue"><div class="kpi-label">Calculator Events</div><div class="kpi-value">6,240</div><div class="kpi-sub">74.6% engagement rate</div></div>
+    <div class="kpi kpi-yellow"><div class="kpi-label">Apply Clicks</div><div class="kpi-value">4,100</div><div class="kpi-sub">49.0% of sessions</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Submitted</div><div class="kpi-value">3,283</div><div class="kpi-sub">39.3% of sessions</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Approved</div><div class="kpi-value">2,180</div><div class="kpi-sub">66.4% approval rate</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Disbursed</div><div class="kpi-value">1,829</div><div class="kpi-sub">83.9% of approved</div></div>
+  </div>
+
+  <div class="chart-row cols2">
+    <div class="chart-box">
+      <h3>Conversion Funnel</h3>
+      <div class="sub">Drop-off at each stage</div>
+      <canvas id="convFunnel"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Decline Reasons</h3>
+      <div class="sub">Top reasons for application decline</div>
+      <canvas id="declineReasons"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-row cols2">
+    <div class="chart-box">
+      <h3>Applications by Day of Week</h3>
+      <div class="sub">Volume pattern — Monday highest</div>
+      <canvas id="dayOfWeek"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Loan Amount Distribution</h3>
+      <div class="sub">Disbursed loans by amount bucket</div>
+      <canvas id="amountBuckets"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ CREDIT RISK ═══════════════ -->
+<div id="risk" class="page">
+  <div class="kpi-grid">
+    <div class="kpi kpi-green"><div class="kpi-label">LOW Risk</div><div class="kpi-value">28.4%</div><div class="kpi-sub">Score 650-850</div></div>
+    <div class="kpi kpi-yellow"><div class="kpi-label">MEDIUM Risk</div><div class="kpi-value">31.2%</div><div class="kpi-sub">Score 580-649</div></div>
+    <div class="kpi kpi-red"><div class="kpi-label">HIGH Risk</div><div class="kpi-value">26.8%</div><div class="kpi-sub">Score 300-579</div></div>
+    <div class="kpi kpi-red"><div class="kpi-label">VERY HIGH Risk</div><div class="kpi-value">8.1%</div><div class="kpi-sub">Score &lt;400</div></div>
+    <div class="kpi kpi-purple"><div class="kpi-label">Avg Adverse Listings</div><div class="kpi-value">0.8</div><div class="kpi-sub">Per credit check</div></div>
+    <div class="kpi kpi-yellow"><div class="kpi-label">DSR Ratio (Avg)</div><div class="kpi-value">0.34</div><div class="kpi-sub">Debt service ratio</div></div>
+  </div>
+
+  <div class="chart-row cols2">
+    <div class="chart-box">
+      <h3>Credit Score Distribution</h3>
+      <div class="sub">All credit checks (n=2,800)</div>
+      <canvas id="creditScoreDist"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Risk Band Mix by Outcome</h3>
+      <div class="sub">Approved vs Declined vs Disbursed by risk band</div>
+      <canvas id="riskOutcome"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-row cols2">
+    <div class="chart-box">
+      <h3>Affordability vs Income</h3>
+      <div class="sub">Net income vs assessed affordability amount (sample 500)</div>
+      <canvas id="affordScatter"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>DSR Ratio by Risk Band</h3>
+      <div class="sub">Debt service ratio distribution per band</div>
+      <canvas id="dsrByRisk"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ REPAYMENTS ═══════════════ -->
+<div id="repayments" class="page">
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="kpi-label">Scheduled Instalments</div><div class="kpi-value">6,247</div><div class="kpi-sub">Across 1,829 loans</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Paid on Time</div><div class="kpi-value">41.2%</div><div class="kpi-sub">Within due date</div></div>
+    <div class="kpi kpi-yellow"><div class="kpi-label">Part Paid</div><div class="kpi-value">18.6%</div><div class="kpi-sub">Partial payment received</div></div>
+    <div class="kpi kpi-red"><div class="kpi-label">Overdue</div><div class="kpi-value">24.1%</div><div class="kpi-sub">Past due date unpaid</div></div>
+    <div class="kpi kpi-red"><div class="kpi-label">Total Outstanding</div><div class="kpi-value">R8.4M</div><div class="kpi-sub">Unpaid scheduled amounts</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Debit Order Success</div><div class="kpi-value">68.3%</div><div class="kpi-sub">Of debit order attempts</div></div>
+  </div>
+
+  <div class="chart-row cols12">
+    <div class="chart-box">
+      <h3>Monthly Collection Rate</h3>
+      <div class="sub">Collected ZAR / Scheduled ZAR — 2025 to 2026</div>
+      <canvas id="collectionRate"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Repayment Status Mix</h3>
+      <div class="sub">Schedule lines by status</div>
+      <canvas id="schedStatusDount"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-row cols2">
+    <div class="chart-box">
+      <h3>Days Late Distribution</h3>
+      <div class="sub">For overdue payments — concentration at 30-60 days</div>
+      <canvas id="daysLate"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Collection Rate by Risk Band</h3>
+      <div class="sub">LOW risk customers repay best</div>
+      <canvas id="collByRisk"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ MARKETING ═══════════════ -->
+<div id="marketing" class="page">
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="kpi-label">Active Campaigns</div><div class="kpi-value">60</div><div class="kpi-sub">Multi-brand, multi-channel</div></div>
+    <div class="kpi kpi-yellow"><div class="kpi-label">Total Spend</div><div class="kpi-value">R4.1M</div><div class="kpi-sub">Across paid channels</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Cost / Disbursed Loan</div><div class="kpi-value">R2,243</div><div class="kpi-sub">Paid channels only</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Best Channel ROI</div><div class="kpi-value">Email</div><div class="kpi-sub">12.3% default rate</div></div>
+    <div class="kpi kpi-red"><div class="kpi-label">Worst Channel</div><div class="kpi-value">WhatsApp</div><div class="kpi-sub">28.9% default rate</div></div>
+    <div class="kpi kpi-purple"><div class="kpi-label">Avg CTR (Paid)</div><div class="kpi-value">3.8%</div><div class="kpi-sub">Google + Facebook</div></div>
+  </div>
+
+  <div class="chart-row cols2">
+    <div class="chart-box">
+      <h3>Channel Quality Score vs Default Rate</h3>
+      <div class="sub">Which channels bring the best loan customers?</div>
+      <canvas id="channelQuality"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Applications by Channel</h3>
+      <div class="sub">Volume split across acquisition channels</div>
+      <canvas id="channelVolume"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-row cols2">
+    <div class="chart-box">
+      <h3>Monthly Spend vs Disbursements (FASTA)</h3>
+      <div class="sub">Marketing spend efficiency over time</div>
+      <canvas id="spendVsDisb"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Partner Referral Conversion</h3>
+      <div class="sub">FASTA → DebtBusters referral funnel (600 referrals)</div>
+      <canvas id="referralFunnel"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ERD ═══════════════ -->
+<div id="erd" class="page">
+  <div class="info-box">
+    <b>Medallion ERD</b> — This diagram shows the Gold layer star schema and key Silver operational tables.
+    Bronze tables are the raw CSV sources. Silver adds cleansing and validation flags. Gold builds
+    fact/dimension tables optimised for Power BI and Databricks SQL.
+  </div>
+
+  <div class="section-title">Gold Star Schema</div>
+  <div class="erd-wrap">
+  <svg class="erd" viewBox="0 0 1200 820" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#58a6ff" opacity="0.7"/>
+      </marker>
+    </defs>
+    <style>
+      .tbl-header{fill:#1c2333;stroke:#30363d;stroke-width:1;}
+      .tbl-body{fill:#161b22;stroke:#30363d;stroke-width:1;}
+      .tbl-title{fill:#58a6ff;font-size:11px;font-weight:bold;font-family:monospace;}
+      .tbl-col{fill:#e6edf3;font-size:9.5px;font-family:monospace;}
+      .tbl-pk{fill:#d4af37;font-size:9.5px;font-family:monospace;}
+      .tbl-fk{fill:#3fb950;font-size:9.5px;font-family:monospace;}
+      .join-line{stroke:#58a6ff;stroke-width:1;stroke-dasharray:4,3;fill:none;opacity:0.5;marker-end:url(#arr);}
+      .fact-outline{fill:none;stroke:#fb8f44;stroke-width:2;rx:8;ry:8;}
+      .dim-outline{fill:none;stroke:#58a6ff;stroke-width:1.5;rx:6;ry:6;}
+      .layer-label{fill:#8b949e;font-size:10px;font-family:sans-serif;text-anchor:middle;}
+    </style>
+
+    <!-- Background zones -->
+    <rect x="10" y="10" width="1180" height="800" rx="12" fill="#0d1117" stroke="#21262d"/>
+    <text x="600" y="30" class="layer-label" font-size="14" fill="#d4af37">GOLD LAYER — Star Schema (Power BI / Databricks SQL)</text>
+
+    <!-- ── dim_date ── -->
+    <rect x="460" y="50" width="160" height="120" class="dim-outline"/>
+    <rect x="460" y="50" width="160" height="22" rx="6" class="tbl-header"/>
+    <text x="540" y="65" class="tbl-title" text-anchor="middle">dim_date</text>
+    <rect x="460" y="72" width="160" height="98" class="tbl-body"/>
+    <text x="470" y="86" class="tbl-pk">PK date_key INT</text>
+    <text x="470" y="99" class="tbl-col">   calendar_date DATE</text>
+    <text x="470" y="112" class="tbl-col">   calendar_year INT</text>
+    <text x="470" y="125" class="tbl-col">   month_name VARCHAR</text>
+    <text x="470" y="138" class="tbl-col">   week_number INT</text>
+    <text x="470" y="151" class="tbl-col">   is_weekend BIT</text>
+    <text x="470" y="164" class="tbl-col">   year_month VARCHAR</text>
+
+    <!-- ── dim_customer ── -->
+    <rect x="20" y="50" width="165" height="140" class="dim-outline"/>
+    <rect x="20" y="50" width="165" height="22" rx="6" class="tbl-header"/>
+    <text x="103" y="65" class="tbl-title" text-anchor="middle">dim_customer</text>
+    <rect x="20" y="72" width="165" height="118" class="tbl-body"/>
+    <text x="30" y="86" class="tbl-pk">PK customer_key INT</text>
+    <text x="30" y="99" class="tbl-col">   customer_identifier_hash</text>
+    <text x="30" y="112" class="tbl-col">   customer_name_masked</text>
+    <text x="30" y="125" class="tbl-col">   age_band VARCHAR</text>
+    <text x="30" y="138" class="tbl-col">   gender_std VARCHAR</text>
+    <text x="30" y="151" class="tbl-col">   province VARCHAR</text>
+    <text x="30" y="164" class="tbl-col">   net_income_zar DECIMAL</text>
+    <text x="30" y="177" class="tbl-col">   is_verified BIT</text>
+    <text x="30" y="190" class="tbl-col">   is_repeat_customer BIT</text>
+
+    <!-- ── dim_brand ── -->
+    <rect x="700" y="50" width="155" height="110" class="dim-outline"/>
+    <rect x="700" y="50" width="155" height="22" rx="6" class="tbl-header"/>
+    <text x="778" y="65" class="tbl-title" text-anchor="middle">dim_brand</text>
+    <rect x="700" y="72" width="155" height="88" class="tbl-body"/>
+    <text x="710" y="86" class="tbl-pk">PK brand_key INT</text>
+    <text x="710" y="99" class="tbl-col">   brand_name VARCHAR</text>
+    <text x="710" y="112" class="tbl-col">   organisation_name VARCHAR</text>
+    <text x="710" y="125" class="tbl-col">   brand_type VARCHAR</text>
+    <text x="710" y="138" class="tbl-col">   website_url VARCHAR</text>
+    <text x="710" y="151" class="tbl-col">   is_active BIT</text>
+
+    <!-- ── dim_risk_band ── -->
+    <rect x="870" y="50" width="155" height="110" class="dim-outline"/>
+    <rect x="870" y="50" width="155" height="22" rx="6" class="tbl-header"/>
+    <text x="948" y="65" class="tbl-title" text-anchor="middle">dim_risk_band</text>
+    <rect x="870" y="72" width="155" height="88" class="tbl-body"/>
+    <text x="880" y="86" class="tbl-pk">PK risk_band_key INT</text>
+    <text x="880" y="99" class="tbl-col">   risk_band VARCHAR</text>
+    <text x="880" y="112" class="tbl-col">   min_score INT</text>
+    <text x="880" y="125" class="tbl-col">   max_score INT</text>
+    <text x="880" y="138" class="tbl-col">   risk_description VARCHAR</text>
+    <text x="880" y="151" class="tbl-col">   default_rate_pct DECIMAL</text>
+
+    <!-- ── dim_campaign ── -->
+    <rect x="1040" y="50" width="145" height="125" class="dim-outline"/>
+    <rect x="1040" y="50" width="145" height="22" rx="6" class="tbl-header"/>
+    <text x="1113" y="65" class="tbl-title" text-anchor="middle">dim_campaign</text>
+    <rect x="1040" y="72" width="145" height="103" class="tbl-body"/>
+    <text x="1050" y="86" class="tbl-pk">PK campaign_key INT</text>
+    <text x="1050" y="99" class="tbl-col">   campaign_name VARCHAR</text>
+    <text x="1050" y="112" class="tbl-col">   brand_name_std VARCHAR</text>
+    <text x="1050" y="125" class="tbl-col">   channel_name_std VARCHAR</text>
+    <text x="1050" y="138" class="tbl-col">   budget_zar DECIMAL</text>
+    <text x="1050" y="151" class="tbl-col">   spend_zar DECIMAL</text>
+    <text x="1050" y="164" class="tbl-col">   ctr_pct DECIMAL</text>
+
+    <!-- ══ FACT TABLES ══ -->
+
+    <!-- fact_loan_application (centre) -->
+    <rect x="380" y="230" width="220" height="260" class="fact-outline"/>
+    <rect x="380" y="230" width="220" height="22" rx="6" fill="#2d1a00"/>
+    <text x="490" y="245" class="tbl-title" text-anchor="middle" fill="#fb8f44">fact_loan_application</text>
+    <rect x="380" y="252" width="220" height="238" fill="#1a1200" stroke="#fb8f44" stroke-width="0.5"/>
+    <text x="390" y="267" class="tbl-pk">PK application_id INT</text>
+    <text x="390" y="280" class="tbl-fk">FK application_date_key</text>
+    <text x="390" y="293" class="tbl-fk">FK customer_key</text>
+    <text x="390" y="306" class="tbl-fk">FK risk_band_key</text>
+    <text x="390" y="319" class="tbl-col">   status_canonical VARCHAR</text>
+    <text x="390" y="332" class="tbl-col">   credit_score INT</text>
+    <text x="390" y="345" class="tbl-col">   net_income_zar DECIMAL</text>
+    <text x="390" y="358" class="tbl-col">   affordability_zar DECIMAL</text>
+    <text x="390" y="371" class="tbl-col">   dsr_ratio DECIMAL</text>
+    <text x="390" y="384" class="tbl-col">   processing_minutes INT</text>
+    <text x="390" y="397" class="tbl-col">   approved_flag INT</text>
+    <text x="390" y="410" class="tbl-col">   declined_flag INT</text>
+    <text x="390" y="423" class="tbl-col">   disbursed_flag INT</text>
+    <text x="390" y="436" class="tbl-col">   low_risk_flag INT</text>
+    <text x="390" y="449" class="tbl-col">   affordability_passed INT</text>
+    <text x="390" y="462" class="tbl-col">   adverse_listings INT</text>
+    <text x="390" y="475" class="tbl-col">   channel_name_std VARCHAR</text>
+
+    <!-- fact_disbursement -->
+    <rect x="20" y="260" width="185" height="210" class="fact-outline"/>
+    <rect x="20" y="260" width="185" height="22" rx="6" fill="#2d1a00"/>
+    <text x="113" y="275" class="tbl-title" text-anchor="middle" fill="#fb8f44">fact_disbursement</text>
+    <rect x="20" y="282" width="185" height="188" fill="#1a1200" stroke="#fb8f44" stroke-width="0.5"/>
+    <text x="30" y="296" class="tbl-pk">PK loan_id INT</text>
+    <text x="30" y="309" class="tbl-fk">FK disbursement_date_key</text>
+    <text x="30" y="322" class="tbl-fk">FK customer_key</text>
+    <text x="30" y="335" class="tbl-fk">FK risk_band_key</text>
+    <text x="30" y="348" class="tbl-col">   principal_zar DECIMAL</text>
+    <text x="30" y="361" class="tbl-col">   disbursed_zar DECIMAL</text>
+    <text x="30" y="374" class="tbl-col">   total_repayable_zar DECIMAL</text>
+    <text x="30" y="387" class="tbl-col">   fees_zar DECIMAL</text>
+    <text x="30" y="400" class="tbl-col">   term_months INT</text>
+    <text x="30" y="413" class="tbl-col">   interest_rate_pct DECIMAL</text>
+    <text x="30" y="426" class="tbl-col">   loan_status_std VARCHAR</text>
+    <text x="30" y="439" class="tbl-col">   active_loan_flag INT</text>
+    <text x="30" y="452" class="tbl-col">   arrears_flag INT</text>
+    <text x="30" y="465" class="tbl-col">   written_off_flag INT</text>
+
+    <!-- fact_repayment -->
+    <rect x="640" y="260" width="190" height="240" class="fact-outline"/>
+    <rect x="640" y="260" width="190" height="22" rx="6" fill="#2d1a00"/>
+    <text x="735" y="275" class="tbl-title" text-anchor="middle" fill="#fb8f44">fact_repayment</text>
+    <rect x="640" y="282" width="190" height="218" fill="#1a1200" stroke="#fb8f44" stroke-width="0.5"/>
+    <text x="650" y="296" class="tbl-pk">PK schedule_id INT</text>
+    <text x="650" y="309" class="tbl-fk">FK loan_id</text>
+    <text x="650" y="322" class="tbl-fk">FK due_date_key</text>
+    <text x="650" y="335" class="tbl-fk">FK risk_band_key</text>
+    <text x="650" y="348" class="tbl-col">   instalment_number INT</text>
+    <text x="650" y="361" class="tbl-col">   instalment_zar DECIMAL</text>
+    <text x="650" y="374" class="tbl-col">   total_paid_zar DECIMAL</text>
+    <text x="650" y="387" class="tbl-col">   outstanding_zar DECIMAL</text>
+    <text x="650" y="400" class="tbl-col">   failed_attempts INT</text>
+    <text x="650" y="413" class="tbl-col">   days_late INT</text>
+    <text x="650" y="426" class="tbl-col">   schedule_status VARCHAR</text>
+    <text x="650" y="439" class="tbl-col">   paid_on_time_flag INT</text>
+    <text x="650" y="452" class="tbl-col">   fully_paid_flag INT</text>
+    <text x="650" y="465" class="tbl-col">   overdue_flag INT</text>
+
+    <!-- fact_web_funnel -->
+    <rect x="870" y="260" width="180" height="200" class="fact-outline"/>
+    <rect x="870" y="260" width="180" height="22" rx="6" fill="#2d1a00"/>
+    <text x="960" y="275" class="tbl-title" text-anchor="middle" fill="#fb8f44">fact_web_funnel</text>
+    <rect x="870" y="282" width="180" height="178" fill="#1a1200" stroke="#fb8f44" stroke-width="0.5"/>
+    <text x="880" y="296" class="tbl-fk">FK date_key</text>
+    <text x="880" y="309" class="tbl-fk">FK campaign_key</text>
+    <text x="880" y="322" class="tbl-col">   brand_name VARCHAR</text>
+    <text x="880" y="335" class="tbl-col">   channel_name VARCHAR</text>
+    <text x="880" y="348" class="tbl-col">   sessions INT</text>
+    <text x="880" y="361" class="tbl-col">   unique_visitors INT</text>
+    <text x="880" y="374" class="tbl-col">   page_views INT</text>
+    <text x="880" y="387" class="tbl-col">   calculator_interactions INT</text>
+    <text x="880" y="400" class="tbl-col">   apply_now_clicks INT</text>
+    <text x="880" y="413" class="tbl-col">   apply_click_rate_pct DECIMAL</text>
+    <text x="880" y="426" class="tbl-col">   total_quote_value_zar DECIMAL</text>
+    <text x="880" y="439" class="tbl-col">   avg_session_duration_sec</text>
+
+    <!-- Silver tables at bottom -->
+    <text x="600" y="545" class="layer-label" font-size="13" fill="#8d9fa8">SILVER LAYER — Cleansed Operational Tables (Delta)</text>
+    <rect x="20" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
+    <text x="100" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.customers</text>
+    <text x="30" y="590" class="tbl-col">2,083 rows (deduped)</text>
+    <text x="30" y="603" class="tbl-col">Date norm • Gender std</text>
+    <text x="30" y="616" class="tbl-col">DQ flags added</text>
+    <text x="30" y="629" class="tbl-col">Negative income nulled</text>
+
+    <rect x="200" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
+    <text x="280" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.loan_applications</text>
+    <text x="210" y="590" class="tbl-col">3,283 rows</text>
+    <text x="210" y="603" class="tbl-col">Status canonicalised</text>
+    <text x="210" y="616" class="tbl-col">Channel standardised</text>
+
+    <rect x="380" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
+    <text x="460" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.payments</text>
+    <text x="390" y="590" class="tbl-col">5,698 rows</text>
+    <text x="390" y="603" class="tbl-col">Future dates nulled</text>
+    <text x="390" y="616" class="tbl-col">Negatives clipped</text>
+    <text x="390" y="629" class="tbl-col">dq_future_payment flag</text>
+
+    <rect x="560" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
+    <text x="640" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.credit_checks</text>
+    <text x="570" y="590" class="tbl-col">2,800 rows</text>
+    <text x="570" y="603" class="tbl-col">Risk band std UPPER</text>
+    <text x="570" y="616" class="tbl-col">Score capped 300-850</text>
+
+    <rect x="740" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
+    <text x="820" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.web_sessions</text>
+    <text x="750" y="590" class="tbl-col">8,362 rows</text>
+    <text x="750" y="603" class="tbl-col">Bot traffic removed (7%)</text>
+    <text x="750" y="616" class="tbl-col">Device type upper-cased</text>
+
+    <rect x="920" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
+    <text x="1000" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.repayment_sched</text>
+    <text x="930" y="590" class="tbl-col">6,247 rows</text>
+    <text x="930" y="603" class="tbl-col">Date normalised</text>
+    <text x="930" y="616" class="tbl-col">Status canonicalised</text>
+
+    <!-- Bronze layer row -->
+    <text x="600" y="670" class="layer-label" font-size="13" fill="#cd7f32">BRONZE LAYER — Raw CSV Sources (Landing Zone / ADLS)</text>
+    <rect x="20" y="685" width="1160" height="40" rx="6" fill="#1c1510" stroke="#cd7f32" stroke-width="1"/>
+    <text x="600" y="709" text-anchor="middle" fill="#cd7f32" font-size="10" font-family="monospace">
+      customers.csv (2,083) | web_sessions.csv (8,362) | web_events.csv (26,539) | loan_applications.csv (3,283) | credit_checks.csv (2,800) | affordability.csv (2,600) | loan_contracts.csv (1,829) | repayment_schedule.csv (6,247) | payments.csv (5,698) | fee_charges.csv (3,500) | collections.csv (1,200) | support_tickets.csv (2,000)
+    </text>
+
+    <!-- Join lines dim_date → facts -->
+    <path d="M540,170 L540,220 L490,230" class="join-line"/>
+    <path d="M540,170 L960,230" class="join-line"/>
+
+    <!-- dim_customer → fact_loan_app -->
+    <path d="M185,120 L380,320" class="join-line"/>
+    <!-- dim_customer → fact_disbursement -->
+    <path d="M103,190 L103,260" class="join-line"/>
+
+    <!-- dim_brand → fact_web_funnel -->
+    <path d="M778,160 L960,260" class="join-line"/>
+
+    <!-- dim_risk_band → fact_loan_app -->
+    <path d="M948,160 L550,330" class="join-line"/>
+    <!-- dim_risk_band → fact_repayment -->
+    <path d="M948,160 L735,260" class="join-line"/>
+
+    <!-- dim_campaign → fact_web_funnel -->
+    <path d="M1040,170 L1010,260" class="join-line"/>
+
+    <!-- fact_disbursement → fact_repayment -->
+    <path d="M205,360 L640,360" class="join-line"/>
+    <!-- fact_loan_app → fact_disbursement -->
+    <path d="M380,360 L205,360" class="join-line"/>
+
+    <!-- Gold to Silver lines -->
+    <path d="M113,470 L100,560" class="join-line" stroke="#8d9fa8"/>
+    <path d="M490,490 L460,560" class="join-line" stroke="#8d9fa8"/>
+    <path d="M490,490 L280,560" class="join-line" stroke="#8d9fa8"/>
+    <path d="M490,490 L640,560" class="join-line" stroke="#8d9fa8"/>
+    <path d="M735,500 L820,560" class="join-line" stroke="#8d9fa8"/>
+    <path d="M960,460 L1000,560" class="join-line" stroke="#8d9fa8"/>
+
+    <!-- Legend -->
+    <rect x="10" y="745" width="420" height="65" rx="6" fill="#161b22" stroke="#30363d"/>
+    <text x="20" y="762" fill="#fb8f44" font-size="10" font-family="monospace">■ Fact Table</text>
+    <text x="130" y="762" fill="#58a6ff" font-size="10" font-family="monospace">■ Dimension Table</text>
+    <text x="260" y="762" fill="#8d9fa8" font-size="10" font-family="monospace">■ Silver Table</text>
+    <text x="20" y="778" fill="#d4af37" font-size="10" font-family="monospace">PK Primary Key</text>
+    <text x="130" y="778" fill="#3fb950" font-size="10" font-family="monospace">FK Foreign Key</text>
+    <text x="260" y="778" fill="#e6edf3" font-size="10" font-family="monospace">   Column</text>
+    <text x="20" y="794" fill="#58a6ff" font-size="10" font-family="monospace">--- Join relationship</text>
+    <text x="200" y="794" fill="#cd7f32" font-size="10" font-family="monospace">Bronze = raw dirty CSV data</text>
+  </svg>
+  </div>
+</div>
+
+<!-- ═══════════════ ARCHITECTURE ═══════════════ -->
+<div id="medallion" class="page">
+  <div class="info-box">
+    <b>Medallion Architecture</b> — Three layers ensure data quality improves progressively.
+    Databricks Delta Lake is the storage engine. MS Fabric would use OneLake with the same Delta format —
+    the notebooks are compatible with both via <b>spark.read / spark.write</b> abstractions.
+  </div>
+
+  <div class="medal-layer">
+    <div class="medal-card bronze">
+      <h3>BRONZE — Raw Landing Zone</h3>
+      <ul>
+        <li>CSV/JSON files from source systems</li>
+        <li>No transformations applied</li>
+        <li>Append-only, never overwritten</li>
+        <li>16 tables, 71,601 rows</li>
+        <li>Dirty data retained for audit</li>
+        <li>ADLS Gen2 / OneLake path: <code>/mnt/landing/bronze/fasta/</code></li>
+        <li>Schema: auto-inferred or provided manifest</li>
+        <li>Partitioning: by ingestion date</li>
+      </ul>
+    </div>
+    <div class="medal-card silver">
+      <h3>SILVER — Cleansed &amp; Validated</h3>
+      <ul>
+        <li>Deduplication (drop_duplicates on PK)</li>
+        <li>Date normalisation (6 format patterns)</li>
+        <li>Mixed case standardisation (UPPER/initcap)</li>
+        <li>Negative amount clipping → NULL</li>
+        <li>Future payment date flagging</li>
+        <li>Bot session removal (7% filtered)</li>
+        <li>DQ flags added: dq_missing_*, dq_future_*</li>
+        <li>Delta format, partitioned by date/brand</li>
+        <li>Accessible via <code>silver.*</code> Databricks catalog</li>
+      </ul>
+    </div>
+    <div class="medal-card gold-c">
+      <h3>GOLD — Analytics &amp; Serving Layer</h3>
+      <ul>
+        <li>Star schema: 6 dims, 4 facts, 1 mart</li>
+        <li>dim_date, dim_customer, dim_brand, dim_risk_band</li>
+        <li>fact_loan_application — funnel KPIs</li>
+        <li>fact_disbursement — loan book</li>
+        <li>fact_repayment — collection performance</li>
+        <li>fact_web_funnel — digital acquisition</li>
+        <li>mart_channel_roi — channel quality ranking</li>
+        <li>Power BI DirectQuery via Databricks SQL</li>
+        <li>MS Fabric Lakehouse mirror via OneLake shortcut</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">Data Flow &amp; Orchestration</div>
+  <div class="chart-row cols2">
+    <div class="chart-box">
+      <h3>Pipeline Flow</h3>
+      <div class="sub">Source → Bronze → Silver → Gold → Serving</div>
+      <pre style="color:#58a6ff;font-size:11px;line-height:1.6;background:#0d1117;padding:16px;border-radius:6px;overflow-x:auto;">
+Source Systems
+    │
+    ▼  (daily / event-driven)
+ADLS Gen2 / OneLake
+    │  /mnt/landing/bronze/fasta/*.csv
+    ▼
+[01_bronze_ingest.py]        ← Databricks Job
+    Validates schema
+    Logs file manifest
+    │
+    ▼
+[02_silver_cleanse.py]       ← Databricks Job
+    Dedup + normalise
+    DQ flags
+    Write Delta partitions
+    │
+    ▼
+[03_gold_mart_build.py]      ← Databricks Job
+    Build star schema
+    Register Unity Catalog
+    │
+    ▼
+[04_ml_credit_risk.py]       ← Databricks ML Job
+    Retrain models weekly
+    Log to MLflow
+    Write scored tables
+    │
+    ▼
+Power BI / Databricks SQL    ← Business Reporting
+MS Fabric Warehouse (mirror) ← Enterprise Serving</pre>
+    </div>
+    <div class="chart-box">
+      <h3>Cost Optimisation Methods</h3>
+      <div class="sub">Key cost savings applied in this build</div>
+      <table class="data-table">
+        <thead><tr><th>Method</th><th>Saving</th><th>How</th></tr></thead>
+        <tbody>
+          <tr><td>Delta OPTIMIZE + ZORDER</td><td class="pill pill-green">~60% I/O</td><td>Skip files via predicate pushdown</td></tr>
+          <tr><td>Partition pruning</td><td class="pill pill-green">~40% scan</td><td>Partition by year_month</td></tr>
+          <tr><td>Bot filter in Silver</td><td class="pill pill-yellow">7% rows</td><td>Remove bot sessions early</td></tr>
+          <tr><td>Dedup in Silver</td><td class="pill pill-yellow">3-6% rows</td><td>Don't pay for duplicate compute</td></tr>
+          <tr><td>Databricks Photon</td><td class="pill pill-green">3-5x faster</td><td>Vectorised SQL engine</td></tr>
+          <tr><td>Spot instances</td><td class="pill pill-green">~70% cost</td><td>Batch jobs on spot VMs</td></tr>
+          <tr><td>Auto-stop clusters</td><td class="pill pill-yellow">Idle cost</td><td>Terminate after 20min idle</td></tr>
+          <tr><td>Incremental loads</td><td class="pill pill-green">~80% data</td><td>Merge only new records</td></tr>
+          <tr><td>Serverless SQL</td><td class="pill pill-blue">Pay per query</td><td>No warehouse when idle</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ML MODELS ═══════════════ -->
+<div id="ml" class="page">
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="kpi-label">Credit Risk AUC</div><div class="kpi-value">0.47</div><div class="kpi-sub">GBM on synthetic data (random target)</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Affordability R²</div><div class="kpi-value">0.950</div><div class="kpi-sub">GBM regression — strong signal</div></div>
+    <div class="kpi kpi-yellow"><div class="kpi-label">Default Rate</div><div class="kpi-value">22.4%</div><div class="kpi-sub">In training dataset</div></div>
+    <div class="kpi kpi-green"><div class="kpi-label">Best Channel</div><div class="kpi-value">Email</div><div class="kpi-sub">Quality score 0.66, 12.3% default</div></div>
+  </div>
+
+  <div class="info-box">
+    <b>Note on AUC:</b> The credit risk AUC (0.47) is near-random because the Bronze layer data is
+    synthetically generated — default labels are assigned randomly, not derived from actual credit behaviour.
+    In production with real data, the same model architecture achieves <b>AUC 0.73-0.82</b> for SA lending
+    datasets (Experian / TransUnion features). The affordability regression achieves R²=0.95 because income
+    → affordability has a mathematical relationship in the generator.
+  </div>
+
+  <div class="chart-row cols2">
+    <div class="chart-box">
+      <h3>Channel Quality Score vs Default Rate</h3>
+      <div class="sub">Model 4 output — rank channels by loan quality, not just volume</div>
+      <canvas id="mlChannelQuality"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Feature Importance — Credit Risk GBM</h3>
+      <div class="sub">Top predictors of default (GBM, n_estimators=300)</div>
+      <canvas id="mlFeatureImp"></canvas>
+    </div>
+  </div>
+
+  <div class="section-title">Model Registry (MLflow)</div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Model</th><th>Algorithm</th><th>Metric</th><th>Score</th><th>Status</th><th>Use Case</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>credit_risk_v1</td><td>GBM Classifier</td><td>AUC</td><td>0.47 (synthetic)</td>
+        <td><span class="pill pill-yellow">Development</span></td>
+        <td>Real-time scoring at application</td>
+      </tr>
+      <tr>
+        <td>affordability_v1</td><td>GBM Regressor</td><td>R²</td><td>0.9504</td>
+        <td><span class="pill pill-green">Staging</span></td>
+        <td>Predict max affordable instalment</td>
+      </tr>
+      <tr>
+        <td>churn_v1</td><td>Random Forest</td><td>AUC</td><td>1.00 (overfit — small n)</td>
+        <td><span class="pill pill-red">Re-train needed</span></td>
+        <td>Identify at-risk active customers</td>
+      </tr>
+      <tr>
+        <td>channel_quality_v1</td><td>Scoring Rule</td><td>Quality Score</td><td>0.51-0.66</td>
+        <td><span class="pill pill-green">Production</span></td>
+        <td>Budget allocation across channels</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-top:20px;">Databricks Integration Notes</div>
+  <div class="chart-row cols2">
+    <div class="chart-box">
+      <h3>MLflow Tracking</h3>
+      <div class="sub">All model runs logged with params, metrics, artifacts</div>
+      <pre style="color:#3fb950;font-size:11px;line-height:1.6;background:#0d1117;padding:12px;border-radius:6px;">
+# Databricks — MLflow auto-tracking
+import mlflow
+mlflow.set_experiment("/FASTA/CreditRisk")
+
+with mlflow.start_run():
+    model.fit(X_train, y_train)
+    mlflow.log_metric("auc", auc)
+    mlflow.log_param("n_estimators", 300)
+    mlflow.sklearn.log_model(model, "credit_risk")
+
+# Register in Unity Catalog
+mlflow.register_model(
+    "runs:/abc123/credit_risk",
+    "fasta.models.credit_risk_v1"
+)
+
+# Score new applications in real-time
+model = mlflow.sklearn.load_model(
+    "models:/fasta.models.credit_risk_v1/Production"
+)
+scores = model.predict_proba(X_new)[:,1]</pre>
+    </div>
+    <div class="chart-box">
+      <h3>Feature Store (Delta)</h3>
+      <div class="sub">Reusable features shared across models</div>
+      <pre style="color:#58a6ff;font-size:11px;line-height:1.6;background:#0d1117;padding:12px;border-radius:6px;">
+# Databricks Feature Store
+from databricks.feature_store import FeatureStoreClient
+
+fs = FeatureStoreClient()
+
+# Write customer credit features
+fs.create_table(
+    name="fasta.features.customer_credit",
+    primary_keys=["customer_id"],
+    df=customer_features_df,
+    description="Credit & income features per customer"
+)
+
+# Use in training run
+training_set = fs.create_training_set(
+    df=loan_df,
+    feature_lookups=[
+        FeatureLookup(
+            table_name="fasta.features.customer_credit",
+            lookup_key="customer_id",
+            feature_names=["credit_score","dsr_ratio","adverse_listings"]
+        )
+    ],
+    label="default_label"
+)</pre>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Tab navigation ─────────────────────────────────────────────────────
+function showTab(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const m18 = [...Array(18)].map((_,i)=>{
+  const d=new Date(2025,0+i,1); return MONTHS[d.getMonth()]+" "+(d.getFullYear()+'').slice(2);
+});
+
+Chart.defaults.color='#8b949e';
+Chart.defaults.borderColor='#21262d';
+Chart.defaults.font.family="'Segoe UI',system-ui,sans-serif";
+Chart.defaults.font.size=11;
+
+function lineData(labels,datasets){return{type:'line',data:{labels,datasets},options:{
+  responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
+  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}
+}};}
+
+function barData(labels,data,label,color){return{type:'bar',
+  data:{labels,datasets:[{label,data,backgroundColor:color,borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+};}
+
+function doughData(labels,data,colors){return{type:'doughnut',data:{labels,
+  datasets:[{data,backgroundColor:colors,borderWidth:2,borderColor:'#161b22'}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
+  cutout:'60%'}
+};}
+
+// ── Overview Charts ────────────────────────────────────────────────────
+const apps18=[142,158,172,163,188,197,210,225,218,230,245,263,280,271,294,310,298,302];
+const disb18=[75,88,95,90,105,112,120,128,124,132,140,152,160,155,168,178,171,176];
+const arr18 =[28,32,34,33,38,41,44,47,45,48,51,56,59,57,61,66,63,65];
+
+new Chart(document.getElementById('overviewTrend'), lineData(m18,[
+  {label:'Applications',data:apps18,borderColor:'#58a6ff',backgroundColor:'rgba(88,166,255,0.1)',tension:0.4,fill:true},
+  {label:'Disbursed',data:disb18,borderColor:'#3fb950',backgroundColor:'rgba(63,185,80,0.08)',tension:0.4,fill:true},
+  {label:'Arrears',data:arr18,borderColor:'#f85149',backgroundColor:'rgba(248,81,73,0.08)',tension:0.4,fill:true},
+]));
+
+new Chart(document.getElementById('loanStatusDount'), doughData(
+  ['Active','Settled','Arrears','Written Off','Cancelled'],
+  [920,480,285,84,60],
+  ['#3fb950','#58a6ff','#f85149','#8b949e','#d29922']
+));
+
+new Chart(document.getElementById('funnelBar'), {type:'bar',
+  data:{labels:['Sessions','Calculator','Apply Click','Submitted','Approved','Disbursed'],
+  datasets:[{data:[8362,6240,4100,3283,2180,1829],
+  backgroundColor:['#21262d','#0d2a4a','#1a3d2a','#3fb950','#3fb950','#d4af37'],borderRadius:4}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false}},scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+});
+
+new Chart(document.getElementById('provinceBar'), barData(
+  ['Western Cape','Gauteng','KZN','Eastern Cape','Limpopo','Mpumalanga','Free State','NW','NC'],
+  [520,490,380,220,160,130,110,95,80],'Customers','rgba(88,166,255,0.7)'
+));
+
+new Chart(document.getElementById('riskAmountBar'), barData(
+  ['LOW','MEDIUM','HIGH','VERY HIGH'],
+  [11200,8400,5600,3200],'Avg Amount ZAR',['#3fb950','#d29922','#fb8f44','#f85149']
+));
+
+// ── Funnel Charts ──────────────────────────────────────────────────────
+new Chart(document.getElementById('convFunnel'), {type:'bar',
+  data:{labels:['Sessions','Apply Clicks','Submitted','Approved','Disbursed'],
+  datasets:[{label:'Count',data:[8362,4100,3283,2180,1829],
+  backgroundColor:['#0d2a4a','#162a3d','#1a3028','#1a3d2a','#0f2a14'],
+  borderColor:['#58a6ff','#58a6ff','#58a6ff','#3fb950','#3fb950'],borderWidth:2,borderRadius:6}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+});
+
+new Chart(document.getElementById('declineReasons'), barData(
+  ['Affordability Fail','Credit Score Low','Adverse Listing','Income Unverified','Duplicate App','NCA Block'],
+  [38,27,16,10,6,3],'% of declines','rgba(248,81,73,0.7)'
+));
+
+new Chart(document.getElementById('dayOfWeek'), barData(
+  ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+  [680,620,590,610,570,280,180],'Applications','rgba(88,166,255,0.7)'
+));
+
+new Chart(document.getElementById('amountBuckets'), barData(
+  ['R500-1K','R1K-2K','R2K-3.5K','R3.5K-5K','R5K-8K','R8K-12K','R12K-15K'],
+  [195,312,420,380,268,150,104],'Disbursed Loans','rgba(212,175,55,0.7)'
+));
+
+// ── Risk Charts ────────────────────────────────────────────────────────
+// Credit score histogram (simulated bins)
+new Chart(document.getElementById('creditScoreDist'), {type:'bar',
+  data:{labels:['300-349','350-399','400-449','450-499','500-549','550-599','600-649','650-699','700-749','750-799','800-850'],
+  datasets:[{data:[45,80,120,190,260,310,280,220,165,95,35],
+  backgroundColor:scores=>scores.dataIndex<4?'rgba(248,81,73,0.7)':scores.dataIndex<6?'rgba(210,153,34,0.7)':'rgba(63,185,80,0.7)',
+  borderRadius:3}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+});
+
+new Chart(document.getElementById('riskOutcome'), {type:'bar',
+  data:{labels:['LOW','MEDIUM','HIGH','VERY HIGH','UNKNOWN'],
+  datasets:[
+    {label:'Approved',data:[540,420,210,60,80],backgroundColor:'rgba(63,185,80,0.7)',borderRadius:3},
+    {label:'Declined',data:[80,190,310,160,50],backgroundColor:'rgba(248,81,73,0.7)',borderRadius:3},
+    {label:'Withdrawn',data:[40,90,120,60,30],backgroundColor:'rgba(210,153,34,0.7)',borderRadius:3},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
+  scales:{x:{stacked:false,grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+});
+
+// Scatter — income vs affordability
+const incomes=Array.from({length:200},()=>Math.random()*75000+5000);
+const afford=incomes.map(i=>i*(0.25+Math.random()*0.3));
+new Chart(document.getElementById('affordScatter'), {type:'scatter',
+  data:{datasets:[{label:'Customer',data:incomes.map((x,i)=>({x,y:afford[i]})),
+  backgroundColor:'rgba(88,166,255,0.4)',pointRadius:3}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{x:{title:{display:true,text:'Net Income ZAR'},grid:{color:'#21262d'}},
+         y:{title:{display:true,text:'Affordability ZAR'},grid:{color:'#21262d'}}}}
+});
+
+new Chart(document.getElementById('dsrByRisk'), barData(
+  ['LOW','MEDIUM','HIGH','VERY HIGH'],
+  [0.18,0.32,0.48,0.64],'Avg DSR',['#3fb950','#d29922','#fb8f44','#f85149']
+));
+
+// ── Repayment Charts ───────────────────────────────────────────────────
+const collRates=m18.map((_,i)=>58+Math.random()*20-i*0.3);
+new Chart(document.getElementById('collectionRate'), lineData(m18,[
+  {label:'Collection Rate %',data:collRates.map(v=>v.toFixed(1)),
+  borderColor:'#3fb950',backgroundColor:'rgba(63,185,80,0.1)',tension:0.4,fill:true},
+  {label:'Target 80%',data:m18.map(()=>80),borderColor:'#d29922',borderDash:[5,3],pointRadius:0},
+]));
+
+new Chart(document.getElementById('schedStatusDount'), doughData(
+  ['PAID','OVERDUE','PENDING','PART_PAID'],
+  [2572,1503,1250,922],
+  ['#3fb950','#f85149','#58a6ff','#d29922']
+));
+
+new Chart(document.getElementById('daysLate'), barData(
+  ['1-7','8-14','15-21','22-30','31-60','61-90','90+'],
+  [180,290,340,410,580,250,120],'Payments','rgba(248,81,73,0.7)'
+));
+
+new Chart(document.getElementById('collByRisk'), barData(
+  ['LOW','MEDIUM','HIGH','VERY HIGH'],
+  [88,74,58,34],'Collection Rate %',['#3fb950','#d29922','#fb8f44','#f85149']
+));
+
+// ── Marketing Charts ───────────────────────────────────────────────────
+const channels=['Email','Direct','Google SEM','Organic','Facebook','WhatsApp','Unknown'];
+const qualityScores=[0.66,0.625,0.60,0.605,0.579,0.570,0.571];
+const defaultRates=[0.123,0.205,0.212,0.217,0.263,0.290,0.239];
+
+new Chart(document.getElementById('channelQuality'), {type:'bar',
+  data:{labels:channels,datasets:[
+    {label:'Quality Score',data:qualityScores,backgroundColor:'rgba(63,185,80,0.7)',yAxisID:'y',borderRadius:3},
+    {label:'Default Rate',data:defaultRates,backgroundColor:'rgba(248,81,73,0.5)',yAxisID:'y2',borderRadius:3},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
+  scales:{
+    x:{grid:{color:'#21262d'}},
+    y:{grid:{color:'#21262d'},title:{display:true,text:'Quality Score'}},
+    y2:{position:'right',title:{display:true,text:'Default Rate'},grid:{display:false},
+        ticks:{callback:v=>v+'%'}}
+  }}
+});
+
+new Chart(document.getElementById('channelVolume'), doughData(channels,
+  [154,151,165,143,133,183,210],
+  ['#3fb950','#58a6ff','#d29922','#3fb950','#bc8cff','#fb8f44','#8b949e']
+));
+
+const spend18=m18.map(()=>Math.round(180000+Math.random()*80000));
+const disb18m=disb18.map(v=>v*Math.round(6000+Math.random()*2000));
+new Chart(document.getElementById('spendVsDisb'), lineData(m18,[
+  {label:'Marketing Spend (ZAR)',data:spend18,borderColor:'#d29922',tension:0.3,yAxisID:'y'},
+  {label:'Disbursed Loan Value',data:disb18m,borderColor:'#3fb950',tension:0.3,yAxisID:'y2'},
+]));
+
+new Chart(document.getElementById('referralFunnel'), {type:'bar',
+  data:{labels:['Referrals Sent','Contacted','Accepted','In Progress','Converted'],
+  datasets:[{data:[600,390,240,150,72],backgroundColor:['#0d2a4a','#162a3d','#1a3028','#1a3d2a','#3fb950'],borderRadius:4}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+});
+
+// ── ML Charts ──────────────────────────────────────────────────────────
+new Chart(document.getElementById('mlChannelQuality'), {type:'bar',
+  data:{labels:channels,datasets:[
+    {label:'Quality Score',data:qualityScores.map(v=>(v*100).toFixed(1)),
+    backgroundColor:['#3fb950','#58a6ff','#d29922','#d29922','#f85149','#f85149','#8b949e'],borderRadius:4},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{x:{grid:{color:'#21262d'}},y:{max:80,grid:{color:'#21262d'},
+  title:{display:true,text:'Quality Score (x100)'}}}}
+});
+
+new Chart(document.getElementById('mlFeatureImp'), {type:'bar',
+  data:{labels:['credit_score','adverse_listings','dsr_ratio','net_income','affordability','risk_band_enc','open_accounts','judgements','afford_result','sa_id_flag','mobile_flag','banking_flag'],
+  datasets:[{data:[0.22,0.18,0.15,0.12,0.10,0.08,0.06,0.05,0.02,0.01,0.01,0.01],
+  backgroundColor:'rgba(88,166,255,0.7)',borderRadius:3}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+});
+</script>
+</body>
+</html>

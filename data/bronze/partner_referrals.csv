@@ -1,0 +1,601 @@
+referral_id,customer_id,source_brand,destination_brand,referral_reason,referred_at,referral_status,commission_zar
+1,1755,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-03-21 19:57:51,Accepted,451.08
+2,175,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-06-19 09:00:05,Accepted,130.7
+3,1835,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-09-17 14:50:09,sent,280.54
+4,295,JustMoney,FASTA,Loan affordability failed; debt help required,2025-10-09 14:00:52,CONTACTED,
+5,324,JustMoney,FASTA,Application declined; referred for counselling,2025-03-29 13:09:31,CONTACTED,176.99
+6,1305,FASTA,DebtBusters,Application declined; referred for counselling,2025-12-16 19:19:26,sent,186.98
+7,1190,FASTA,DebtBusters,Application declined; referred for counselling,2025-07-30 09:24:24,CONVERTED,53.71
+8,343,JustMoney,DebtBusters,Existing client seeking debt consolidation,2026-04-20 12:07:16,Accepted,305.4
+9,1276,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-03-09 11:58:23,Accepted,76.39
+10,128,JustMoney,DebtBusters,Customer requested financial education,2025-10-03 15:17:04,sent,249.68
+11,340,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-10-07 07:26:09,SENT,206.82
+12,1887,JustMoney,DebtBusters,Application declined; referred for counselling,2025-05-18 19:41:13,sent,412.76
+13,1608,JustMoney,FASTA,Existing client seeking debt consolidation,2026-04-04 09:30:48,sent,302.96
+14,546,FASTA,DebtBusters,Customer requested financial education,2025-03-15 09:40:05,DECLINED,407.41
+15,388,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-04-22 20:42:59,Accepted,
+16,1798,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-11-20 18:12:38,SENT,
+17,1240,FASTA,DebtBusters,Customer requested financial education,2025-11-30 07:39:38,DECLINED,199.7
+18,1252,JustMoney,FASTA,Customer requested financial education,2025-02-14 13:41:18,CONTACTED,273.18
+19,1954,JustMoney,DebtBusters,Loan affordability failed; debt help required,2026-02-12 19:03:32,ACCEPTED,297.29
+20,1423,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-08-14 08:25:48,CONVERTED,369.66
+21,1028,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-09-13 20:14:01,Accepted,454.24
+22,745,JustMoney,FASTA,Existing client seeking debt consolidation,2025-04-27 08:31:03,SENT,
+23,242,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-06-04 10:31:23,DECLINED,156.94
+24,599,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2026-01-04 09:54:31,DECLINED,
+25,1915,JustMoney,FASTA,Customer requested financial education,2025-02-15 18:57:49,DECLINED,344.16
+26,1002,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-11-30 08:15:15,ACCEPTED,463.58
+27,1474,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-01-16 09:02:32,sent,397.13
+28,332,FASTA,DebtBusters,Customer requested financial education,2025-04-04 19:17:59,SENT,217.52
+29,55,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-10-02 15:34:23,sent,104.9
+30,1130,JustMoney,DebtBusters,Customer requested financial education,2025-10-11 15:32:42,DECLINED,115.4
+31,125,FASTA,DebtBusters,Application declined; referred for counselling,2026-03-27 11:23:39,sent,218.37
+32,572,JustMoney,FASTA,Loan affordability failed; debt help required,2025-07-20 21:48:15,CONVERTED,
+33,445,FASTA,DebtBusters,Customer requested financial education,2025-06-03 09:24:13,Accepted,390.14
+34,987,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-10-20 20:00:30,SENT,323.37
+35,864,FASTA,DebtBusters,Customer requested financial education,2025-07-31 16:48:42,ACCEPTED,243.13
+36,646,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-06-29 19:19:21,SENT,194.35
+37,144,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-05-10 14:48:57,CONVERTED,124.66
+38,1518,JustMoney,FASTA,Application declined; referred for counselling,2025-11-08 09:28:32,Accepted,104.09
+39,589,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-02-22 19:11:50,CONTACTED,96.58
+40,799,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-01-28 07:58:09,ACCEPTED,390.85
+41,198,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-04-04 22:09:43,DECLINED,420.68
+42,1237,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-05-17 08:49:43,DECLINED,406.84
+43,1106,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-01-19 21:31:55,CONVERTED,
+44,1440,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-11-30 07:16:45,SENT,
+45,296,JustMoney,DebtBusters,Application declined; referred for counselling,2026-04-10 14:46:55,DECLINED,184.99
+46,1434,JustMoney,DebtBusters,Existing client seeking debt consolidation,2026-05-10 20:43:05,sent,
+47,963,JustMoney,FASTA,Existing client seeking debt consolidation,2025-08-07 15:53:27,Accepted,
+48,1568,JustMoney,DebtBusters,Loan affordability failed; debt help required,2026-06-04 18:27:19,Accepted,466.85
+49,1468,JustMoney,FASTA,Loan affordability failed; debt help required,2026-04-01 18:07:13,DECLINED,
+50,1054,FASTA,DebtBusters,Application declined; referred for counselling,2025-10-13 08:37:19,SENT,402.62
+51,862,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-03-11 20:31:06,DECLINED,
+52,1798,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-02-26 16:26:33,CONTACTED,441.04
+53,1291,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-01-08 15:47:58,SENT,193.76
+54,156,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-03-02 21:32:59,DECLINED,61.53
+55,468,FASTA,DebtBusters,Customer requested financial education,2025-04-08 10:16:30,SENT,113.28
+56,101,JustMoney,DebtBusters,Customer requested financial education,2025-03-22 07:05:45,CONTACTED,
+57,567,JustMoney,FASTA,Customer requested financial education,2025-02-01 21:10:59,DECLINED,266.16
+58,1922,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-06-02 09:16:14,sent,237.17
+59,1048,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-10-07 21:43:27,CONTACTED,261.2
+60,695,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-12-27 21:58:35,Accepted,386.74
+61,1163,JustMoney,DebtBusters,Loan affordability failed; debt help required,2026-02-15 10:17:48,sent,290.4
+62,472,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-04-18 10:30:47,sent,348.39
+63,612,JustMoney,DebtBusters,Customer requested financial education,2025-09-15 16:28:19,ACCEPTED,156.07
+64,976,FASTA,DebtBusters,Application declined; referred for counselling,2025-04-25 11:07:53,Accepted,203.89
+65,1035,JustMoney,FASTA,Customer requested financial education,2025-01-11 16:28:39,CONTACTED,286.18
+66,1475,JustMoney,FASTA,Application declined; referred for counselling,2025-01-28 21:22:11,DECLINED,333.84
+67,1840,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-07-28 22:41:41,SENT,72.74
+68,106,JustMoney,FASTA,Application declined; referred for counselling,2026-04-14 17:33:23,CONVERTED,
+69,1979,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-06-07 08:43:42,Accepted,355.54
+70,1783,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-07-20 15:40:10,DECLINED,83.94
+71,1930,FASTA,DebtBusters,Application declined; referred for counselling,2026-04-23 08:24:15,CONTACTED,
+72,1044,JustMoney,FASTA,Customer requested financial education,2025-01-24 18:44:44,Accepted,118.78
+73,1300,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-07-16 12:33:12,DECLINED,318.26
+74,542,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-06-12 20:16:15,Accepted,65.53
+75,1156,JustMoney,FASTA,Loan affordability failed; debt help required,2025-08-02 08:58:30,sent,88.95
+76,1102,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-03-23 12:53:33,CONVERTED,398.91
+77,1042,FASTA,DebtBusters,Application declined; referred for counselling,2026-01-10 10:14:14,SENT,424.4
+78,336,FASTA,DebtBusters,Application declined; referred for counselling,2026-01-04 15:39:58,SENT,231.15
+79,694,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-05-26 18:04:33,CONTACTED,
+80,626,JustMoney,FASTA,Existing client seeking debt consolidation,2025-01-28 16:07:13,sent,346.01
+81,1721,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-04-26 17:24:18,CONTACTED,211.13
+82,218,JustMoney,FASTA,Application declined; referred for counselling,2025-05-07 13:47:56,DECLINED,
+83,634,JustMoney,FASTA,Existing client seeking debt consolidation,2025-03-27 11:51:28,sent,269.56
+84,625,FASTA,DebtBusters,Application declined; referred for counselling,2025-06-19 08:45:04,CONTACTED,126.99
+85,539,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-05-07 21:20:19,CONTACTED,409.79
+86,1319,JustMoney,FASTA,Application declined; referred for counselling,2026-01-20 18:45:56,SENT,
+87,1854,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-04-23 19:59:05,CONVERTED,
+88,823,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-05-09 22:21:07,DECLINED,66.18
+89,662,JustMoney,FASTA,Existing client seeking debt consolidation,2025-12-23 18:06:39,sent,60.22
+90,316,JustMoney,FASTA,Loan affordability failed; debt help required,2025-09-03 13:53:16,CONTACTED,
+91,1670,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-11-02 12:03:04,SENT,473.13
+92,130,JustMoney,FASTA,Application declined; referred for counselling,2025-12-08 14:09:19,sent,296.91
+93,600,FASTA,DebtBusters,Customer requested financial education,2025-09-11 12:53:39,sent,
+94,1072,FASTA,DebtBusters,Customer requested financial education,2026-06-16 17:18:47,SENT,142.31
+95,956,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-11-30 11:54:57,ACCEPTED,430.46
+96,990,JustMoney,FASTA,Application declined; referred for counselling,2025-03-04 07:45:47,SENT,365.25
+97,139,JustMoney,DebtBusters,Customer requested financial education,2025-11-16 14:31:32,CONVERTED,238.41
+98,1625,FASTA,DebtBusters,Application declined; referred for counselling,2025-07-15 17:44:34,sent,
+99,1920,FASTA,DebtBusters,Application declined; referred for counselling,2025-12-13 07:23:47,sent,307.36
+100,1631,JustMoney,DebtBusters,Customer requested financial education,2025-08-01 18:29:51,DECLINED,209.56
+101,1504,FASTA,DebtBusters,Application declined; referred for counselling,2026-06-07 22:54:23,CONTACTED,
+102,1221,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-03-26 12:42:50,sent,399.39
+103,1233,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-10-28 17:59:18,CONTACTED,339.3
+104,1268,FASTA,DebtBusters,Application declined; referred for counselling,2025-09-27 07:46:10,SENT,390.86
+105,1223,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-07-18 07:06:39,DECLINED,339.55
+106,492,JustMoney,DebtBusters,Existing client seeking debt consolidation,2026-05-04 08:05:50,ACCEPTED,57.29
+107,1821,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-03-25 15:37:55,Accepted,
+108,378,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-01-13 10:34:39,Accepted,86.97
+109,1214,FASTA,DebtBusters,Customer requested financial education,2025-05-04 19:13:43,sent,
+110,649,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-09-19 21:15:29,CONTACTED,399.86
+111,1287,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-08-09 12:37:45,ACCEPTED,305.75
+112,1709,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-08-03 17:32:33,Accepted,
+113,706,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-10-19 13:14:44,SENT,125.7
+114,910,JustMoney,DebtBusters,Existing client seeking debt consolidation,2026-05-23 13:35:33,ACCEPTED,
+115,644,JustMoney,DebtBusters,Application declined; referred for counselling,2026-05-12 22:55:13,ACCEPTED,469.87
+116,404,FASTA,DebtBusters,Customer requested financial education,2025-11-03 09:58:16,sent,98.83
+117,257,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-03-16 14:27:04,SENT,
+118,1791,JustMoney,FASTA,Loan affordability failed; debt help required,2025-03-01 10:49:59,sent,
+119,221,JustMoney,FASTA,Existing client seeking debt consolidation,2025-11-08 22:16:44,sent,
+120,554,JustMoney,FASTA,Existing client seeking debt consolidation,2025-03-02 07:30:17,Accepted,67.04
+121,1275,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-12-19 07:07:13,Accepted,138.73
+122,1031,FASTA,DebtBusters,Application declined; referred for counselling,2025-10-12 18:38:46,DECLINED,250.51
+123,1119,FASTA,DebtBusters,Customer requested financial education,2025-10-21 20:39:12,ACCEPTED,147.34
+124,129,JustMoney,FASTA,Customer requested financial education,2026-06-12 22:50:56,ACCEPTED,210.79
+125,900,JustMoney,DebtBusters,Customer requested financial education,2025-06-12 17:23:07,DECLINED,
+126,752,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-08-29 18:25:23,CONVERTED,
+127,871,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-11-02 22:28:00,ACCEPTED,374.92
+128,794,JustMoney,FASTA,Loan affordability failed; debt help required,2025-07-27 08:02:08,ACCEPTED,86.35
+129,1786,FASTA,DebtBusters,Customer requested financial education,2026-01-02 17:06:16,sent,
+130,579,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-07-28 15:01:44,ACCEPTED,
+131,1876,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-12-01 14:27:17,ACCEPTED,350.34
+132,834,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-05-22 21:21:35,sent,271.46
+133,263,FASTA,DebtBusters,Customer requested financial education,2025-09-08 18:16:25,CONVERTED,284.86
+134,104,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-02-25 21:38:32,CONTACTED,414.15
+135,772,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-05-29 12:26:25,CONTACTED,451.76
+136,260,FASTA,DebtBusters,Application declined; referred for counselling,2025-11-27 17:36:58,DECLINED,258.31
+137,1,FASTA,DebtBusters,Application declined; referred for counselling,2025-12-30 21:19:20,sent,
+138,1829,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-01-08 08:17:35,SENT,
+139,1276,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-02-17 22:51:19,CONVERTED,134.54
+140,1645,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-04-10 15:29:55,SENT,289.99
+141,1843,JustMoney,DebtBusters,Application declined; referred for counselling,2025-01-02 22:15:38,Accepted,248.11
+142,1805,JustMoney,FASTA,Existing client seeking debt consolidation,2026-01-30 10:41:29,sent,
+143,496,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-06-15 21:59:20,Accepted,331.4
+144,1488,JustMoney,FASTA,Loan affordability failed; debt help required,2025-09-26 16:25:38,CONVERTED,136.64
+145,1863,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-03-12 17:35:26,CONTACTED,
+146,37,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-02-07 21:36:02,CONTACTED,
+147,1692,JustMoney,FASTA,Loan affordability failed; debt help required,2025-11-08 11:53:38,SENT,499.49
+148,1390,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-07-06 22:57:08,SENT,384.07
+149,174,JustMoney,DebtBusters,Customer requested financial education,2025-08-20 09:38:38,CONTACTED,
+150,1103,JustMoney,DebtBusters,Customer requested financial education,2025-03-18 15:06:44,Accepted,
+151,949,JustMoney,DebtBusters,Loan affordability failed; debt help required,2026-01-24 13:44:30,ACCEPTED,
+152,1351,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-01-15 09:05:01,SENT,120.15
+153,1408,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-05-30 19:25:49,CONTACTED,54.43
+154,814,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-02-23 08:51:59,DECLINED,218.78
+155,1023,FASTA,DebtBusters,Application declined; referred for counselling,2026-05-20 10:06:20,CONTACTED,453.23
+156,1052,JustMoney,FASTA,Customer requested financial education,2026-02-16 14:33:09,SENT,
+157,1621,JustMoney,DebtBusters,Existing client seeking debt consolidation,2026-02-17 22:34:03,CONTACTED,432.64
+158,1790,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-05-07 07:37:31,SENT,334.12
+159,1100,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-12-10 16:27:08,SENT,
+160,978,FASTA,DebtBusters,Customer requested financial education,2025-02-27 17:18:57,CONVERTED,
+161,1961,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-10-23 15:39:40,CONVERTED,164.51
+162,983,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-06-13 09:53:58,CONTACTED,153.13
+163,1543,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-01-26 11:42:41,ACCEPTED,
+164,1655,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-08-06 13:06:14,ACCEPTED,89.98
+165,233,FASTA,DebtBusters,Application declined; referred for counselling,2025-11-04 15:01:42,DECLINED,392.85
+166,273,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-01-16 16:07:42,CONVERTED,
+167,873,JustMoney,DebtBusters,Customer requested financial education,2026-02-03 11:09:58,Accepted,186.49
+168,415,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-06-27 14:01:59,CONVERTED,119.72
+169,314,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-07-26 19:08:14,SENT,426.5
+170,1736,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-11-11 09:46:04,CONVERTED,224.56
+171,778,JustMoney,FASTA,Loan affordability failed; debt help required,2025-01-10 16:22:05,Accepted,
+172,1981,FASTA,DebtBusters,Application declined; referred for counselling,2025-08-13 12:30:56,DECLINED,284.5
+173,1014,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-09-18 08:44:18,CONTACTED,354.24
+174,1001,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-03-10 21:03:55,Accepted,499.13
+175,1352,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-10-22 19:34:21,Accepted,
+176,1129,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-02-15 08:09:03,SENT,145.14
+177,1171,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-01-01 07:04:58,Accepted,392.35
+178,616,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-11-30 11:19:56,ACCEPTED,66.05
+179,1463,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-06-01 09:31:31,Accepted,
+180,702,FASTA,DebtBusters,Application declined; referred for counselling,2026-03-08 14:46:12,SENT,
+181,756,JustMoney,FASTA,Existing client seeking debt consolidation,2026-01-31 13:55:23,Accepted,494.15
+182,512,JustMoney,FASTA,Existing client seeking debt consolidation,2025-01-18 09:32:11,DECLINED,180.9
+183,1092,FASTA,DebtBusters,Application declined; referred for counselling,2026-05-26 08:35:39,ACCEPTED,
+184,1166,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-10-12 13:32:31,CONVERTED,338.43
+185,641,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-06-15 21:07:01,DECLINED,
+186,1326,JustMoney,FASTA,Existing client seeking debt consolidation,2025-05-06 10:28:21,sent,153.71
+187,339,FASTA,DebtBusters,Application declined; referred for counselling,2025-12-11 07:01:26,Accepted,252.98
+188,683,FASTA,DebtBusters,Application declined; referred for counselling,2025-11-30 10:28:03,DECLINED,
+189,54,FASTA,DebtBusters,Customer requested financial education,2026-03-08 07:21:55,SENT,364.04
+190,1920,FASTA,DebtBusters,Application declined; referred for counselling,2025-03-22 10:43:28,SENT,324.47
+191,267,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-07-26 12:19:24,SENT,84.3
+192,554,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-02-23 14:55:57,CONTACTED,169.15
+193,1477,JustMoney,FASTA,Loan affordability failed; debt help required,2026-01-12 11:57:46,DECLINED,
+194,1669,JustMoney,DebtBusters,Application declined; referred for counselling,2026-05-27 14:11:56,Accepted,
+195,226,JustMoney,DebtBusters,Customer requested financial education,2026-04-26 14:03:17,DECLINED,378.98
+196,1790,JustMoney,FASTA,Loan affordability failed; debt help required,2026-01-05 16:34:29,sent,116.35
+197,89,FASTA,DebtBusters,Application declined; referred for counselling,2025-07-29 17:51:35,CONVERTED,370.75
+198,1002,JustMoney,FASTA,Customer requested financial education,2025-11-02 11:55:51,Accepted,
+199,1183,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-03-02 22:16:20,SENT,65.43
+200,1617,JustMoney,FASTA,Loan affordability failed; debt help required,2025-12-23 09:50:16,sent,271.71
+201,1114,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-09-30 17:11:19,sent,92.65
+202,1594,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-12-07 15:48:52,DECLINED,
+203,1581,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-06-02 09:10:17,CONTACTED,281.04
+204,538,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-02-17 07:16:29,Accepted,
+205,1906,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-07-07 11:19:06,DECLINED,185.71
+206,1768,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-07-18 22:20:22,ACCEPTED,188.17
+207,1181,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-03-25 09:52:45,SENT,420.36
+208,968,JustMoney,DebtBusters,Existing client seeking debt consolidation,2026-01-01 13:26:51,Accepted,
+209,65,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-03-29 22:00:14,ACCEPTED,299.86
+210,153,JustMoney,FASTA,Loan affordability failed; debt help required,2025-01-19 20:49:22,Accepted,
+211,1990,FASTA,DebtBusters,Customer requested financial education,2025-10-25 15:04:06,SENT,64.15
+212,1263,FASTA,DebtBusters,Application declined; referred for counselling,2025-02-06 20:56:55,CONVERTED,437.94
+213,533,JustMoney,FASTA,Existing client seeking debt consolidation,2025-05-21 16:36:59,sent,
+214,283,JustMoney,DebtBusters,Customer requested financial education,2025-06-24 22:40:45,Accepted,
+215,1871,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-05-24 10:12:13,Accepted,488.92
+216,1227,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-03-05 22:16:52,sent,
+217,984,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-05-29 09:43:20,CONTACTED,402.36
+218,846,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-12-19 07:07:43,ACCEPTED,118.92
+219,85,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-02-26 09:38:24,ACCEPTED,136.04
+220,1061,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-12-29 12:47:04,CONTACTED,314.34
+221,105,JustMoney,FASTA,Loan affordability failed; debt help required,2026-05-19 19:13:20,sent,
+222,980,FASTA,DebtBusters,Application declined; referred for counselling,2025-11-13 21:25:57,sent,403.57
+223,360,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-01-05 10:26:14,ACCEPTED,
+224,1103,JustMoney,FASTA,Customer requested financial education,2025-12-04 13:28:53,ACCEPTED,461.68
+225,629,JustMoney,FASTA,Loan affordability failed; debt help required,2026-03-08 17:46:53,CONTACTED,441.52
+226,150,FASTA,DebtBusters,Customer requested financial education,2025-02-04 21:05:00,sent,445.77
+227,1877,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-06-05 19:28:43,Accepted,384.56
+228,1077,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-03-27 10:55:48,Accepted,
+229,975,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-09-23 15:25:55,sent,101.23
+230,281,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-05-02 19:21:40,CONTACTED,397.52
+231,849,JustMoney,FASTA,Loan affordability failed; debt help required,2025-04-16 18:23:37,SENT,391.58
+232,1788,FASTA,DebtBusters,Customer requested financial education,2026-05-05 19:32:55,Accepted,277.97
+233,1839,FASTA,DebtBusters,Customer requested financial education,2025-11-30 12:29:23,Accepted,117.2
+234,2,FASTA,DebtBusters,Customer requested financial education,2026-05-02 07:26:25,CONTACTED,169.61
+235,620,FASTA,DebtBusters,Application declined; referred for counselling,2025-08-10 17:08:54,DECLINED,
+236,1823,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-04-30 22:58:17,Accepted,283.81
+237,198,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-04-03 10:00:13,DECLINED,194.91
+238,1139,FASTA,DebtBusters,Customer requested financial education,2026-03-05 10:35:40,CONTACTED,
+239,1864,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-03-16 08:55:31,ACCEPTED,290.68
+240,1590,JustMoney,DebtBusters,Loan affordability failed; debt help required,2026-05-06 07:04:38,SENT,
+241,265,FASTA,DebtBusters,Customer requested financial education,2025-05-31 12:19:32,CONTACTED,
+242,58,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-09-14 18:53:03,CONTACTED,
+243,985,JustMoney,DebtBusters,Customer requested financial education,2026-06-16 07:13:43,CONTACTED,335.0
+244,635,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-07-01 11:14:14,DECLINED,281.9
+245,1572,JustMoney,DebtBusters,Customer requested financial education,2025-09-17 08:00:29,CONVERTED,
+246,1551,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-01-11 19:48:05,sent,428.16
+247,1974,JustMoney,FASTA,Loan affordability failed; debt help required,2025-12-01 19:31:18,ACCEPTED,119.15
+248,216,JustMoney,FASTA,Existing client seeking debt consolidation,2025-03-27 09:57:53,CONTACTED,166.41
+249,380,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-05-26 14:46:57,CONVERTED,187.18
+250,1744,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-01-10 17:16:49,SENT,93.04
+251,1981,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-09-26 13:34:47,SENT,423.85
+252,712,JustMoney,DebtBusters,Application declined; referred for counselling,2025-10-26 13:38:33,SENT,170.33
+253,74,JustMoney,FASTA,Customer requested financial education,2026-05-16 11:05:55,DECLINED,163.61
+254,1236,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-10-08 20:45:03,CONVERTED,
+255,612,JustMoney,FASTA,Customer requested financial education,2025-05-10 11:29:00,CONTACTED,
+256,675,FASTA,DebtBusters,Application declined; referred for counselling,2025-02-23 16:41:00,CONTACTED,355.72
+257,48,FASTA,DebtBusters,Application declined; referred for counselling,2025-01-16 21:34:44,ACCEPTED,347.62
+258,1897,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-02-18 18:46:53,Accepted,
+259,1808,FASTA,DebtBusters,Customer requested financial education,2025-03-25 12:45:39,Accepted,226.51
+260,561,JustMoney,DebtBusters,Customer requested financial education,2025-09-01 13:42:47,ACCEPTED,
+261,461,JustMoney,FASTA,Existing client seeking debt consolidation,2025-12-30 09:10:44,ACCEPTED,252.52
+262,747,FASTA,DebtBusters,Application declined; referred for counselling,2026-06-03 12:49:50,ACCEPTED,166.08
+263,220,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-03-08 09:27:06,Accepted,166.65
+264,229,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-03-12 22:49:37,DECLINED,73.27
+265,1451,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-05-14 09:32:47,sent,
+266,1200,FASTA,DebtBusters,Customer requested financial education,2025-11-15 22:14:19,DECLINED,426.76
+267,39,FASTA,DebtBusters,Customer requested financial education,2026-03-06 09:50:04,ACCEPTED,241.94
+268,868,FASTA,DebtBusters,Customer requested financial education,2026-03-01 19:50:53,Accepted,415.51
+269,1878,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-03-31 12:35:42,DECLINED,
+270,1320,JustMoney,FASTA,Loan affordability failed; debt help required,2026-03-31 17:15:16,ACCEPTED,341.52
+271,578,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-09-15 22:34:18,DECLINED,105.78
+272,1558,FASTA,DebtBusters,Customer requested financial education,2025-08-13 18:13:55,DECLINED,475.93
+273,1237,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-01-27 13:52:15,CONVERTED,173.44
+274,222,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-08-30 09:11:57,sent,114.59
+275,369,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-08-18 08:03:43,DECLINED,
+276,127,JustMoney,FASTA,Customer requested financial education,2025-11-05 16:30:44,Accepted,230.57
+277,181,FASTA,DebtBusters,Customer requested financial education,2026-06-15 07:19:08,SENT,421.2
+278,1834,JustMoney,DebtBusters,Application declined; referred for counselling,2025-01-20 15:06:31,CONTACTED,
+279,1230,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2026-02-25 20:29:55,sent,275.26
+280,837,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-02-28 07:55:09,ACCEPTED,260.47
+281,1012,FASTA,DebtBusters,Customer requested financial education,2026-02-14 09:41:55,CONTACTED,485.27
+282,53,FASTA,DebtBusters,Application declined; referred for counselling,2025-08-17 12:13:21,SENT,
+283,652,FASTA,DebtBusters,Customer requested financial education,2025-10-28 21:15:39,ACCEPTED,251.41
+284,707,FASTA,DebtBusters,Application declined; referred for counselling,2025-08-14 13:37:18,CONVERTED,
+285,1711,JustMoney,FASTA,Customer requested financial education,2025-06-15 07:09:42,Accepted,364.85
+286,502,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-03-29 18:07:54,Accepted,
+287,236,FASTA,DebtBusters,Customer requested financial education,2025-05-02 21:06:58,sent,
+288,367,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-04-03 07:17:06,CONTACTED,146.77
+289,1017,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-01-08 19:50:38,DECLINED,
+290,1466,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-12-28 14:13:58,CONTACTED,242.26
+291,1759,FASTA,DebtBusters,Application declined; referred for counselling,2025-10-07 10:44:52,sent,312.71
+292,224,JustMoney,DebtBusters,Existing client seeking debt consolidation,2026-02-28 18:31:45,ACCEPTED,150.55
+293,749,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-11-06 19:09:51,DECLINED,176.86
+294,1709,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-05-27 16:38:30,Accepted,157.6
+295,1160,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-12-07 08:13:28,ACCEPTED,170.04
+296,1236,JustMoney,FASTA,Customer requested financial education,2026-06-08 21:42:19,ACCEPTED,481.89
+297,749,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-12-28 07:37:11,CONVERTED,
+298,563,FASTA,DebtBusters,Application declined; referred for counselling,2026-03-03 15:17:58,ACCEPTED,173.84
+299,44,JustMoney,FASTA,Loan affordability failed; debt help required,2025-07-25 19:09:29,sent,82.48
+300,1735,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-05-09 20:28:06,SENT,82.98
+301,369,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-05-26 11:29:42,Accepted,274.42
+302,1177,JustMoney,FASTA,Customer requested financial education,2025-05-21 08:05:34,sent,451.56
+303,849,JustMoney,FASTA,Customer requested financial education,2026-03-25 17:03:46,SENT,441.28
+304,333,JustMoney,FASTA,Customer requested financial education,2025-10-07 09:42:42,DECLINED,54.86
+305,413,FASTA,DebtBusters,Application declined; referred for counselling,2025-07-11 20:27:48,SENT,92.53
+306,1314,JustMoney,FASTA,Existing client seeking debt consolidation,2026-05-04 17:57:04,sent,
+307,261,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-02-24 07:39:48,CONTACTED,422.51
+308,1316,JustMoney,DebtBusters,Application declined; referred for counselling,2025-05-13 18:12:18,CONTACTED,
+309,910,JustMoney,FASTA,Application declined; referred for counselling,2025-08-07 19:12:11,sent,393.33
+310,1172,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-03-07 12:50:14,SENT,
+311,1356,JustMoney,FASTA,Application declined; referred for counselling,2026-05-27 15:33:14,CONVERTED,263.07
+312,82,JustMoney,DebtBusters,Application declined; referred for counselling,2025-01-08 19:33:36,DECLINED,252.16
+313,1526,FASTA,DebtBusters,Application declined; referred for counselling,2026-04-01 07:17:01,Accepted,111.89
+314,555,FASTA,DebtBusters,Customer requested financial education,2026-05-31 13:38:06,sent,
+315,1940,JustMoney,FASTA,Existing client seeking debt consolidation,2026-05-04 08:07:05,CONVERTED,150.92
+316,1416,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-12-03 16:35:01,DECLINED,248.17
+317,1274,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-12-01 21:11:11,CONTACTED,185.28
+318,751,JustMoney,FASTA,Loan affordability failed; debt help required,2026-01-05 10:28:38,CONTACTED,289.38
+319,1203,JustMoney,FASTA,Existing client seeking debt consolidation,2025-08-12 09:54:01,sent,196.42
+320,306,JustMoney,DebtBusters,Application declined; referred for counselling,2026-05-14 10:37:57,CONTACTED,206.1
+321,1216,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-07-07 20:18:47,CONVERTED,91.19
+322,715,FASTA,DebtBusters,Customer requested financial education,2026-03-19 08:47:53,SENT,123.5
+323,766,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-11-13 20:08:46,CONVERTED,473.15
+324,1111,JustMoney,FASTA,Loan affordability failed; debt help required,2025-02-08 07:17:17,DECLINED,
+325,1135,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-09-18 09:22:34,sent,396.02
+326,558,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-01-14 22:14:50,ACCEPTED,73.54
+327,71,FASTA,DebtBusters,Customer requested financial education,2025-04-16 10:59:46,DECLINED,52.55
+328,1901,FASTA,DebtBusters,Customer requested financial education,2025-10-08 10:13:05,DECLINED,140.07
+329,1953,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-04-12 14:40:22,CONTACTED,106.59
+330,1295,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-02-21 09:47:26,CONTACTED,
+331,1200,FASTA,DebtBusters,Application declined; referred for counselling,2025-12-17 17:10:01,DECLINED,303.82
+332,867,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-03-23 16:24:02,CONVERTED,
+333,1186,JustMoney,DebtBusters,Application declined; referred for counselling,2025-01-21 22:35:57,ACCEPTED,429.69
+334,1958,JustMoney,DebtBusters,Loan affordability failed; debt help required,2026-05-20 19:49:13,ACCEPTED,158.15
+335,1355,JustMoney,FASTA,Application declined; referred for counselling,2025-09-05 09:47:42,ACCEPTED,400.85
+336,154,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-05-04 22:10:18,sent,346.02
+337,964,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-05-11 17:35:39,sent,
+338,590,JustMoney,FASTA,Customer requested financial education,2025-11-27 20:35:41,ACCEPTED,85.61
+339,777,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2026-03-08 13:34:27,CONTACTED,329.04
+340,469,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-02-24 08:59:34,SENT,
+341,1636,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-02-26 17:42:18,sent,
+342,69,FASTA,DebtBusters,Application declined; referred for counselling,2025-06-20 18:19:38,CONTACTED,61.6
+343,245,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-12-16 11:35:01,CONTACTED,254.23
+344,729,JustMoney,FASTA,Loan affordability failed; debt help required,2026-04-20 14:06:39,Accepted,433.55
+345,1275,JustMoney,DebtBusters,Application declined; referred for counselling,2025-01-12 21:19:23,SENT,250.91
+346,810,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-04-19 12:23:29,ACCEPTED,89.06
+347,1053,JustMoney,FASTA,Existing client seeking debt consolidation,2026-02-11 09:39:59,SENT,
+348,566,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-09-10 21:05:23,CONTACTED,
+349,712,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-03-15 09:04:56,CONTACTED,
+350,31,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2026-05-21 21:14:28,ACCEPTED,
+351,1342,JustMoney,FASTA,Customer requested financial education,2025-07-22 09:26:25,sent,
+352,1291,FASTA,DebtBusters,Customer requested financial education,2025-06-22 15:24:49,Accepted,119.19
+353,974,FASTA,DebtBusters,Customer requested financial education,2025-04-12 07:59:21,ACCEPTED,469.53
+354,1976,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-02-04 10:18:16,CONTACTED,124.36
+355,965,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-02-19 11:57:46,SENT,368.52
+356,428,FASTA,DebtBusters,Application declined; referred for counselling,2025-09-02 11:36:30,ACCEPTED,100.43
+357,1073,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-11-22 10:34:51,ACCEPTED,132.35
+358,903,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-06-07 07:40:52,Accepted,428.12
+359,876,JustMoney,FASTA,Customer requested financial education,2025-02-24 12:56:05,CONTACTED,
+360,876,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-07-12 20:23:41,CONVERTED,440.3
+361,842,JustMoney,FASTA,Existing client seeking debt consolidation,2026-02-19 20:01:05,ACCEPTED,
+362,191,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-05-30 14:39:13,Accepted,
+363,1930,FASTA,DebtBusters,Application declined; referred for counselling,2025-06-27 13:59:04,SENT,318.42
+364,874,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-04-02 15:38:12,CONTACTED,
+365,28,FASTA,DebtBusters,Customer requested financial education,2026-04-20 22:27:14,ACCEPTED,150.46
+366,229,JustMoney,DebtBusters,Customer requested financial education,2025-11-20 07:16:35,sent,341.49
+367,1151,FASTA,DebtBusters,Customer requested financial education,2026-04-03 18:59:25,sent,492.1
+368,343,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-07-19 16:23:27,ACCEPTED,459.85
+369,1329,FASTA,DebtBusters,Application declined; referred for counselling,2025-01-15 09:47:37,CONVERTED,449.52
+370,1407,JustMoney,DebtBusters,Application declined; referred for counselling,2025-02-23 22:49:10,ACCEPTED,428.66
+371,1562,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-02-11 21:52:14,DECLINED,449.56
+372,573,FASTA,DebtBusters,Application declined; referred for counselling,2025-08-18 22:45:23,sent,387.02
+373,815,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-04-26 12:44:29,CONTACTED,
+374,1809,JustMoney,FASTA,Application declined; referred for counselling,2026-04-11 22:56:59,SENT,334.55
+375,613,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-05-30 16:20:11,SENT,343.33
+376,532,FASTA,DebtBusters,Application declined; referred for counselling,2025-02-22 21:00:58,DECLINED,325.4
+377,600,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-10-19 09:46:15,Accepted,95.06
+378,1851,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-04-26 11:57:21,sent,
+379,1792,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-05-25 20:08:14,SENT,78.58
+380,1620,JustMoney,FASTA,Loan affordability failed; debt help required,2025-11-30 18:55:40,SENT,
+381,1163,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-01-08 18:56:39,sent,372.89
+382,86,FASTA,DebtBusters,Application declined; referred for counselling,2025-11-21 12:01:29,sent,92.68
+383,1883,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-01-27 10:58:46,CONVERTED,123.44
+384,259,JustMoney,FASTA,Loan affordability failed; debt help required,2025-12-08 21:11:20,sent,284.31
+385,1757,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-03-01 08:34:35,ACCEPTED,114.7
+386,469,FASTA,DebtBusters,Customer requested financial education,2025-12-27 12:05:48,Accepted,195.7
+387,1862,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-10-08 19:27:34,SENT,
+388,961,JustMoney,DebtBusters,Application declined; referred for counselling,2025-10-03 17:08:00,Accepted,372.52
+389,115,JustMoney,DebtBusters,Application declined; referred for counselling,2025-09-12 20:26:07,sent,
+390,1764,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-08-07 20:19:42,ACCEPTED,388.42
+391,1009,JustMoney,FASTA,Loan affordability failed; debt help required,2025-02-20 18:08:26,Accepted,
+392,1505,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-05-24 12:20:16,ACCEPTED,425.2
+393,1697,JustMoney,FASTA,Existing client seeking debt consolidation,2025-01-22 13:13:29,CONVERTED,101.02
+394,58,JustMoney,FASTA,Existing client seeking debt consolidation,2025-12-28 07:08:50,SENT,152.94
+395,1348,FASTA,DebtBusters,Customer requested financial education,2026-03-14 19:30:15,Accepted,318.9
+396,966,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-10-16 18:10:19,sent,147.33
+397,1019,JustMoney,FASTA,Existing client seeking debt consolidation,2025-09-08 20:00:16,ACCEPTED,84.35
+398,1957,JustMoney,DebtBusters,Customer requested financial education,2025-12-19 18:18:37,sent,
+399,384,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-07-22 08:42:49,Accepted,
+400,648,FASTA,DebtBusters,Application declined; referred for counselling,2025-01-20 10:42:07,ACCEPTED,207.96
+401,1549,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-02-11 17:11:13,ACCEPTED,304.42
+402,1176,FASTA,DebtBusters,Customer requested financial education,2025-12-27 15:03:54,DECLINED,237.42
+403,1299,JustMoney,FASTA,Loan affordability failed; debt help required,2025-11-06 13:51:33,Accepted,
+404,1432,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2026-03-23 22:50:04,DECLINED,109.21
+405,752,JustMoney,FASTA,Loan affordability failed; debt help required,2025-05-30 21:16:50,ACCEPTED,
+406,1329,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-06-02 18:40:13,SENT,
+407,1236,JustMoney,FASTA,Application declined; referred for counselling,2026-02-20 07:38:59,Accepted,306.68
+408,814,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-07-21 11:47:20,DECLINED,
+409,1205,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-05-15 17:49:49,DECLINED,
+410,439,JustMoney,DebtBusters,Customer requested financial education,2025-10-13 08:46:22,sent,298.52
+411,753,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-03-02 07:10:03,Accepted,
+412,873,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-12-04 08:59:57,CONVERTED,
+413,696,FASTA,DebtBusters,Application declined; referred for counselling,2025-04-13 21:38:39,ACCEPTED,
+414,1392,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-05-21 12:23:54,sent,174.68
+415,1972,FASTA,DebtBusters,Customer requested financial education,2025-11-12 18:10:33,DECLINED,245.19
+416,681,FASTA,DebtBusters,Customer requested financial education,2025-12-18 10:45:06,CONVERTED,317.09
+417,1829,FASTA,DebtBusters,Customer requested financial education,2026-02-10 19:25:39,Accepted,106.3
+418,1344,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-05-27 22:53:22,Accepted,136.06
+419,1878,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-03-07 08:57:17,CONVERTED,231.89
+420,28,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-06-30 10:35:38,SENT,
+421,1721,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-05-03 19:39:43,DECLINED,
+422,1770,JustMoney,FASTA,Customer requested financial education,2025-06-15 08:59:01,sent,142.25
+423,368,FASTA,DebtBusters,Customer requested financial education,2025-12-16 17:47:02,DECLINED,72.49
+424,1364,JustMoney,DebtBusters,Customer requested financial education,2026-02-12 08:07:55,SENT,426.33
+425,311,FASTA,DebtBusters,Customer requested financial education,2025-06-07 14:43:48,DECLINED,
+426,1604,JustMoney,FASTA,Loan affordability failed; debt help required,2025-11-17 18:25:01,ACCEPTED,
+427,1122,FASTA,DebtBusters,Application declined; referred for counselling,2025-08-23 12:33:48,CONVERTED,
+428,1116,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-07-11 20:41:28,CONTACTED,
+429,521,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-09-14 09:31:34,sent,
+430,610,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-02-12 16:16:35,Accepted,184.74
+431,61,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2026-02-20 19:47:06,sent,407.12
+432,1646,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-06-11 22:03:08,sent,309.95
+433,1965,FASTA,DebtBusters,Customer requested financial education,2025-01-20 08:10:48,CONTACTED,178.98
+434,1896,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-12-11 08:11:34,SENT,139.92
+435,84,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-03-19 22:51:32,DECLINED,59.17
+436,91,FASTA,DebtBusters,Customer requested financial education,2025-10-12 19:18:56,sent,353.65
+437,702,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-03-06 13:40:40,CONTACTED,279.02
+438,1167,JustMoney,DebtBusters,Customer requested financial education,2026-06-16 14:42:18,DECLINED,
+439,995,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-02-13 13:58:18,CONVERTED,408.26
+440,1524,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-02-25 15:41:58,Accepted,459.71
+441,1680,FASTA,DebtBusters,Application declined; referred for counselling,2026-01-10 22:19:13,CONTACTED,118.67
+442,621,JustMoney,FASTA,Loan affordability failed; debt help required,2026-06-16 10:47:01,Accepted,434.92
+443,846,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-05-13 07:11:54,DECLINED,115.68
+444,1913,FASTA,DebtBusters,Customer requested financial education,2025-10-26 19:09:58,ACCEPTED,294.36
+445,1743,JustMoney,FASTA,Existing client seeking debt consolidation,2025-05-24 18:04:23,sent,294.98
+446,695,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-01-27 08:51:56,ACCEPTED,343.48
+447,577,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-03-31 11:56:36,CONVERTED,
+448,574,JustMoney,DebtBusters,Customer requested financial education,2025-11-08 07:17:17,CONTACTED,178.96
+449,945,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-10-16 12:01:28,sent,52.74
+450,1439,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-11-26 09:16:14,DECLINED,
+451,1164,JustMoney,FASTA,Existing client seeking debt consolidation,2025-08-13 08:20:35,CONTACTED,319.63
+452,1846,JustMoney,FASTA,Customer requested financial education,2026-02-05 10:23:52,CONTACTED,
+453,1757,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-05-02 18:46:48,SENT,
+454,1196,JustMoney,FASTA,Existing client seeking debt consolidation,2025-07-05 10:54:36,CONTACTED,355.13
+455,1697,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-09-16 21:03:48,SENT,330.32
+456,116,JustMoney,FASTA,Loan affordability failed; debt help required,2025-01-21 18:03:36,ACCEPTED,
+457,1311,JustMoney,FASTA,Existing client seeking debt consolidation,2025-06-13 09:39:36,CONTACTED,
+458,1811,FASTA,DebtBusters,Customer requested financial education,2025-04-17 16:27:08,ACCEPTED,473.11
+459,1081,FASTA,DebtBusters,Customer requested financial education,2026-02-24 07:36:38,sent,253.32
+460,1150,JustMoney,FASTA,Application declined; referred for counselling,2025-03-03 10:55:26,SENT,489.14
+461,1884,FASTA,DebtBusters,Customer requested financial education,2026-05-31 08:28:07,CONTACTED,324.19
+462,839,FASTA,DebtBusters,Application declined; referred for counselling,2025-09-18 22:52:54,SENT,151.2
+463,10,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-01-26 09:32:09,Accepted,180.51
+464,863,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-01-14 19:02:15,CONTACTED,420.11
+465,67,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-06-13 09:24:00,SENT,398.33
+466,1663,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-09-23 16:27:49,CONTACTED,293.34
+467,140,FASTA,DebtBusters,Customer requested financial education,2025-04-18 13:34:24,CONTACTED,206.88
+468,1354,JustMoney,FASTA,Application declined; referred for counselling,2025-04-12 22:39:47,Accepted,195.32
+469,1715,JustMoney,FASTA,Customer requested financial education,2025-04-05 17:49:09,CONTACTED,469.68
+470,1462,FASTA,DebtBusters,Application declined; referred for counselling,2025-06-16 20:12:21,sent,183.99
+471,681,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-03-26 08:07:46,sent,310.72
+472,1694,JustMoney,FASTA,Application declined; referred for counselling,2025-12-28 21:43:17,Accepted,449.53
+473,187,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-10-15 19:10:20,SENT,343.57
+474,1096,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-02-07 21:52:18,ACCEPTED,478.08
+475,1756,JustMoney,FASTA,Customer requested financial education,2025-10-01 22:28:18,sent,
+476,1227,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-01-10 14:10:24,CONVERTED,
+477,599,JustMoney,FASTA,Existing client seeking debt consolidation,2026-02-15 18:45:57,CONTACTED,
+478,1880,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-02-07 17:46:10,SENT,92.07
+479,1326,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-08-21 19:27:41,Accepted,445.56
+480,1480,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-01-22 19:54:51,SENT,
+481,111,FASTA,DebtBusters,Application declined; referred for counselling,2025-01-16 14:01:42,sent,
+482,466,FASTA,DebtBusters,Application declined; referred for counselling,2026-06-13 17:21:41,DECLINED,
+483,1422,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-03-07 08:48:53,sent,
+484,1330,JustMoney,DebtBusters,Application declined; referred for counselling,2025-09-29 19:31:06,CONTACTED,328.19
+485,114,JustMoney,FASTA,Loan affordability failed; debt help required,2025-05-15 16:54:34,ACCEPTED,292.09
+486,690,JustMoney,DebtBusters,Customer requested financial education,2026-06-05 19:40:36,Accepted,266.54
+487,580,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-11-23 12:48:37,ACCEPTED,325.96
+488,1476,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-08-18 13:01:54,Accepted,118.1
+489,1720,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-11-12 19:10:13,CONVERTED,222.7
+490,1081,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-03-15 22:44:53,DECLINED,
+491,94,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-05-28 13:03:49,CONVERTED,295.89
+492,1382,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-04-20 12:51:03,SENT,127.7
+493,953,FASTA,DebtBusters,Customer requested financial education,2026-01-23 19:22:50,sent,328.82
+494,31,FASTA,DebtBusters,Application declined; referred for counselling,2026-06-03 14:15:25,CONVERTED,126.77
+495,396,FASTA,DebtBusters,Customer requested financial education,2026-05-15 22:26:46,Accepted,54.69
+496,1795,JustMoney,DebtBusters,Customer requested financial education,2025-04-13 10:25:10,CONVERTED,52.47
+497,1310,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-10-22 09:50:11,CONTACTED,
+498,391,JustMoney,DebtBusters,Customer requested financial education,2025-10-02 07:23:24,DECLINED,301.93
+499,7,JustMoney,FASTA,Existing client seeking debt consolidation,2025-05-04 22:13:52,CONTACTED,
+500,1382,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2026-04-06 13:23:50,DECLINED,288.96
+501,674,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-06-03 11:56:59,DECLINED,
+502,1953,FASTA,DebtBusters,Application declined; referred for counselling,2025-10-08 13:00:43,DECLINED,232.58
+503,688,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-04-25 19:20:46,Accepted,
+504,324,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-06-05 14:34:38,CONTACTED,409.95
+505,1305,JustMoney,FASTA,Customer requested financial education,2025-12-27 12:34:56,DECLINED,62.36
+506,474,FASTA,DebtBusters,Customer requested financial education,2025-04-20 17:39:57,Accepted,
+507,1423,JustMoney,FASTA,Loan affordability failed; debt help required,2025-10-10 10:01:41,Accepted,470.34
+508,136,FASTA,DebtBusters,Application declined; referred for counselling,2026-01-23 22:15:25,SENT,176.86
+509,356,FASTA,DebtBusters,Customer requested financial education,2025-01-03 11:53:13,SENT,329.4
+510,47,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-02-26 15:56:44,sent,
+511,1921,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-08-28 15:01:16,CONVERTED,305.44
+512,1243,FASTA,DebtBusters,Application declined; referred for counselling,2025-12-27 12:20:03,Accepted,
+513,1703,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-03-29 10:31:59,CONVERTED,
+514,44,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-12-30 18:35:40,CONVERTED,189.14
+515,1027,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-06-06 17:57:19,CONVERTED,66.65
+516,350,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-10-21 07:32:00,SENT,
+517,1147,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-05-18 09:56:26,Accepted,
+518,124,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-06-07 20:59:40,ACCEPTED,
+519,1962,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-12-29 13:25:08,ACCEPTED,493.79
+520,1202,JustMoney,DebtBusters,Customer requested financial education,2025-07-04 15:08:33,CONTACTED,
+521,937,FASTA,DebtBusters,Application declined; referred for counselling,2026-01-16 16:07:00,DECLINED,435.89
+522,631,JustMoney,DebtBusters,Application declined; referred for counselling,2025-10-19 10:16:41,CONVERTED,407.14
+523,1189,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-05-25 14:56:00,SENT,404.35
+524,55,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-09-25 19:05:10,CONVERTED,231.54
+525,1001,JustMoney,DebtBusters,Loan affordability failed; debt help required,2025-08-03 14:40:51,SENT,
+526,323,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-03-14 15:40:24,ACCEPTED,
+527,1863,FASTA,DebtBusters,Customer requested financial education,2026-02-14 12:43:56,CONTACTED,182.99
+528,1231,JustMoney,DebtBusters,Application declined; referred for counselling,2025-12-31 19:31:14,sent,64.22
+529,1301,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-09-17 20:00:19,Accepted,430.26
+530,1340,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-02-08 10:11:20,sent,411.82
+531,1387,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-03-05 09:27:50,DECLINED,495.07
+532,1486,FASTA,DebtBusters,Application declined; referred for counselling,2026-04-28 09:23:35,Accepted,365.5
+533,1909,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-11-07 19:44:01,DECLINED,
+534,71,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-05-04 20:49:49,SENT,265.32
+535,1696,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-05-09 10:18:15,CONVERTED,
+536,121,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-03-07 18:19:07,CONVERTED,
+537,1177,JustMoney,DebtBusters,Existing client seeking debt consolidation,2026-06-05 14:07:28,sent,157.44
+538,920,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-12-02 08:01:07,CONVERTED,
+539,1584,JustMoney,FASTA,Customer requested financial education,2026-03-30 10:45:50,Accepted,171.09
+540,1337,JustMoney,FASTA,Income too low for loan; referred to savings product,2026-05-13 08:43:01,ACCEPTED,64.5
+541,405,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-03-07 20:27:34,CONVERTED,349.6
+542,813,JustMoney,FASTA,Application declined; referred for counselling,2025-03-08 20:17:35,ACCEPTED,424.87
+543,1938,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-06-08 16:42:09,Accepted,97.99
+544,84,JustMoney,DebtBusters,Loan affordability failed; debt help required,2026-02-08 09:17:25,sent,
+545,919,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-03-01 19:25:11,CONTACTED,
+546,1654,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-09-13 15:40:38,ACCEPTED,392.64
+547,1107,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-03-13 21:41:24,sent,399.97
+548,304,FASTA,DebtBusters,Application declined; referred for counselling,2025-10-23 07:13:36,ACCEPTED,196.16
+549,561,FASTA,DebtBusters,Application declined; referred for counselling,2025-01-04 22:21:41,sent,
+550,604,FASTA,DebtBusters,Customer requested financial education,2025-05-08 15:25:08,SENT,333.93
+551,558,FASTA,DebtBusters,Application declined; referred for counselling,2026-01-03 11:45:54,SENT,58.76
+552,953,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-01-27 16:37:02,CONVERTED,284.44
+553,69,FASTA,DebtBusters,Customer requested financial education,2025-12-31 11:39:41,DECLINED,303.99
+554,90,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-03-18 19:20:47,ACCEPTED,384.11
+555,1828,JustMoney,FASTA,Application declined; referred for counselling,2026-06-03 21:50:57,CONVERTED,
+556,1885,JustMoney,DebtBusters,Customer requested financial education,2025-11-08 19:48:12,Accepted,86.16
+557,1323,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-02-28 17:30:30,SENT,476.98
+558,1761,JustMoney,FASTA,Existing client seeking debt consolidation,2026-02-02 18:55:41,SENT,190.87
+559,262,JustMoney,DebtBusters,Application declined; referred for counselling,2025-06-05 18:18:27,Accepted,
+560,1205,JustMoney,DebtBusters,Loan affordability failed; debt help required,2026-03-13 12:56:21,sent,135.24
+561,345,JustMoney,FASTA,Application declined; referred for counselling,2025-08-16 22:55:36,SENT,
+562,423,FASTA,DebtBusters,Customer requested financial education,2025-01-12 13:03:39,DECLINED,
+563,1283,JustMoney,DebtBusters,Customer requested financial education,2025-09-18 16:58:20,SENT,112.66
+564,521,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-09-05 14:25:33,Accepted,449.7
+565,741,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-12-09 07:51:02,DECLINED,128.88
+566,1224,JustMoney,FASTA,Customer requested financial education,2025-07-30 07:29:52,Accepted,59.42
+567,1549,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2026-01-07 09:28:11,Accepted,
+568,1543,JustMoney,FASTA,Loan affordability failed; debt help required,2026-04-17 13:16:40,Accepted,344.16
+569,727,JustMoney,DebtBusters,Application declined; referred for counselling,2025-06-08 08:39:14,sent,135.38
+570,759,JustMoney,DebtBusters,Existing client seeking debt consolidation,2026-03-27 11:08:27,ACCEPTED,
+571,272,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-02-18 10:07:02,Accepted,290.95
+572,281,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-11-16 17:11:54,ACCEPTED,212.32
+573,1604,FASTA,DebtBusters,Loan affordability failed; debt help required,2026-01-09 15:59:36,CONVERTED,404.82
+574,1036,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-02-12 08:57:47,sent,245.17
+575,1624,FASTA,DebtBusters,Customer requested financial education,2026-06-09 21:22:43,CONVERTED,438.1
+576,1141,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-05-12 12:12:52,CONTACTED,454.76
+577,1406,JustMoney,FASTA,Customer requested financial education,2025-11-03 20:13:52,SENT,60.21
+578,1790,JustMoney,FASTA,Income too low for loan; referred to savings product,2025-05-12 10:10:38,Accepted,
+579,1025,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-06-02 07:49:02,sent,
+580,1728,FASTA,DebtBusters,Application declined; referred for counselling,2026-01-20 09:56:25,DECLINED,378.39
+581,617,JustMoney,DebtBusters,Application declined; referred for counselling,2025-04-08 07:48:12,sent,
+582,1218,JustMoney,FASTA,Customer requested financial education,2026-05-17 09:04:01,DECLINED,476.37
+583,330,FASTA,DebtBusters,Application declined; referred for counselling,2025-12-12 08:28:46,SENT,
+584,830,FASTA,DebtBusters,Existing client seeking debt consolidation,2025-08-30 17:41:33,DECLINED,260.85
+585,335,FASTA,DebtBusters,Existing client seeking debt consolidation,2026-04-19 07:53:23,CONTACTED,483.18
+586,262,JustMoney,DebtBusters,Income too low for loan; referred to savings product,2025-03-27 09:56:14,SENT,144.49
+587,1669,FASTA,DebtBusters,Customer requested financial education,2025-06-25 16:05:18,Accepted,
+588,533,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-11-12 16:37:28,CONTACTED,115.85
+589,1931,FASTA,DebtBusters,Loan affordability failed; debt help required,2025-09-18 11:17:40,ACCEPTED,150.48
+590,222,FASTA,DebtBusters,Income too low for loan; referred to savings product,2025-08-22 12:06:23,DECLINED,
+591,842,JustMoney,DebtBusters,Customer requested financial education,2025-03-08 13:56:22,Accepted,
+592,458,FASTA,DebtBusters,Customer requested financial education,2026-03-19 18:16:58,DECLINED,112.19
+593,1030,JustMoney,FASTA,Customer requested financial education,2025-06-01 16:47:41,CONTACTED,441.34
+594,1907,JustMoney,FASTA,Customer requested financial education,2025-06-06 20:23:08,CONVERTED,196.3
+595,554,JustMoney,DebtBusters,Existing client seeking debt consolidation,2025-12-04 10:55:48,CONTACTED,434.78
+596,565,FASTA,DebtBusters,Application declined; referred for counselling,2026-06-08 22:00:37,sent,
+597,644,JustMoney,DebtBusters,Customer requested financial education,2026-05-20 19:12:20,CONTACTED,449.22
+598,1796,JustMoney,FASTA,Application declined; referred for counselling,2025-03-19 21:19:02,sent,413.26
+599,1077,FASTA,DebtBusters,Income too low for loan; referred to savings product,2026-04-28 20:38:13,CONVERTED,391.95
+600,145,FASTA,DebtBusters,Application declined; referred for counselling,2026-06-10 07:36:34,DECLINED,64.75

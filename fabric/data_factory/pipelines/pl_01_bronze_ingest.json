@@ -1,0 +1,229 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/sdks/2023-12-01/MicrosoftFabric.Pipeline.schema.json",
+  "name": "pl_01_fasta_bronze_ingest",
+  "objectType": "Pipeline",
+  "description": "FASTA FinTech — Bronze ingestion pipeline. Copies raw CSV/JSON files from ADLS Gen2 source into Fabric Lakehouse Bronze layer. Validates schema, logs manifest, triggers Silver cleansing pipeline.",
+  "properties": {
+    "parameters": {
+      "source_container": {
+        "type": "string",
+        "defaultValue": "raw-landing"
+      },
+      "source_folder": {
+        "type": "string",
+        "defaultValue": "fasta/daily"
+      },
+      "lakehouse_name": {
+        "type": "string",
+        "defaultValue": "FastaLakehouse"
+      },
+      "bronze_schema": {
+        "type": "string",
+        "defaultValue": "bronze"
+      },
+      "ingestion_date": {
+        "type": "string",
+        "defaultValue": "@formatDateTime(utcNow(), 'yyyy-MM-dd')"
+      }
+    },
+    "variables": {
+      "copy_status": {
+        "type": "String",
+        "defaultValue": "PENDING"
+      },
+      "files_copied": {
+        "type": "Integer",
+        "defaultValue": 0
+      },
+      "rows_ingested": {
+        "type": "Integer",
+        "defaultValue": 0
+      }
+    },
+    "activities": [
+      {
+        "name": "ACT_Validate_Source",
+        "description": "Check source ADLS container/folder exists and has files",
+        "type": "GetMetadata",
+        "dependsOn": [],
+        "typeProperties": {
+          "dataset": {
+            "referenceName": "ds_adls_source_folder",
+            "type": "DatasetReference",
+            "parameters": {
+              "container": "@pipeline().parameters.source_container",
+              "folder": "@pipeline().parameters.source_folder"
+            }
+          },
+          "fieldList": ["childItems", "itemType", "lastModified"],
+          "storeSettings": {
+            "type": "AzureBlobFSReadSettings",
+            "recursive": false,
+            "enablePartitionDiscovery": false
+          }
+        }
+      },
+      {
+        "name": "ACT_Check_Files_Exist",
+        "description": "Fail pipeline early if no source files found",
+        "type": "IfCondition",
+        "dependsOn": [{ "activity": "ACT_Validate_Source", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "expression": {
+            "value": "@greater(length(activity('ACT_Validate_Source').output.childItems), 0)",
+            "type": "Expression"
+          },
+          "ifFalseActivities": [
+            {
+              "name": "ACT_Fail_No_Files",
+              "type": "Fail",
+              "typeProperties": {
+                "message": "@concat('No source files found in ', pipeline().parameters.source_folder, ' on ', pipeline().parameters.ingestion_date)",
+                "errorCode": "BRONZE_001"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "ACT_ForEach_Table",
+        "description": "Loop over each source CSV and copy to Bronze Lakehouse",
+        "type": "ForEach",
+        "dependsOn": [{ "activity": "ACT_Check_Files_Exist", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "isSequential": false,
+          "batchCount": 4,
+          "items": {
+            "value": "@activity('ACT_Validate_Source').output.childItems",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "name": "ACT_Copy_CSV_to_Bronze",
+              "description": "Copy raw CSV to Fabric Lakehouse Bronze Delta table",
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "DelimitedTextSource",
+                  "storeSettings": {
+                    "type": "AzureBlobFSReadSettings",
+                    "recursive": false
+                  },
+                  "formatSettings": {
+                    "type": "DelimitedTextReadSettings",
+                    "skipLineCount": 0,
+                    "firstRowAsHeader": true
+                  }
+                },
+                "sink": {
+                  "type": "LakehouseTableSink",
+                  "tableActionOption": "Append",
+                  "partitionOption": "DynamicRange",
+                  "partitionSettings": {
+                    "partitionColumnName": "_ingestion_date",
+                    "partitionUpperBound": "@pipeline().parameters.ingestion_date"
+                  }
+                },
+                "enableStaging": false,
+                "translator": {
+                  "type": "TabularTranslator",
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  }
+                }
+              },
+              "inputs": [
+                {
+                  "referenceName": "ds_adls_csv_source",
+                  "type": "DatasetReference",
+                  "parameters": {
+                    "file_path": "@item().name"
+                  }
+                }
+              ],
+              "outputs": [
+                {
+                  "referenceName": "ds_fabric_lakehouse_bronze",
+                  "type": "DatasetReference",
+                  "parameters": {
+                    "table_name": "@replace(item().name, '.csv', '')",
+                    "schema_name": "@pipeline().parameters.bronze_schema"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "ACT_Log_Bronze_Manifest",
+              "description": "Write ingestion log entry to audit table",
+              "type": "Script",
+              "dependsOn": [{ "activity": "ACT_Copy_CSV_to_Bronze", "dependencyConditions": ["Succeeded"] }],
+              "typeProperties": {
+                "scripts": [
+                  {
+                    "type": "NonQuery",
+                    "text": {
+                      "value": "INSERT INTO bronze._ingestion_log (table_name, source_file, ingestion_date, rows_copied, pipeline_run_id, status) VALUES ('@{replace(item().name, '.csv', '')}', '@{item().name}', '@{pipeline().parameters.ingestion_date}', @{activity('ACT_Copy_CSV_to_Bronze').output.rowsCopied}, '@{pipeline().RunId}', 'SUCCESS')",
+                      "type": "Expression"
+                    }
+                  }
+                ],
+                "scriptBlockExecutionTimeout": "02:00:00"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "ACT_Update_Watermark",
+        "description": "Update the high-watermark table so next run is incremental",
+        "type": "Script",
+        "dependsOn": [{ "activity": "ACT_ForEach_Table", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "NonQuery",
+              "text": {
+                "value": "MERGE INTO bronze._watermark AS t USING (SELECT '@{pipeline().parameters.ingestion_date}' AS last_load_date, '@{pipeline().RunId}' AS last_run_id) AS s ON t.source_folder = '@{pipeline().parameters.source_folder}' WHEN MATCHED THEN UPDATE SET last_load_date = s.last_load_date, last_run_id = s.last_run_id WHEN NOT MATCHED THEN INSERT (source_folder, last_load_date, last_run_id) VALUES ('@{pipeline().parameters.source_folder}', s.last_load_date, s.last_run_id)",
+                "type": "Expression"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "ACT_Trigger_Silver_Pipeline",
+        "description": "On successful Bronze load, kick off Silver cleansing",
+        "type": "ExecutePipeline",
+        "dependsOn": [{ "activity": "ACT_Update_Watermark", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "pl_02_fasta_silver_cleanse",
+            "type": "PipelineReference"
+          },
+          "waitOnCompletion": false,
+          "parameters": {
+            "ingestion_date": "@pipeline().parameters.ingestion_date",
+            "bronze_schema": "@pipeline().parameters.bronze_schema"
+          }
+        }
+      },
+      {
+        "name": "ACT_Send_Failure_Alert",
+        "description": "Send Teams/email notification on pipeline failure",
+        "type": "WebActivity",
+        "dependsOn": [{ "activity": "ACT_ForEach_Table", "dependencyConditions": ["Failed"] }],
+        "typeProperties": {
+          "method": "POST",
+          "url": "@pipeline().globalParameters.teams_webhook_url",
+          "headers": { "Content-Type": "application/json" },
+          "body": {
+            "value": "@concat('{\"title\":\"FASTA Bronze Ingest FAILED\",\"text\":\"Pipeline: pl_01_fasta_bronze_ingest | Date: ', pipeline().parameters.ingestion_date, ' | Run: ', pipeline().RunId, '\"}')",
+            "type": "Expression"
+          }
+        }
+      }
+    ]
+  }
+}

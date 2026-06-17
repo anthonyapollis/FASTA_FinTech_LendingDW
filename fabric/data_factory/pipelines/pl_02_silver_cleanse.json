@@ -1,0 +1,338 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/sdks/2023-12-01/MicrosoftFabric.Pipeline.schema.json",
+  "name": "pl_02_fasta_silver_cleanse",
+  "objectType": "Pipeline",
+  "description": "FASTA FinTech — Silver cleansing pipeline. Runs 16 Fabric Dataflow Gen2 cleansing flows in parallel waves, writing Delta tables to the Silver Lakehouse schema. Applies: deduplication, date normalisation, status standardisation, negative amount removal, DQ flag injection, bot session removal.",
+  "properties": {
+    "parameters": {
+      "ingestion_date": {
+        "type": "string",
+        "defaultValue": "@formatDateTime(utcNow(), 'yyyy-MM-dd')"
+      },
+      "bronze_schema": {
+        "type": "string",
+        "defaultValue": "bronze"
+      },
+      "silver_schema": {
+        "type": "string",
+        "defaultValue": "silver"
+      },
+      "enable_dq_quarantine": {
+        "type": "bool",
+        "defaultValue": true
+      }
+    },
+    "variables": {
+      "silver_load_status": { "type": "String", "defaultValue": "PENDING" },
+      "total_rows_cleaned": { "type": "Integer", "defaultValue": 0 },
+      "quarantine_rows": { "type": "Integer", "defaultValue": 0 }
+    },
+    "activities": [
+      {
+        "name": "ACT_Silver_Wave1_Reference",
+        "description": "Wave 1: Load reference/dimension tables first (no dependencies)",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_campaigns",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema",
+              "ingestion_date": "@pipeline().parameters.ingestion_date"
+            }
+          },
+          "compute": {
+            "coreCount": 8,
+            "computeType": "General"
+          },
+          "traceLevel": "None",
+          "runConcurrently": true
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave2a_Customers",
+        "description": "Wave 2: Clean customers — dedup, date norm, gender std, income clip",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [{ "activity": "ACT_Silver_Wave1_Reference", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_customers",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema",
+              "enable_dq_quarantine": "@pipeline().parameters.enable_dq_quarantine"
+            }
+          },
+          "compute": { "coreCount": 8, "computeType": "General" },
+          "traceLevel": "None"
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave2b_WebSessions",
+        "description": "Wave 2: Clean web sessions — remove bots (7%), standardise device type",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [{ "activity": "ACT_Silver_Wave1_Reference", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_web_sessions",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema"
+            }
+          },
+          "compute": { "coreCount": 16, "computeType": "ComputeOptimized" },
+          "traceLevel": "None"
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave2c_WebEvents",
+        "description": "Wave 2: Clean web events — dedup within session+minute window, standardise names, clip negatives",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [{ "activity": "ACT_Silver_Wave1_Reference", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_web_events",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema"
+            }
+          },
+          "compute": { "coreCount": 32, "computeType": "ComputeOptimized" },
+          "traceLevel": "None"
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave3a_LoanApplications",
+        "description": "Wave 3: Clean applications — needs clean customers and campaigns",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [
+          { "activity": "ACT_Silver_Wave2a_Customers", "dependencyConditions": ["Succeeded"] },
+          { "activity": "ACT_Silver_Wave2b_WebSessions", "dependencyConditions": ["Succeeded"] }
+        ],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_loan_applications",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema",
+              "enable_dq_quarantine": "@pipeline().parameters.enable_dq_quarantine"
+            }
+          },
+          "compute": { "coreCount": 8, "computeType": "General" },
+          "traceLevel": "None"
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave3b_CreditChecks",
+        "description": "Wave 3: Clean credit checks — standardise risk bands, cap scores 300-850",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [
+          { "activity": "ACT_Silver_Wave2a_Customers", "dependencyConditions": ["Succeeded"] }
+        ],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_credit_checks",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema"
+            }
+          },
+          "compute": { "coreCount": 8, "computeType": "General" },
+          "traceLevel": "None"
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave3c_Affordability",
+        "description": "Wave 3: Clean affordability — clip negatives, recalculate DSR, fix afford amount",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [
+          { "activity": "ACT_Silver_Wave2a_Customers", "dependencyConditions": ["Succeeded"] }
+        ],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_affordability",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema"
+            }
+          },
+          "compute": { "coreCount": 8, "computeType": "General" },
+          "traceLevel": "None"
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave4_Contracts",
+        "description": "Wave 4: Clean loan contracts — needs clean applications",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [
+          { "activity": "ACT_Silver_Wave3a_LoanApplications", "dependencyConditions": ["Succeeded"] },
+          { "activity": "ACT_Silver_Wave3b_CreditChecks", "dependencyConditions": ["Succeeded"] },
+          { "activity": "ACT_Silver_Wave3c_Affordability", "dependencyConditions": ["Succeeded"] }
+        ],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_loan_contracts",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema"
+            }
+          },
+          "compute": { "coreCount": 8, "computeType": "General" },
+          "traceLevel": "None"
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave5a_RepaymentSchedule",
+        "description": "Wave 5: Repayment schedule — needs clean contracts",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [{ "activity": "ACT_Silver_Wave4_Contracts", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_repayment_schedule",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema"
+            }
+          },
+          "compute": { "coreCount": 16, "computeType": "General" },
+          "traceLevel": "None"
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave5b_Payments",
+        "description": "Wave 5: Payments — null future dates, dedup, clip negatives",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [{ "activity": "ACT_Silver_Wave4_Contracts", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_payments",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema",
+              "snapshot_date": "@pipeline().parameters.ingestion_date"
+            }
+          },
+          "compute": { "coreCount": 16, "computeType": "General" },
+          "traceLevel": "None"
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave5c_FeeCharges",
+        "description": "Wave 5: Fee charges cleansing",
+        "type": "ExecuteDataFlow",
+        "dependsOn": [{ "activity": "ACT_Silver_Wave4_Contracts", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "dataflow": {
+            "referenceName": "df_silver_fee_charges",
+            "type": "DataFlowReference",
+            "parameters": {
+              "bronze_schema": "@pipeline().parameters.bronze_schema",
+              "silver_schema": "@pipeline().parameters.silver_schema"
+            }
+          },
+          "compute": { "coreCount": 8, "computeType": "General" },
+          "traceLevel": "None"
+        }
+      },
+
+      {
+        "name": "ACT_Silver_Wave6_Support_Reviews_Referrals",
+        "description": "Wave 6: Support tickets, reviews, referrals, collection actions (parallel)",
+        "type": "ForEach",
+        "dependsOn": [{ "activity": "ACT_Silver_Wave4_Contracts", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "isSequential": false,
+          "batchCount": 4,
+          "items": {
+            "value": "@createArray('df_silver_support_tickets','df_silver_reviews','df_silver_partner_referrals','df_silver_collection_actions')",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "name": "ACT_Run_DataFlow",
+              "type": "ExecuteDataFlow",
+              "typeProperties": {
+                "dataflow": {
+                  "referenceName": "@item()",
+                  "type": "DataFlowReference",
+                  "parameters": {
+                    "bronze_schema": "@pipeline().parameters.bronze_schema",
+                    "silver_schema": "@pipeline().parameters.silver_schema"
+                  }
+                },
+                "compute": { "coreCount": 8, "computeType": "General" },
+                "traceLevel": "None"
+              }
+            }
+          ]
+        }
+      },
+
+      {
+        "name": "ACT_Run_DQ_Report",
+        "description": "After all Silver loads complete, compute DQ summary notebook",
+        "type": "NotebookActivity",
+        "dependsOn": [
+          { "activity": "ACT_Silver_Wave5a_RepaymentSchedule", "dependencyConditions": ["Succeeded"] },
+          { "activity": "ACT_Silver_Wave5b_Payments", "dependencyConditions": ["Succeeded"] },
+          { "activity": "ACT_Silver_Wave5c_FeeCharges", "dependencyConditions": ["Succeeded"] },
+          { "activity": "ACT_Silver_Wave6_Support_Reviews_Referrals", "dependencyConditions": ["Succeeded"] }
+        ],
+        "typeProperties": {
+          "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_silver_dq_report",
+          "baseParameters": {
+            "silver_schema": {
+              "value": "@pipeline().parameters.silver_schema",
+              "type": "Expression"
+            },
+            "run_date": {
+              "value": "@pipeline().parameters.ingestion_date",
+              "type": "Expression"
+            }
+          },
+          "timeout": "01:00:00",
+          "retryIntervalInSeconds": 30
+        }
+      },
+
+      {
+        "name": "ACT_Trigger_Gold_Pipeline",
+        "description": "Silver complete — trigger Gold mart build",
+        "type": "ExecutePipeline",
+        "dependsOn": [{ "activity": "ACT_Run_DQ_Report", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "pl_03_fasta_gold_marts",
+            "type": "PipelineReference"
+          },
+          "waitOnCompletion": false,
+          "parameters": {
+            "silver_schema": "@pipeline().parameters.silver_schema",
+            "run_date": "@pipeline().parameters.ingestion_date"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-06-16T16:12:48.736847",
+  "model_1_credit_risk": {
+    "algorithm": "Gradient Boosting Classifier",
+    "auc": 0.471,
+    "train_size": 1104,
+    "test_size": 277,
+    "default_rate_in_test": 0.2238,
+    "top_features": [
+      "processing_minutes",
+      "credit_score",
+      "dsr_ratio",
+      "existing_debt_zar",
+      "monthly_expenses_zar"
+    ]
+  },
+  "model_2_affordability": {
+    "algorithm": "Gradient Boosting Regressor",
+    "mae_zar": 1386.55,
+    "r2": 0.9504
+  },
+  "model_3_churn": {
+    "algorithm": "Random Forest Classifier",
+    "auc": 1.0,
+    "churn_rate": 0.4222
+  },
+  "model_4_channel_quality": [
+    {
+      "channel_name": "Email",
+      "n_loans": 154,
+      "default_rate": 0.12337662337662338,
+      "channel_quality_score": 0.6598
+    },
+    {
+      "channel_name": "Direct",
+      "n_loans": 151,
+      "default_rate": 0.2052980132450331,
+      "channel_quality_score": 0.6253
+    },
+    {
+      "channel_name": "Google Sponsored Search",
+      "n_loans": 165,
+      "default_rate": 0.21212121212121213,
+      "channel_quality_score": 0.6004
+    },
+    {
+      "channel_name": "Organic Search",
+      "n_loans": 143,
+      "default_rate": 0.21678321678321677,
+      "channel_quality_score": 0.6055
+    },
+    {
+      "channel_name": "unknown",
+      "n_loans": 163,
+      "default_rate": 0.2392638036809816,
+      "channel_quality_score": 0.5707
+    },
+    {
+      "channel_name": "Facebook",
+      "n_loans": 133,
+      "default_rate": 0.2631578947368421,
+      "channel_quality_score": 0.5786
+    },
+    {
+      "channel_name": "WhatsApp",
+      "n_loans": 183,
+      "default_rate": 0.2896174863387978,
+      "channel_quality_score": 0.5701
+    }
+  ]
+}

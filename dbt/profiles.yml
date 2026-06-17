@@ -1,0 +1,26 @@
+fasta_fabric:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver          # dbt-sqlserver for Fabric Warehouse endpoint
+      driver: 'ODBC Driver 18 for SQL Server'
+      server: "<workspace-id>.datawarehouse.fabric.microsoft.com"
+      port: 1433
+      database: FastaLakehouse
+      schema: staging
+      authentication: CLI      # uses az login / managed identity in Fabric
+      encrypt: true
+      trust_cert: false
+
+    prod:
+      type: sqlserver
+      driver: 'ODBC Driver 18 for SQL Server'
+      server: "<workspace-id>.datawarehouse.fabric.microsoft.com"
+      port: 1433
+      database: FastaLakehouse
+      schema: gold
+      authentication: ServicePrincipal
+      tenant_id:     "{{ env_var('AZURE_TENANT_ID') }}"
+      client_id:     "{{ env_var('AZURE_CLIENT_ID') }}"
+      client_secret: "{{ env_var('AZURE_CLIENT_SECRET') }}"
+      encrypt: true

@@ -1,0 +1,801 @@
+review_id,brand_name,source_platform,review_date,rating,review_text,reviewer_name_masked,sentiment_label
+1,JustMoney,Trustpilot,2025-01-18,4.4,,A*** K***,Neutral
+2,FASTA,App Store,2024-03-02,1.7,Difficult to understand the repayment terms,A*** V***,Negative
+3,FASTA,Trustpilot,15/02/2024,2.1,Fees are too high but service is quick,M*** A***,Neutral
+4,JustMoney,Facebook Reviews,2025-09-29,3.7,Fast and easy application process,N*** M***,
+5,FASTA,Google Reviews,2024-09-14,4.6,Difficult to understand the repayment terms,P*** Z***,Positive
+6,FASTA,App Store,30 Nov 2024,1.2,Would not recommend - high interest rates,P*** C***,Positive
+7,FASTA,Google Reviews,2024-02-25,1.3,Simple and straightforward,N*** D***,Neutral
+8,JustMoney,Hellopeter,2025-03-05,1.4,Great customer support,P*** S***,Neutral
+9,JustMoney,Hellopeter,2026-04-03,1.9,Fees are too high but service is quick,S*** D***,Positive
+10,JustMoney,Hellopeter,2024-09-16,2.4,,F*** V***,Neutral
+11,JustMoney,Google Reviews,2024-06-02,2.3,Fees are too high but service is quick,S*** M***,
+12,JustMoney,Facebook Reviews,2024-08-08,3.1,Applied and got money same day!,N*** D***,Neutral
+13,JustMoney,Google Reviews,2024-04-20,4.0,Would not recommend - high interest rates,L*** A***,
+14,DebtBusters,Facebook Reviews,2025-12-15,3.0,Applied and got money same day!,,Negative
+15,FASTA,App Store,15 Feb 2026,1.1,,L*** P***,Neutral
+16,DebtBusters,Hellopeter,2025-02-25,3.8,,M*** P***,
+17,FASTA,Google Reviews,2024-05-25,2.3,,,Positive
+18,FASTA,App Store,2024-09-28,3.8,Simple and straightforward,P*** N***,Positive
+19,FASTA,App Store,2024-11-14,3.1,,Z*** M***,
+20,DebtBusters,Trustpilot,2026-03-17,2.4,Fast and easy application process,N*** D***,Positive
+21,DebtBusters,Google Reviews,2024-10-05,2.3,,P*** S***,Neutral
+22,FASTA,Facebook Reviews,2024-07-27,2.1,Simple and straightforward,A*** V***,Positive
+23,FASTA,Google Reviews,2026-02-24,1.5,,,Neutral
+24,DebtBusters,Trustpilot,2024-08-24,1.5,Difficult to understand the repayment terms,A*** J***,
+25,FASTA,Trustpilot,2025-09-19,1.9,Applied and got money same day!,Z*** C***,
+26,FASTA,Google Reviews,04/06/2026,2.2,Would not recommend - high interest rates,A*** D***,Neutral
+27,DebtBusters,Facebook Reviews,2026-02-11,1.9,Great customer support,L*** N***,Neutral
+28,DebtBusters,App Store,2025-10-12,2.1,Great customer support,P*** Z***,Positive
+29,FASTA,Facebook Reviews,2024-02-15,2.0,Difficult to understand the repayment terms,S*** S***,Negative
+30,DebtBusters,App Store,2025-05-19,2.4,Would not recommend - high interest rates,P*** N***,Negative
+31,FASTA,Google Reviews,2024-02-23,2.7,,A*** D***,Neutral
+32,FASTA,Trustpilot,2025-03-13,2.1,Applied and got money same day!,P*** M***,Negative
+33,FASTA,Trustpilot,2025-12-02,4.8,,D*** K***,
+34,DebtBusters,Hellopeter,2025-12-29,4.1,Great customer support,T*** M***,
+35,FASTA,Trustpilot,2025-05-05,1.6,,,
+36,JustMoney,App Store,2025-09-28,3.6,Great customer support,,Positive
+37,FASTA,Hellopeter,2026-06-13,4.5,,,
+38,JustMoney,Google Reviews,2025-08-06,2.8,Fast and easy application process,F*** M***,
+39,DebtBusters,Google Reviews,2025-01-26,2.2,,T*** D***,
+40,JustMoney,Hellopeter,2025-09-14,,Difficult to understand the repayment terms,D*** S***,Negative
+41,DebtBusters,Google Reviews,2024-10-17,1.8,Fast and easy application process,S*** M***,Neutral
+42,JustMoney,Facebook Reviews,2025-04-09,4.0,Difficult to understand the repayment terms,R*** S***,Negative
+43,FASTA,Facebook Reviews,14/03/2024,3.7,Applied and got money same day!,,
+44,FASTA,Hellopeter,2025-03-15,1.2,Would not recommend - high interest rates,D*** M***,Positive
+45,FASTA,App Store,2024-02-19,2.9,Applied and got money same day!,,Neutral
+46,DebtBusters,App Store,2025-06-02,1.7,Great customer support,T*** P***,
+47,JustMoney,Google Reviews,2025-12-10,3.6,,A*** N***,
+48,JustMoney,Trustpilot,08/03/2024,2.1,Fees are too high but service is quick,T*** L***,
+49,DebtBusters,Hellopeter,2024-06-29,4.0,Great customer support,D*** D***,
+50,FASTA,App Store,2025-01-24,2.0,,P*** D***,
+51,DebtBusters,Trustpilot,2026-04-23,3.7,Fast and easy application process,,Neutral
+52,JustMoney,Google Reviews,2026-01-04,2.5,,F*** P***,Neutral
+53,FASTA,Trustpilot,2024-05-14,3.2,Simple and straightforward,L*** D***,
+54,JustMoney,App Store,2024-02-07,,,N*** V***,Positive
+55,FASTA,Hellopeter,13 Feb 2025,4.0,Simple and straightforward,G*** J***,Neutral
+56,JustMoney,Trustpilot,2025-10-20,3.1,Simple and straightforward,P*** M***,
+57,DebtBusters,Google Reviews,2024-09-16,1.1,,R*** D***,Negative
+58,FASTA,Trustpilot,20250109,3.9,,N*** D***,
+59,FASTA,App Store,2024-06-24,1.2,,S*** S***,Negative
+60,FASTA,Facebook Reviews,2025-01-04,2.0,Applied and got money same day!,B*** J***,Neutral
+61,DebtBusters,App Store,2024-12-09,,Applied and got money same day!,G*** V***,Positive
+62,DebtBusters,Hellopeter,2025-12-30,2.5,Fees are too high but service is quick,P*** V***,Negative
+63,JustMoney,Google Reviews,2025-08-07,4.5,Fees are too high but service is quick,P*** N***,
+64,FASTA,Trustpilot,2025-10-22,4.4,Would not recommend - high interest rates,P*** S***,Positive
+65,FASTA,Trustpilot,2025-01-09,3.1,Fast and easy application process,N*** N***,Neutral
+66,FASTA,Hellopeter,2024-05-25,4.7,,L*** D***,Positive
+67,DebtBusters,App Store,2024-08-26,4.6,Great customer support,M*** D***,Negative
+68,FASTA,Hellopeter,2025-01-02,4.4,Simple and straightforward,S*** D***,Neutral
+69,DebtBusters,Google Reviews,2025-10-05,2.9,,T*** C***,Neutral
+70,DebtBusters,App Store,2026-05-14,4.8,Great customer support,,
+71,FASTA,Trustpilot,09 Jul 2025,3.6,,P*** S***,Neutral
+72,FASTA,Trustpilot,2024-04-26,1.2,,S*** M***,
+73,JustMoney,App Store,2026-01-02,3.4,Simple and straightforward,A*** P***,Positive
+74,DebtBusters,App Store,2024-01-31,2.1,Great customer support,,
+75,FASTA,Trustpilot,2024-08-05,2.6,Applied and got money same day!,S*** M***,Negative
+76,DebtBusters,Google Reviews,2026-04-02,3.7,Difficult to understand the repayment terms,P*** K***,Neutral
+77,FASTA,App Store,2025-12-17,4.6,Great customer support,M*** S***,
+78,JustMoney,Google Reviews,2024-06-04,1.1,Fast and easy application process,P*** N***,Neutral
+79,DebtBusters,Google Reviews,2024-11-18,3.2,Applied and got money same day!,F*** S***,Positive
+80,DebtBusters,App Store,11-18-2025,4.5,Fees are too high but service is quick,T*** M***,
+81,FASTA,Trustpilot,2024-07-05,3.3,,S*** S***,Positive
+82,FASTA,Trustpilot,2025-09-22,1.6,,R*** B***,Negative
+83,JustMoney,Google Reviews,2024-10-01,1.4,Applied and got money same day!,P*** D***,
+84,DebtBusters,Google Reviews,2025-03-30,2.7,Would not recommend - high interest rates,,Negative
+85,DebtBusters,Google Reviews,2026-06-13,4.1,,L*** A***,Neutral
+86,FASTA,Google Reviews,2025-03-08,4.7,Fees are too high but service is quick,N*** P***,
+87,FASTA,Hellopeter,2025-06-18,1.1,,,Neutral
+88,FASTA,Hellopeter,2026-03-19,3.1,,A*** K***,Neutral
+89,FASTA,Facebook Reviews,2024-07-04,1.2,Applied and got money same day!,,Negative
+90,DebtBusters,Google Reviews,2026-01-21,2.3,Fast and easy application process,S*** V***,Positive
+91,JustMoney,Hellopeter,2024-03-18,2.8,Would not recommend - high interest rates,N*** D***,
+92,DebtBusters,Hellopeter,2024-08-22,1.1,Applied and got money same day!,T*** D***,Positive
+93,DebtBusters,Trustpilot,2024-11-25,5.0,Fast and easy application process,,Positive
+94,FASTA,App Store,2024-08-25,2.8,Difficult to understand the repayment terms,,Positive
+95,FASTA,Trustpilot,2025-10-03,,,T*** P***,Positive
+96,FASTA,App Store,2026-05-09,3.3,,P*** Z***,
+97,FASTA,Trustpilot,2026-04-05,2.0,Great customer support,T*** B***,
+98,DebtBusters,Trustpilot,2024-03-27,2.8,,A*** D***,Neutral
+99,DebtBusters,Hellopeter,28/05/2026,1.5,Fees are too high but service is quick,D*** P***,Positive
+100,DebtBusters,Trustpilot,2026-05-02,4.4,Difficult to understand the repayment terms,A*** J***,Positive
+101,FASTA,Trustpilot,2024-04-24,3.0,,S*** M***,
+102,FASTA,App Store,2024-05-04,2.8,,R*** K***,Positive
+103,FASTA,Hellopeter,2024-11-02,,Fees are too high but service is quick,,Positive
+104,FASTA,Trustpilot,2024-09-10,1.4,Great customer support,N*** S***,Positive
+105,FASTA,Hellopeter,2024-10-01,4.3,Great customer support,P*** L***,
+106,DebtBusters,Google Reviews,2026-02-04,2.0,,P*** S***,Negative
+107,FASTA,Trustpilot,03-15-2024,,,P*** P***,Negative
+108,JustMoney,Trustpilot,2026-03-13,4.3,Difficult to understand the repayment terms,P*** M***,Negative
+109,FASTA,App Store,2025-07-27,2.3,Fees are too high but service is quick,,Positive
+110,JustMoney,Hellopeter,2024-03-06,3.7,Fees are too high but service is quick,N*** D***,Positive
+111,JustMoney,Trustpilot,2025-07-27,3.2,Simple and straightforward,T*** H***,Neutral
+112,JustMoney,App Store,04-05-2026,4.7,Difficult to understand the repayment terms,,
+113,FASTA,App Store,2025-02-06,3.6,Fast and easy application process,T*** J***,Negative
+114,DebtBusters,App Store,2024-02-04,3.8,,S*** K***,
+115,FASTA,Hellopeter,2024-10-07,3.6,Fees are too high but service is quick,,Positive
+116,JustMoney,Google Reviews,2025-12-13,2.4,,D*** D***,
+117,DebtBusters,Facebook Reviews,2024-03-20,4.6,Difficult to understand the repayment terms,A*** D***,
+118,FASTA,Facebook Reviews,20250326,3.2,Applied and got money same day!,N*** S***,Neutral
+119,FASTA,App Store,2025-09-05,1.1,Great customer support,,Negative
+120,FASTA,Facebook Reviews,20260528,4.8,Would not recommend - high interest rates,R*** L***,Positive
+121,JustMoney,Hellopeter,07-09-2025,4.0,Simple and straightforward,A*** L***,
+122,FASTA,App Store,2025-01-09,3.6,Simple and straightforward,P*** K***,Negative
+123,FASTA,Trustpilot,2024-03-28,1.6,Great customer support,P*** L***,
+124,FASTA,Facebook Reviews,2026-04-13,4.8,Fees are too high but service is quick,T*** P***,Negative
+125,JustMoney,Trustpilot,2024-05-26,3.4,,S*** A***,
+126,FASTA,Trustpilot,2025-08-16,2.7,Applied and got money same day!,,Neutral
+127,FASTA,Google Reviews,2025-04-26,1.3,,P*** S***,Negative
+128,FASTA,App Store,10-02-2025,2.9,,M*** J***,Negative
+129,FASTA,Trustpilot,2025-04-13,4.2,Simple and straightforward,N*** P***,Neutral
+130,DebtBusters,App Store,20250205,,Fees are too high but service is quick,,
+131,DebtBusters,Trustpilot,2024-08-05,,Fees are too high but service is quick,D*** J***,
+132,FASTA,App Store,2025-12-24,2.3,Fast and easy application process,D*** M***,Negative
+133,FASTA,App Store,2024-02-08,3.2,Applied and got money same day!,,Positive
+134,FASTA,Facebook Reviews,2024-09-29,4.0,Simple and straightforward,N*** M***,Positive
+135,FASTA,App Store,2025-04-22,5.0,Great customer support,S*** Z***,Positive
+136,FASTA,Hellopeter,2024-02-28,4.5,,,
+137,FASTA,App Store,2025-04-04,4.4,Great customer support,T*** B***,Positive
+138,FASTA,Hellopeter,2024-08-07,1.1,Would not recommend - high interest rates,S*** S***,
+139,JustMoney,Trustpilot,2025-05-09,2.1,Applied and got money same day!,F*** S***,
+140,JustMoney,App Store,2026-04-14,3.0,Great customer support,D*** C***,Positive
+141,FASTA,Hellopeter,20240823,3.1,Difficult to understand the repayment terms,N*** D***,
+142,FASTA,Hellopeter,2024-05-30,2.6,Fees are too high but service is quick,,
+143,FASTA,App Store,2026-01-19,1.8,Great customer support,B*** M***,Negative
+144,FASTA,Trustpilot,2025-01-08,4.5,Simple and straightforward,,Positive
+145,FASTA,Trustpilot,2026-04-13,2.5,,D*** K***,
+146,JustMoney,Facebook Reviews,2024-05-08,2.5,,P*** B***,
+147,FASTA,Facebook Reviews,2025-02-18,2.1,Applied and got money same day!,,Neutral
+148,DebtBusters,Facebook Reviews,2024-07-29,1.1,Difficult to understand the repayment terms,L*** K***,Positive
+149,DebtBusters,App Store,2024-04-29,1.1,Applied and got money same day!,,
+150,DebtBusters,Trustpilot,2024-11-27,4.6,,L*** V***,
+151,DebtBusters,Hellopeter,15/08/2024,3.5,,A*** H***,
+152,DebtBusters,Trustpilot,2024-01-16,2.3,Simple and straightforward,S*** M***,
+153,JustMoney,Hellopeter,2024-07-22,4.0,Fees are too high but service is quick,S*** Z***,
+154,JustMoney,Facebook Reviews,2024-05-24,2.8,,M*** V***,Positive
+155,FASTA,Trustpilot,2025-07-29,3.6,Applied and got money same day!,N*** D***,Positive
+156,JustMoney,Google Reviews,2024-07-26,2.9,Applied and got money same day!,D*** Z***,Neutral
+157,FASTA,Trustpilot,2024-05-15,2.4,,P*** P***,
+158,DebtBusters,Facebook Reviews,08-28-2025,1.5,Great customer support,,Negative
+159,DebtBusters,Google Reviews,2024-03-15,3.9,Simple and straightforward,G*** S***,
+160,DebtBusters,Trustpilot,2025-11-09,4.8,Difficult to understand the repayment terms,,
+161,JustMoney,Hellopeter,11-13-2025,,Applied and got money same day!,M*** H***,Negative
+162,FASTA,Trustpilot,2025-09-03,3.6,Would not recommend - high interest rates,N*** J***,
+163,FASTA,Facebook Reviews,2025-08-26,3.8,Applied and got money same day!,T*** D***,Negative
+164,FASTA,Hellopeter,2026-03-29,4.8,Fast and easy application process,,Neutral
+165,JustMoney,Hellopeter,2025-11-09,3.2,Great customer support,P*** S***,Positive
+166,FASTA,Google Reviews,2025-09-17,4.7,,N*** D***,Negative
+167,FASTA,App Store,2026-02-14,1.6,Difficult to understand the repayment terms,N*** S***,Neutral
+168,FASTA,App Store,2025-10-02,1.6,Great customer support,A*** D***,
+169,JustMoney,App Store,2025-04-09,4.4,,,Negative
+170,JustMoney,Facebook Reviews,2026-04-27,1.8,Fast and easy application process,T*** V***,Negative
+171,FASTA,Trustpilot,2025-12-10,1.5,,N*** A***,
+172,JustMoney,Facebook Reviews,2026-01-21,1.6,Simple and straightforward,B*** Z***,
+173,JustMoney,App Store,2025-04-26,1.1,,,Negative
+174,FASTA,App Store,2025-11-30,3.9,,S*** M***,Negative
+175,DebtBusters,Trustpilot,2025-11-28,1.2,Fast and easy application process,N*** M***,Neutral
+176,FASTA,Facebook Reviews,2024-12-12,4.3,Difficult to understand the repayment terms,N*** N***,Neutral
+177,FASTA,Hellopeter,2024-06-17,2.4,Great customer support,P*** M***,
+178,JustMoney,Facebook Reviews,2025-10-26,3.4,,N*** J***,Positive
+179,FASTA,Trustpilot,2025-02-21,1.2,Difficult to understand the repayment terms,,Positive
+180,JustMoney,Google Reviews,2025-09-27,3.5,Would not recommend - high interest rates,A*** M***,
+181,FASTA,Trustpilot,2025-09-05,2.7,Difficult to understand the repayment terms,S*** P***,
+182,DebtBusters,App Store,2026-03-13,4.5,,B*** D***,Positive
+183,JustMoney,Trustpilot,2025-02-20,3.8,Fast and easy application process,M*** D***,Positive
+184,FASTA,Hellopeter,2024-09-19,4.7,Great customer support,,Neutral
+185,FASTA,Trustpilot,2024-06-18,2.0,Simple and straightforward,G*** H***,
+186,FASTA,App Store,2024-08-08,4.3,Difficult to understand the repayment terms,N*** C***,Negative
+187,FASTA,Trustpilot,2024-11-18,4.6,Difficult to understand the repayment terms,L*** K***,Neutral
+188,JustMoney,Google Reviews,02-17-2024,2.8,Fast and easy application process,T*** J***,Negative
+189,FASTA,Hellopeter,2025-05-28,1.6,Applied and got money same day!,A*** M***,
+190,DebtBusters,Google Reviews,2025-02-20,1.2,Applied and got money same day!,F*** M***,Negative
+191,DebtBusters,Hellopeter,2025-07-08,4.5,Applied and got money same day!,P*** D***,Neutral
+192,DebtBusters,Hellopeter,2025-03-21,4.3,,G*** V***,
+193,FASTA,App Store,2024-05-02,1.9,,,Positive
+194,JustMoney,Trustpilot,2024-08-16,2.2,Fast and easy application process,N*** M***,Positive
+195,FASTA,Hellopeter,2025-02-08,1.8,Difficult to understand the repayment terms,M*** S***,
+196,JustMoney,Facebook Reviews,2024-09-21,1.1,Great customer support,G*** V***,Positive
+197,DebtBusters,App Store,2025-05-26,1.4,Applied and got money same day!,L*** M***,Negative
+198,FASTA,Trustpilot,20240124,2.5,Would not recommend - high interest rates,,
+199,JustMoney,App Store,20241213,2.8,Simple and straightforward,N*** M***,
+200,FASTA,Trustpilot,2024-01-22,2.7,Great customer support,M*** M***,
+201,FASTA,Hellopeter,2025-03-24,4.6,,S*** V***,Negative
+202,JustMoney,App Store,2024-03-13,2.8,Fees are too high but service is quick,,Negative
+203,FASTA,Facebook Reviews,2025-06-14,4.5,Fast and easy application process,M*** C***,Neutral
+204,FASTA,Facebook Reviews,2024-07-10,4.3,Applied and got money same day!,T*** V***,Positive
+205,FASTA,Trustpilot,2024-05-03,4.7,Simple and straightforward,P*** D***,Neutral
+206,FASTA,Google Reviews,2024-07-31,1.2,Applied and got money same day!,N*** V***,Neutral
+207,FASTA,Hellopeter,2025-03-03,4.3,,F*** K***,Negative
+208,JustMoney,Trustpilot,2024-10-15,4.3,Fees are too high but service is quick,R*** B***,Positive
+209,FASTA,App Store,05/01/2024,1.0,Applied and got money same day!,Z*** S***,Negative
+210,DebtBusters,Facebook Reviews,2025-12-08,3.3,,B*** A***,Neutral
+211,FASTA,Hellopeter,2025-01-28,3.9,Great customer support,L*** S***,Neutral
+212,DebtBusters,App Store,2025-12-29,4.7,Simple and straightforward,Z*** P***,Negative
+213,FASTA,Hellopeter,2024-01-25,2.0,Difficult to understand the repayment terms,M*** M***,
+214,DebtBusters,Facebook Reviews,2026-03-01,3.3,Simple and straightforward,L*** S***,
+215,JustMoney,App Store,2026-02-09,3.5,Great customer support,N*** P***,
+216,FASTA,Facebook Reviews,03-19-2024,2.9,Fast and easy application process,D*** M***,Positive
+217,DebtBusters,Google Reviews,31 Aug 2024,1.1,,,Negative
+218,FASTA,Facebook Reviews,07/02/2025,3.9,Fees are too high but service is quick,G*** J***,Neutral
+219,DebtBusters,Google Reviews,2026-05-23,2.2,Simple and straightforward,D*** V***,Positive
+220,FASTA,App Store,2026-04-28,3.8,,R*** P***,
+221,JustMoney,Hellopeter,2026-05-07,1.6,,L*** S***,Neutral
+222,JustMoney,Trustpilot,2024-11-08,,Fees are too high but service is quick,D*** D***,Positive
+223,DebtBusters,App Store,2024-12-31,1.7,Fees are too high but service is quick,N*** M***,Negative
+224,FASTA,Google Reviews,2026-06-14,3.1,Applied and got money same day!,M*** M***,
+225,FASTA,Trustpilot,2024-01-29,4.2,Great customer support,M*** Z***,Negative
+226,FASTA,Facebook Reviews,2024-01-22,1.7,Great customer support,T*** D***,
+227,FASTA,Hellopeter,20240917,4.4,Would not recommend - high interest rates,,Neutral
+228,DebtBusters,Trustpilot,2026-05-23,3.2,Great customer support,T*** M***,
+229,JustMoney,Facebook Reviews,2025-06-28,1.1,Simple and straightforward,M*** D***,Negative
+230,FASTA,Trustpilot,2024-12-12,1.3,,N*** K***,Negative
+231,JustMoney,App Store,2024-03-24,4.1,Would not recommend - high interest rates,,Neutral
+232,FASTA,Google Reviews,2025-01-07,4.1,,F*** K***,Positive
+233,FASTA,App Store,2026-04-25,4.4,Great customer support,N*** L***,Negative
+234,JustMoney,Facebook Reviews,2024-12-06,3.1,,,Neutral
+235,DebtBusters,Google Reviews,2026-02-20,1.1,Fees are too high but service is quick,T*** V***,Neutral
+236,DebtBusters,Trustpilot,2024-11-16,1.1,Would not recommend - high interest rates,P*** M***,Negative
+237,DebtBusters,Trustpilot,2024-06-25,4.4,,T*** B***,
+238,DebtBusters,App Store,2024-04-21,3.8,,L*** N***,
+239,FASTA,App Store,2025-07-04,4.0,Great customer support,F*** L***,Neutral
+240,FASTA,App Store,2024-12-14,3.2,Great customer support,P*** H***,Neutral
+241,FASTA,App Store,2025-08-23,4.5,Applied and got money same day!,B*** S***,Positive
+242,FASTA,Trustpilot,2025-06-19,4.8,,P*** K***,
+243,FASTA,App Store,2025-08-14,3.7,Simple and straightforward,P*** M***,
+244,FASTA,App Store,2024-08-27,1.2,Simple and straightforward,G*** D***,
+245,JustMoney,Hellopeter,2024-11-16,,Would not recommend - high interest rates,N*** P***,Neutral
+246,DebtBusters,Trustpilot,2025-10-29,3.7,Would not recommend - high interest rates,N*** M***,Negative
+247,FASTA,Trustpilot,07-12-2025,2.2,,S*** S***,
+248,FASTA,Trustpilot,2024-05-08,4.6,Fees are too high but service is quick,L*** P***,Neutral
+249,DebtBusters,App Store,2024-08-30,1.8,,T*** D***,
+250,FASTA,App Store,2025-10-08,4.8,Difficult to understand the repayment terms,S*** V***,Neutral
+251,FASTA,Google Reviews,2025-02-08,,,N*** V***,
+252,FASTA,Google Reviews,2025-09-07,4.1,Fees are too high but service is quick,T*** N***,Positive
+253,DebtBusters,Hellopeter,2026-02-13,1.1,Fees are too high but service is quick,F*** H***,
+254,FASTA,App Store,2024-01-22,3.4,,R*** V***,Neutral
+255,JustMoney,Hellopeter,2024-01-30,2.8,Simple and straightforward,P*** C***,
+256,FASTA,Facebook Reviews,2024-02-10,3.2,Great customer support,R*** A***,Negative
+257,DebtBusters,Trustpilot,2025-01-12,3.0,Applied and got money same day!,L*** A***,
+258,FASTA,Facebook Reviews,2025-02-24,2.5,,R*** P***,Negative
+259,DebtBusters,Google Reviews,20/01/2025,2.0,,L*** D***,Neutral
+260,DebtBusters,Google Reviews,2024-06-14,2.2,Great customer support,A*** S***,
+261,JustMoney,Trustpilot,13 Jun 2025,4.6,,Z*** K***,Positive
+262,DebtBusters,App Store,2026-03-03,4.9,,F*** P***,
+263,FASTA,Google Reviews,2024-03-20,1.4,Difficult to understand the repayment terms,,
+264,DebtBusters,Google Reviews,2026-01-24,1.0,,A*** P***,Negative
+265,FASTA,Trustpilot,2024-11-22,1.5,Difficult to understand the repayment terms,P*** M***,Neutral
+266,FASTA,Google Reviews,2024-08-03,4.4,,P*** S***,Neutral
+267,DebtBusters,Trustpilot,2024-01-22,1.0,,M*** V***,Negative
+268,DebtBusters,App Store,2024-07-16,,Would not recommend - high interest rates,,
+269,DebtBusters,Trustpilot,2026-06-01,4.5,Fast and easy application process,G*** M***,Negative
+270,JustMoney,Google Reviews,2026-04-14,1.4,Difficult to understand the repayment terms,P*** D***,Negative
+271,DebtBusters,Google Reviews,2024-03-04,2.7,,F*** M***,Negative
+272,FASTA,App Store,2024-06-26,1.5,,Z*** C***,
+273,DebtBusters,Facebook Reviews,13/09/2025,3.7,Fees are too high but service is quick,T*** D***,Positive
+274,DebtBusters,Hellopeter,2026-05-12,4.0,Would not recommend - high interest rates,A*** V***,
+275,FASTA,Facebook Reviews,2024-08-03,4.2,Great customer support,S*** M***,Negative
+276,FASTA,Google Reviews,2025-02-23,1.5,Fast and easy application process,P*** M***,Positive
+277,DebtBusters,Hellopeter,2024-10-31,4.3,Great customer support,,Positive
+278,FASTA,Trustpilot,2025-09-23,2.4,Great customer support,D*** P***,
+279,FASTA,App Store,2024-06-20,1.8,Simple and straightforward,M*** S***,Neutral
+280,FASTA,Hellopeter,2025-02-16,4.4,Applied and got money same day!,D*** M***,Negative
+281,FASTA,Facebook Reviews,2024-03-17,3.6,Fees are too high but service is quick,L*** K***,Negative
+282,FASTA,Trustpilot,2025-09-09,4.7,,M*** L***,
+283,DebtBusters,Trustpilot,2025-04-13,1.0,Fees are too high but service is quick,R*** A***,
+284,FASTA,App Store,2025-06-02,1.8,,M*** P***,
+285,FASTA,Facebook Reviews,2025-08-28,1.5,,N*** M***,Negative
+286,JustMoney,Hellopeter,2024-09-29,2.7,Fast and easy application process,F*** L***,Positive
+287,FASTA,App Store,20260429,1.3,Would not recommend - high interest rates,N*** N***,Positive
+288,JustMoney,App Store,20250313,4.5,Difficult to understand the repayment terms,F*** M***,
+289,FASTA,Google Reviews,2024-04-20,4.6,Fees are too high but service is quick,B*** D***,
+290,DebtBusters,Facebook Reviews,2024-06-17,2.9,Applied and got money same day!,M*** J***,
+291,JustMoney,Facebook Reviews,2026-05-27,4.8,Would not recommend - high interest rates,,Negative
+292,JustMoney,Hellopeter,2025-10-03,4.5,Fees are too high but service is quick,,
+293,FASTA,Facebook Reviews,2025-08-27,4.5,Simple and straightforward,L*** S***,Neutral
+294,FASTA,App Store,2024-09-06,1.8,,A*** M***,Neutral
+295,DebtBusters,Google Reviews,2025-12-07,2.0,Would not recommend - high interest rates,N*** M***,Negative
+296,DebtBusters,Hellopeter,2026-06-08,4.8,Fast and easy application process,T*** C***,Positive
+297,DebtBusters,Hellopeter,24 Oct 2025,4.1,Simple and straightforward,M*** D***,Positive
+298,JustMoney,Facebook Reviews,2025-10-20,1.6,Would not recommend - high interest rates,A*** K***,Negative
+299,FASTA,Trustpilot,2025-03-27,4.9,Great customer support,,Neutral
+300,FASTA,Trustpilot,21 Aug 2024,4.5,Fees are too high but service is quick,N*** V***,Neutral
+301,JustMoney,Facebook Reviews,2025-07-14,1.0,Simple and straightforward,,
+302,FASTA,Trustpilot,2025-12-19,1.7,Would not recommend - high interest rates,D*** V***,Negative
+303,FASTA,Google Reviews,2025-07-21,5.0,,,Negative
+304,FASTA,Facebook Reviews,2026-03-16,1.6,Fast and easy application process,,Positive
+305,JustMoney,Google Reviews,2024-01-08,2.2,Difficult to understand the repayment terms,R*** D***,Neutral
+306,FASTA,App Store,2024-04-19,2.1,,N*** A***,
+307,DebtBusters,Google Reviews,2025-03-24,3.1,Would not recommend - high interest rates,N*** C***,Neutral
+308,DebtBusters,App Store,2024-10-30,2.4,Difficult to understand the repayment terms,P*** P***,
+309,JustMoney,Trustpilot,2025-05-08,2.7,Simple and straightforward,D*** P***,
+310,FASTA,Google Reviews,2025-09-02,1.7,Great customer support,,Positive
+311,DebtBusters,Google Reviews,01/01/2024,1.4,Would not recommend - high interest rates,F*** H***,Negative
+312,JustMoney,Google Reviews,2025-04-17,4.2,Simple and straightforward,P*** J***,Neutral
+313,FASTA,App Store,2024-11-27,3.9,,,Negative
+314,JustMoney,Hellopeter,2025-01-12,1.6,,,Negative
+315,DebtBusters,Google Reviews,2024-12-22,2.7,,A*** M***,Positive
+316,JustMoney,Google Reviews,2025-12-08,3.5,Simple and straightforward,P*** S***,Neutral
+317,JustMoney,Hellopeter,2025-03-02,2.6,Simple and straightforward,B*** V***,
+318,DebtBusters,Trustpilot,2026-02-16,,Applied and got money same day!,L*** H***,Negative
+319,JustMoney,Trustpilot,2024-05-04,,Would not recommend - high interest rates,P*** P***,Neutral
+320,JustMoney,App Store,2025-10-12,2.7,Simple and straightforward,A*** L***,Negative
+321,DebtBusters,Facebook Reviews,2024-07-02,2.0,Simple and straightforward,G*** P***,Negative
+322,FASTA,Hellopeter,2025-02-06,1.2,,P*** S***,
+323,JustMoney,App Store,2026-03-08,2.1,,S*** S***,Neutral
+324,JustMoney,Hellopeter,2024-05-10,2.7,Would not recommend - high interest rates,N*** D***,Negative
+325,DebtBusters,Trustpilot,2025-02-03,,Would not recommend - high interest rates,A*** N***,Neutral
+326,JustMoney,Google Reviews,2026-05-10,2.8,Simple and straightforward,N*** K***,Neutral
+327,JustMoney,Hellopeter,2024-04-22,2.0,Applied and got money same day!,D*** M***,Positive
+328,JustMoney,Hellopeter,14/10/2024,2.4,Difficult to understand the repayment terms,,Positive
+329,FASTA,Hellopeter,2026-01-15,2.6,Fees are too high but service is quick,D*** L***,
+330,DebtBusters,Trustpilot,2026-05-10,3.3,Would not recommend - high interest rates,N*** S***,Neutral
+331,JustMoney,Trustpilot,2024-06-27,2.2,,S*** S***,
+332,DebtBusters,App Store,2024-06-09,2.4,Great customer support,R*** Z***,Negative
+333,FASTA,Facebook Reviews,2024-09-23,,Applied and got money same day!,M*** H***,
+334,JustMoney,Facebook Reviews,2026-05-26,3.4,Applied and got money same day!,,Negative
+335,FASTA,Google Reviews,2025-09-19,4.8,Applied and got money same day!,,
+336,FASTA,Hellopeter,2026-03-06,3.1,Difficult to understand the repayment terms,S*** M***,Negative
+337,FASTA,Hellopeter,2024-02-16,1.2,,L*** N***,Negative
+338,FASTA,Google Reviews,14 Feb 2025,4.4,Would not recommend - high interest rates,N*** C***,
+339,JustMoney,App Store,06-10-2024,2.5,,N*** D***,Positive
+340,DebtBusters,App Store,2024-10-23,3.9,,,Positive
+341,FASTA,Hellopeter,2026-06-09,3.0,,Z*** D***,
+342,FASTA,Hellopeter,09 Sep 2025,2.5,Simple and straightforward,,Neutral
+343,FASTA,Hellopeter,2025-02-21,1.3,,M*** M***,
+344,JustMoney,Google Reviews,2025-08-18,2.4,Applied and got money same day!,M*** Z***,
+345,FASTA,Google Reviews,2024-06-16,3.6,,N*** L***,Negative
+346,JustMoney,Trustpilot,2025-01-19,4.7,Fees are too high but service is quick,P*** M***,Negative
+347,FASTA,App Store,2025-11-11,1.6,Difficult to understand the repayment terms,N*** V***,Negative
+348,FASTA,Trustpilot,20260226,4.2,Fast and easy application process,N*** K***,
+349,DebtBusters,App Store,2024-11-05,4.4,Great customer support,A*** P***,
+350,DebtBusters,App Store,2024-10-29,,Fees are too high but service is quick,G*** B***,Negative
+351,FASTA,Google Reviews,2025-05-15,2.6,,T*** L***,Negative
+352,DebtBusters,App Store,2025-06-14,,Would not recommend - high interest rates,A*** S***,Negative
+353,JustMoney,App Store,2024-08-31,2.0,Applied and got money same day!,,
+354,JustMoney,Google Reviews,2025-06-05,4.7,Would not recommend - high interest rates,P*** S***,Neutral
+355,FASTA,Facebook Reviews,2025-02-23,2.0,,A*** A***,Neutral
+356,FASTA,Trustpilot,2024-02-23,4.6,Fees are too high but service is quick,P*** P***,Neutral
+357,DebtBusters,App Store,2026-03-06,3.6,,S*** V***,Negative
+358,DebtBusters,Trustpilot,2026-05-09,3.0,Great customer support,R*** P***,Neutral
+359,FASTA,App Store,2024-02-24,1.8,Simple and straightforward,N*** K***,
+360,DebtBusters,App Store,20251130,,Fees are too high but service is quick,S*** S***,
+361,FASTA,Hellopeter,2026-01-03,4.0,Difficult to understand the repayment terms,D*** M***,Positive
+362,FASTA,Facebook Reviews,20260208,3.3,,T*** M***,Neutral
+363,DebtBusters,Google Reviews,2024-01-18,3.9,Simple and straightforward,M*** A***,
+364,DebtBusters,App Store,2024-06-16,2.3,Fees are too high but service is quick,R*** S***,Negative
+365,FASTA,Google Reviews,2026-02-13,1.0,Simple and straightforward,,Neutral
+366,JustMoney,Hellopeter,2025-08-14,5.0,Simple and straightforward,A*** S***,Negative
+367,FASTA,Facebook Reviews,2024-12-14,3.3,Fast and easy application process,,
+368,JustMoney,Trustpilot,2025-06-03,3.9,Great customer support,,
+369,FASTA,Google Reviews,2024-04-17,2.3,Fees are too high but service is quick,F*** D***,
+370,FASTA,Hellopeter,2024-05-02,2.0,Simple and straightforward,N*** Z***,Positive
+371,JustMoney,Trustpilot,2025-03-10,3.2,Would not recommend - high interest rates,M*** M***,Neutral
+372,FASTA,Trustpilot,2024-08-06,4.8,Fees are too high but service is quick,N*** A***,Positive
+373,JustMoney,Hellopeter,2025-08-25,3.4,Difficult to understand the repayment terms,T*** S***,
+374,DebtBusters,Facebook Reviews,07-19-2024,4.1,,S*** S***,Negative
+375,JustMoney,Hellopeter,2025-10-17,,,,
+376,DebtBusters,Facebook Reviews,2026-02-02,2.0,Fees are too high but service is quick,N*** D***,
+377,JustMoney,App Store,2025-03-24,2.8,,F*** D***,Positive
+378,DebtBusters,Hellopeter,2026-03-05,2.5,Great customer support,,Neutral
+379,JustMoney,Google Reviews,2024-10-27,2.8,Simple and straightforward,P*** P***,
+380,FASTA,Google Reviews,2024-06-16,4.9,,B*** K***,Neutral
+381,FASTA,Facebook Reviews,03/11/2024,2.0,Simple and straightforward,P*** N***,Positive
+382,FASTA,Google Reviews,2024-06-09,,Great customer support,D*** C***,Positive
+383,DebtBusters,Hellopeter,2025-01-25,1.9,Great customer support,T*** D***,
+384,FASTA,Hellopeter,2024-04-22,3.4,Difficult to understand the repayment terms,Z*** S***,Neutral
+385,FASTA,Facebook Reviews,2024-02-29,2.6,Fees are too high but service is quick,N*** J***,Neutral
+386,DebtBusters,Hellopeter,2024-05-25,1.9,Fees are too high but service is quick,,Positive
+387,JustMoney,Facebook Reviews,2024-12-19,4.6,Great customer support,T*** K***,Positive
+388,FASTA,Facebook Reviews,2025-04-20,2.8,Would not recommend - high interest rates,L*** P***,Neutral
+389,JustMoney,Hellopeter,2026-04-14,2.6,Would not recommend - high interest rates,N*** S***,Negative
+390,JustMoney,Hellopeter,2024-06-27,4.2,Fast and easy application process,N*** A***,
+391,JustMoney,Hellopeter,2025-06-16,1.4,,N*** N***,Positive
+392,FASTA,Google Reviews,2025-04-24,1.4,Great customer support,,Negative
+393,JustMoney,Google Reviews,2024-10-29,4.8,Applied and got money same day!,L*** D***,Positive
+394,FASTA,Google Reviews,2024-10-31,3.0,,S*** V***,Positive
+395,FASTA,Hellopeter,2024-07-21,3.3,Fast and easy application process,N*** P***,
+396,FASTA,Trustpilot,2024-07-14,1.7,Applied and got money same day!,P*** V***,Positive
+397,FASTA,Google Reviews,2025-12-10,2.9,Applied and got money same day!,F*** D***,Negative
+398,FASTA,Hellopeter,2024-01-09,2.5,Great customer support,P*** D***,Positive
+399,FASTA,Hellopeter,2025-09-22,4.4,Fast and easy application process,,
+400,FASTA,Hellopeter,2024-12-02,1.6,Applied and got money same day!,N*** P***,Negative
+401,FASTA,Google Reviews,03-23-2025,3.6,Difficult to understand the repayment terms,,
+402,DebtBusters,Google Reviews,2026-05-24,2.8,Applied and got money same day!,B*** V***,
+403,JustMoney,Google Reviews,2025-05-02,4.7,,S*** S***,Positive
+404,FASTA,Google Reviews,2025-01-29,2.9,Fees are too high but service is quick,S*** C***,
+405,FASTA,Hellopeter,2026-04-01,4.3,Great customer support,T*** B***,
+406,JustMoney,App Store,2024-01-22,3.4,Applied and got money same day!,P*** K***,Positive
+407,FASTA,App Store,2024-12-25,1.2,Applied and got money same day!,,Positive
+408,DebtBusters,Google Reviews,2024-08-29,1.4,Fees are too high but service is quick,P*** S***,
+409,FASTA,Hellopeter,2025-11-19,1.1,Applied and got money same day!,N*** Z***,
+410,FASTA,Hellopeter,2025-03-15,3.9,,P*** D***,Positive
+411,FASTA,Google Reviews,2026-02-20,3.6,,P*** M***,Neutral
+412,FASTA,Google Reviews,20260508,2.8,Applied and got money same day!,P*** D***,Positive
+413,FASTA,Hellopeter,2024-03-23,1.3,,R*** L***,
+414,JustMoney,App Store,2025-03-22,4.7,Difficult to understand the repayment terms,T*** M***,Positive
+415,JustMoney,Trustpilot,2024-11-05,3.7,Fast and easy application process,N*** J***,Positive
+416,JustMoney,Facebook Reviews,2024-06-24,1.6,Simple and straightforward,B*** B***,
+417,FASTA,App Store,2024-05-06,2.9,Simple and straightforward,A*** S***,
+418,FASTA,Trustpilot,2026-05-11,4.0,Fees are too high but service is quick,F*** D***,Neutral
+419,FASTA,Google Reviews,2024-03-05,1.5,Difficult to understand the repayment terms,R*** D***,
+420,JustMoney,App Store,2024-11-25,4.5,Simple and straightforward,D*** S***,Positive
+421,FASTA,Google Reviews,2025-07-17,2.8,Fees are too high but service is quick,Z*** H***,
+422,DebtBusters,Facebook Reviews,2024-12-15,,,P*** K***,
+423,FASTA,Trustpilot,2024-12-19,2.9,Applied and got money same day!,N*** M***,Neutral
+424,JustMoney,Google Reviews,2025-04-29,1.5,Fast and easy application process,S*** C***,Positive
+425,FASTA,Google Reviews,2024-10-04,4.4,,Z*** H***,Neutral
+426,JustMoney,Trustpilot,2025-11-11,1.8,Applied and got money same day!,N*** V***,Negative
+427,FASTA,Facebook Reviews,2024-11-24,1.7,Fast and easy application process,M*** N***,
+428,DebtBusters,Trustpilot,2024-10-04,1.8,Difficult to understand the repayment terms,G*** Z***,Neutral
+429,FASTA,Trustpilot,2025-01-01,2.6,Fast and easy application process,G*** K***,
+430,DebtBusters,App Store,2024-05-25,1.0,Fast and easy application process,L*** V***,Positive
+431,FASTA,Google Reviews,2024-05-21,3.4,,M*** A***,Negative
+432,JustMoney,App Store,2026-04-28,3.6,Would not recommend - high interest rates,P*** P***,Negative
+433,DebtBusters,Hellopeter,2026-02-15,4.9,Great customer support,,
+434,DebtBusters,Hellopeter,2024-10-17,3.6,,P*** C***,Negative
+435,JustMoney,Hellopeter,17 Nov 2025,1.6,Simple and straightforward,S*** H***,
+436,DebtBusters,App Store,2025-05-13,1.0,Would not recommend - high interest rates,R*** H***,Neutral
+437,FASTA,App Store,2026-05-14,2.1,Fees are too high but service is quick,R*** S***,
+438,JustMoney,Hellopeter,2025-03-04,3.5,,,
+439,FASTA,Facebook Reviews,2025-06-14,,,F*** D***,
+440,FASTA,Facebook Reviews,2025-06-25,3.6,Great customer support,P*** D***,Negative
+441,FASTA,App Store,2026-02-20,3.1,Difficult to understand the repayment terms,A*** S***,
+442,FASTA,Facebook Reviews,2025-09-09,2.8,Fast and easy application process,,Positive
+443,FASTA,App Store,2025-08-16,2.5,Great customer support,L*** C***,Neutral
+444,JustMoney,Hellopeter,2025-01-07,1.9,Difficult to understand the repayment terms,T*** V***,
+445,FASTA,Hellopeter,2024-03-04,4.4,Fees are too high but service is quick,N*** K***,Positive
+446,DebtBusters,Facebook Reviews,2026-04-01,3.4,Great customer support,F*** Z***,Neutral
+447,DebtBusters,Google Reviews,2026-04-27,1.5,,F*** M***,Positive
+448,JustMoney,Hellopeter,2025-03-23,3.1,,A*** Z***,
+449,JustMoney,App Store,2025-10-18,3.9,Fees are too high but service is quick,N*** S***,
+450,JustMoney,Hellopeter,08/04/2026,,Would not recommend - high interest rates,P*** H***,Positive
+451,JustMoney,Facebook Reviews,2024-04-09,4.2,Fast and easy application process,L*** A***,
+452,FASTA,Facebook Reviews,21 Dec 2024,3.3,,P*** B***,Neutral
+453,FASTA,Facebook Reviews,2025-01-02,2.2,,,
+454,DebtBusters,Google Reviews,2025-05-25,3.5,Simple and straightforward,,
+455,DebtBusters,Google Reviews,2024-12-23,4.6,,N*** S***,Negative
+456,JustMoney,Hellopeter,2024-09-05,4.0,,T*** D***,Positive
+457,FASTA,Google Reviews,2026-04-29,1.9,,G*** V***,Positive
+458,DebtBusters,Hellopeter,2024-04-03,4.5,,R*** A***,Neutral
+459,FASTA,Trustpilot,2024-09-05,4.8,,S*** D***,Negative
+460,JustMoney,Facebook Reviews,20250713,2.2,Great customer support,A*** C***,Negative
+461,FASTA,Hellopeter,2024-05-15,3.8,Simple and straightforward,D*** Z***,Negative
+462,JustMoney,Trustpilot,2024-03-23,2.7,,S*** M***,
+463,JustMoney,Hellopeter,2024-10-02,2.5,Great customer support,M*** M***,
+464,DebtBusters,App Store,2025-05-12,2.6,,,
+465,DebtBusters,Hellopeter,13 Jan 2025,4.2,Applied and got money same day!,S*** V***,Negative
+466,FASTA,Google Reviews,2024-01-26,4.1,,,
+467,JustMoney,App Store,2024-04-16,1.3,Applied and got money same day!,D*** P***,Neutral
+468,DebtBusters,Hellopeter,20240716,2.9,,L*** N***,Negative
+469,DebtBusters,Google Reviews,2026-05-31,4.1,,P*** V***,Neutral
+470,FASTA,Trustpilot,07 Oct 2024,1.1,,,Neutral
+471,DebtBusters,Google Reviews,16/04/2024,,Difficult to understand the repayment terms,R*** D***,
+472,JustMoney,Facebook Reviews,2025-08-21,5.0,Fast and easy application process,F*** P***,Positive
+473,DebtBusters,Google Reviews,2026-01-28,2.7,Fees are too high but service is quick,F*** H***,Positive
+474,DebtBusters,Trustpilot,2025-04-19,4.0,,,Positive
+475,FASTA,Trustpilot,2026-02-03,,Would not recommend - high interest rates,A*** V***,Neutral
+476,FASTA,Facebook Reviews,2026-04-14,4.7,Fees are too high but service is quick,,Neutral
+477,FASTA,Hellopeter,2025-11-30,3.2,Difficult to understand the repayment terms,,
+478,FASTA,Trustpilot,2024-01-20,2.6,Difficult to understand the repayment terms,A*** H***,Positive
+479,DebtBusters,Google Reviews,2025-12-06,1.5,Great customer support,D*** S***,Neutral
+480,JustMoney,Google Reviews,2026-02-23,,Difficult to understand the repayment terms,F*** V***,Positive
+481,FASTA,Google Reviews,20260306,2.8,,N*** M***,
+482,FASTA,Google Reviews,2025-01-28,2.2,Fees are too high but service is quick,N*** M***,
+483,FASTA,Google Reviews,2025-04-28,1.8,,,Positive
+484,JustMoney,Trustpilot,2025-05-24,1.9,Fees are too high but service is quick,,Positive
+485,FASTA,Google Reviews,30 Jan 2024,,Fees are too high but service is quick,S*** B***,
+486,FASTA,App Store,2026-04-16,2.1,,R*** A***,
+487,FASTA,Google Reviews,2026-02-23,2.3,,A*** L***,
+488,FASTA,Trustpilot,2026-01-18,2.1,,,Positive
+489,DebtBusters,Trustpilot,2025-10-05,4.7,Applied and got money same day!,G*** V***,Neutral
+490,FASTA,Trustpilot,2025-04-08,4.6,Would not recommend - high interest rates,T*** L***,
+491,FASTA,Google Reviews,09-12-2024,1.2,Difficult to understand the repayment terms,P*** M***,Neutral
+492,FASTA,Trustpilot,2026-02-13,4.8,,P*** S***,Positive
+493,FASTA,Google Reviews,2024-08-30,1.1,Difficult to understand the repayment terms,A*** B***,Negative
+494,JustMoney,Trustpilot,2026-01-07,2.5,Fast and easy application process,T*** Z***,
+495,JustMoney,Hellopeter,2026-03-23,2.7,,T*** A***,
+496,JustMoney,Hellopeter,2024-07-19,3.7,Fast and easy application process,,
+497,FASTA,App Store,2025-04-13,3.8,Fees are too high but service is quick,T*** P***,Negative
+498,FASTA,Hellopeter,2024-03-13,3.6,Fast and easy application process,M*** D***,
+499,FASTA,Trustpilot,2025-04-13,4.9,Simple and straightforward,P*** B***,Neutral
+500,JustMoney,Google Reviews,2025-05-29,1.6,Difficult to understand the repayment terms,N*** S***,
+501,DebtBusters,Trustpilot,20250129,4.8,Applied and got money same day!,,Negative
+502,DebtBusters,Facebook Reviews,2024-05-15,3.8,Fees are too high but service is quick,A*** C***,Negative
+503,FASTA,App Store,2025-09-17,2.1,Simple and straightforward,G*** D***,
+504,JustMoney,App Store,2024-05-25,5.0,Fees are too high but service is quick,T*** D***,
+505,DebtBusters,Hellopeter,2026-01-22,3.5,Fast and easy application process,,Negative
+506,FASTA,App Store,2024-09-21,2.8,Would not recommend - high interest rates,S*** A***,Positive
+507,DebtBusters,Trustpilot,08 Apr 2025,2.5,Fees are too high but service is quick,,Neutral
+508,DebtBusters,App Store,2026-05-14,1.1,Simple and straightforward,Z*** M***,
+509,JustMoney,Google Reviews,2025-05-27,4.7,,R*** Z***,Negative
+510,JustMoney,Google Reviews,2024-09-05,4.4,,Z*** P***,Neutral
+511,JustMoney,Hellopeter,2025-05-01,4.4,,M*** M***,Neutral
+512,FASTA,Trustpilot,2025-08-02,4.0,Simple and straightforward,L*** V***,
+513,FASTA,App Store,2025-03-15,4.7,,S*** M***,Positive
+514,FASTA,App Store,2024-02-25,2.9,Would not recommend - high interest rates,P*** D***,
+515,DebtBusters,Trustpilot,2024-02-27,2.1,,A*** M***,
+516,FASTA,Trustpilot,2025-08-11,1.8,Difficult to understand the repayment terms,,Negative
+517,FASTA,Hellopeter,2026-02-24,2.0,Would not recommend - high interest rates,P*** J***,
+518,FASTA,Google Reviews,2024-12-08,4.5,Difficult to understand the repayment terms,T*** M***,Neutral
+519,FASTA,Hellopeter,2025-06-06,3.9,Simple and straightforward,A*** L***,
+520,FASTA,Trustpilot,2025-02-12,4.6,Difficult to understand the repayment terms,N*** P***,Neutral
+521,DebtBusters,Facebook Reviews,2025-04-06,1.5,Applied and got money same day!,N*** M***,Positive
+522,FASTA,Facebook Reviews,19/07/2024,1.5,Fees are too high but service is quick,T*** C***,Neutral
+523,FASTA,Trustpilot,2025-02-24,1.6,Would not recommend - high interest rates,L*** K***,
+524,JustMoney,Facebook Reviews,2025-04-26,1.7,Fast and easy application process,T*** Z***,
+525,FASTA,App Store,2025-01-19,,Great customer support,M*** V***,
+526,FASTA,Facebook Reviews,2024-08-30,2.7,,P*** D***,Positive
+527,FASTA,Google Reviews,2025-04-18,3.7,Difficult to understand the repayment terms,N*** D***,Neutral
+528,FASTA,Trustpilot,2024-02-03,3.0,Fast and easy application process,,Negative
+529,DebtBusters,Google Reviews,2026-02-06,3.5,Difficult to understand the repayment terms,A*** V***,Neutral
+530,DebtBusters,Hellopeter,27/03/2026,2.4,Great customer support,S*** J***,Negative
+531,DebtBusters,Hellopeter,04/05/2026,3.9,Applied and got money same day!,D*** N***,Positive
+532,JustMoney,Trustpilot,2024-08-19,4.8,Would not recommend - high interest rates,,Negative
+533,FASTA,Google Reviews,2024-06-12,3.5,Fees are too high but service is quick,T*** B***,
+534,FASTA,Google Reviews,2024-04-28,5.0,,N*** D***,Neutral
+535,DebtBusters,Trustpilot,2024-01-27,2.4,Fast and easy application process,L*** L***,
+536,FASTA,Google Reviews,2026-02-01,2.6,Fast and easy application process,T*** V***,
+537,FASTA,Trustpilot,2024-07-02,1.4,Would not recommend - high interest rates,A*** S***,Neutral
+538,DebtBusters,App Store,2025-07-12,2.4,Difficult to understand the repayment terms,N*** D***,
+539,FASTA,Hellopeter,2025-11-22,3.9,,A*** S***,Positive
+540,DebtBusters,Hellopeter,2026-03-20,3.6,Fees are too high but service is quick,P*** D***,
+541,FASTA,Hellopeter,2026-01-21,4.5,,F*** M***,
+542,FASTA,Google Reviews,2024-05-16,2.2,,R*** P***,Neutral
+543,FASTA,Hellopeter,2024-04-25,2.6,Fast and easy application process,M*** D***,
+544,FASTA,App Store,2025-01-25,1.9,,L*** K***,
+545,JustMoney,Trustpilot,2024-02-05,2.4,Simple and straightforward,F*** S***,Positive
+546,DebtBusters,Google Reviews,2024-05-23,3.7,Fast and easy application process,M*** M***,Neutral
+547,FASTA,Facebook Reviews,2025-02-05,4.8,Fees are too high but service is quick,N*** L***,
+548,JustMoney,Hellopeter,2024-06-13,1.6,Great customer support,T*** C***,Negative
+549,FASTA,App Store,2026-03-23,3.2,Would not recommend - high interest rates,R*** V***,Neutral
+550,FASTA,App Store,2025-07-18,4.4,Fees are too high but service is quick,T*** M***,Positive
+551,FASTA,App Store,2024-09-28,3.2,Fast and easy application process,P*** D***,Negative
+552,FASTA,Hellopeter,2024-02-05,2.0,Would not recommend - high interest rates,N*** B***,
+553,JustMoney,Google Reviews,2025-04-25,3.9,Would not recommend - high interest rates,T*** M***,Negative
+554,FASTA,Google Reviews,2025-11-16,2.3,Difficult to understand the repayment terms,D*** A***,
+555,JustMoney,Facebook Reviews,30/12/2024,3.3,Simple and straightforward,N*** M***,Negative
+556,FASTA,Facebook Reviews,2024-08-06,2.7,Applied and got money same day!,,
+557,FASTA,Google Reviews,2024-10-30,2.0,Fees are too high but service is quick,N*** K***,
+558,JustMoney,App Store,2025-01-18,1.9,Fees are too high but service is quick,Z*** P***,Neutral
+559,JustMoney,App Store,2025-09-08,,Would not recommend - high interest rates,F*** A***,Negative
+560,FASTA,Facebook Reviews,2024-10-22,2.1,,S*** D***,Negative
+561,FASTA,Facebook Reviews,2026-06-07,1.4,Difficult to understand the repayment terms,L*** H***,Positive
+562,FASTA,Trustpilot,2025-07-28,3.4,Difficult to understand the repayment terms,M*** C***,
+563,JustMoney,App Store,2026-02-11,4.5,Fast and easy application process,T*** M***,Negative
+564,DebtBusters,App Store,2025-06-09,2.3,Fast and easy application process,,
+565,DebtBusters,Hellopeter,2024-11-23,1.5,,,Negative
+566,JustMoney,Hellopeter,2025-11-10,3.8,Fast and easy application process,,Neutral
+567,FASTA,Trustpilot,2026-05-17,4.8,Would not recommend - high interest rates,L*** V***,Positive
+568,FASTA,Trustpilot,2025-06-04,1.2,Difficult to understand the repayment terms,P*** M***,Negative
+569,DebtBusters,Trustpilot,2026-03-18,4.8,Fees are too high but service is quick,,Neutral
+570,DebtBusters,Trustpilot,2025-05-02,1.3,Fees are too high but service is quick,D*** P***,Positive
+571,FASTA,Facebook Reviews,2025-05-11,1.6,Simple and straightforward,L*** Z***,Negative
+572,JustMoney,Trustpilot,2025-12-03,4.6,Difficult to understand the repayment terms,A*** M***,
+573,JustMoney,App Store,2026-01-10,2.4,Difficult to understand the repayment terms,S*** C***,
+574,DebtBusters,Facebook Reviews,2024-03-24,1.1,,N*** M***,Negative
+575,DebtBusters,Google Reviews,2024-11-02,1.3,Difficult to understand the repayment terms,A*** Z***,
+576,JustMoney,Hellopeter,2026-04-16,3.1,Fees are too high but service is quick,N*** V***,
+577,JustMoney,Google Reviews,2025-03-01,2.3,Great customer support,N*** L***,
+578,FASTA,Google Reviews,2026-01-14,4.9,,N*** N***,
+579,FASTA,Google Reviews,2026-06-09,1.5,,,Positive
+580,DebtBusters,App Store,2024-02-23,3.2,Difficult to understand the repayment terms,Z*** J***,
+581,JustMoney,Trustpilot,2025-11-08,3.5,Fees are too high but service is quick,M*** D***,
+582,DebtBusters,Trustpilot,20250610,3.9,Difficult to understand the repayment terms,P*** N***,Positive
+583,FASTA,Facebook Reviews,2025-10-05,1.6,Fast and easy application process,Z*** S***,Neutral
+584,DebtBusters,Facebook Reviews,2024-06-27,,Fees are too high but service is quick,R*** P***,Neutral
+585,FASTA,Facebook Reviews,2025-07-20,3.4,Great customer support,,Negative
+586,JustMoney,Hellopeter,2024-03-22,2.3,,S*** Z***,Positive
+587,JustMoney,Facebook Reviews,2025-03-02,1.5,Simple and straightforward,M*** L***,
+588,DebtBusters,Facebook Reviews,2025-06-14,1.7,Fast and easy application process,M*** Z***,
+589,DebtBusters,Google Reviews,19/05/2026,4.6,,N*** D***,
+590,DebtBusters,Facebook Reviews,2026-06-02,1.3,Simple and straightforward,F*** M***,Negative
+591,DebtBusters,Trustpilot,2024-01-10,1.8,Applied and got money same day!,N*** M***,Positive
+592,DebtBusters,Facebook Reviews,2024-02-16,1.5,Would not recommend - high interest rates,N*** V***,Neutral
+593,JustMoney,Hellopeter,2025-05-29,2.2,Fees are too high but service is quick,,Positive
+594,FASTA,Trustpilot,2025-04-15,2.5,Applied and got money same day!,S*** M***,Negative
+595,DebtBusters,App Store,2024-05-15,2.3,,F*** K***,Neutral
+596,DebtBusters,App Store,2025-03-25,4.5,Fees are too high but service is quick,,Neutral
+597,FASTA,Trustpilot,2026-06-04,4.8,Difficult to understand the repayment terms,A*** L***,
+598,FASTA,Trustpilot,2026-05-24,4.6,,A*** V***,
+599,FASTA,App Store,2025-03-23,1.5,Would not recommend - high interest rates,M*** D***,
+600,FASTA,Trustpilot,2026-03-02,1.8,Fast and easy application process,R*** P***,Negative
+601,JustMoney,App Store,2024-06-04,3.1,,M*** S***,
+602,FASTA,Google Reviews,2024-11-07,3.3,Great customer support,T*** D***,
+603,FASTA,Trustpilot,20251127,4.5,Would not recommend - high interest rates,B*** M***,Negative
+604,FASTA,Google Reviews,2024-02-23,1.4,Difficult to understand the repayment terms,P*** D***,Positive
+605,FASTA,Hellopeter,2024-11-07,1.9,,Z*** B***,Neutral
+606,FASTA,Trustpilot,2026-01-22,2.7,Simple and straightforward,Z*** V***,Positive
+607,FASTA,Facebook Reviews,2025-12-28,4.8,Applied and got money same day!,M*** M***,
+608,JustMoney,App Store,2024-06-14,4.1,Great customer support,,Neutral
+609,DebtBusters,Facebook Reviews,2024-05-21,1.7,Would not recommend - high interest rates,F*** J***,
+610,DebtBusters,App Store,2024-03-09,4.8,Fees are too high but service is quick,M*** J***,Positive
+611,FASTA,Google Reviews,2025-04-20,4.7,,N*** L***,Positive
+612,DebtBusters,Trustpilot,31/01/2026,3.5,Great customer support,A*** M***,
+613,DebtBusters,Facebook Reviews,2025-11-03,4.0,Simple and straightforward,P*** H***,
+614,FASTA,App Store,2026-01-27,3.8,Difficult to understand the repayment terms,S*** D***,Positive
+615,JustMoney,Trustpilot,2025-01-09,4.7,Would not recommend - high interest rates,P*** L***,Neutral
+616,FASTA,Trustpilot,2026-04-19,4.4,Fast and easy application process,S*** P***,Negative
+617,FASTA,Facebook Reviews,2024-02-20,3.9,Fees are too high but service is quick,L*** A***,
+618,FASTA,App Store,2026-05-28,3.5,Would not recommend - high interest rates,N*** V***,Neutral
+619,FASTA,Hellopeter,2025-06-28,2.6,,N*** V***,Negative
+620,DebtBusters,Hellopeter,2024-07-01,1.9,Great customer support,N*** A***,Negative
+621,FASTA,Facebook Reviews,2025-05-27,4.5,,,Positive
+622,DebtBusters,App Store,2024-02-12,1.6,Difficult to understand the repayment terms,F*** M***,
+623,DebtBusters,Trustpilot,20250228,4.3,Would not recommend - high interest rates,P*** B***,Positive
+624,JustMoney,Google Reviews,2024-08-06,3.7,Would not recommend - high interest rates,L*** H***,Positive
+625,FASTA,Hellopeter,2026-01-05,,Fast and easy application process,N*** B***,
+626,DebtBusters,Hellopeter,2025-11-04,4.5,Simple and straightforward,,Neutral
+627,DebtBusters,Google Reviews,2024-06-16,2.4,Would not recommend - high interest rates,,Neutral
+628,JustMoney,App Store,2026-05-30,3.7,Simple and straightforward,M*** V***,Neutral
+629,FASTA,App Store,20240726,2.4,,P*** M***,Negative
+630,DebtBusters,Hellopeter,2025-11-27,4.3,Fast and easy application process,A*** N***,
+631,FASTA,Trustpilot,11-25-2024,2.1,,M*** V***,
+632,FASTA,Trustpilot,2025-06-04,3.0,Simple and straightforward,T*** N***,Negative
+633,DebtBusters,Trustpilot,2024-04-15,1.4,Great customer support,N*** N***,Negative
+634,DebtBusters,Trustpilot,2024-09-04,2.4,,,Neutral
+635,FASTA,Hellopeter,2025-07-06,4.2,Applied and got money same day!,,
+636,JustMoney,Facebook Reviews,2025-04-25,4.4,Fees are too high but service is quick,Z*** H***,Neutral
+637,FASTA,Hellopeter,2024-11-26,1.7,Simple and straightforward,M*** H***,Negative
+638,FASTA,Trustpilot,2025-12-16,2.3,Difficult to understand the repayment terms,B*** V***,Neutral
+639,FASTA,Facebook Reviews,2025-04-11,4.2,,N*** B***,Negative
+640,FASTA,App Store,2025-05-02,1.0,,F*** P***,Positive
+641,FASTA,App Store,2024-05-11,4.6,,F*** V***,Neutral
+642,DebtBusters,Google Reviews,2024-08-23,1.9,,,Negative
+643,DebtBusters,Hellopeter,29/04/2025,,Fast and easy application process,D*** Z***,Neutral
+644,JustMoney,Hellopeter,20250901,2.5,Applied and got money same day!,F*** L***,Neutral
+645,JustMoney,Facebook Reviews,2024-10-01,1.2,Applied and got money same day!,F*** D***,Positive
+646,DebtBusters,Hellopeter,2025-09-13,2.7,,A*** K***,Neutral
+647,FASTA,Facebook Reviews,2025-07-19,2.8,,R*** K***,Negative
+648,FASTA,Hellopeter,2025-10-25,3.9,Fast and easy application process,,Negative
+649,FASTA,Trustpilot,2025-07-05,3.2,Fast and easy application process,S*** M***,Negative
+650,DebtBusters,Google Reviews,2025-10-08,1.5,Difficult to understand the repayment terms,,
+651,FASTA,App Store,2026-06-04,2.7,Applied and got money same day!,D*** K***,
+652,FASTA,Trustpilot,2025-01-23,2.7,Would not recommend - high interest rates,Z*** J***,Negative
+653,FASTA,Facebook Reviews,2025-11-26,,,P*** M***,Positive
+654,FASTA,Facebook Reviews,2024-03-22,3.1,Great customer support,R*** M***,Positive
+655,FASTA,Google Reviews,2026-01-27,1.8,,,
+656,JustMoney,Facebook Reviews,2024-10-23,2.0,,S*** S***,
+657,FASTA,Google Reviews,2024-10-29,,Simple and straightforward,Z*** P***,Positive
+658,FASTA,Google Reviews,2026-04-07,2.0,Fees are too high but service is quick,N*** S***,
+659,DebtBusters,Google Reviews,2025-01-29,2.5,Fees are too high but service is quick,D*** P***,
+660,FASTA,Hellopeter,2026-02-06,1.9,Applied and got money same day!,P*** V***,Neutral
+661,FASTA,Google Reviews,2024-03-20,1.9,Would not recommend - high interest rates,M*** M***,Positive
+662,JustMoney,Google Reviews,2026-05-26,1.2,Applied and got money same day!,A*** S***,
+663,DebtBusters,App Store,2025-11-01,3.6,Difficult to understand the repayment terms,P*** Z***,Negative
+664,FASTA,Trustpilot,2024-01-27,3.4,Would not recommend - high interest rates,A*** V***,Positive
+665,FASTA,App Store,2025-10-23,1.4,Fast and easy application process,T*** M***,Neutral
+666,JustMoney,Google Reviews,2025-03-23,3.8,Great customer support,,Negative
+667,FASTA,Hellopeter,2024-04-11,1.2,,F*** S***,
+668,FASTA,App Store,2024-06-01,,,P*** B***,
+669,FASTA,Hellopeter,2024-01-06,1.5,Great customer support,M*** N***,
+670,DebtBusters,Trustpilot,2025-01-23,4.1,Great customer support,P*** D***,
+671,DebtBusters,App Store,2025-06-16,2.2,,,Positive
+672,JustMoney,Trustpilot,2024-07-06,2.4,Applied and got money same day!,T*** Z***,
+673,FASTA,Facebook Reviews,2025-09-17,4.8,Fast and easy application process,,Negative
+674,FASTA,Facebook Reviews,2025-07-31,,Applied and got money same day!,Z*** D***,Neutral
+675,JustMoney,Trustpilot,2026-03-15,1.0,Fast and easy application process,T*** S***,
+676,JustMoney,Facebook Reviews,2024-01-19,1.3,Simple and straightforward,S*** D***,
+677,FASTA,Google Reviews,2026-05-01,1.7,Fees are too high but service is quick,A*** M***,
+678,FASTA,Hellopeter,2024-04-09,4.4,Simple and straightforward,,Positive
+679,FASTA,Trustpilot,2025-08-02,3.7,,N*** P***,Neutral
+680,JustMoney,App Store,2024-09-19,,,R*** C***,
+681,FASTA,Facebook Reviews,2025-07-26,,,,Neutral
+682,FASTA,Facebook Reviews,2026-04-08,4.0,Great customer support,Z*** D***,Positive
+683,JustMoney,Trustpilot,2025-09-26,4.4,Would not recommend - high interest rates,L*** P***,Neutral
+684,DebtBusters,Facebook Reviews,2025-04-30,2.7,Fast and easy application process,,Neutral
+685,JustMoney,App Store,2024-12-05,4.3,Would not recommend - high interest rates,,
+686,FASTA,Hellopeter,11-05-2025,1.9,,S*** D***,Negative
+687,FASTA,Hellopeter,2025-06-29,3.1,Fast and easy application process,,Neutral
+688,FASTA,Hellopeter,2025-09-29,2.8,Would not recommend - high interest rates,L*** P***,
+689,FASTA,Trustpilot,2024-04-06,2.3,,G*** P***,Negative
+690,JustMoney,Google Reviews,2025-04-29,3.8,,,
+691,DebtBusters,Hellopeter,2026-01-02,5.0,Would not recommend - high interest rates,,
+692,JustMoney,Hellopeter,2025-12-23,1.3,Fees are too high but service is quick,N*** B***,
+693,FASTA,Hellopeter,2024-07-26,3.9,Applied and got money same day!,P*** V***,
+694,FASTA,Hellopeter,2024-11-21,4.8,Would not recommend - high interest rates,,Neutral
+695,JustMoney,App Store,2024-06-30,2.2,,M*** N***,Negative
+696,DebtBusters,App Store,2024-12-03,4.7,Difficult to understand the repayment terms,A*** D***,Positive
+697,DebtBusters,Trustpilot,2026-03-22,2.1,Simple and straightforward,,Neutral
+698,DebtBusters,Google Reviews,2025-06-25,,,N*** D***,Negative
+699,FASTA,Hellopeter,2024-09-10,4.9,Fees are too high but service is quick,N*** H***,Negative
+700,FASTA,Google Reviews,2024-05-20,1.1,,S*** B***,
+701,JustMoney,Hellopeter,2024-07-02,2.3,Great customer support,G*** B***,Positive
+702,FASTA,App Store,2025-12-28,4.0,Applied and got money same day!,P*** B***,
+703,JustMoney,Hellopeter,2026-03-24,2.5,Difficult to understand the repayment terms,,
+704,FASTA,Trustpilot,2025-05-18,4.1,Simple and straightforward,P*** M***,Neutral
+705,FASTA,Hellopeter,2024-01-29,1.8,Would not recommend - high interest rates,,Positive
+706,FASTA,Google Reviews,2024-04-05,2.5,,B*** C***,Positive
+707,JustMoney,Google Reviews,2024-01-30,1.7,,,
+708,DebtBusters,App Store,2024-11-01,4.8,Great customer support,,Neutral
+709,JustMoney,App Store,2026-01-14,2.7,Fast and easy application process,N*** Z***,Negative
+710,DebtBusters,Google Reviews,01/05/2024,4.7,Great customer support,A*** P***,Positive
+711,DebtBusters,Trustpilot,2026-01-05,4.2,Fast and easy application process,N*** D***,Neutral
+712,FASTA,Trustpilot,2026-04-21,3.8,Great customer support,,
+713,JustMoney,Google Reviews,2025-04-07,1.2,Would not recommend - high interest rates,M*** V***,
+714,DebtBusters,Facebook Reviews,09-19-2025,4.1,,,
+715,DebtBusters,Hellopeter,2024-06-02,4.5,Would not recommend - high interest rates,A*** V***,Neutral
+716,FASTA,Hellopeter,2025-03-12,1.8,Applied and got money same day!,A*** P***,
+717,JustMoney,Facebook Reviews,15/12/2025,2.7,,,Positive
+718,DebtBusters,Facebook Reviews,2026-03-24,3.2,Difficult to understand the repayment terms,M*** Z***,Neutral
+719,DebtBusters,Facebook Reviews,2026-01-29,5.0,,P*** L***,Neutral
+720,FASTA,Facebook Reviews,2024-01-23,4.9,Applied and got money same day!,,Neutral
+721,FASTA,Trustpilot,2026-01-02,2.8,Fast and easy application process,T*** S***,Neutral
+722,DebtBusters,Facebook Reviews,2026-01-05,4.3,,S*** P***,Positive
+723,DebtBusters,App Store,20250724,3.4,,,
+724,FASTA,Facebook Reviews,2026-05-20,3.4,Great customer support,,Negative
+725,FASTA,Trustpilot,2026-01-17,5.0,Great customer support,S*** Z***,Neutral
+726,DebtBusters,App Store,2024-11-04,2.7,,P*** S***,
+727,JustMoney,App Store,2025-02-28,3.9,Fast and easy application process,R*** D***,
+728,DebtBusters,Google Reviews,2024-02-01,3.7,Simple and straightforward,D*** J***,Neutral
+729,FASTA,Google Reviews,2026-01-05,3.9,Great customer support,,Negative
+730,FASTA,App Store,2025-11-26,2.4,Applied and got money same day!,P*** Z***,Negative
+731,DebtBusters,Google Reviews,2026-05-16,3.7,Difficult to understand the repayment terms,T*** P***,Positive
+732,FASTA,Hellopeter,2025-05-09,4.3,Simple and straightforward,N*** J***,Negative
+733,FASTA,App Store,2025-06-01,4.7,Would not recommend - high interest rates,L*** M***,Negative
+734,FASTA,Facebook Reviews,2026-03-31,2.9,,S*** H***,
+735,JustMoney,App Store,2026-04-05,3.6,Fees are too high but service is quick,,
+736,FASTA,Trustpilot,2025-06-19,4.1,Fast and easy application process,,
+737,FASTA,Google Reviews,2025-05-15,2.0,,D*** A***,Negative
+738,DebtBusters,App Store,2024-05-12,2.4,Fast and easy application process,,Neutral
+739,JustMoney,Hellopeter,2024-03-09,1.9,Fees are too high but service is quick,A*** D***,
+740,FASTA,Hellopeter,2025-02-13,4.4,Fees are too high but service is quick,F*** P***,
+741,FASTA,Hellopeter,2024-11-04,1.8,,N*** V***,
+742,JustMoney,App Store,2025-09-03,2.4,,L*** J***,
+743,JustMoney,Hellopeter,03 Feb 2026,4.9,Simple and straightforward,L*** M***,Positive
+744,DebtBusters,Facebook Reviews,2025-10-09,4.5,Would not recommend - high interest rates,P*** J***,Neutral
+745,JustMoney,Trustpilot,18 Sep 2025,4.9,Great customer support,,Negative
+746,FASTA,Hellopeter,2025-03-12,3.1,Fast and easy application process,R*** M***,
+747,FASTA,Facebook Reviews,2026-04-07,3.5,Simple and straightforward,,
+748,JustMoney,Hellopeter,2025-02-24,4.9,Would not recommend - high interest rates,N*** N***,
+749,DebtBusters,Hellopeter,2025-10-01,1.8,,P*** D***,
+750,JustMoney,Trustpilot,2025-11-15,1.5,Fees are too high but service is quick,F*** N***,Neutral
+751,FASTA,Google Reviews,2026-02-13,4.7,,,Neutral
+752,DebtBusters,App Store,2026-05-18,2.5,Fast and easy application process,R*** J***,Neutral
+753,JustMoney,Facebook Reviews,2024-03-14,3.7,Fees are too high but service is quick,D*** Z***,Positive
+754,DebtBusters,Hellopeter,2024-10-02,4.6,,A*** L***,Negative
+755,FASTA,Trustpilot,2024-11-12,3.0,Fees are too high but service is quick,,
+756,FASTA,Trustpilot,2024-08-06,2.2,Applied and got money same day!,P*** D***,Neutral
+757,DebtBusters,Google Reviews,2025-12-09,1.6,Would not recommend - high interest rates,P*** P***,Negative
+758,FASTA,Google Reviews,06 Mar 2024,3.4,Would not recommend - high interest rates,N*** H***,
+759,FASTA,Facebook Reviews,2024-10-25,,Fees are too high but service is quick,A*** N***,
+760,FASTA,Google Reviews,05-18-2026,2.7,,A*** D***,Negative
+761,DebtBusters,App Store,2024-05-29,3.6,Fees are too high but service is quick,,Positive
+762,DebtBusters,Hellopeter,2024-02-19,4.4,Great customer support,M*** M***,Negative
+763,FASTA,Facebook Reviews,2025-10-22,3.6,Great customer support,,Negative
+764,FASTA,Trustpilot,2025-05-14,2.1,Would not recommend - high interest rates,,Negative
+765,FASTA,App Store,2026-02-25,,Applied and got money same day!,L*** C***,Positive
+766,FASTA,Facebook Reviews,2025-01-12,2.2,Would not recommend - high interest rates,P*** Z***,Negative
+767,FASTA,Hellopeter,2024-03-13,1.2,Difficult to understand the repayment terms,A*** J***,
+768,DebtBusters,Google Reviews,30 Jan 2026,2.5,Simple and straightforward,F*** K***,Negative
+769,DebtBusters,Facebook Reviews,2026-01-23,1.6,,A*** P***,
+770,DebtBusters,Google Reviews,2024-06-17,1.2,Applied and got money same day!,F*** H***,
+771,FASTA,Trustpilot,2025-01-17,3.2,Simple and straightforward,F*** P***,Negative
+772,DebtBusters,Hellopeter,16 Aug 2025,2.2,Fast and easy application process,Z*** J***,Neutral
+773,JustMoney,Hellopeter,2025-07-31,3.6,,A*** B***,
+774,JustMoney,Facebook Reviews,2026-06-14,1.9,Great customer support,S*** A***,Neutral
+775,DebtBusters,Trustpilot,2024-07-23,3.5,Fast and easy application process,,
+776,DebtBusters,Google Reviews,2024-03-08,3.8,Simple and straightforward,,
+777,JustMoney,App Store,2025-01-11,4.5,Fast and easy application process,N*** K***,
+778,JustMoney,Facebook Reviews,2024-07-07,4.0,Difficult to understand the repayment terms,F*** M***,
+779,JustMoney,Facebook Reviews,2025-01-10,2.5,Would not recommend - high interest rates,T*** V***,Positive
+780,FASTA,Facebook Reviews,2024-10-30,4.2,,G*** L***,
+781,DebtBusters,App Store,2024-05-17,,,L*** S***,Positive
+782,DebtBusters,Trustpilot,2025-02-16,3.5,,G*** M***,Neutral
+783,FASTA,Google Reviews,2024-03-10,3.3,Great customer support,N*** P***,Negative
+784,FASTA,Trustpilot,2024-08-31,2.0,Would not recommend - high interest rates,T*** J***,
+785,DebtBusters,Google Reviews,2025-03-10,2.2,,A*** K***,Negative
+786,FASTA,Hellopeter,05/06/2026,1.3,Fees are too high but service is quick,G*** D***,Negative
+787,FASTA,Hellopeter,25/05/2026,1.2,Would not recommend - high interest rates,N*** S***,
+788,DebtBusters,Google Reviews,02-15-2025,2.8,Difficult to understand the repayment terms,L*** J***,
+789,DebtBusters,Facebook Reviews,2025-08-05,4.0,,T*** V***,
+790,JustMoney,App Store,01 Sep 2024,3.0,Would not recommend - high interest rates,,Positive
+791,FASTA,Google Reviews,2024-06-26,2.1,Applied and got money same day!,,Negative
+792,JustMoney,Trustpilot,2025-10-25,4.9,Great customer support,F*** N***,Positive
+793,DebtBusters,App Store,2025-11-26,2.9,Would not recommend - high interest rates,,Negative
+794,JustMoney,Trustpilot,2025-06-20,4.4,Difficult to understand the repayment terms,L*** N***,Neutral
+795,DebtBusters,Facebook Reviews,2024-07-01,,Would not recommend - high interest rates,B*** A***,Positive
+796,FASTA,App Store,2025-06-11,3.2,Difficult to understand the repayment terms,M*** V***,Neutral
+797,FASTA,Facebook Reviews,2024-10-09,3.1,,T*** D***,Neutral
+798,JustMoney,Hellopeter,2025-12-31,1.2,Fast and easy application process,P*** J***,
+799,FASTA,Google Reviews,2025-10-24,2.6,,,Neutral
+800,FASTA,Hellopeter,2024-07-29,3.3,Difficult to understand the repayment terms,,

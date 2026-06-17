@@ -1,0 +1,129 @@
+{
+  "notebook": "nb_fabric_ml_01_credit_risk",
+  "run_date": "2026-06-17T01:12:53.152730",
+  "mlflow_run_id": "local-no-mlflow",
+  "best_model": "Random Forest",
+  "features_used": [
+    "credit_score",
+    "adverse_listings_count",
+    "total_open_accounts",
+    "total_judgements",
+    "risk_band_enc",
+    "credit_check_pass",
+    "net_income_zar",
+    "monthly_expenses_zar",
+    "existing_debt_zar",
+    "afford_zar",
+    "dsr_ratio",
+    "afford_pass",
+    "docs_complete",
+    "processing_minutes",
+    "channel_enc",
+    "principal_amount_zar"
+  ],
+  "train_size": 634,
+  "test_size": 159,
+  "default_rate_overall": 0.2346,
+  "models": {
+    "GBM": {
+      "auc": 0.4191,
+      "avg_precision": 0.2244,
+      "brier_score": 0.2184,
+      "cv_auc_mean": 0.5212,
+      "cv_auc_std": 0.0523
+    },
+    "Random Forest": {
+      "auc": 0.436,
+      "avg_precision": 0.2462,
+      "brier_score": 0.2423,
+      "cv_auc_mean": 0.5259,
+      "cv_auc_std": 0.0544
+    },
+    "Logistic Regression": {
+      "auc": 0.4276,
+      "avg_precision": 0.2046,
+      "brier_score": 0.2665,
+      "cv_auc_mean": 0.5171,
+      "cv_auc_std": 0.0468
+    }
+  },
+  "risk_decile_table": [
+    {
+      "risk_decile": "D1",
+      "n": 16,
+      "defaults": 6,
+      "default_rate": 0.375,
+      "avg_prob": 0.3414371479711338
+    },
+    {
+      "risk_decile": "D2",
+      "n": 16,
+      "defaults": 5,
+      "default_rate": 0.3125,
+      "avg_prob": 0.3857023904333865
+    },
+    {
+      "risk_decile": "D3",
+      "n": 16,
+      "defaults": 4,
+      "default_rate": 0.25,
+      "avg_prob": 0.4115539911249943
+    },
+    {
+      "risk_decile": "D4",
+      "n": 16,
+      "defaults": 3,
+      "default_rate": 0.1875,
+      "avg_prob": 0.43225814234950416
+    },
+    {
+      "risk_decile": "D5",
+      "n": 16,
+      "defaults": 3,
+      "default_rate": 0.1875,
+      "avg_prob": 0.45084260007148663
+    },
+    {
+      "risk_decile": "D6",
+      "n": 15,
+      "defaults": 2,
+      "default_rate": 0.13333333333333333,
+      "avg_prob": 0.47052877843981694
+    },
+    {
+      "risk_decile": "D7",
+      "n": 16,
+      "defaults": 7,
+      "default_rate": 0.4375,
+      "avg_prob": 0.4895846267026151
+    },
+    {
+      "risk_decile": "D8",
+      "n": 16,
+      "defaults": 1,
+      "default_rate": 0.0625,
+      "avg_prob": 0.5162078785789727
+    },
+    {
+      "risk_decile": "D9",
+      "n": 16,
+      "defaults": 2,
+      "default_rate": 0.125,
+      "avg_prob": 0.5487664090711762
+    },
+    {
+      "risk_decile": "D10",
+      "n": 16,
+      "defaults": 4,
+      "default_rate": 0.25,
+      "avg_prob": 0.5868549460204597
+    }
+  ],
+  "fabric_deployment": {
+    "model_registry": "fasta.models.credit_risk",
+    "serving_endpoint": "https://adb-xxx.azuredatabricks.net/serving-endpoints/credit-risk/invocations",
+    "fabric_notebook": "/Workspaces/FASTA_DW/Notebooks/nb_fabric_ml_01_credit_risk",
+    "schedule": "Saturday 02:00 SAST (weekly retrain)",
+    "real_time_scoring": "Via Fabric Real-Time Intelligence event stream on new application events"
+  }
+}

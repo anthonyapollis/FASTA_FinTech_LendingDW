@@ -1,0 +1,171 @@
+{
+  "name": "df_silver_customers",
+  "objectType": "DataFlow",
+  "description": "Fabric Dataflow Gen2 — Silver customers cleansing. Reads bronze.customers, applies all DQ transforms, writes to silver.customers Delta table and optionally to silver._quarantine.",
+  "properties": {
+    "type": "MappingDataFlow",
+    "sources": [
+      {
+        "name": "BronzeCustomers",
+        "description": "Raw customers from Bronze Lakehouse Delta table",
+        "dataset": {
+          "referenceName": "ds_fabric_lakehouse_bronze",
+          "type": "DatasetReference",
+          "parameters": {
+            "table_name": "customers",
+            "schema_name": { "value": "@dataset().bronze_schema", "type": "Expression" }
+          }
+        }
+      }
+    ],
+    "sinks": [
+      {
+        "name": "SilverCustomers",
+        "description": "Clean output to silver.customers",
+        "dataset": {
+          "referenceName": "ds_fabric_lakehouse_silver",
+          "type": "DatasetReference",
+          "parameters": {
+            "table_name": "customers",
+            "schema_name": { "value": "@dataset().silver_schema", "type": "Expression" }
+          }
+        }
+      },
+      {
+        "name": "QuarantineSink",
+        "description": "Rows that fail critical DQ rules go to quarantine for investigation",
+        "dataset": {
+          "referenceName": "ds_fabric_lakehouse_silver",
+          "type": "DatasetReference",
+          "parameters": {
+            "table_name": "_quarantine_customers",
+            "schema_name": { "value": "@dataset().silver_schema", "type": "Expression" }
+          }
+        }
+      }
+    ],
+    "transformations": [
+      {
+        "name": "RemoveDuplicates",
+        "description": "Drop exact duplicate customer_id rows, keep latest by created_at",
+        "type": "Aggregate",
+        "parameters": {
+          "groupBy": ["customer_id"],
+          "aggregations": {
+            "first_name":                "first(first_name)",
+            "last_name":                 "first(last_name)",
+            "date_of_birth":             "first(date_of_birth)",
+            "gender":                    "first(gender)",
+            "province":                  "first(province)",
+            "email_masked":              "first(email_masked)",
+            "mobile_masked":             "first(mobile_masked)",
+            "bank_name":                 "first(bank_name)",
+            "account_type":              "first(account_type)",
+            "is_verified":               "max(is_verified)",
+            "is_repeat_customer":        "max(is_repeat_customer)",
+            "created_at":                "max(created_at)",
+            "employment_status":         "first(employment_status)",
+            "net_income_zar":            "first(net_income_zar)",
+            "customer_identifier_hash":  "first(customer_identifier_hash)"
+          }
+        }
+      },
+      {
+        "name": "NormaliseNames",
+        "description": "Proper-case first/last name, trim whitespace",
+        "type": "DerivedColumn",
+        "parameters": {
+          "columns": {
+            "first_name": "initCap(trim(first_name))",
+            "last_name":  "initCap(trim(last_name))"
+          }
+        }
+      },
+      {
+        "name": "ParseDateOfBirth",
+        "description": "Try 6 date formats in order, return NULL if all fail",
+        "type": "DerivedColumn",
+        "parameters": {
+          "columns": {
+            "date_of_birth": "coalesce(\n  toDate(date_of_birth, 'yyyy-MM-dd'),\n  toDate(date_of_birth, 'dd/MM/yyyy'),\n  toDate(date_of_birth, 'MM-dd-yyyy'),\n  toDate(date_of_birth, 'dd MMM yyyy'),\n  toDate(date_of_birth, 'yyyyMMdd'),\n  null()\n)"
+          }
+        }
+      },
+      {
+        "name": "AgeBand",
+        "description": "Calculate age band from normalised date_of_birth",
+        "type": "DerivedColumn",
+        "parameters": {
+          "columns": {
+            "age_years": "iif(isNull(date_of_birth), toInteger(null()), months_between(currentDate(), date_of_birth) / 12)",
+            "age_band": "iif(isNull(date_of_birth), 'Unknown',\n  iif(age_years between 18 and 24, '18-24',\n  iif(age_years between 25 and 34, '25-34',\n  iif(age_years between 35 and 44, '35-44',\n  iif(age_years between 45 and 54, '45-54', '55+')))))"
+          }
+        }
+      },
+      {
+        "name": "StandardiseGender",
+        "description": "Map M/F/MALE/FEMALE/Non-binary to canonical values",
+        "type": "DerivedColumn",
+        "parameters": {
+          "columns": {
+            "gender_std": "case(\n  upper(trim(gender)) in ('M','MALE'),      'Male',\n  upper(trim(gender)) in ('F','FEMALE'),    'Female',\n  upper(trim(gender)) == 'NON-BINARY',      'Non-binary',\n  upper(trim(gender)) == 'PREFER NOT TO SAY', 'Prefer not to say',\n  !isNull(gender),                          'Unknown',\n                                            'Unknown'\n)"
+          }
+        }
+      },
+      {
+        "name": "StandardiseEmployment",
+        "description": "Uppercase and trim employment status",
+        "type": "DerivedColumn",
+        "parameters": {
+          "columns": {
+            "employment_status_std": "upper(trim(employment_status))"
+          }
+        }
+      },
+      {
+        "name": "CleanIncome",
+        "description": "Null out negative income (data entry error), flag missing",
+        "type": "DerivedColumn",
+        "parameters": {
+          "columns": {
+            "net_income_zar":      "iif(net_income_zar < 0, toDecimal(null()), net_income_zar)",
+            "dq_missing_income":   "toInteger(isNull(net_income_zar))",
+            "dq_negative_income":  "toInteger(!isNull(net_income_zar) && net_income_zar < 0)"
+          }
+        }
+      },
+      {
+        "name": "DQFlags",
+        "description": "Add data quality flag columns used downstream for reporting",
+        "type": "DerivedColumn",
+        "parameters": {
+          "columns": {
+            "dq_missing_dob":        "toInteger(isNull(date_of_birth))",
+            "dq_missing_province":   "toInteger(isNull(province))",
+            "dq_unverified":         "toInteger(is_verified == 0 || isNull(is_verified))",
+            "dq_short_id_hash":      "toInteger(length(customer_identifier_hash) < 12)",
+            "dq_any_flag":           "toInteger(dq_missing_dob || dq_missing_income || dq_missing_province || dq_short_id_hash)",
+            "_silver_loaded_at":     "currentTimestamp()",
+            "_source_table":         "'bronze.customers'",
+            "_pipeline_run_id":      "toString(null())"
+          }
+        }
+      },
+      {
+        "name": "SplitCleanVsQuarantine",
+        "description": "Route: critical failures to quarantine, good rows to silver",
+        "type": "ConditionalSplit",
+        "parameters": {
+          "conditions": [
+            {
+              "name": "Quarantine",
+              "condition": "isNull(customer_id) || length(toString(customer_identifier_hash)) < 8"
+            }
+          ],
+          "default": "CleanRows"
+        }
+      }
+    ],
+    "script": "// Power Query M equivalent — also generated for Fabric Dataflow Gen2\n// This block shows the M script view of the same transformations\n// Source: bronze.customers\n// All transforms above map 1:1 to Power Query steps\n\nlet\n  Source = Lakehouse.Contents(\"FastaLakehouse\"){[Schema=\"bronze\",Item=\"customers\"]}[Data],\n  RemovedDuplicates = Table.Distinct(Source, {\"customer_id\"}),\n  TrimmedNames = Table.TransformColumns(RemovedDuplicates, {\n    {\"first_name\", Text.Proper},\n    {\"last_name\", Text.Proper}\n  }),\n  ParsedDOB = Table.TransformColumns(TrimmedNames, {\n    {\"date_of_birth\", each\n      let\n        fmts = {\"yyyy-MM-dd\", \"dd/MM/yyyy\", \"MM-dd-yyyy\", \"dd MMM yyyy\", \"yyyyMMdd\"},\n        parsed = List.First(List.Select(List.Transform(fmts, (f) => try Date.FromText(_, [Format=f]) otherwise null), (v) => v <> null))\n      in parsed,\n      type date\n    }\n  }),\n  AgeBand = Table.AddColumn(ParsedDOB, \"age_band\",\n    each if [date_of_birth] = null then \"Unknown\"\n    else let\n      age = Duration.TotalDays(DateTime.Date(DateTime.LocalNow()) - [date_of_birth]) / 365.25\n    in\n      if age >= 18 and age < 25 then \"18-24\"\n      else if age >= 25 and age < 35 then \"25-34\"\n      else if age >= 35 and age < 45 then \"35-44\"\n      else if age >= 45 and age < 55 then \"45-54\"\n      else \"55+\"\n  ),\n  GenderStd = Table.AddColumn(AgeBand, \"gender_std\",\n    each if Text.Upper([gender]) = \"M\" or Text.Upper([gender]) = \"MALE\" then \"Male\"\n    else if Text.Upper([gender]) = \"F\" or Text.Upper([gender]) = \"FEMALE\" then \"Female\"\n    else if Text.Upper([gender]) = \"NON-BINARY\" then \"Non-binary\"\n    else \"Unknown\"\n  ),\n  CleanIncome = Table.ReplaceValue(AgeBand, each [net_income_zar],\n    each if [net_income_zar] < 0 then null else [net_income_zar],\n    Replacer.ReplaceValue, {\"net_income_zar\"}\n  ),\n  DQFlags = Table.AddColumn(CleanIncome, \"dq_any_flag\",\n    each Number.From([date_of_birth] = null or [net_income_zar] = null or [province] = null)\n  ),\n  AddLoadTs = Table.AddColumn(DQFlags, \"_silver_loaded_at\", each DateTime.LocalNow())\nin\n  AddLoadTs"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "deployed_at": "2026-06-17T16:54:37Z",
+  "workspace_id": "e515bafe-7290-4832-ae1d-514be43a9d87",
+  "dry_run": false,
+  "pipelines": [],
+  "notebooks": [
+    "nb_fabric_ml_01_credit_risk.py",
+    "nb_fabric_ml_02_affordability.py",
+    "nb_fabric_ml_03_churn_collections.py",
+    "nb_fabric_ml_04_channel_roi.py",
+    "nb_fabric_ml_retrain_full.py"
+  ],
+  "errors": [
+    "FAILED pl_01_bronze_ingest.json: 400 Client Error: Bad Request for url: https://api.fabric.microsoft.com/v1/workspaces/e515bafe-7290-4832-ae1d-514be43a9d87/items",
+    "FAILED pl_02_silver_cleanse.json: 400 Client Error: Bad Request for url: https://api.fabric.microsoft.com/v1/workspaces/e515bafe-7290-4832-ae1d-514be43a9d87/items",
+    "FAILED pl_03_gold_marts.json: 400 Client Error: Bad Request for url: https://api.fabric.microsoft.com/v1/workspaces/e515bafe-7290-4832-ae1d-514be43a9d87/items",
+    "FAILED pl_04_ml_scoring.json: 409 Client Error: Conflict for url: https://api.fabric.microsoft.com/v1/workspaces/e515bafe-7290-4832-ae1d-514be43a9d87/items"
+  ]
+}

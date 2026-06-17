@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-06-16T16:07:47.727143",
+  "layer": "bronze",
+  "description": "Raw dirty data simulating FASTA/Confluent FinTech lending platform",
+  "tables": {
+    "customers": 2083,
+    "campaigns": 60,
+    "web_sessions": 8362,
+    "web_events": 26539,
+    "loan_quotes": 4000,
+    "loan_applications": 3283,
+    "credit_checks": 2800,
+    "affordability_assessments": 2600,
+    "loan_contracts": 1829,
+    "repayment_schedule": 6247,
+    "payments": 5698,
+    "fee_charges": 3500,
+    "collection_actions": 1200,
+    "support_tickets": 2000,
+    "reviews": 800,
+    "partner_referrals": 600
+  },
+  "dirty_data_patterns": [
+    "Mixed date formats (DD/MM/YYYY, MM-DD-YYYY, YYYYMMDD)",
+    "Mixed case inconsistencies (status codes, categories)",
+    "Null values in non-nullable business fields",
+    "Negative monetary amounts (data entry errors)",
+    "Duplicate rows (~2-6% per table)",
+    "Future payment dates (~5%)",
+    "Bot/spider web sessions (7%)",
+    "Orphaned foreign keys",
+    "Masked SA ID hashes with wrong length (~5%)",
+    "Inconsistent status codes"
+  ]
+}

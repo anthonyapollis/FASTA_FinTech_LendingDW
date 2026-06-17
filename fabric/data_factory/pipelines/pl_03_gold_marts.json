@@ -1,0 +1,169 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/sdks/2023-12-01/MicrosoftFabric.Pipeline.schema.json",
+  "name": "pl_03_fasta_gold_marts",
+  "objectType": "Pipeline",
+  "description": "FASTA FinTech — Gold star schema build pipeline. Runs Fabric Notebooks to build dim/fact tables from Silver, registers to Power BI dataset, triggers ML scoring pipeline.",
+  "properties": {
+    "parameters": {
+      "silver_schema":  { "type": "string", "defaultValue": "silver" },
+      "gold_schema":    { "type": "string", "defaultValue": "gold" },
+      "run_date":       { "type": "string", "defaultValue": "@formatDateTime(utcNow(), 'yyyy-MM-dd')" },
+      "full_refresh":   { "type": "bool",   "defaultValue": false }
+    },
+    "activities": [
+      {
+        "name": "ACT_Build_Dimensions",
+        "description": "Build all dimension tables in parallel — no cross-dependencies",
+        "type": "ForEach",
+        "dependsOn": [],
+        "typeProperties": {
+          "isSequential": false,
+          "batchCount": 6,
+          "items": {
+            "value": "@createArray('dim_date','dim_customer','dim_brand','dim_channel','dim_campaign','dim_risk_band','dim_product')",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "name": "ACT_Run_Dim_Notebook",
+              "type": "NotebookActivity",
+              "typeProperties": {
+                "notebookPath": {
+                  "value": "@concat('/Workspaces/FASTA_DW/Notebooks/nb_gold_build_', item())",
+                  "type": "Expression"
+                },
+                "baseParameters": {
+                  "silver_schema": { "value": "@pipeline().parameters.silver_schema", "type": "Expression" },
+                  "gold_schema":   { "value": "@pipeline().parameters.gold_schema", "type": "Expression" },
+                  "run_date":      { "value": "@pipeline().parameters.run_date", "type": "Expression" },
+                  "full_refresh":  { "value": "@string(pipeline().parameters.full_refresh)", "type": "Expression" }
+                },
+                "timeout": "00:30:00",
+                "retryIntervalInSeconds": 60
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "ACT_Build_fact_web_funnel",
+        "description": "Build fact_web_funnel — needs dim_date, dim_brand, dim_campaign",
+        "type": "NotebookActivity",
+        "dependsOn": [{ "activity": "ACT_Build_Dimensions", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_gold_build_fact_web_funnel",
+          "baseParameters": {
+            "silver_schema": { "value": "@pipeline().parameters.silver_schema", "type": "Expression" },
+            "gold_schema":   { "value": "@pipeline().parameters.gold_schema", "type": "Expression" },
+            "run_date":      { "value": "@pipeline().parameters.run_date", "type": "Expression" }
+          },
+          "timeout": "00:45:00"
+        }
+      },
+      {
+        "name": "ACT_Build_fact_loan_application",
+        "description": "Build fact_loan_application — joins apps + checks + affordability",
+        "type": "NotebookActivity",
+        "dependsOn": [{ "activity": "ACT_Build_Dimensions", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_gold_build_fact_loan_application",
+          "baseParameters": {
+            "silver_schema": { "value": "@pipeline().parameters.silver_schema", "type": "Expression" },
+            "gold_schema":   { "value": "@pipeline().parameters.gold_schema", "type": "Expression" },
+            "run_date":      { "value": "@pipeline().parameters.run_date", "type": "Expression" }
+          },
+          "timeout": "00:45:00"
+        }
+      },
+      {
+        "name": "ACT_Build_fact_disbursement",
+        "description": "Build fact_disbursement — needs fact_loan_application complete",
+        "type": "NotebookActivity",
+        "dependsOn": [{ "activity": "ACT_Build_fact_loan_application", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_gold_build_fact_disbursement",
+          "baseParameters": {
+            "silver_schema": { "value": "@pipeline().parameters.silver_schema", "type": "Expression" },
+            "gold_schema":   { "value": "@pipeline().parameters.gold_schema", "type": "Expression" }
+          },
+          "timeout": "00:30:00"
+        }
+      },
+      {
+        "name": "ACT_Build_fact_repayment",
+        "description": "Build fact_repayment — needs fact_disbursement complete",
+        "type": "NotebookActivity",
+        "dependsOn": [{ "activity": "ACT_Build_fact_disbursement", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_gold_build_fact_repayment",
+          "baseParameters": {
+            "silver_schema": { "value": "@pipeline().parameters.silver_schema", "type": "Expression" },
+            "gold_schema":   { "value": "@pipeline().parameters.gold_schema", "type": "Expression" }
+          },
+          "timeout": "00:45:00"
+        }
+      },
+      {
+        "name": "ACT_Build_Channel_ROI_Mart",
+        "description": "Build mart_channel_roi — needs all facts complete",
+        "type": "NotebookActivity",
+        "dependsOn": [
+          { "activity": "ACT_Build_fact_web_funnel",       "dependencyConditions": ["Succeeded"] },
+          { "activity": "ACT_Build_fact_repayment",        "dependencyConditions": ["Succeeded"] }
+        ],
+        "typeProperties": {
+          "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_gold_build_mart_channel_roi",
+          "baseParameters": {
+            "gold_schema": { "value": "@pipeline().parameters.gold_schema", "type": "Expression" }
+          },
+          "timeout": "00:20:00"
+        }
+      },
+      {
+        "name": "ACT_Refresh_PowerBI_Dataset",
+        "description": "Trigger Power BI dataset refresh via REST API",
+        "type": "WebActivity",
+        "dependsOn": [{ "activity": "ACT_Build_Channel_ROI_Mart", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "method": "POST",
+          "url": "@concat('https://api.powerbi.com/v1.0/myorg/groups/', pipeline().globalParameters.pbi_workspace_id, '/datasets/', pipeline().globalParameters.pbi_dataset_id, '/refreshes')",
+          "authentication": {
+            "type": "MSI",
+            "resource": "https://analysis.windows.net/powerbi/api"
+          },
+          "headers": { "Content-Type": "application/json" },
+          "body": "{\"notifyOption\":\"MailOnFailure\"}"
+        }
+      },
+      {
+        "name": "ACT_Trigger_ML_Scoring",
+        "description": "Run weekly ML model refresh (runs on Saturdays only)",
+        "type": "IfCondition",
+        "dependsOn": [{ "activity": "ACT_Build_Channel_ROI_Mart", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "expression": {
+            "value": "@equals(dayOfWeek(utcNow()), 6)",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "name": "ACT_Execute_ML_Pipeline",
+              "type": "ExecutePipeline",
+              "typeProperties": {
+                "pipeline": {
+                  "referenceName": "pl_04_fasta_ml_scoring",
+                  "type": "PipelineReference"
+                },
+                "waitOnCompletion": false,
+                "parameters": {
+                  "gold_schema": "@pipeline().parameters.gold_schema",
+                  "run_date": "@pipeline().parameters.run_date"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

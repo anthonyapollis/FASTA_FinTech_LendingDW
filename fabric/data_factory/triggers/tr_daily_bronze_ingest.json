@@ -1,0 +1,34 @@
+{
+  "name": "tr_daily_fasta_bronze_ingest",
+  "objectType": "Trigger",
+  "description": "Scheduled trigger — fires at 03:00 SAST (01:00 UTC) every weekday. Kicks off pl_01_fasta_bronze_ingest -> pl_02_silver_cleanse -> pl_03_gold_marts chain.",
+  "properties": {
+    "type": "ScheduleTrigger",
+    "typeProperties": {
+      "recurrence": {
+        "frequency": "Week",
+        "interval": 1,
+        "startTime": "2026-06-16T01:00:00Z",
+        "timeZone": "South Africa Standard Time",
+        "schedule": {
+          "weekDays": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "hours": [3],
+          "minutes": [0]
+        }
+      }
+    },
+    "pipelines": [
+      {
+        "pipelineReference": {
+          "referenceName": "pl_01_fasta_bronze_ingest",
+          "type": "PipelineReference"
+        },
+        "parameters": {
+          "source_container": "raw-landing",
+          "source_folder": "fasta/daily",
+          "ingestion_date": "@formatDateTime(trigger().scheduledTime, 'yyyy-MM-dd')"
+        }
+      }
+    ]
+  }
+}

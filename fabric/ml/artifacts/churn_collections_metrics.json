@@ -1,0 +1,31 @@
+{
+  "notebook": "nb_fabric_ml_03_churn_collections",
+  "run_date": "2026-06-17T01:14:07.333874",
+  "churn_model": {
+    "definition": "Active loan, no successful payment in 45+ days",
+    "dataset_size": 694,
+    "churn_rate": 0.8228,
+    "models": {
+      "GBM": {
+        "auc": 1.0,
+        "ap": 1.0
+      },
+      "Extra Trees": {
+        "auc": 0.9965,
+        "ap": 0.9993
+      }
+    },
+    "best_model": "GBM"
+  },
+  "ptp_model": {
+    "definition": "Collections contacted customer \u2014 will they pay within 7 days?",
+    "dataset_size": 534,
+    "ptp_rate": 0.3689,
+    "auc": 0.5596
+  },
+  "fabric_deployment": {
+    "churn_trigger": "Daily batch on silver.payments \u2014 flag loans with days_since_pay > 30",
+    "ptp_trigger": "At each collection action creation \u2014 score and route to agent/self-serve",
+    "ews_trigger": "At disbursement \u2014 score and write to gold.fact_disbursement_scored"
+  }
+}

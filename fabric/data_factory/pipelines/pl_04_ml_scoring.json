@@ -1,0 +1,403 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/sdks/2023-12-01/MicrosoftFabric.Pipeline.schema.json",
+  "name": "pl_04_fasta_ml_scoring",
+  "objectType": "Pipeline",
+  "description": "FASTA FinTech — ML scoring pipeline. Runs 4 Fabric ML notebooks in dependency order every Saturday 02:00 SAST. Gated by day-of-week check. Writes scores back to gold mart tables and refreshes Power BI ML report.",
+
+  "properties": {
+
+    "parameters": {
+      "run_date": {
+        "type": "string",
+        "defaultValue": "@formatDateTime(utcNow(), 'yyyy-MM-dd')",
+        "description": "Scoring snapshot date — passed to all notebooks as feature cutoff"
+      },
+      "force_run": {
+        "type": "bool",
+        "defaultValue": false,
+        "description": "Set true to bypass Saturday-only gate (manual/ad-hoc run)"
+      },
+      "gold_schema": {
+        "type": "string",
+        "defaultValue": "gold"
+      },
+      "silver_schema": {
+        "type": "string",
+        "defaultValue": "silver"
+      },
+      "mlflow_experiment": {
+        "type": "string",
+        "defaultValue": "fasta_lending_weekly_score"
+      },
+      "model_registry": {
+        "type": "string",
+        "defaultValue": "fasta.models"
+      },
+      "retrain_threshold_auc": {
+        "type": "string",
+        "defaultValue": "0.70",
+        "description": "If live AUC drops below this, pipeline triggers retrain branch"
+      }
+    },
+
+    "variables": {
+      "credit_risk_auc":      { "type": "String", "defaultValue": "0.00" },
+      "affordability_r2":     { "type": "String", "defaultValue": "0.00" },
+      "churn_auc":            { "type": "String", "defaultValue": "0.00" },
+      "channel_quality_top":  { "type": "String", "defaultValue": "" },
+      "rows_scored_total":    { "type": "String", "defaultValue": "0" },
+      "pipeline_status":      { "type": "String", "defaultValue": "RUNNING" }
+    },
+
+    "activities": [
+
+      {
+        "name": "ACT_Saturday_Gate",
+        "description": "Block execution unless it is Saturday (dayOfWeek=7) OR force_run=true. Prevents accidental mid-week full retrains.",
+        "type": "IfCondition",
+        "dependsOn": [],
+        "typeProperties": {
+          "expression": {
+            "value": "@or(pipeline().parameters.force_run, equals(dayOfWeek(utcNow()), 6))",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+
+            {
+              "name": "ACT_Log_Pipeline_Start",
+              "description": "Write pipeline start record to gold._pipeline_audit",
+              "type": "Script",
+              "dependsOn": [],
+              "typeProperties": {
+                "linkedServiceName": "ls_fabric_lakehouse",
+                "scripts": [
+                  {
+                    "type": "NonQuery",
+                    "text": {
+                      "value": "@concat('INSERT INTO gold._pipeline_audit (pipeline_name, run_date, status, started_at) VALUES (''pl_04_fasta_ml_scoring'', ''', pipeline().parameters.run_date, ''', ''RUNNING'', GETUTCDATE())')",
+                      "type": "Expression"
+                    }
+                  }
+                ]
+              }
+            },
+
+            {
+              "name": "ACT_ML_01_Credit_Risk",
+              "description": "Notebook 1 of 4 — Credit risk classifier (GBM / RF). Reads silver.loan_applications + silver.credit_checks + silver.affordability_assessments. Writes scores to gold.mart_credit_risk_scores. Registers model to MLflow Unity Catalog.",
+              "type": "NotebookActivity",
+              "dependsOn": [
+                { "activity": "ACT_Log_Pipeline_Start", "dependencyConditions": ["Succeeded"] }
+              ],
+              "typeProperties": {
+                "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_fabric_ml_01_credit_risk",
+                "baseParameters": {
+                  "run_date":          { "value": "@pipeline().parameters.run_date",       "type": "Expression" },
+                  "silver_schema":     { "value": "@pipeline().parameters.silver_schema",  "type": "Expression" },
+                  "gold_schema":       { "value": "@pipeline().parameters.gold_schema",    "type": "Expression" },
+                  "mlflow_experiment": { "value": "@pipeline().parameters.mlflow_experiment", "type": "Expression" },
+                  "model_registry":    { "value": "@pipeline().parameters.model_registry", "type": "Expression" },
+                  "output_table":      { "value": "mart_credit_risk_scores",               "type": "Expression" }
+                },
+                "sessionProperties": {
+                  "driverMemory":   "28g",
+                  "driverCores":    4,
+                  "executorMemory": "28g",
+                  "executorCores":  4,
+                  "numExecutors":   2
+                },
+                "timeout": "02:00:00",
+                "retry": 1,
+                "retryIntervalInSeconds": 120
+              }
+            },
+
+            {
+              "name": "ACT_ML_02_Affordability",
+              "description": "Notebook 2 of 4 — Affordability regression (ElasticNet poly). Reads silver.affordability_assessments. Writes predicted disposable income + stress scenario table. Can run in parallel with credit risk — no dependency between them.",
+              "type": "NotebookActivity",
+              "dependsOn": [
+                { "activity": "ACT_Log_Pipeline_Start", "dependencyConditions": ["Succeeded"] }
+              ],
+              "typeProperties": {
+                "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_fabric_ml_02_affordability",
+                "baseParameters": {
+                  "run_date":          { "value": "@pipeline().parameters.run_date",       "type": "Expression" },
+                  "silver_schema":     { "value": "@pipeline().parameters.silver_schema",  "type": "Expression" },
+                  "gold_schema":       { "value": "@pipeline().parameters.gold_schema",    "type": "Expression" },
+                  "mlflow_experiment": { "value": "@pipeline().parameters.mlflow_experiment", "type": "Expression" },
+                  "model_registry":    { "value": "@pipeline().parameters.model_registry", "type": "Expression" },
+                  "output_table":      { "value": "mart_affordability_scores",             "type": "Expression" },
+                  "stress_scenarios":  { "value": "income_minus_10,income_minus_20,income_minus_30,expense_plus_15,expense_plus_30,debt_plus_2000,severe", "type": "Expression" }
+                },
+                "sessionProperties": {
+                  "driverMemory":   "28g",
+                  "driverCores":    4,
+                  "executorMemory": "28g",
+                  "executorCores":  4,
+                  "numExecutors":   2
+                },
+                "timeout": "01:30:00",
+                "retry": 1,
+                "retryIntervalInSeconds": 120
+              }
+            },
+
+            {
+              "name": "ACT_ML_03_Churn",
+              "description": "Notebook 3 of 4 — Churn predictor (GBM + ExtraTrees) + Promise-to-Pay classifier. DEPENDS on credit risk scores (uses risk_decile as a feature). Reads silver.payments + silver.loan_contracts + gold.mart_credit_risk_scores.",
+              "type": "NotebookActivity",
+              "dependsOn": [
+                { "activity": "ACT_ML_01_Credit_Risk", "dependencyConditions": ["Succeeded"] }
+              ],
+              "typeProperties": {
+                "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_fabric_ml_03_churn_collections",
+                "baseParameters": {
+                  "run_date":            { "value": "@pipeline().parameters.run_date",       "type": "Expression" },
+                  "silver_schema":       { "value": "@pipeline().parameters.silver_schema",  "type": "Expression" },
+                  "gold_schema":         { "value": "@pipeline().parameters.gold_schema",    "type": "Expression" },
+                  "mlflow_experiment":   { "value": "@pipeline().parameters.mlflow_experiment", "type": "Expression" },
+                  "model_registry":      { "value": "@pipeline().parameters.model_registry", "type": "Expression" },
+                  "churn_threshold_days":{ "value": "45",                                    "type": "Expression" },
+                  "credit_risk_table":   { "value": "mart_credit_risk_scores",               "type": "Expression" },
+                  "output_table_churn":  { "value": "mart_churn_scores",                     "type": "Expression" },
+                  "output_table_ptp":    { "value": "mart_ptp_scores",                       "type": "Expression" }
+                },
+                "sessionProperties": {
+                  "driverMemory":   "28g",
+                  "driverCores":    4,
+                  "executorMemory": "28g",
+                  "executorCores":  4,
+                  "numExecutors":   2
+                },
+                "timeout": "01:30:00",
+                "retry": 1,
+                "retryIntervalInSeconds": 120
+              }
+            },
+
+            {
+              "name": "ACT_ML_04_Channel_ROI",
+              "description": "Notebook 4 of 4 — Channel quality scorecard + budget optimiser. DEPENDS on both credit risk scores AND affordability scores (uses both as quality signal inputs). Final notebook in the chain.",
+              "type": "NotebookActivity",
+              "dependsOn": [
+                { "activity": "ACT_ML_01_Credit_Risk",  "dependencyConditions": ["Succeeded"] },
+                { "activity": "ACT_ML_02_Affordability","dependencyConditions": ["Succeeded"] }
+              ],
+              "typeProperties": {
+                "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_fabric_ml_04_channel_roi",
+                "baseParameters": {
+                  "run_date":           { "value": "@pipeline().parameters.run_date",       "type": "Expression" },
+                  "silver_schema":      { "value": "@pipeline().parameters.silver_schema",  "type": "Expression" },
+                  "gold_schema":        { "value": "@pipeline().parameters.gold_schema",    "type": "Expression" },
+                  "mlflow_experiment":  { "value": "@pipeline().parameters.mlflow_experiment", "type": "Expression" },
+                  "total_budget_zar":   { "value": "500000",                                "type": "Expression" },
+                  "credit_risk_table":  { "value": "mart_credit_risk_scores",               "type": "Expression" },
+                  "affordability_table":{ "value": "mart_affordability_scores",             "type": "Expression" },
+                  "output_table":       { "value": "mart_channel_roi",                      "type": "Expression" }
+                },
+                "sessionProperties": {
+                  "driverMemory":   "14g",
+                  "driverCores":    4,
+                  "executorMemory": "14g",
+                  "executorCores":  4,
+                  "numExecutors":   1
+                },
+                "timeout": "01:00:00",
+                "retry": 1,
+                "retryIntervalInSeconds": 120
+              }
+            },
+
+            {
+              "name": "ACT_AUC_Retrain_Check",
+              "description": "After all 4 notebooks complete — read logged AUC from MLflow. If credit risk AUC < retrain_threshold_auc, trigger full retrain branch (refit on latest 90 days, re-register model).",
+              "type": "IfCondition",
+              "dependsOn": [
+                { "activity": "ACT_ML_03_Churn",      "dependencyConditions": ["Succeeded"] },
+                { "activity": "ACT_ML_04_Channel_ROI","dependencyConditions": ["Succeeded"] }
+              ],
+              "typeProperties": {
+                "expression": {
+                  "value": "@less(float(variables('credit_risk_auc')), float(pipeline().parameters.retrain_threshold_auc))",
+                  "type": "Expression"
+                },
+                "ifTrueActivities": [
+                  {
+                    "name": "ACT_Retrain_Alert",
+                    "description": "AUC degraded below threshold — alert data science team via Teams webhook before retrain.",
+                    "type": "WebActivity",
+                    "dependsOn": [],
+                    "typeProperties": {
+                      "url": "@pipeline().globalParameters.teams_webhook_url",
+                      "method": "POST",
+                      "headers": { "Content-Type": "application/json" },
+                      "body": {
+                        "value": "@concat('{\"type\":\"message\",\"attachments\":[{\"contentType\":\"application/vnd.microsoft.card.adaptive\",\"content\":{\"type\":\"AdaptiveCard\",\"version\":\"1.4\",\"body\":[{\"type\":\"TextBlock\",\"text\":\"FASTA ML — Model Degradation Alert\",\"weight\":\"Bolder\",\"size\":\"Medium\",\"color\":\"Attention\"},{\"type\":\"FactSet\",\"facts\":[{\"title\":\"Pipeline\",\"value\":\"pl_04_fasta_ml_scoring\"},{\"title\":\"Run Date\",\"value\":\"', pipeline().parameters.run_date, '\"},{\"title\":\"Credit Risk AUC\",\"value\":\"', variables('credit_risk_auc'), '\"},{\"title\":\"Threshold\",\"value\":\"', pipeline().parameters.retrain_threshold_auc, '\"},{\"title\":\"Action\",\"value\":\"Full retrain triggered automatically\"}]}]}}]}' )",
+                        "type": "Expression"
+                      }
+                    }
+                  },
+                  {
+                    "name": "ACT_Full_Retrain",
+                    "description": "AUC < threshold — run full retrain notebook. Refits all 4 models on latest 90 days of labelled data, cross-validates, re-registers to MLflow Unity Catalog under a new version.",
+                    "type": "NotebookActivity",
+                    "dependsOn": [
+                      { "activity": "ACT_Retrain_Alert", "dependencyConditions": ["Succeeded"] }
+                    ],
+                    "typeProperties": {
+                      "notebookPath": "/Workspaces/FASTA_DW/Notebooks/nb_fabric_ml_retrain_full",
+                      "baseParameters": {
+                        "run_date":          { "value": "@pipeline().parameters.run_date",       "type": "Expression" },
+                        "silver_schema":     { "value": "@pipeline().parameters.silver_schema",  "type": "Expression" },
+                        "gold_schema":       { "value": "@pipeline().parameters.gold_schema",    "type": "Expression" },
+                        "mlflow_experiment": { "value": "@pipeline().parameters.mlflow_experiment", "type": "Expression" },
+                        "model_registry":    { "value": "@pipeline().parameters.model_registry", "type": "Expression" },
+                        "training_window_days": { "value": "90",                                 "type": "Expression" }
+                      },
+                      "sessionProperties": {
+                        "driverMemory":   "56g",
+                        "driverCores":    8,
+                        "executorMemory": "56g",
+                        "executorCores":  8,
+                        "numExecutors":   4
+                      },
+                      "timeout": "04:00:00",
+                      "retry": 0
+                    }
+                  }
+                ],
+                "ifFalseActivities": [
+                  {
+                    "name": "ACT_AUC_OK_Log",
+                    "description": "AUC is healthy — log pass to audit table and continue to Power BI refresh.",
+                    "type": "Script",
+                    "dependsOn": [],
+                    "typeProperties": {
+                      "linkedServiceName": "ls_fabric_lakehouse",
+                      "scripts": [
+                        {
+                          "type": "NonQuery",
+                          "text": {
+                            "value": "@concat('INSERT INTO gold._model_health_log (run_date, model_name, auc_score, status) VALUES (''', pipeline().parameters.run_date, ''', ''credit_risk'', ', variables('credit_risk_auc'), ', ''HEALTHY'')')",
+                            "type": "Expression"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+
+            {
+              "name": "ACT_Refresh_PBI_ML_Report",
+              "description": "Trigger Power BI dataset refresh for the ML Results report (FASTA_ML_Analytics semantic model). Uses pipeline MSI — no stored credentials.",
+              "type": "WebActivity",
+              "dependsOn": [
+                { "activity": "ACT_AUC_Retrain_Check", "dependencyConditions": ["Succeeded", "Failed"] }
+              ],
+              "typeProperties": {
+                "url": {
+                  "value": "@concat('https://api.powerbi.com/v1.0/myorg/groups/', pipeline().globalParameters.pbi_workspace_id, '/datasets/', pipeline().globalParameters.pbi_ml_dataset_id, '/refreshes')",
+                  "type": "Expression"
+                },
+                "method": "POST",
+                "headers": { "Content-Type": "application/json" },
+                "body": { "notifyOption": "NoNotification" },
+                "authentication": {
+                  "type": "MSI",
+                  "resource": "https://analysis.windows.net/powerbi/api"
+                }
+              }
+            },
+
+            {
+              "name": "ACT_Log_Pipeline_Success",
+              "description": "Write final success record with row counts and AUC to audit table.",
+              "type": "Script",
+              "dependsOn": [
+                { "activity": "ACT_Refresh_PBI_ML_Report", "dependencyConditions": ["Succeeded"] }
+              ],
+              "typeProperties": {
+                "linkedServiceName": "ls_fabric_lakehouse",
+                "scripts": [
+                  {
+                    "type": "NonQuery",
+                    "text": {
+                      "value": "@concat('UPDATE gold._pipeline_audit SET status=''SUCCESS'', finished_at=GETUTCDATE(), credit_risk_auc=', variables('credit_risk_auc'), ', affordability_r2=', variables('affordability_r2'), ', churn_auc=', variables('churn_auc'), ', rows_scored=', variables('rows_scored_total'), ' WHERE pipeline_name=''pl_04_fasta_ml_scoring'' AND run_date=''', pipeline().parameters.run_date, '''')",
+                      "type": "Expression"
+                    }
+                  }
+                ]
+              }
+            }
+
+          ],
+
+          "ifFalseActivities": [
+            {
+              "name": "ACT_Skip_Not_Saturday",
+              "description": "Not Saturday and force_run=false — log skip and exit gracefully. Pipeline completes with Succeeded status so it does not raise an alert.",
+              "type": "Script",
+              "dependsOn": [],
+              "typeProperties": {
+                "linkedServiceName": "ls_fabric_lakehouse",
+                "scripts": [
+                  {
+                    "type": "NonQuery",
+                    "text": {
+                      "value": "@concat('INSERT INTO gold._pipeline_audit (pipeline_name, run_date, status, started_at, finished_at) VALUES (''pl_04_fasta_ml_scoring'', ''', pipeline().parameters.run_date, ''', ''SKIPPED_NOT_SATURDAY'', GETUTCDATE(), GETUTCDATE())')",
+                      "type": "Expression"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+
+    ],
+
+    "policy": {
+      "timeout": "06:00:00",
+      "retry": 0,
+      "retryIntervalInSeconds": 30,
+      "secureInput": false,
+      "secureOutput": false
+    }
+  },
+
+  "annotations": [
+    "FASTA_FinTech",
+    "ML_Scoring",
+    "Weekly_Saturday",
+    "Anthony_Apollis"
+  ],
+
+  "dependencyGraph": {
+    "description": "Execution order within the ifTrue branch",
+    "nodes": [
+      "ACT_Log_Pipeline_Start",
+      "ACT_ML_01_Credit_Risk",
+      "ACT_ML_02_Affordability",
+      "ACT_ML_03_Churn",
+      "ACT_ML_04_Channel_ROI",
+      "ACT_AUC_Retrain_Check",
+      "ACT_Refresh_PBI_ML_Report",
+      "ACT_Log_Pipeline_Success"
+    ],
+    "edges": [
+      { "from": "ACT_Log_Pipeline_Start",  "to": "ACT_ML_01_Credit_Risk",   "label": "parallel start" },
+      { "from": "ACT_Log_Pipeline_Start",  "to": "ACT_ML_02_Affordability", "label": "parallel start" },
+      { "from": "ACT_ML_01_Credit_Risk",   "to": "ACT_ML_03_Churn",         "label": "churn uses risk_decile feature" },
+      { "from": "ACT_ML_01_Credit_Risk",   "to": "ACT_ML_04_Channel_ROI",   "label": "channel uses credit scores" },
+      { "from": "ACT_ML_02_Affordability", "to": "ACT_ML_04_Channel_ROI",   "label": "channel uses affordability" },
+      { "from": "ACT_ML_03_Churn",         "to": "ACT_AUC_Retrain_Check",   "label": "all notebooks done" },
+      { "from": "ACT_ML_04_Channel_ROI",   "to": "ACT_AUC_Retrain_Check",   "label": "all notebooks done" },
+      { "from": "ACT_AUC_Retrain_Check",   "to": "ACT_Refresh_PBI_ML_Report","label": "always refresh PBI" },
+      { "from": "ACT_Refresh_PBI_ML_Report","to": "ACT_Log_Pipeline_Success","label": "write audit" }
+    ]
+  }
+}

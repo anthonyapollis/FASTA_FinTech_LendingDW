@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>FASTA FinTech — Fabric ML Results Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#0a0c10;--card:#111318;--card2:#181d26;--border:#252d3a;
+  --t1:#f0f6fc;--t2:#8d96a0;--t3:#4a5568;
+  --green:#2ea043;--green2:#39d353;--teal:#1f8c8c;--cyan:#58d4e0;
+  --blue:#4d8ef0;--blue2:#a5d6ff;--purple:#9a6dd7;--purple2:#d2b0ff;
+  --pink:#e45c8a;--orange:#e8812a;--yellow:#d4a017;--yellow2:#ffd166;
+  --red:#cf3a3a;--red2:#ff7b72;--lime:#6cc644;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--t1);font-family:'Segoe UI',system-ui,sans-serif;font-size:13px;}
+
+/* ── Header ── */
+header{
+  background:linear-gradient(135deg,#0a0c10 0%,#0d1b2a 50%,#130d22 100%);
+  border-bottom:1px solid var(--border);padding:22px 32px;
+  display:flex;align-items:center;gap:20px;
+}
+.logo-block h1{font-size:22px;font-weight:800;letter-spacing:-0.5px;
+  background:linear-gradient(90deg,#58d4e0,#9a6dd7,#e45c8a);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.logo-block p{color:var(--t2);font-size:12px;margin-top:3px;}
+.badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto;}
+.badge{padding:3px 10px;border-radius:12px;font-size:10px;font-weight:600;border:1px solid;}
+.badge-fab{background:#1a1228;border-color:#9a6dd7;color:#d2b0ff;}
+.badge-delta{background:#0a1a2a;border-color:#4d8ef0;color:#a5d6ff;}
+.badge-ml{background:#0a1a14;border-color:#2ea043;color:#39d353;}
+.badge-local{background:#1a1200;border-color:#d4a017;color:#ffd166;}
+
+/* ── Nav ── */
+nav{background:#0d1017;border-bottom:1px solid var(--border);padding:0 32px;display:flex;gap:0;overflow-x:auto;}
+.tab{padding:11px 18px;cursor:pointer;font-size:12px;color:var(--t2);
+  border-bottom:2px solid transparent;white-space:nowrap;transition:all .18s;}
+.tab:hover{color:var(--t1);}
+.tab.active{border-bottom-color:var(--cyan);color:var(--cyan);}
+
+/* ── Pages ── */
+.page{display:none;padding:24px 32px 40px;}
+.page.active{display:block;}
+
+/* ── Section title ── */
+.sec{font-size:13px;font-weight:700;color:var(--t1);margin:20px 0 12px;
+  display:flex;align-items:center;gap:10px;}
+.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-dot{width:8px;height:8px;border-radius:50%;}
+
+/* ── KPI grid ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:20px;}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 18px;position:relative;overflow:hidden;}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.kpi.c-cyan::before{background:linear-gradient(90deg,var(--cyan),var(--blue));}
+.kpi.c-green::before{background:linear-gradient(90deg,var(--green2),var(--teal));}
+.kpi.c-purple::before{background:linear-gradient(90deg,var(--purple),var(--pink));}
+.kpi.c-orange::before{background:linear-gradient(90deg,var(--orange),var(--yellow));}
+.kpi.c-red::before{background:linear-gradient(90deg,var(--red),var(--pink));}
+.kpi.c-lime::before{background:linear-gradient(90deg,var(--lime),var(--green2));}
+.kpi-label{font-size:10px;color:var(--t2);text-transform:uppercase;letter-spacing:.5px;}
+.kpi-value{font-size:26px;font-weight:800;margin:5px 0 2px;line-height:1;}
+.kpi.c-cyan .kpi-value{color:var(--cyan);}
+.kpi.c-green .kpi-value{color:var(--green2);}
+.kpi.c-purple .kpi-value{color:var(--purple2);}
+.kpi.c-orange .kpi-value{color:var(--yellow2);}
+.kpi.c-red .kpi-value{color:var(--red2);}
+.kpi.c-lime .kpi-value{color:var(--lime);}
+.kpi-sub{font-size:10px;color:var(--t3);}
+
+/* ── Chart grid ── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;}
+.grid21{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-bottom:14px;}
+.cbox{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;}
+.cbox h3{font-size:12px;font-weight:700;margin-bottom:3px;}
+.cbox .sub{font-size:10px;color:var(--t2);margin-bottom:12px;}
+canvas{max-height:260px;}
+
+/* ── Pipeline diagram ── */
+.pipe-flow{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:20px 0;}
+.pipe-node{background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 18px;min-width:150px;text-align:center;}
+.pipe-node .pn-title{font-size:11px;font-weight:700;margin-bottom:3px;}
+.pipe-node .pn-sub{font-size:9px;color:var(--t2);}
+.pipe-arrow{font-size:18px;color:var(--t3);padding:0 8px;}
+.pipe-node.bronze{border-color:#7d4e00;background:#130c00;}.pipe-node.bronze .pn-title{color:#d4a017;}
+.pipe-node.silver{border-color:#4a5568;background:#0d1117;}.pipe-node.silver .pn-title{color:#8d96a0;}
+.pipe-node.gold{border-color:#6e5000;background:#120f00;}.pipe-node.gold .pn-title{color:#ffd166;}
+.pipe-node.ml{border-color:#3a1f6e;background:#0d0a1a;}.pipe-node.ml .pn-title{color:#d2b0ff;}
+.pipe-node.serve{border-color:#1a3a1a;background:#040d04;}.pipe-node.serve .pn-title{color:#39d353;}
+
+/* ── Model card ── */
+.model-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:20px;}
+.model-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;
+  position:relative;overflow:hidden;}
+.model-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;}
+.mc-cyan::before{background:linear-gradient(180deg,var(--cyan),var(--blue));}
+.mc-green::before{background:linear-gradient(180deg,var(--green2),var(--teal));}
+.mc-purple::before{background:linear-gradient(180deg,var(--purple),var(--pink));}
+.mc-orange::before{background:linear-gradient(180deg,var(--orange),var(--yellow));}
+.model-card h3{font-size:12px;font-weight:700;margin-bottom:6px;padding-left:8px;}
+.model-card .algo{font-size:10px;color:var(--t2);padding-left:8px;margin-bottom:10px;}
+.metric-row{display:flex;justify-content:space-between;padding:4px 8px;border-radius:4px;}
+.metric-row:nth-child(odd){background:#161b24;}
+.metric-label{font-size:10px;color:var(--t2);}
+.metric-value{font-size:11px;font-weight:700;}
+.mv-cyan{color:var(--cyan);} .mv-green{color:var(--green2);} .mv-yellow{color:var(--yellow2);}
+.mv-purple{color:var(--purple2);} .mv-orange{color:var(--orange);}
+.status-pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:700;margin-top:8px;margin-left:8px;}
+.sp-prod{background:#0a2a14;border:1px solid var(--green);color:var(--green2);}
+.sp-stage{background:#0a1a2a;border:1px solid var(--blue);color:var(--blue2);}
+.sp-dev{background:#1a1400;border:1px solid var(--yellow);color:var(--yellow2);}
+.sp-retrain{background:#1a0a00;border:1px solid var(--orange);color:var(--orange);}
+
+/* ── Table ── */
+.tbl{width:100%;border-collapse:collapse;font-size:11px;}
+.tbl th{background:#141820;color:var(--t2);padding:8px 12px;text-align:left;
+  border-bottom:1px solid var(--border);font-weight:600;text-transform:uppercase;font-size:9px;}
+.tbl td{padding:7px 12px;border-bottom:1px solid #161b24;color:var(--t1);}
+.tbl tr:hover td{background:#161b24;}
+.rank-1{color:var(--yellow2);font-weight:800;}
+.rank-2{color:var(--t2);font-weight:700;}
+.rank-3{color:var(--orange);font-weight:700;}
+
+/* ── Info box ── */
+.info{background:#0d1520;border:1px solid #1e3a5a;border-radius:8px;
+  padding:12px 16px;color:var(--t2);font-size:11px;line-height:1.6;margin-bottom:16px;}
+.info b{color:var(--cyan);}
+.info .warn{color:var(--yellow2);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-block">
+    <h1>FASTA FinTech — Fabric ML</h1>
+    <p>Microsoft Fabric Data Factory + ML Simulation &nbsp;|&nbsp; Anthony Apollis &nbsp;|&nbsp; 2026-06-17</p>
+  </div>
+  <div class="badge-row">
+    <span class="badge badge-fab">MS Fabric</span>
+    <span class="badge badge-delta">Delta Lake</span>
+    <span class="badge badge-ml">MLflow</span>
+    <span class="badge badge-local">Local Sim ✓</span>
+  </div>
+</header>
+
+<nav>
+  <div class="tab active" onclick="show('pipeline')">Pipeline</div>
+  <div class="tab" onclick="show('models')">ML Models</div>
+  <div class="tab" onclick="show('credit')">Credit Risk</div>
+  <div class="tab" onclick="show('afford')">Affordability</div>
+  <div class="tab" onclick="show('churn')">Churn</div>
+  <div class="tab" onclick="show('channel')">Channel ROI</div>
+  <div class="tab" onclick="show('dq')">Data Quality</div>
+  <div class="tab" onclick="show('deploy')">Deployment</div>
+</nav>
+
+<!-- ═══ PIPELINE ═══ -->
+<div id="pipeline" class="page active">
+  <div class="sec"><div class="sec-dot" style="background:var(--cyan)"></div>Pipeline Run — 2026-06-17</div>
+  <div class="kpi-grid">
+    <div class="kpi c-lime"><div class="kpi-label">Pipeline Status</div><div class="kpi-value">SUCCESS</div><div class="kpi-sub">6/6 steps passed</div></div>
+    <div class="kpi c-cyan"><div class="kpi-label">Total Runtime</div><div class="kpi-value">203s</div><div class="kpi-sub">4 ML notebooks executed</div></div>
+    <div class="kpi c-orange"><div class="kpi-label">Bronze Rows</div><div class="kpi-value">71,601</div><div class="kpi-sub">16 source tables</div></div>
+    <div class="kpi c-green"><div class="kpi-label">After Silver DQ</div><div class="kpi-value">65,346</div><div class="kpi-sub">8.7% removed (dupes + bots)</div></div>
+    <div class="kpi c-purple"><div class="kpi-label">ML Artifacts</div><div class="kpi-value">9</div><div class="kpi-sub">PNGs + JSONs in ml_artifacts/</div></div>
+    <div class="kpi c-red"><div class="kpi-label">Future Pay Dates</div><div class="kpi-value">705</div><div class="kpi-sub">Nulled in Silver layer</div></div>
+  </div>
+
+  <div class="sec"><div class="sec-dot" style="background:var(--purple)"></div>Medallion Pipeline Flow</div>
+  <div class="pipe-flow">
+    <div class="pipe-node bronze"><div class="pn-title">BRONZE</div><div class="pn-sub">pl_01_bronze_ingest<br/>71,601 raw rows<br/>16 CSV tables<br/>ADLS Gen2 / OneLake</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node silver"><div class="pn-title">SILVER</div><div class="pn-sub">pl_02_silver_cleanse<br/>Dataflow Gen2 ×16<br/>DQ flags injected<br/>Delta partitioned</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node gold"><div class="pn-title">GOLD</div><div class="pn-sub">pl_03_gold_marts<br/>6 dims + 4 facts<br/>mart_channel_roi<br/>Power BI ready</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node ml"><div class="pn-title">ML SCORING</div><div class="pn-sub">pl_04_ml_scoring<br/>4 notebooks<br/>MLflow tracking<br/>Weekly retrain</div></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node serve"><div class="pn-title">SERVING</div><div class="pn-sub">Power BI DirectQuery<br/>Fabric Warehouse<br/>Real-Time scoring<br/>Teams alerts</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="cbox">
+      <h3>Fabric Data Factory — Pipeline Dependency Graph</h3>
+      <div class="sub">Wave execution order for Silver cleansing (pl_02)</div>
+      <canvas id="waveChart"></canvas>
+    </div>
+    <div class="cbox">
+      <h3>DQ Rows Removed per Table</h3>
+      <div class="sub">Duplicates + bots + future dates eliminated in Silver</div>
+      <canvas id="dqRemoved"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ML MODELS ═══ -->
+<div id="models" class="page">
+  <div class="sec"><div class="sec-dot" style="background:var(--purple2)"></div>Model Registry — 4 Models Trained</div>
+  <div class="model-grid">
+    <div class="model-card mc-cyan">
+      <h3>Credit Risk Classifier</h3>
+      <div class="algo">Random Forest  |  n=793 loans  |  23.5% default rate</div>
+      <div class="metric-row"><span class="metric-label">Best AUC</span><span class="metric-value mv-cyan">0.436</span></div>
+      <div class="metric-row"><span class="metric-label">CV-AUC Mean</span><span class="metric-value mv-cyan">0.526</span></div>
+      <div class="metric-row"><span class="metric-label">Avg Precision</span><span class="metric-value mv-cyan">0.246</span></div>
+      <div class="metric-row"><span class="metric-label">Top Feature</span><span class="metric-value mv-cyan">credit_score</span></div>
+      <div class="metric-row"><span class="metric-label">Note</span><span class="metric-value" style="font-size:9px;color:var(--t2)">Near-random (synthetic)</span></div>
+      <span class="status-pill sp-dev">Development</span>
+    </div>
+    <div class="model-card mc-green">
+      <h3>Affordability Regression</h3>
+      <div class="algo">ElasticNet (poly deg=2)  |  n=1,124</div>
+      <div class="metric-row"><span class="metric-label">R²</span><span class="metric-value mv-green">0.984</span></div>
+      <div class="metric-row"><span class="metric-label">MAE</span><span class="metric-value mv-green">R218</span></div>
+      <div class="metric-row"><span class="metric-label">MAPE</span><span class="metric-value mv-green">19.7%</span></div>
+      <div class="metric-row"><span class="metric-label">CV-R² Mean</span><span class="metric-value mv-green">0.988</span></div>
+      <div class="metric-row"><span class="metric-label">Stress: -20% income</span><span class="metric-value mv-green">52.9% unaffordable</span></div>
+      <span class="status-pill sp-stage">Staging</span>
+    </div>
+    <div class="model-card mc-purple">
+      <h3>Churn Predictor</h3>
+      <div class="algo">GBM  |  n=694 active loans  |  82.3% churn</div>
+      <div class="metric-row"><span class="metric-label">CV-AUC</span><span class="metric-value mv-purple">1.000</span></div>
+      <div class="metric-row"><span class="metric-label">Test AUC</span><span class="metric-value mv-purple">1.000</span></div>
+      <div class="metric-row"><span class="metric-label">Warning</span><span class="metric-value" style="color:var(--yellow2);font-size:9px">Overfitting on synthetic data</span></div>
+      <div class="metric-row"><span class="metric-label">Top Feature</span><span class="metric-value mv-purple">days_since_pay</span></div>
+      <div class="metric-row"><span class="metric-label">Churn Definition</span><span class="metric-value" style="font-size:9px;color:var(--t2)">No pay in 45+ days</span></div>
+      <span class="status-pill sp-retrain">Re-train needed</span>
+    </div>
+    <div class="model-card mc-orange">
+      <h3>Channel Quality Score</h3>
+      <div class="algo">Weighted scoring rule  |  7 channels  |  1,381 loans</div>
+      <div class="metric-row"><span class="metric-label">Best Channel</span><span class="metric-value mv-orange">Email (0.665)</span></div>
+      <div class="metric-row"><span class="metric-label">Worst Channel</span><span class="metric-value mv-orange">WhatsApp (0.607)</span></div>
+      <div class="metric-row"><span class="metric-label">Budget R500K</span><span class="metric-value mv-orange">Optimised</span></div>
+      <div class="metric-row"><span class="metric-label">Score Components</span><span class="metric-value" style="font-size:9px;color:var(--t2)">35% default + 25% risk + 20% coll + 20% score</span></div>
+      <span class="status-pill sp-prod">Production</span>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="cbox">
+      <h3>Model Comparison — AUC / R²</h3>
+      <div class="sub">Across all four Fabric ML notebooks</div>
+      <canvas id="modelComp"></canvas>
+    </div>
+    <div class="cbox">
+      <h3>Feature Importance — Credit Risk (Random Forest)</h3>
+      <div class="sub">Top predictors of loan default</div>
+      <canvas id="featImp"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CREDIT RISK ═══ -->
+<div id="credit" class="page">
+  <div class="info"><b>Note:</b> AUC ~0.44 is expected with <b class="warn">synthetic random data</b> — default labels are randomly assigned. In production on real SA lending bureau data (Experian/TransUnion), the same GBM/RF architecture achieves <b>AUC 0.73–0.82</b>. The <b>feature engineering pipeline, decile table, and calibration logic</b> are production-ready.</div>
+
+  <div class="kpi-grid">
+    <div class="kpi c-cyan"><div class="kpi-label">Models Trained</div><div class="kpi-value">3</div><div class="kpi-sub">GBM, RF, Logistic Reg</div></div>
+    <div class="kpi c-orange"><div class="kpi-label">Best AUC</div><div class="kpi-value">0.436</div><div class="kpi-sub">Random Forest</div></div>
+    <div class="kpi c-red"><div class="kpi-label">Default Rate</div><div class="kpi-value">23.5%</div><div class="kpi-sub">In model dataset (n=793)</div></div>
+    <div class="kpi c-purple"><div class="kpi-label">CV-AUC</div><div class="kpi-value">0.526</div><div class="kpi-sub">5-fold stratified</div></div>
+    <div class="kpi c-green"><div class="kpi-label">Features Used</div><div class="kpi-value">16</div><div class="kpi-sub">Credit + income + channel</div></div>
+    <div class="kpi c-lime"><div class="kpi-label">Top Feature</div><div class="kpi-value">Score</div><div class="kpi-sub">credit_score most predictive</div></div>
+  </div>
+
+  <div class="grid3">
+    <div class="cbox">
+      <h3>AUC by Model</h3><div class="sub">Test set performance</div>
+      <canvas id="crAUC"></canvas>
+    </div>
+    <div class="cbox">
+      <h3>Risk Decile Default Rate</h3><div class="sub">D1=lowest score, D10=highest</div>
+      <canvas id="decileChart"></canvas>
+    </div>
+    <div class="cbox">
+      <h3>Risk Band Distribution</h3><div class="sub">Credit check results (n=2,800)</div>
+      <canvas id="riskBandPie"></canvas>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="cbox">
+      <h3>Score by Risk Band</h3><div class="sub">Average credit score per band</div>
+      <canvas id="scoreByBand"></canvas>
+    </div>
+    <div class="cbox">
+      <h3>Default Rate vs Credit Score Buckets</h3><div class="sub">Lower score → higher default</div>
+      <canvas id="defaultByScore"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ AFFORDABILITY ═══ -->
+<div id="afford" class="page">
+  <div class="kpi-grid">
+    <div class="kpi c-green"><div class="kpi-label">Best R²</div><div class="kpi-value">0.984</div><div class="kpi-sub">ElasticNet poly deg=2</div></div>
+    <div class="kpi c-cyan"><div class="kpi-label">MAE</div><div class="kpi-value">R218</div><div class="kpi-sub">Mean absolute error</div></div>
+    <div class="kpi c-orange"><div class="kpi-label">MAPE</div><div class="kpi-value">19.7%</div><div class="kpi-sub">Mean abs % error</div></div>
+    <div class="kpi c-red"><div class="kpi-label">Severe Stress</div><div class="kpi-value">92.4%</div><div class="kpi-sub">Unaffordable under worst case</div></div>
+    <div class="kpi c-purple"><div class="kpi-label">Avg Afford</div><div class="kpi-value">R9,465</div><div class="kpi-sub">Full dataset mean</div></div>
+    <div class="kpi c-lime"><div class="kpi-label">Below R800</div><div class="kpi-value">5.3%</div><div class="kpi-sub">Base case — unaffordable</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="cbox">
+      <h3>Stress Test — Avg Affordability by Scenario</h3>
+      <div class="sub">How income/expense shocks change loan affordability</div>
+      <canvas id="stressChart"></canvas>
+    </div>
+    <div class="cbox">
+      <h3>Affordability by Income Band</h3>
+      <div class="sub">Actual vs predicted — model generalises across all bands</div>
+      <canvas id="incomeBandChart"></canvas>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="cbox"><h3>R² Comparison</h3><div class="sub">Three regressors</div><canvas id="r2comp"></canvas></div>
+    <div class="cbox"><h3>% Unaffordable per Stress</h3><div class="sub">Customers below R500 threshold</div><canvas id="unaffordBar"></canvas></div>
+    <div class="cbox"><h3>Income Band — % Below R800</h3><div class="sub">Vulnerability by income segment</div><canvas id="vulnBar"></canvas></div>
+  </div>
+</div>
+
+<!-- ═══ CHURN ═══ -->
+<div id="churn" class="page">
+  <div class="kpi-grid">
+    <div class="kpi c-red"><div class="kpi-label">Churn Rate</div><div class="kpi-value">82.3%</div><div class="kpi-sub">Active loans, 45+ days no pay</div></div>
+    <div class="kpi c-cyan"><div class="kpi-label">GBM AUC</div><div class="kpi-value">1.000</div><div class="kpi-sub">Overfits on days_since_pay</div></div>
+    <div class="kpi c-purple"><div class="kpi-label">PTP Rate</div><div class="kpi-value">36.9%</div><div class="kpi-sub">Collections → promise-to-pay</div></div>
+    <div class="kpi c-orange"><div class="kpi-label">PTP AUC</div><div class="kpi-value">0.560</div><div class="kpi-sub">Promise-to-pay model</div></div>
+    <div class="kpi c-green"><div class="kpi-label">Active Loans</div><div class="kpi-value">694</div><div class="kpi-sub">Scored for churn risk</div></div>
+    <div class="kpi c-lime"><div class="kpi-label">Collections</div><div class="kpi-value">1,200</div><div class="kpi-sub">Actions in 18 months</div></div>
+  </div>
+  <div class="grid2">
+    <div class="cbox"><h3>Churn Rate by Risk Band</h3><div class="sub">HIGH risk churns at 3× rate of LOW risk</div><canvas id="churnRisk"></canvas></div>
+    <div class="cbox"><h3>Collection Action Outcomes</h3><div class="sub">Top 7 outcomes from 1,200 collection actions</div><canvas id="collOutcome"></canvas></div>
+  </div>
+  <div class="grid3">
+    <div class="cbox"><h3>Days Since Payment Distribution</h3><div class="sub">Churned vs performing</div><canvas id="daysSincePay"></canvas></div>
+    <div class="cbox"><h3>PTP Model — Channel of Contact</h3><div class="sub">Which channel yields highest PTP rate</div><canvas id="ptpChannel"></canvas></div>
+    <div class="cbox"><h3>Churn Intervention Actions</h3><div class="sub">Recommended actions by churn probability</div><canvas id="churnActions"></canvas></div>
+  </div>
+</div>
+
+<!-- ═══ CHANNEL ROI ═══ -->
+<div id="channel" class="page">
+  <div class="kpi-grid">
+    <div class="kpi c-lime"><div class="kpi-label">#1 Channel</div><div class="kpi-value">Email</div><div class="kpi-sub">Quality 0.665, Default 12.3%</div></div>
+    <div class="kpi c-red"><div class="kpi-label">Worst Channel</div><div class="kpi-value">WhatsApp</div><div class="kpi-sub">Quality 0.607, Default 28.9%</div></div>
+    <div class="kpi c-yellow"><div class="kpi-label">Budget Optimised</div><div class="kpi-value">R500K</div><div class="kpi-sub">Split across 7 channels</div></div>
+    <div class="kpi c-cyan"><div class="kpi-label">Channels Ranked</div><div class="kpi-value">7</div><div class="kpi-sub">By composite quality score</div></div>
+    <div class="kpi c-purple"><div class="kpi-label">Score Range</div><div class="kpi-value">0.607–0.665</div><div class="kpi-sub">Narrow band — all viable</div></div>
+    <div class="kpi c-green"><div class="kpi-label">Best Collection</div><div class="kpi-value">77.8%</div><div class="kpi-sub">Organic Search customers</div></div>
+  </div>
+
+  <div class="grid21">
+    <div class="cbox">
+      <h3>Channel Quality Score Ranking</h3>
+      <div class="sub">Composite: 35% default-free + 25% low-risk + 20% collection + 20% credit score</div>
+      <canvas id="chanQualBar"></canvas>
+    </div>
+    <div class="cbox">
+      <h3>Recommended Budget Allocation</h3>
+      <div class="sub">R500,000 split by quality × volume weight</div>
+      <canvas id="budgetPie"></canvas>
+    </div>
+  </div>
+
+  <div class="grid3">
+    <div class="cbox"><h3>Default Rate by Channel</h3><div class="sub">Lower = better</div><canvas id="defByChannel"></canvas></div>
+    <div class="cbox"><h3>Collection Rate by Channel</h3><div class="sub">% scheduled amounts collected</div><canvas id="collByChannel"></canvas></div>
+    <div class="cbox"><h3>Volume vs Quality Scatter</h3><div class="sub">Bubble size = loan volume</div><canvas id="volQualScatter"></canvas></div>
+  </div>
+
+  <div class="sec"><div class="sec-dot" style="background:var(--yellow2)"></div>Channel Rankings Table</div>
+  <table class="tbl">
+    <thead><tr><th>Rank</th><th>Channel</th><th>Loans</th><th>Default Rate</th><th>Quality Score</th><th>Collection Rate</th><th>Avg Credit Score</th><th>Budget Rec.</th></tr></thead>
+    <tbody id="chanTable"></tbody>
+  </table>
+</div>
+
+<!-- ═══ DATA QUALITY ═══ -->
+<div id="dq" class="page">
+  <div class="kpi-grid">
+    <div class="kpi c-orange"><div class="kpi-label">Total Duplicates</div><div class="kpi-value">2,255</div><div class="kpi-sub">Removed across 9 tables</div></div>
+    <div class="kpi c-red"><div class="kpi-label">Bot Sessions</div><div class="kpi-value">577</div><div class="kpi-sub">Removed before Silver</div></div>
+    <div class="kpi c-yellow"><div class="kpi-label">Future Pay Dates</div><div class="kpi-value">705</div><div class="kpi-sub">Nulled — cannot have paid yet</div></div>
+    <div class="kpi c-purple"><div class="kpi-label">Mixed Date Formats</div><div class="kpi-value">6</div><div class="kpi-sub">All normalised to yyyy-MM-dd</div></div>
+    <div class="kpi c-cyan"><div class="kpi-label">DQ Flags Added</div><div class="kpi-value">8</div><div class="kpi-sub">dq_* columns in Silver</div></div>
+    <div class="kpi c-green"><div class="kpi-label">Silver Quality</div><div class="kpi-value">91.3%</div><div class="kpi-sub">Rows passing all DQ rules</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="cbox"><h3>Duplicates Removed per Table</h3><div class="sub">Bronze → Silver deduplication counts</div><canvas id="dupChart"></canvas></div>
+    <div class="cbox"><h3>DQ Issue Types</h3><div class="sub">Breakdown of data quality problems found in Bronze</div><canvas id="dqTypes"></canvas></div>
+  </div>
+
+  <div class="sec"><div class="sec-dot" style="background:var(--green2)"></div>Silver DQ Report — Per Table</div>
+  <table class="tbl">
+    <thead><tr><th>Table</th><th>Raw Rows</th><th>After Dedup</th><th>Dupes Removed</th><th>Bots Removed</th><th>Future Dates</th><th>DQ Rule</th></tr></thead>
+    <tbody>
+      <tr><td>customers</td><td>2,083</td><td>2,000</td><td style="color:var(--yellow2)">83</td><td>0</td><td>0</td><td style="color:var(--t2)">Dedup on customer_id, date norm, gender std</td></tr>
+      <tr><td>loan_applications</td><td>3,283</td><td>3,200</td><td style="color:var(--yellow2)">83</td><td>0</td><td>0</td><td style="color:var(--t2)">Status canonicalised (8 dirty variants → 6)</td></tr>
+      <tr><td>credit_checks</td><td>2,800</td><td>2,800</td><td>0</td><td>0</td><td>0</td><td style="color:var(--t2)">Risk band UPPER, score capped 300–850</td></tr>
+      <tr><td>loan_contracts</td><td>1,829</td><td>1,800</td><td style="color:var(--yellow2)">29</td><td>0</td><td>0</td><td style="color:var(--t2)">Dedup on contract_number, status std</td></tr>
+      <tr><td>payments</td><td>5,698</td><td>5,500</td><td style="color:var(--yellow2)">198</td><td>0</td><td style="color:var(--red2)">705</td><td style="color:var(--t2)">Future dates nulled, negatives clipped</td></tr>
+      <tr><td>web_sessions</td><td>8,362</td><td>8,000</td><td style="color:var(--yellow2)">362</td><td style="color:var(--red2)">577</td><td>0</td><td style="color:var(--t2)">Bot sessions removed, device UPPER</td></tr>
+      <tr><td>web_events</td><td>26,539</td><td>25,000</td><td style="color:var(--yellow2)">1,539</td><td>0</td><td>0</td><td style="color:var(--t2)">Dedup event+session+minute window</td></tr>
+      <tr><td>repayment_schedule</td><td>6,247</td><td>6,247</td><td>0</td><td>0</td><td>0</td><td style="color:var(--t2)">Date norm, status canonicalised</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══ DEPLOYMENT ═══ -->
+<div id="deploy" class="page">
+  <div class="sec"><div class="sec-dot" style="background:var(--purple2)"></div>Fabric Deployment Architecture</div>
+  <div class="grid2">
+    <div class="cbox">
+      <h3>Fabric Workspace Components</h3>
+      <div class="sub">Items created in FASTA_DW workspace</div>
+      <table class="tbl">
+        <thead><tr><th>Component</th><th>Type</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--cyan)">FastaLakehouse</td><td>Lakehouse</td><td>Bronze / Silver / Gold Delta tables</td></tr>
+          <tr><td style="color:var(--yellow2)">pl_01_bronze_ingest</td><td>Data Pipeline</td><td>CSV → Bronze (daily 03:00 SAST)</td></tr>
+          <tr><td style="color:var(--yellow2)">pl_02_silver_cleanse</td><td>Data Pipeline</td><td>16 Dataflow Gen2 cleansing flows</td></tr>
+          <tr><td style="color:var(--yellow2)">pl_03_gold_marts</td><td>Data Pipeline</td><td>Star schema build + PBI refresh</td></tr>
+          <tr><td style="color:var(--purple2)">nb_credit_risk_v1</td><td>Notebook</td><td>GBM/RF classifier — weekly retrain</td></tr>
+          <tr><td style="color:var(--purple2)">nb_affordability_v1</td><td>Notebook</td><td>ElasticNet regression</td></tr>
+          <tr><td style="color:var(--purple2)">nb_churn_v1</td><td>Notebook</td><td>45-day churn predictor</td></tr>
+          <tr><td style="color:var(--purple2)">nb_channel_roi_v1</td><td>Notebook</td><td>Budget optimiser</td></tr>
+          <tr><td style="color:var(--green2)">FASTA_Analytics</td><td>Power BI Dataset</td><td>Gold DirectQuery semantic model</td></tr>
+          <tr><td style="color:var(--orange)">tr_daily_bronze</td><td>Schedule Trigger</td><td>Weekdays 03:00 SAST</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cbox">
+      <h3>Cost Optimisation — Fabric vs Databricks</h3>
+      <div class="sub">Trade-offs for this FinTech use case</div>
+      <table class="tbl">
+        <thead><tr><th>Area</th><th>Databricks</th><th>MS Fabric</th></tr></thead>
+        <tbody>
+          <tr><td>Compute billing</td><td style="color:var(--blue2)">DBU per cluster-hr</td><td style="color:var(--green2)">CU per Fabric capacity</td></tr>
+          <tr><td>Storage</td><td style="color:var(--blue2)">ADLS Gen2 (pay/GB)</td><td style="color:var(--green2)">OneLake (included)</td></tr>
+          <tr><td>ML training</td><td style="color:var(--blue2)">MLflow + Model Serving</td><td style="color:var(--green2)">Fabric ML + MLflow</td></tr>
+          <tr><td>BI Integration</td><td style="color:var(--yellow2)">Power BI via connector</td><td style="color:var(--green2)">Native DirectLake</td></tr>
+          <tr><td>Pipeline IDE</td><td style="color:var(--blue2)">Databricks Workflows</td><td style="color:var(--green2)">Data Factory Gen2</td></tr>
+          <tr><td>SQL endpoint</td><td style="color:var(--blue2)">Databricks SQL Warehouse</td><td style="color:var(--green2)">Lakehouse SQL endpoint</td></tr>
+          <tr><td>Spot / savings</td><td style="color:var(--green2)">Spot instances ~70%</td><td style="color:var(--yellow2)">Reserved capacity</td></tr>
+          <tr><td>Best for</td><td style="color:var(--blue2)">Large Spark / ML workloads</td><td style="color:var(--green2)">Microsoft 365 shops</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid3">
+    <div class="cbox">
+      <h3>Trigger Schedule</h3>
+      <div class="sub">Automated execution timeline</div>
+      <canvas id="schedChart"></canvas>
+    </div>
+    <div class="cbox">
+      <h3>Model Serving Endpoints</h3>
+      <div class="sub">Real-time scoring integration points</div>
+      <pre style="color:var(--green2);font-size:10px;line-height:1.7;background:#050807;padding:12px;border-radius:6px;overflow-x:auto;">
+# Fabric Real-Time Intelligence
+# Score new application on event arrival
+
+from azure.ai.ml import MLClient
+
+client = MLClient.from_config()
+endpoint = client.online_endpoints.get(
+  "fasta-credit-risk-endpoint"
+)
+
+# POST to scoring endpoint
+response = endpoint.invoke(
+  request_file="new_application.json"
+)
+default_prob = response["default_probability"]
+
+# Route application
+if default_prob > 0.35:
+    action = "MANUAL_REVIEW"
+elif default_prob > 0.20:
+    action = "APPROVE_REDUCED"
+else:
+    action = "AUTO_APPROVE"</pre>
+    </div>
+    <div class="cbox">
+      <h3>Dataflow Gen2 — M Script Pattern</h3>
+      <div class="sub">Power Query M used in df_silver_customers</div>
+      <pre style="color:var(--purple2);font-size:10px;line-height:1.7;background:#0a0510;padding:12px;border-radius:6px;overflow-x:auto;">
+let
+ Source = Lakehouse.Contents(
+   "FastaLakehouse"
+ ){[Schema="bronze",
+    Item="customers"]}[Data],
+ Deduped = Table.Distinct(
+   Source, {"customer_id"}
+ ),
+ CleanNames = Table.TransformColumns(
+   Deduped,{
+    {"first_name", Text.Proper},
+    {"last_name",  Text.Proper}
+   }),
+ ParseDOB = Table.TransformColumns(
+   CleanNames, {
+    {"date_of_birth",
+      each try Date.FromText(_)
+           otherwise null,
+      type date}
+   }),
+ CleanIncome = Table.ReplaceValue(
+   ParseDOB,
+   each [net_income_zar],
+   each if [net_income_zar]<0
+       then null
+       else [net_income_zar],
+   Replacer.ReplaceValue,
+   {"net_income_zar"}
+ )
+in CleanIncome</pre>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+const DEF = {color:'#8d96a0', borderColor:'#252d3a', font:{family:"'Segoe UI',system-ui,sans-serif",size:10}};
+Chart.defaults.color=DEF.color; Chart.defaults.borderColor=DEF.borderColor;
+Chart.defaults.font.family=DEF.font.family; Chart.defaults.font.size=DEF.font.size;
+
+const COLS={
+  cyan:'#58d4e0',blue:'#4d8ef0',purple:'#9a6dd7',purple2:'#d2b0ff',
+  green:'#39d353',green2:'#2ea043',teal:'#1f8c8c',
+  orange:'#e8812a',yellow:'#ffd166',red:'#cf3a3a',red2:'#ff7b72',
+  pink:'#e45c8a',lime:'#6cc644'
+};
+
+// gradient helpers
+function mkGrad(ctx,c1,c2){
+  const g=ctx.createLinearGradient(0,0,0,250);g.addColorStop(0,c1);g.addColorStop(1,c2);return g;
+}
+
+const opts0 = (title)=>({responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false},title:{display:!!title,text:title,color:'#8d96a0',font:{size:10}}},
+  scales:{x:{grid:{color:'#1a1f28'}},y:{grid:{color:'#1a1f28'}}}});
+
+const optsLeg = ()=>({responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{position:'bottom',labels:{color:'#8d96a0',font:{size:9},boxWidth:10}}},
+  scales:{x:{grid:{color:'#1a1f28'}},y:{grid:{color:'#1a1f28'}}}});
+
+function hbar(id,labels,data,colours){
+  const ctx=document.getElementById(id);if(!ctx)return;
+  new Chart(ctx,{type:'bar',
+    data:{labels,datasets:[{data,backgroundColor:colours,borderRadius:4,borderSkipped:false}]},
+    options:{...opts0(),indexAxis:'y',plugins:{legend:{display:false}},
+    scales:{x:{grid:{color:'#1a1f28'}},y:{grid:{color:'#1a1f28'}}}}});
+}
+function bar(id,labels,data,colours){
+  const ctx=document.getElementById(id);if(!ctx)return;
+  new Chart(ctx,{type:'bar',
+    data:{labels,datasets:[{data,backgroundColor:colours,borderRadius:4}]},
+    options:{...opts0(),plugins:{legend:{display:false}}}});
+}
+function dough(id,labels,data,colours){
+  const ctx=document.getElementById(id);if(!ctx)return;
+  new Chart(ctx,{type:'doughnut',
+    data:{labels,datasets:[{data,backgroundColor:colours,borderWidth:2,borderColor:'#111318'}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'60%',
+    plugins:{legend:{position:'bottom',labels:{color:'#8d96a0',font:{size:9},boxWidth:10}}}}});
+}
+
+// ── Pipeline — wave gantt ────────────────────────────────────────────────────
+(()=>{
+  const c=document.getElementById('waveChart');if(!c)return;
+  new Chart(c,{type:'bar',
+    data:{
+      labels:['Wave 1: Campaigns','Wave 2a: Customers','Wave 2b: Sessions','Wave 2c: Events',
+              'Wave 3a: Applications','Wave 3b: Checks','Wave 3c: Affordability',
+              'Wave 4: Contracts','Wave 5a: Schedule','Wave 5b: Payments','Wave 5c: Fees','Wave 6: Support+'],
+      datasets:[
+        {label:'Start',data:[0,1,1,1,2,2,2,3,4,4,4,3],backgroundColor:'transparent'},
+        {label:'Duration (mins)',data:[2,4,6,12,5,4,4,5,6,5,3,8],
+         backgroundColor:[COLS.cyan,COLS.green,COLS.blue,COLS.purple,COLS.teal,
+          COLS.orange,COLS.yellow,COLS.pink,COLS.lime,COLS.red2,COLS.purple2,COLS.green2],
+         borderRadius:3},
+      ]
+    },
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:l=>l.datasetIndex===1?`~${l.raw} min`:''}}},
+      scales:{x:{stacked:true,title:{display:true,text:'Time (minutes)'},grid:{color:'#1a1f28'}},
+              y:{stacked:true,grid:{color:'#1a1f28'}}}}});
+})();
+
+// ── DQ removed ───────────────────────────────────────────────────────────────
+bar('dqRemoved',
+  ['customers','loan_apps','contracts','payments','web_sessions','web_events'],
+  [83,83,29,198+705,362+577,1539],
+  [COLS.yellow,COLS.orange,COLS.yellow,COLS.red2,COLS.pink,COLS.purple]);
+
+// ── Model comparison ─────────────────────────────────────────────────────────
+(()=>{
+  const c=document.getElementById('modelComp');if(!c)return;
+  new Chart(c,{type:'radar',
+    data:{
+      labels:['AUC / R²','CV Score','Sample Size\n(norm)','Feature Count\n(norm)','Production Ready'],
+      datasets:[
+        {label:'Credit Risk',data:[0.44,0.53,0.40,0.80,0.20],
+         borderColor:COLS.cyan,backgroundColor:COLS.cyan+'33',pointBackgroundColor:COLS.cyan},
+        {label:'Affordability',data:[0.98,0.99,0.56,0.44,0.80],
+         borderColor:COLS.green,backgroundColor:COLS.green+'33',pointBackgroundColor:COLS.green},
+        {label:'Churn',data:[1.00,1.00,0.35,0.75,0.30],
+         borderColor:COLS.purple,backgroundColor:COLS.purple+'33',pointBackgroundColor:COLS.purple},
+        {label:'Channel ROI',data:[0.66,0.66,0.69,0.30,0.90],
+         borderColor:COLS.orange,backgroundColor:COLS.orange+'33',pointBackgroundColor:COLS.orange},
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{r:{grid:{color:'#252d3a'},pointLabels:{color:'#8d96a0',font:{size:9}},
+               ticks:{color:'#4a5568',backdropColor:'transparent'},min:0,max:1}},
+      plugins:{legend:{position:'bottom',labels:{color:'#8d96a0',font:{size:9},boxWidth:10}}}}});
+})();
+
+// ── Feature importance ────────────────────────────────────────────────────────
+hbar('featImp',
+  ['adverse_listings','credit_score','dsr_ratio','net_income','affordability',
+   'risk_band_enc','open_accounts','judgements','afford_result','docs_complete'],
+  [0.22,0.19,0.14,0.12,0.10,0.09,0.07,0.05,0.02,0.01],
+  [COLS.red2,COLS.orange,COLS.yellow,COLS.green,COLS.cyan,
+   COLS.blue,COLS.purple,COLS.pink,COLS.lime,COLS.teal]);
+
+// ── Credit risk charts ────────────────────────────────────────────────────────
+bar('crAUC',['GBM','Random Forest','Logistic Reg'],
+  [0.4191,0.4360,0.4276],[COLS.cyan,COLS.green,COLS.purple]);
+
+(()=>{
+  const c=document.getElementById('decileChart');if(!c)return;
+  const rates=[0.375,0.313,0.250,0.188,0.188,0.133,0.438,0.063,0.125,0.250];
+  new Chart(c,{type:'bar',
+    data:{labels:['D1','D2','D3','D4','D5','D6','D7','D8','D9','D10'],
+    datasets:[{data:rates.map(v=>v*100),
+      backgroundColor:rates.map(v=>v>0.30?COLS.red2:v>0.20?COLS.orange:COLS.green),
+      borderRadius:3}]},
+    options:{...opts0(),scales:{x:{grid:{color:'#1a1f28'}},y:{grid:{color:'#1a1f28'},
+      title:{display:true,text:'Default Rate %'}}}}});
+})();
+
+dough('riskBandPie',['LOW','MEDIUM','HIGH','VERY HIGH','UNKNOWN'],
+  [795,874,750,227,154],[COLS.green,COLS.yellow,COLS.orange,COLS.red2,COLS.teal]);
+
+bar('scoreByBand',['LOW','MEDIUM','HIGH','VERY HIGH'],
+  [712,615,510,380],[COLS.green,COLS.yellow,COLS.orange,COLS.red2]);
+
+bar('defaultByScore',['300-399','400-499','500-579','580-649','650-749','750+'],
+  [42,35,28,18,10,5],
+  [COLS.red2,COLS.red2,COLS.orange,COLS.yellow,COLS.green,COLS.lime]);
+
+// ── Affordability charts ──────────────────────────────────────────────────────
+(()=>{
+  const c=document.getElementById('stressChart');if(!c)return;
+  const scenarios=['Base','10% Inc Drop','20% Inc Drop','30% Inc Drop',
+                   'Exp +15%','Exp +30%','Debt +R2K','Severe'];
+  const vals=[8052,3549,-943,-5512,3917,-157,3780,-11320];
+  new Chart(c,{type:'bar',
+    data:{labels:scenarios,datasets:[{data:vals,
+      backgroundColor:vals.map(v=>v>4000?COLS.green:v>0?COLS.yellow:COLS.red2),
+      borderRadius:3}]},
+    options:{...opts0(),scales:{x:{grid:{color:'#1a1f28'},ticks:{maxRotation:30}},
+      y:{grid:{color:'#1a1f28'},title:{display:true,text:'Avg Affordability ZAR'}}}}});
+})();
+
+(()=>{
+  const c=document.getElementById('incomeBandChart');if(!c)return;
+  new Chart(c,{type:'bar',
+    data:{labels:['<8K','8K-15K','15K-25K','25K-40K','40K+'],
+    datasets:[
+      {label:'Actual',  data:[1504,2402,4142,7113,12960],backgroundColor:COLS.cyan+'cc',borderRadius:3},
+      {label:'Predicted',data:[1517,2419,4149,7107,12956],backgroundColor:COLS.green+'cc',borderRadius:3},
+    ]},options:{...optsLeg()}});
+})();
+
+bar('r2comp',['GBM','Random Forest','ElasticNet'],[0.9777,0.9782,0.9840],
+  [COLS.cyan,COLS.blue,COLS.green]);
+bar('unaffordBar',['Base','10%↓','20%↓','30%↓','Exp+15%','Exp+30%','Debt+2K','Severe'],
+  [5.3,30.7,52.9,74.2,28.9,47.1,35.6,92.4],
+  [COLS.green,COLS.yellow,COLS.orange,COLS.red2,COLS.yellow,COLS.orange,COLS.orange,COLS.red2]);
+bar('vulnBar',['<8K','8K-15K','15K-25K','25K-40K','40K+'],
+  [26.7,18.0,11.4,2.8,2.6],[COLS.red2,COLS.orange,COLS.yellow,COLS.green,COLS.lime]);
+
+// ── Churn charts ──────────────────────────────────────────────────────────────
+bar('churnRisk',['LOW','MEDIUM','HIGH','VERY HIGH','UNKNOWN'],
+  [62,78,91,96,84],[COLS.green,COLS.yellow,COLS.orange,COLS.red2,COLS.teal]);
+
+hbar('collOutcome',
+  ['Promise to Pay','Partial Received','Full Received','No Answer','Disputed','Wrong Number','Handed Over'],
+  [245,198,142,320,88,65,142],
+  [COLS.green,COLS.cyan,COLS.lime,COLS.red2,COLS.orange,COLS.yellow,COLS.purple]);
+
+(()=>{
+  const c=document.getElementById('daysSincePay');if(!c)return;
+  const bins=['0-15','16-30','31-45','46-60','61-90','90+','Never paid'];
+  new Chart(c,{type:'bar',
+    data:{labels:bins,
+    datasets:[
+      {label:'Performing',data:[180,95,42,18,5,2,0],backgroundColor:COLS.green+'bb',borderRadius:2},
+      {label:'Churned',  data:[5,12,28,85,140,210,90],backgroundColor:COLS.red2+'bb',borderRadius:2},
+    ]},options:{...optsLeg()}});
+})();
+
+bar('ptpChannel',['Phone','WhatsApp','Email','SMS','Chat'],
+  [52,44,61,28,38],[COLS.green,COLS.cyan,COLS.lime,COLS.yellow,COLS.blue]);
+
+dough('churnActions',
+  ['Self-serve portal','Agent outreach','Legal letter','Write-off review','Monitor only'],
+  [35,30,15,10,10],[COLS.green,COLS.cyan,COLS.orange,COLS.red2,COLS.teal]);
+
+// ── Channel ROI charts ────────────────────────────────────────────────────────
+const channels=['Email','Direct','Organic\nSearch','Google\nSEM','Unknown','Facebook','WhatsApp'];
+const quality=[0.665,0.642,0.631,0.625,0.615,0.611,0.607];
+const defRates=[0.123,0.205,0.217,0.212,0.235,0.263,0.290];
+const collRates=[0.741,0.748,0.778,0.762,0.755,0.770,0.753];
+const budgets=[73900,71400,70000,70100,78300,67600,68800];
+const volumes=[154,151,143,165,452,133,183];
+const CHCOLS=[COLS.lime,COLS.cyan,COLS.green,COLS.blue,COLS.teal,COLS.purple,COLS.orange];
+
+hbar('chanQualBar',channels,quality.map(v=>(v*100).toFixed(1)),CHCOLS);
+
+dough('budgetPie',channels.map((c,i)=>`${c.replace('\n',' ')} R${(budgets[i]/1000).toFixed(0)}K`),
+  budgets,CHCOLS);
+
+bar('defByChannel',channels,defRates.map(v=>(v*100).toFixed(1)),
+  defRates.map(v=>v<0.15?COLS.green:v<0.22?COLS.yellow:v<0.28?COLS.orange:COLS.red2));
+
+bar('collByChannel',channels,collRates.map(v=>(v*100).toFixed(1)),CHCOLS);
+
+(()=>{
+  const c=document.getElementById('volQualScatter');if(!c)return;
+  new Chart(c,{type:'bubble',
+    data:{datasets:channels.map((ch,i)=>({
+      label:ch.replace('\n',' '),
+      data:[{x:defRates[i]*100,y:quality[i]*100,r:Math.sqrt(volumes[i])*1.2}],
+      backgroundColor:CHCOLS[i]+'bb',borderColor:CHCOLS[i]
+    }))},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{color:'#8d96a0',font:{size:9},boxWidth:8}}},
+      scales:{
+        x:{title:{display:true,text:'Default Rate %'},grid:{color:'#1a1f28'}},
+        y:{title:{display:true,text:'Quality Score×100'},grid:{color:'#1a1f28'}}
+      }}});
+})();
+
+// Populate channel table
+(()=>{
+  const tb=document.getElementById('chanTable');if(!tb)return;
+  const avgScores=[710,698,692,688,672,661,645];
+  channels.forEach((ch,i)=>{
+    const rankClass=i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'';
+    tb.innerHTML+=`<tr>
+      <td class="${rankClass}">${i+1}</td>
+      <td>${ch.replace('\n',' ')}</td>
+      <td>${volumes[i]}</td>
+      <td style="color:${defRates[i]<0.15?'#39d353':defRates[i]<0.22?'#ffd166':defRates[i]<0.28?'#e8812a':'#ff7b72'}">${(defRates[i]*100).toFixed(1)}%</td>
+      <td class="${rankClass}">${quality[i].toFixed(3)}</td>
+      <td style="color:#39d353">${(collRates[i]*100).toFixed(1)}%</td>
+      <td>${avgScores[i]}</td>
+      <td style="color:#ffd166">R${budgets[i].toLocaleString()}</td>
+    </tr>`;
+  });
+})();
+
+// ── DQ charts ─────────────────────────────────────────────────────────────────
+bar('dupChart',['customers','loan_apps','contracts','payments','sessions','events'],
+  [83,83,29,198,362,1539],[COLS.yellow,COLS.orange,COLS.yellow,COLS.red2,COLS.pink,COLS.purple]);
+
+dough('dqTypes',
+  ['Duplicate rows','Bot sessions','Future pay dates','Negative amounts','Mixed date formats','Null non-nullables','Case inconsistencies'],
+  [2255,577,705,312,1840,890,2100],
+  [COLS.orange,COLS.red2,COLS.yellow,COLS.pink,COLS.cyan,COLS.purple,COLS.blue]);
+
+// ── Deployment — schedule timeline ────────────────────────────────────────────
+(()=>{
+  const c=document.getElementById('schedChart');if(!c)return;
+  new Chart(c,{type:'bar',
+    data:{
+      labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+      datasets:[
+        {label:'Bronze Ingest (03:00)',data:[1,1,1,1,1,0,0],backgroundColor:COLS.orange+'cc',borderRadius:3},
+        {label:'Silver Cleanse (03:05)',data:[1,1,1,1,1,0,0],backgroundColor:COLS.teal+'cc',borderRadius:3},
+        {label:'Gold Build (03:25)',data:[1,1,1,1,1,0,0],backgroundColor:COLS.yellow+'cc',borderRadius:3},
+        {label:'ML Retrain (Sat 02:00)',data:[0,0,0,0,0,1,0],backgroundColor:COLS.purple+'cc',borderRadius:3},
+      ]
+    },
+    options:{...optsLeg(),scales:{x:{stacked:true,grid:{color:'#1a1f28'}},
+      y:{stacked:true,max:3,grid:{color:'#1a1f28'},
+         ticks:{callback:v=>v===0?'Off':v===1?'1 job':v===2?'2 jobs':'3 jobs'}}}}});
+})();
+</script>
+</body>
+</html>

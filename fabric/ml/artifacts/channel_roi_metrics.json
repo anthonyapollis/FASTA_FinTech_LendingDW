@@ -1,0 +1,77 @@
+{
+  "notebook": "nb_fabric_ml_04_channel_roi",
+  "run_date": "2026-06-17T01:14:34.162939",
+  "total_budget_optimised": 500000,
+  "channel_quality_table": [
+    {
+      "rank": 1,
+      "channel_std": "EMAIL",
+      "n_loans": 154,
+      "default_rate": 0.1234,
+      "quality_score": 0.6649,
+      "avg_collection": 0.7414,
+      "avg_credit_score": 601.7083,
+      "recommended_budget_zar": 73900.0
+    },
+    {
+      "rank": 2,
+      "channel_std": "DIRECT",
+      "n_loans": 151,
+      "default_rate": 0.2053,
+      "quality_score": 0.6421,
+      "avg_collection": 0.7482,
+      "avg_credit_score": 580.3,
+      "recommended_budget_zar": 71400.0
+    },
+    {
+      "rank": 3,
+      "channel_std": "ORGANIC SEARCH",
+      "n_loans": 143,
+      "default_rate": 0.2168,
+      "quality_score": 0.6307,
+      "avg_collection": 0.778,
+      "avg_credit_score": 579.1618,
+      "recommended_budget_zar": 70000.0
+    },
+    {
+      "rank": 4,
+      "channel_std": "GOOGLE SPONSORED SEARCH",
+      "n_loans": 165,
+      "default_rate": 0.2121,
+      "quality_score": 0.6251,
+      "avg_collection": 0.7615,
+      "avg_credit_score": 560.6292,
+      "recommended_budget_zar": 70100.0
+    },
+    {
+      "rank": 5,
+      "channel_std": "UNKNOWN",
+      "n_loans": 452,
+      "default_rate": 0.2345,
+      "quality_score": 0.6151,
+      "avg_collection": 0.7548,
+      "avg_credit_score": 544.9718,
+      "recommended_budget_zar": 78300.0
+    },
+    {
+      "rank": 6,
+      "channel_std": "FACEBOOK",
+      "n_loans": 133,
+      "default_rate": 0.2632,
+      "quality_score": 0.6112,
+      "avg_collection": 0.7703,
+      "avg_credit_score": 567.1644,
+      "recommended_budget_zar": 67600.0
+    },
+    {
+      "rank": 7,
+      "channel_std": "WHATSAPP",
+      "n_loans": 183,
+      "default_rate": 0.2896,
+      "quality_score": 0.6074,
+      "avg_collection": 0.7532,
+      "avg_credit_score": 565.0816,
+      "recommended_budget_zar": 68800.0
+    }
+  ]
+}
