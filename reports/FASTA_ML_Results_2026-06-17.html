@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FASTA ML Results — 2026-06-17</title>
+<style>
+  body { font-family: Calibri, Arial, sans-serif; background:#f8f9fa; color:#222; margin:0; padding:20px }
+  h1 { background:#006272; color:#fff; padding:18px 24px; border-radius:6px; margin-bottom:6px }
+  h2 { background:#e0f0f1; color:#006272; padding:10px 16px; border-radius:4px; margin:24px 0 8px }
+  h3 { color:#006272; margin:16px 0 4px }
+  table { border-collapse:collapse; width:100%; margin-bottom:16px; background:#fff; border-radius:4px; overflow:hidden }
+  th { background:#006272; color:#fff; padding:8px 12px; text-align:center; font-size:13px }
+  td { padding:7px 12px; text-align:center; font-size:13px; border-bottom:1px solid #eee }
+  tr:nth-child(even) td { background:#f2f2f2 }
+  .best { background:#FFC000 !important; font-weight:bold }
+  .good { color:#00B050; font-weight:bold }
+  .warn { color:#FF6600 }
+  .bad  { color:#FF0000; font-weight:bold }
+  .meta { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:16px }
+  .meta-card { background:#fff; border:1px solid #ddd; border-radius:6px; padding:14px 20px; min-width:160px }
+  .meta-card .val { font-size:22px; font-weight:bold; color:#006272 }
+  .meta-card .lbl { font-size:12px; color:#888; margin-top:4px }
+  .subtitle { color:#555; font-size:14px; margin:0 0 20px }
+</style>
+</head>
+<body>
+<h1>FASTA FinTech Lending DW — ML Results</h1>
+<p class="subtitle">Run: 2026-06-17 &nbsp;|&nbsp; Pipeline: FASTA_FinTech_FabricML_Local &nbsp;|&nbsp;
+Duration: 203s &nbsp;|&nbsp;
+Steps: 6/6 OK</p>
+
+<div class="meta">
+  <div class="meta-card"><div class="val">0.526</div><div class="lbl">Credit Risk CV-AUC</div></div>
+  <div class="meta-card"><div class="val">0.984</div><div class="lbl">Affordability R²</div></div>
+  <div class="meta-card"><div class="val">R218</div><div class="lbl">Affordability MAE</div></div>
+  <div class="meta-card"><div class="val">1.000</div><div class="lbl">Churn AUC</div></div>
+  <div class="meta-card"><div class="val">EMAIL</div><div class="lbl">Top Channel</div></div>
+  <div class="meta-card"><div class="val">R500K</div><div class="lbl">Budget Optimised</div></div>
+</div>
+
+<h2>Model 1 — Credit Risk Classifier</h2>
+<table>
+<tr><th>Model</th><th>AUC</th><th>Avg Precision</th><th>Brier Score</th><th>CV-AUC Mean</th><th>CV-AUC Std</th></tr>
+<tr ><td>GBM</td><td>0.419</td><td>0.224</td><td>0.218</td><td>0.521</td><td>0.052</td></tr>
+<tr class="best"><td>Random Forest</td><td>0.436</td><td>0.246</td><td>0.242</td><td>0.526</td><td>0.054</td></tr>
+<tr ><td>Logistic Regression</td><td>0.428</td><td>0.205</td><td>0.267</td><td>0.517</td><td>0.047</td></tr>
+</table>
+<h3>Risk Decile Table</h3>
+<table>
+<tr><th>Decile</th><th>N Loans</th><th>Defaults</th><th>Default Rate</th><th>Avg Prob</th></tr>
+<tr><td>D1</td><td>16</td><td>6</td><td class="bad">37.5%</td><td>0.3414</td></tr>
+<tr><td>D2</td><td>16</td><td>5</td><td class="bad">31.2%</td><td>0.3857</td></tr>
+<tr><td>D3</td><td>16</td><td>4</td><td class="warn">25.0%</td><td>0.4116</td></tr>
+<tr><td>D4</td><td>16</td><td>3</td><td class="good">18.8%</td><td>0.4323</td></tr>
+<tr><td>D5</td><td>16</td><td>3</td><td class="good">18.8%</td><td>0.4508</td></tr>
+<tr><td>D6</td><td>15</td><td>2</td><td class="good">13.3%</td><td>0.4705</td></tr>
+<tr><td>D7</td><td>16</td><td>7</td><td class="bad">43.8%</td><td>0.4896</td></tr>
+<tr><td>D8</td><td>16</td><td>1</td><td class="good">6.2%</td><td>0.5162</td></tr>
+<tr><td>D9</td><td>16</td><td>2</td><td class="good">12.5%</td><td>0.5488</td></tr>
+<tr><td>D10</td><td>16</td><td>4</td><td class="warn">25.0%</td><td>0.5869</td></tr>
+</table>
+
+<h2>Model 2 — Affordability Regression</h2>
+<table>
+<tr><th>Model</th><th>R²</th><th>MAE (ZAR)</th><th>RMSE</th><th>CV-R² Mean</th></tr>
+<tr ><td>GBM Regressor</td><td>0.978</td><td>R621</td><td>R1,254</td><td>0.986</td></tr>
+<tr ><td>Random Forest</td><td>0.978</td><td>R735</td><td>R1,240</td><td>0.974</td></tr>
+<tr class="best"><td>ElasticNet</td><td>0.984</td><td>R218</td><td>R1,064</td><td>0.988</td></tr>
+<h3>Stress Test Scenarios</h3><table><tr><th>Scenario</th><th>Avg Affordability</th><th>% Unaffordable</th><th>% >R2K Available</th></tr>
+<tr><td>Base Case</td><td>R8,052</td><td class="good">5.3%</td><td>82.7%</td></tr>
+<tr><td>10% Income Drop</td><td>R3,549</td><td class="warn">30.7%</td><td>61.8%</td></tr>
+<tr><td>20% Income Drop</td><td>R-943</td><td class="bad">52.9%</td><td>34.7%</td></tr>
+<tr><td>30% Income Drop</td><td>R-5,512</td><td class="bad">74.2%</td><td>18.2%</td></tr>
+<tr><td>Expenses +15%</td><td>R3,917</td><td class="good">28.9%</td><td>64.0%</td></tr>
+<tr><td>Expenses +30%</td><td>R-157</td><td class="warn">47.1%</td><td>41.8%</td></tr>
+<tr><td>New Debt +R2000/mo</td><td>R3,780</td><td class="warn">35.6%</td><td>58.2%</td></tr>
+<tr><td>Severe: -25% + +20%</td><td>R-11,320</td><td class="bad">92.4%</td><td>3.6%</td></tr>
+</table>
+
+<h2>Model 3 — Churn + Promise-to-Pay</h2>
+<table>
+<tr><th>Model</th><th>Churn AUC</th><th>Avg Precision</th></tr>
+<tr class="best"><td>GBM</td><td>1.000</td><td>1.000</td></tr>
+<tr ><td>Extra Trees</td><td>0.997</td><td>0.999</td></tr>
+</table><p>PTP AUC: <strong>0.5596</strong> | Churn Rate: <strong>82.3%</strong> | PTP Rate: <strong>36.9%</strong></p>
+<h2>Model 4 — Channel ROI Scorecard (Total Budget: R500,000)</h2>
+<table>
+<tr><th>Rank</th><th>Channel</th><th>N Loans</th><th>Default Rate</th><th>Quality Score</th><th>Avg Collection</th><th>Avg Credit Score</th><th>Budget (ZAR)</th></tr>
+<tr class="best"><td>1</td><td>EMAIL</td><td>154</td><td class="good">12.3%</td><td>0.665</td><td>0.741</td><td>602</td><td>R73,900</td></tr>
+<tr ><td>2</td><td>DIRECT</td><td>151</td><td class="">20.5%</td><td>0.642</td><td>0.748</td><td>580</td><td>R71,400</td></tr>
+<tr ><td>3</td><td>ORGANIC SEARCH</td><td>143</td><td class="">21.7%</td><td>0.631</td><td>0.778</td><td>579</td><td>R70,000</td></tr>
+<tr ><td>4</td><td>GOOGLE SPONSORED SEARCH</td><td>165</td><td class="">21.2%</td><td>0.625</td><td>0.761</td><td>561</td><td>R70,100</td></tr>
+<tr ><td>5</td><td>UNKNOWN</td><td>452</td><td class="">23.4%</td><td>0.615</td><td>0.755</td><td>545</td><td>R78,300</td></tr>
+<tr ><td>6</td><td>FACEBOOK</td><td>133</td><td class="bad">26.3%</td><td>0.611</td><td>0.770</td><td>567</td><td>R67,600</td></tr>
+<tr ><td>7</td><td>WHATSAPP</td><td>183</td><td class="bad">29.0%</td><td>0.607</td><td>0.753</td><td>565</td><td>R68,800</td></tr>
+</table>
+<p style="color:#888;font-size:12px;margin-top:40px">Generated 2026-06-17 | FASTA FinTech LendingDW | Anthony Apollis</p>
+</body></html>
