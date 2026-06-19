@@ -1,6 +1,6 @@
 {
-  "deployed_at": "2026-06-17T16:54:37Z",
-  "workspace_id": "e515bafe-7290-4832-ae1d-514be43a9d87",
+  "deployed_at": "2026-06-19T07:31:03Z",
+  "workspace_id": "d490cfc5-2ca4-4140-a580-c0e3dffba2f5",
   "dry_run": false,
   "pipelines": [],
   "notebooks": [
@@ -11,9 +11,9 @@
     "nb_fabric_ml_retrain_full.py"
   ],
   "errors": [
-    "FAILED pl_01_bronze_ingest.json: 400 Client Error: Bad Request for url: https://api.fabric.microsoft.com/v1/workspaces/e515bafe-7290-4832-ae1d-514be43a9d87/items",
-    "FAILED pl_02_silver_cleanse.json: 400 Client Error: Bad Request for url: https://api.fabric.microsoft.com/v1/workspaces/e515bafe-7290-4832-ae1d-514be43a9d87/items",
-    "FAILED pl_03_gold_marts.json: 400 Client Error: Bad Request for url: https://api.fabric.microsoft.com/v1/workspaces/e515bafe-7290-4832-ae1d-514be43a9d87/items",
-    "FAILED pl_04_ml_scoring.json: 409 Client Error: Conflict for url: https://api.fabric.microsoft.com/v1/workspaces/e515bafe-7290-4832-ae1d-514be43a9d87/items"
+    "FAILED pl_01_bronze_ingest.json: 400 Client Error: Bad Request for url: https://api.fabric.microsoft.com/v1/workspaces/d490cfc5-2ca4-4140-a580-c0e3dffba2f5/items",
+    "FAILED pl_02_silver_cleanse.json: 400 Client Error: Bad Request for url: https://api.fabric.microsoft.com/v1/workspaces/d490cfc5-2ca4-4140-a580-c0e3dffba2f5/items",
+    "FAILED pl_03_gold_marts.json: 400 Client Error: Bad Request for url: https://api.fabric.microsoft.com/v1/workspaces/d490cfc5-2ca4-4140-a580-c0e3dffba2f5/items",
+    "FAILED pl_04_ml_scoring.json: 400 Client Error: Bad Request for url: https://api.fabric.microsoft.com/v1/workspaces/d490cfc5-2ca4-4140-a580-c0e3dffba2f5/items"
   ]
 }

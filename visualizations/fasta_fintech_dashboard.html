@@ -7,29 +7,27 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   :root{
-    --bg:#0d1117; --card:#161b22; --card2:#1c2333; --border:#30363d;
-    --text:#e6edf3; --text2:#8b949e; --accent:#58a6ff; --green:#3fb950;
-    --red:#f85149; --yellow:#d29922; --purple:#bc8cff; --teal:#39d353;
-    --orange:#fb8f44;
+    --bg:#edf4f5; --card:#f8fcfc; --card2:#dceff1; --border:#cddde1;
+    --text:#203247; --text2:#5f7179; --accent:#ffbf00; --green:#159b67;
+    --red:#eb7f91; --yellow:#ffbf00; --blue:#006b78; --navy:#203247;
+    --gold:#ffbf00; --orange:#e6812d; --purple:#5d6d7e; --teal:#006b78;
+    --surface:#f3f9fa; --surface2:#e6f3f5; --teal-soft:#dceff1;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;}
-  header{background:linear-gradient(135deg,#0d1117 0%,#1c2333 60%,#0d2a4a 100%);
-    padding:24px 32px;border-bottom:1px solid var(--border);}
+  body{background:linear-gradient(180deg,#dceff1 0,#edf4f5 120px,#edf4f5 100%);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;}
+  header{background:#006b78 !important;padding:24px 32px;border-bottom:4px solid var(--accent);box-shadow:0 2px 8px rgba(0,107,120,.18);}
   header h1{font-size:26px;font-weight:700;color:#fff;letter-spacing:-0.5px;}
-  header p{color:var(--text2);margin-top:4px;font-size:13px;}
-  .badge{display:inline-block;background:#21262d;border:1px solid var(--border);
-    border-radius:12px;padding:2px 10px;font-size:11px;color:var(--text2);margin-left:8px;}
-  nav{background:#161b22;border-bottom:1px solid var(--border);padding:0 32px;display:flex;gap:0;}
-  .tab{padding:12px 20px;cursor:pointer;font-size:13px;color:var(--text2);
-    border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
-  .tab:hover{color:var(--text);}
-  .tab.active{color:var(--accent);border-bottom-color:var(--accent);}
-  .page{display:none;padding:24px 32px;}
+  header p{color:#e8f7f8;margin-top:4px;font-size:13px;}
+  .badge{display:inline-block;background:#dceff1;border:1px solid rgba(255,255,255,.4);border-radius:12px;padding:2px 10px;font-size:11px;color:#203247;margin-left:8px;font-weight:600;}
+  nav{background:#e6f3f5;border-bottom:1px solid var(--border);padding:0 32px;display:flex;gap:0;box-shadow:0 1px 2px rgba(32,50,71,.06);}
+  .tab{padding:12px 20px;cursor:pointer;font-size:13px;color:#4e666f;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+  .tab:hover{color:var(--blue);background:#d7eef0;}
+  .tab.active{color:var(--blue);background:#f8fcfc;border-bottom-color:var(--accent);font-weight:700;}
+  .page{display:none;padding:24px 32px;background:linear-gradient(180deg,#edf4f5 0,#f3f9fa 100%);}
   .page.active{display:block;}
   /* KPI cards */
   .kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:24px;}
-  .kpi{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;}
+  .kpi{background:linear-gradient(180deg,#f8fcfc 0,#f0f8f9 100%);border:1px solid var(--border);border-radius:8px;padding:18px 20px;box-shadow:0 1px 4px rgba(0,107,120,.10);}
   .kpi-label{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;}
   .kpi-value{font-size:28px;font-weight:700;margin:6px 0 2px;line-height:1;}
   .kpi-sub{font-size:11px;color:var(--text2);}
@@ -43,8 +41,8 @@
   .chart-row.cols2{grid-template-columns:1fr 1fr;}
   .chart-row.cols3{grid-template-columns:1fr 1fr 1fr;}
   .chart-row.cols12{grid-template-columns:1.4fr 1fr;}
-  .chart-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;}
-  .chart-box h3{font-size:13px;font-weight:600;margin-bottom:4px;color:var(--text);}
+  .chart-box{background:linear-gradient(180deg,#f8fcfc 0,#f7fcfc 100%);border:1px solid var(--border);border-radius:8px;padding:20px;box-shadow:0 1px 4px rgba(0,107,120,.10);}
+  .chart-box h3{font-size:13px;font-weight:700;margin-bottom:4px;color:var(--blue);}
   .chart-box .sub{font-size:11px;color:var(--text2);margin-bottom:14px;}
   canvas{max-height:280px;}
   /* ERD */
@@ -56,27 +54,25 @@
   .medal-card{border-radius:10px;padding:20px;border:1px solid var(--border);}
   .medal-card h3{font-size:14px;font-weight:700;margin-bottom:8px;}
   .medal-card ul{padding-left:16px;color:var(--text2);font-size:12px;line-height:1.7;}
-  .bronze{background:#1c1510;border-color:#cd7f32;}
-  .silver{background:#111618;border-color:#8d9fa8;}
-  .gold-c{background:#17150a;border-color:#d4af37;}
-  .bronze h3{color:#cd7f32;} .silver h3{color:#8d9fa8;} .gold-c h3{color:#d4af37;}
+  .bronze{background:#fff1df;border-color:#b7792f;}
+  .silver{background:#eef3f5;border-color:#7f8b93;}
+  .gold-c{background:#fff8db;border-color:#ffbf00;}
+  .bronze h3{color:#b7792f;} .silver h3{color:#7f8b93;} .gold-c h3{color:#ffbf00;}
   /* table */
   .data-table{width:100%;border-collapse:collapse;font-size:12px;}
-  .data-table th{background:#21262d;color:var(--text2);padding:8px 12px;text-align:left;
-    border-bottom:1px solid var(--border);font-weight:600;text-transform:uppercase;font-size:10px;}
-  .data-table td{padding:8px 12px;border-bottom:1px solid #21262d;color:var(--text);}
-  .data-table tr:hover td{background:#1c2333;}
+  .data-table th{background:var(--blue);color:#f8fcfc;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);font-weight:700;text-transform:uppercase;font-size:10px;}
+  .data-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text);}
+  .data-table tr:hover td{background:#e6f3f5;}
   .pill{display:inline-block;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:600;}
-  .pill-green{background:#1a3d2a;color:var(--green);}
-  .pill-red{background:#3d1c1c;color:var(--red);}
-  .pill-yellow{background:#3d2e0a;color:var(--yellow);}
-  .pill-blue{background:#0d2a4a;color:var(--accent);}
-  .pill-purple{background:#2a1f3d;color:var(--purple);}
-  .section-title{font-size:15px;font-weight:700;margin:20px 0 12px;color:var(--text);
+  .pill-green{background:#dff2e9;color:var(--green);}
+  .pill-red{background:#fde7e7;color:var(--red);}
+  .pill-yellow{background:#fff3c4;color:var(--yellow);}
+  .pill-blue{background:#dceff1;color:var(--accent);}
+  .pill-purple{background:#e9e7f6;color:var(--purple);}
+  .section-title{font-size:15px;font-weight:700;margin:20px 0 12px;color:var(--blue);
     display:flex;align-items:center;gap:8px;}
   .section-title::after{content:'';flex:1;height:1px;background:var(--border);}
-  .info-box{background:#0d2a4a;border:1px solid var(--accent);border-radius:8px;
-    padding:14px 18px;color:var(--text2);font-size:12px;line-height:1.6;margin-bottom:16px;}
+  .info-box{background:#fff8db;border:1px solid var(--accent);border-radius:8px;padding:14px 18px;color:var(--text);font-size:12px;line-height:1.6;margin-bottom:16px;}
   .info-box b{color:var(--accent);}
 </style>
 </head>
@@ -313,25 +309,25 @@
   <svg class="erd" viewBox="0 0 1200 820" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-        <path d="M0,0 L0,6 L8,3 z" fill="#58a6ff" opacity="0.7"/>
+        <path d="M0,0 L0,6 L8,3 z" fill="#ffbf00" opacity="0.7"/>
       </marker>
     </defs>
     <style>
-      .tbl-header{fill:#1c2333;stroke:#30363d;stroke-width:1;}
-      .tbl-body{fill:#161b22;stroke:#30363d;stroke-width:1;}
-      .tbl-title{fill:#58a6ff;font-size:11px;font-weight:bold;font-family:monospace;}
-      .tbl-col{fill:#e6edf3;font-size:9.5px;font-family:monospace;}
-      .tbl-pk{fill:#d4af37;font-size:9.5px;font-family:monospace;}
-      .tbl-fk{fill:#3fb950;font-size:9.5px;font-family:monospace;}
-      .join-line{stroke:#58a6ff;stroke-width:1;stroke-dasharray:4,3;fill:none;opacity:0.5;marker-end:url(#arr);}
-      .fact-outline{fill:none;stroke:#fb8f44;stroke-width:2;rx:8;ry:8;}
-      .dim-outline{fill:none;stroke:#58a6ff;stroke-width:1.5;rx:6;ry:6;}
-      .layer-label{fill:#8b949e;font-size:10px;font-family:sans-serif;text-anchor:middle;}
+      .tbl-header{fill:#e6f3f5;stroke:#cddde1;stroke-width:1;}
+      .tbl-body{fill:#f8fcfc;stroke:#cddde1;stroke-width:1;}
+      .tbl-title{fill:#ffbf00;font-size:11px;font-weight:bold;font-family:monospace;}
+      .tbl-col{fill:#203247;font-size:9.5px;font-family:monospace;}
+      .tbl-pk{fill:#ffbf00;font-size:9.5px;font-family:monospace;}
+      .tbl-fk{fill:#1f9d6a;font-size:9.5px;font-family:monospace;}
+      .join-line{stroke:#ffbf00;stroke-width:1;stroke-dasharray:4,3;fill:none;opacity:0.5;marker-end:url(#arr);}
+      .fact-outline{fill:none;stroke:#e6812d;stroke-width:2;rx:8;ry:8;}
+      .dim-outline{fill:none;stroke:#ffbf00;stroke-width:1.5;rx:6;ry:6;}
+      .layer-label{fill:#6c7a83;font-size:10px;font-family:sans-serif;text-anchor:middle;}
     </style>
 
     <!-- Background zones -->
-    <rect x="10" y="10" width="1180" height="800" rx="12" fill="#0d1117" stroke="#21262d"/>
-    <text x="600" y="30" class="layer-label" font-size="14" fill="#d4af37">GOLD LAYER — Star Schema (Power BI / Databricks SQL)</text>
+    <rect x="10" y="10" width="1180" height="800" rx="12" fill="#edf4f5" stroke="#cddde1"/>
+    <text x="600" y="30" class="layer-label" font-size="14" fill="#ffbf00">GOLD LAYER — Star Schema (Power BI / Databricks SQL)</text>
 
     <!-- ── dim_date ── -->
     <rect x="460" y="50" width="160" height="120" class="dim-outline"/>
@@ -402,9 +398,9 @@
 
     <!-- fact_loan_application (centre) -->
     <rect x="380" y="230" width="220" height="260" class="fact-outline"/>
-    <rect x="380" y="230" width="220" height="22" rx="6" fill="#2d1a00"/>
-    <text x="490" y="245" class="tbl-title" text-anchor="middle" fill="#fb8f44">fact_loan_application</text>
-    <rect x="380" y="252" width="220" height="238" fill="#1a1200" stroke="#fb8f44" stroke-width="0.5"/>
+    <rect x="380" y="230" width="220" height="22" rx="6" fill="#fff3c4"/>
+    <text x="490" y="245" class="tbl-title" text-anchor="middle" fill="#e6812d">fact_loan_application</text>
+    <rect x="380" y="252" width="220" height="238" fill="#fffaf0" stroke="#e6812d" stroke-width="0.5"/>
     <text x="390" y="267" class="tbl-pk">PK application_id INT</text>
     <text x="390" y="280" class="tbl-fk">FK application_date_key</text>
     <text x="390" y="293" class="tbl-fk">FK customer_key</text>
@@ -425,9 +421,9 @@
 
     <!-- fact_disbursement -->
     <rect x="20" y="260" width="185" height="210" class="fact-outline"/>
-    <rect x="20" y="260" width="185" height="22" rx="6" fill="#2d1a00"/>
-    <text x="113" y="275" class="tbl-title" text-anchor="middle" fill="#fb8f44">fact_disbursement</text>
-    <rect x="20" y="282" width="185" height="188" fill="#1a1200" stroke="#fb8f44" stroke-width="0.5"/>
+    <rect x="20" y="260" width="185" height="22" rx="6" fill="#fff3c4"/>
+    <text x="113" y="275" class="tbl-title" text-anchor="middle" fill="#e6812d">fact_disbursement</text>
+    <rect x="20" y="282" width="185" height="188" fill="#fffaf0" stroke="#e6812d" stroke-width="0.5"/>
     <text x="30" y="296" class="tbl-pk">PK loan_id INT</text>
     <text x="30" y="309" class="tbl-fk">FK disbursement_date_key</text>
     <text x="30" y="322" class="tbl-fk">FK customer_key</text>
@@ -445,9 +441,9 @@
 
     <!-- fact_repayment -->
     <rect x="640" y="260" width="190" height="240" class="fact-outline"/>
-    <rect x="640" y="260" width="190" height="22" rx="6" fill="#2d1a00"/>
-    <text x="735" y="275" class="tbl-title" text-anchor="middle" fill="#fb8f44">fact_repayment</text>
-    <rect x="640" y="282" width="190" height="218" fill="#1a1200" stroke="#fb8f44" stroke-width="0.5"/>
+    <rect x="640" y="260" width="190" height="22" rx="6" fill="#fff3c4"/>
+    <text x="735" y="275" class="tbl-title" text-anchor="middle" fill="#e6812d">fact_repayment</text>
+    <rect x="640" y="282" width="190" height="218" fill="#fffaf0" stroke="#e6812d" stroke-width="0.5"/>
     <text x="650" y="296" class="tbl-pk">PK schedule_id INT</text>
     <text x="650" y="309" class="tbl-fk">FK loan_id</text>
     <text x="650" y="322" class="tbl-fk">FK due_date_key</text>
@@ -465,9 +461,9 @@
 
     <!-- fact_web_funnel -->
     <rect x="870" y="260" width="180" height="200" class="fact-outline"/>
-    <rect x="870" y="260" width="180" height="22" rx="6" fill="#2d1a00"/>
-    <text x="960" y="275" class="tbl-title" text-anchor="middle" fill="#fb8f44">fact_web_funnel</text>
-    <rect x="870" y="282" width="180" height="178" fill="#1a1200" stroke="#fb8f44" stroke-width="0.5"/>
+    <rect x="870" y="260" width="180" height="22" rx="6" fill="#fff3c4"/>
+    <text x="960" y="275" class="tbl-title" text-anchor="middle" fill="#e6812d">fact_web_funnel</text>
+    <rect x="870" y="282" width="180" height="178" fill="#fffaf0" stroke="#e6812d" stroke-width="0.5"/>
     <text x="880" y="296" class="tbl-fk">FK date_key</text>
     <text x="880" y="309" class="tbl-fk">FK campaign_key</text>
     <text x="880" y="322" class="tbl-col">   brand_name VARCHAR</text>
@@ -482,49 +478,49 @@
     <text x="880" y="439" class="tbl-col">   avg_session_duration_sec</text>
 
     <!-- Silver tables at bottom -->
-    <text x="600" y="545" class="layer-label" font-size="13" fill="#8d9fa8">SILVER LAYER — Cleansed Operational Tables (Delta)</text>
-    <rect x="20" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
-    <text x="100" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.customers</text>
+    <text x="600" y="545" class="layer-label" font-size="13" fill="#7f8b93">SILVER LAYER — Cleansed Operational Tables (Delta)</text>
+    <rect x="20" y="560" width="160" height="80" rx="6" fill="#eef3f5" stroke="#7f8b93" stroke-width="1"/>
+    <text x="100" y="576" class="tbl-title" text-anchor="middle" fill="#7f8b93">silver.customers</text>
     <text x="30" y="590" class="tbl-col">2,083 rows (deduped)</text>
     <text x="30" y="603" class="tbl-col">Date norm • Gender std</text>
     <text x="30" y="616" class="tbl-col">DQ flags added</text>
     <text x="30" y="629" class="tbl-col">Negative income nulled</text>
 
-    <rect x="200" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
-    <text x="280" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.loan_applications</text>
+    <rect x="200" y="560" width="160" height="80" rx="6" fill="#eef3f5" stroke="#7f8b93" stroke-width="1"/>
+    <text x="280" y="576" class="tbl-title" text-anchor="middle" fill="#7f8b93">silver.loan_applications</text>
     <text x="210" y="590" class="tbl-col">3,283 rows</text>
     <text x="210" y="603" class="tbl-col">Status canonicalised</text>
     <text x="210" y="616" class="tbl-col">Channel standardised</text>
 
-    <rect x="380" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
-    <text x="460" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.payments</text>
+    <rect x="380" y="560" width="160" height="80" rx="6" fill="#eef3f5" stroke="#7f8b93" stroke-width="1"/>
+    <text x="460" y="576" class="tbl-title" text-anchor="middle" fill="#7f8b93">silver.payments</text>
     <text x="390" y="590" class="tbl-col">5,698 rows</text>
     <text x="390" y="603" class="tbl-col">Future dates nulled</text>
     <text x="390" y="616" class="tbl-col">Negatives clipped</text>
     <text x="390" y="629" class="tbl-col">dq_future_payment flag</text>
 
-    <rect x="560" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
-    <text x="640" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.credit_checks</text>
+    <rect x="560" y="560" width="160" height="80" rx="6" fill="#eef3f5" stroke="#7f8b93" stroke-width="1"/>
+    <text x="640" y="576" class="tbl-title" text-anchor="middle" fill="#7f8b93">silver.credit_checks</text>
     <text x="570" y="590" class="tbl-col">2,800 rows</text>
     <text x="570" y="603" class="tbl-col">Risk band std UPPER</text>
     <text x="570" y="616" class="tbl-col">Score capped 300-850</text>
 
-    <rect x="740" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
-    <text x="820" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.web_sessions</text>
+    <rect x="740" y="560" width="160" height="80" rx="6" fill="#eef3f5" stroke="#7f8b93" stroke-width="1"/>
+    <text x="820" y="576" class="tbl-title" text-anchor="middle" fill="#7f8b93">silver.web_sessions</text>
     <text x="750" y="590" class="tbl-col">8,362 rows</text>
     <text x="750" y="603" class="tbl-col">Bot traffic removed (7%)</text>
     <text x="750" y="616" class="tbl-col">Device type upper-cased</text>
 
-    <rect x="920" y="560" width="160" height="80" rx="6" fill="#111618" stroke="#8d9fa8" stroke-width="1"/>
-    <text x="1000" y="576" class="tbl-title" text-anchor="middle" fill="#8d9fa8">silver.repayment_sched</text>
+    <rect x="920" y="560" width="160" height="80" rx="6" fill="#eef3f5" stroke="#7f8b93" stroke-width="1"/>
+    <text x="1000" y="576" class="tbl-title" text-anchor="middle" fill="#7f8b93">silver.repayment_sched</text>
     <text x="930" y="590" class="tbl-col">6,247 rows</text>
     <text x="930" y="603" class="tbl-col">Date normalised</text>
     <text x="930" y="616" class="tbl-col">Status canonicalised</text>
 
     <!-- Bronze layer row -->
-    <text x="600" y="670" class="layer-label" font-size="13" fill="#cd7f32">BRONZE LAYER — Raw CSV Sources (Landing Zone / ADLS)</text>
-    <rect x="20" y="685" width="1160" height="40" rx="6" fill="#1c1510" stroke="#cd7f32" stroke-width="1"/>
-    <text x="600" y="709" text-anchor="middle" fill="#cd7f32" font-size="10" font-family="monospace">
+    <text x="600" y="670" class="layer-label" font-size="13" fill="#b7792f">BRONZE LAYER — Raw CSV Sources (Landing Zone / ADLS)</text>
+    <rect x="20" y="685" width="1160" height="40" rx="6" fill="#fff1df" stroke="#b7792f" stroke-width="1"/>
+    <text x="600" y="709" text-anchor="middle" fill="#b7792f" font-size="10" font-family="monospace">
       customers.csv (2,083) | web_sessions.csv (8,362) | web_events.csv (26,539) | loan_applications.csv (3,283) | credit_checks.csv (2,800) | affordability.csv (2,600) | loan_contracts.csv (1,829) | repayment_schedule.csv (6,247) | payments.csv (5,698) | fee_charges.csv (3,500) | collections.csv (1,200) | support_tickets.csv (2,000)
     </text>
 
@@ -554,23 +550,23 @@
     <path d="M380,360 L205,360" class="join-line"/>
 
     <!-- Gold to Silver lines -->
-    <path d="M113,470 L100,560" class="join-line" stroke="#8d9fa8"/>
-    <path d="M490,490 L460,560" class="join-line" stroke="#8d9fa8"/>
-    <path d="M490,490 L280,560" class="join-line" stroke="#8d9fa8"/>
-    <path d="M490,490 L640,560" class="join-line" stroke="#8d9fa8"/>
-    <path d="M735,500 L820,560" class="join-line" stroke="#8d9fa8"/>
-    <path d="M960,460 L1000,560" class="join-line" stroke="#8d9fa8"/>
+    <path d="M113,470 L100,560" class="join-line" stroke="#7f8b93"/>
+    <path d="M490,490 L460,560" class="join-line" stroke="#7f8b93"/>
+    <path d="M490,490 L280,560" class="join-line" stroke="#7f8b93"/>
+    <path d="M490,490 L640,560" class="join-line" stroke="#7f8b93"/>
+    <path d="M735,500 L820,560" class="join-line" stroke="#7f8b93"/>
+    <path d="M960,460 L1000,560" class="join-line" stroke="#7f8b93"/>
 
     <!-- Legend -->
-    <rect x="10" y="745" width="420" height="65" rx="6" fill="#161b22" stroke="#30363d"/>
-    <text x="20" y="762" fill="#fb8f44" font-size="10" font-family="monospace">■ Fact Table</text>
-    <text x="130" y="762" fill="#58a6ff" font-size="10" font-family="monospace">■ Dimension Table</text>
-    <text x="260" y="762" fill="#8d9fa8" font-size="10" font-family="monospace">■ Silver Table</text>
-    <text x="20" y="778" fill="#d4af37" font-size="10" font-family="monospace">PK Primary Key</text>
-    <text x="130" y="778" fill="#3fb950" font-size="10" font-family="monospace">FK Foreign Key</text>
-    <text x="260" y="778" fill="#e6edf3" font-size="10" font-family="monospace">   Column</text>
-    <text x="20" y="794" fill="#58a6ff" font-size="10" font-family="monospace">--- Join relationship</text>
-    <text x="200" y="794" fill="#cd7f32" font-size="10" font-family="monospace">Bronze = raw dirty CSV data</text>
+    <rect x="10" y="745" width="420" height="65" rx="6" fill="#f8fcfc" stroke="#cddde1"/>
+    <text x="20" y="762" fill="#e6812d" font-size="10" font-family="monospace">■ Fact Table</text>
+    <text x="130" y="762" fill="#ffbf00" font-size="10" font-family="monospace">■ Dimension Table</text>
+    <text x="260" y="762" fill="#7f8b93" font-size="10" font-family="monospace">■ Silver Table</text>
+    <text x="20" y="778" fill="#ffbf00" font-size="10" font-family="monospace">PK Primary Key</text>
+    <text x="130" y="778" fill="#1f9d6a" font-size="10" font-family="monospace">FK Foreign Key</text>
+    <text x="260" y="778" fill="#203247" font-size="10" font-family="monospace">   Column</text>
+    <text x="20" y="794" fill="#ffbf00" font-size="10" font-family="monospace">--- Join relationship</text>
+    <text x="200" y="794" fill="#b7792f" font-size="10" font-family="monospace">Bronze = raw dirty CSV data</text>
   </svg>
   </div>
 </div>
@@ -632,7 +628,7 @@
     <div class="chart-box">
       <h3>Pipeline Flow</h3>
       <div class="sub">Source → Bronze → Silver → Gold → Serving</div>
-      <pre style="color:#58a6ff;font-size:11px;line-height:1.6;background:#0d1117;padding:16px;border-radius:6px;overflow-x:auto;">
+      <pre style="color:#ffbf00;font-size:11px;line-height:1.6;background:#edf4f5;padding:16px;border-radius:6px;overflow-x:auto;">
 Source Systems
     │
     ▼  (daily / event-driven)
@@ -749,7 +745,7 @@ MS Fabric Warehouse (mirror) ← Enterprise Serving</pre>
     <div class="chart-box">
       <h3>MLflow Tracking</h3>
       <div class="sub">All model runs logged with params, metrics, artifacts</div>
-      <pre style="color:#3fb950;font-size:11px;line-height:1.6;background:#0d1117;padding:12px;border-radius:6px;">
+      <pre style="color:#1f9d6a;font-size:11px;line-height:1.6;background:#edf4f5;padding:12px;border-radius:6px;">
 # Databricks — MLflow auto-tracking
 import mlflow
 mlflow.set_experiment("/FASTA/CreditRisk")
@@ -775,7 +771,7 @@ scores = model.predict_proba(X_new)[:,1]</pre>
     <div class="chart-box">
       <h3>Feature Store (Delta)</h3>
       <div class="sub">Reusable features shared across models</div>
-      <pre style="color:#58a6ff;font-size:11px;line-height:1.6;background:#0d1117;padding:12px;border-radius:6px;">
+      <pre style="color:#ffbf00;font-size:11px;line-height:1.6;background:#edf4f5;padding:12px;border-radius:6px;">
 # Databricks Feature Store
 from databricks.feature_store import FeatureStoreClient
 
@@ -819,24 +815,24 @@ const m18 = [...Array(18)].map((_,i)=>{
   const d=new Date(2025,0+i,1); return MONTHS[d.getMonth()]+" "+(d.getFullYear()+'').slice(2);
 });
 
-Chart.defaults.color='#8b949e';
-Chart.defaults.borderColor='#21262d';
+Chart.defaults.color='#6c7a83';
+Chart.defaults.borderColor='#cddde1';
 Chart.defaults.font.family="'Segoe UI',system-ui,sans-serif";
 Chart.defaults.font.size=11;
 
 function lineData(labels,datasets){return{type:'line',data:{labels,datasets},options:{
   responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
-  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}
+  scales:{x:{grid:{color:'#cddde1'}},y:{grid:{color:'#cddde1'}}}
 }};}
 
 function barData(labels,data,label,color){return{type:'bar',
   data:{labels,datasets:[{label,data,backgroundColor:color,borderRadius:4}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+  scales:{x:{grid:{color:'#cddde1'}},y:{grid:{color:'#cddde1'}}}}
 };}
 
 function doughData(labels,data,colors){return{type:'doughnut',data:{labels,
-  datasets:[{data,backgroundColor:colors,borderWidth:2,borderColor:'#161b22'}]},
+  datasets:[{data,backgroundColor:colors,borderWidth:2,borderColor:'#ffffff'}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
   cutout:'60%'}
 };}
@@ -847,53 +843,53 @@ const disb18=[75,88,95,90,105,112,120,128,124,132,140,152,160,155,168,178,171,17
 const arr18 =[28,32,34,33,38,41,44,47,45,48,51,56,59,57,61,66,63,65];
 
 new Chart(document.getElementById('overviewTrend'), lineData(m18,[
-  {label:'Applications',data:apps18,borderColor:'#58a6ff',backgroundColor:'rgba(88,166,255,0.1)',tension:0.4,fill:true},
-  {label:'Disbursed',data:disb18,borderColor:'#3fb950',backgroundColor:'rgba(63,185,80,0.08)',tension:0.4,fill:true},
-  {label:'Arrears',data:arr18,borderColor:'#f85149',backgroundColor:'rgba(248,81,73,0.08)',tension:0.4,fill:true},
+  {label:'Applications',data:apps18,borderColor:'#ffbf00',backgroundColor:'rgba(255,193,7,0.1)',tension:0.4,fill:true},
+  {label:'Disbursed',data:disb18,borderColor:'#1f9d6a',backgroundColor:'rgba(39,174,96,0.08)',tension:0.4,fill:true},
+  {label:'Arrears',data:arr18,borderColor:'#d95c5c',backgroundColor:'rgba(238,90,111,0.08)',tension:0.4,fill:true},
 ]));
 
 new Chart(document.getElementById('loanStatusDount'), doughData(
   ['Active','Settled','Arrears','Written Off','Cancelled'],
   [920,480,285,84,60],
-  ['#3fb950','#58a6ff','#f85149','#8b949e','#d29922']
+  ['#1f9d6a','#ffbf00','#d95c5c','#6c7a83','#e6a700']
 ));
 
 new Chart(document.getElementById('funnelBar'), {type:'bar',
   data:{labels:['Sessions','Calculator','Apply Click','Submitted','Approved','Disbursed'],
   datasets:[{data:[8362,6240,4100,3283,2180,1829],
-  backgroundColor:['#21262d','#0d2a4a','#1a3d2a','#3fb950','#3fb950','#d4af37'],borderRadius:4}]},
+  backgroundColor:['#cddde1','#dceff1','#dff2e9','#1f9d6a','#1f9d6a','#ffbf00'],borderRadius:4}]},
   options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
-  plugins:{legend:{display:false}},scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+  plugins:{legend:{display:false}},scales:{x:{grid:{color:'#cddde1'}},y:{grid:{color:'#cddde1'}}}}
 });
 
 new Chart(document.getElementById('provinceBar'), barData(
   ['Western Cape','Gauteng','KZN','Eastern Cape','Limpopo','Mpumalanga','Free State','NW','NC'],
-  [520,490,380,220,160,130,110,95,80],'Customers','rgba(88,166,255,0.7)'
+  [520,490,380,220,160,130,110,95,80],'Customers','rgba(255,193,7,0.7)'
 ));
 
 new Chart(document.getElementById('riskAmountBar'), barData(
   ['LOW','MEDIUM','HIGH','VERY HIGH'],
-  [11200,8400,5600,3200],'Avg Amount ZAR',['#3fb950','#d29922','#fb8f44','#f85149']
+  [11200,8400,5600,3200],'Avg Amount ZAR',['#1f9d6a','#e6a700','#e6812d','#d95c5c']
 ));
 
 // ── Funnel Charts ──────────────────────────────────────────────────────
 new Chart(document.getElementById('convFunnel'), {type:'bar',
   data:{labels:['Sessions','Apply Clicks','Submitted','Approved','Disbursed'],
   datasets:[{label:'Count',data:[8362,4100,3283,2180,1829],
-  backgroundColor:['#0d2a4a','#162a3d','#1a3028','#1a3d2a','#0f2a14'],
-  borderColor:['#58a6ff','#58a6ff','#58a6ff','#3fb950','#3fb950'],borderWidth:2,borderRadius:6}]},
+  backgroundColor:['#dceff1','#c8e7ea','#dff2e9','#dff2e9','#cfeadd'],
+  borderColor:['#ffbf00','#ffbf00','#ffbf00','#1f9d6a','#1f9d6a'],borderWidth:2,borderRadius:6}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+  scales:{x:{grid:{color:'#cddde1'}},y:{grid:{color:'#cddde1'}}}}
 });
 
 new Chart(document.getElementById('declineReasons'), barData(
   ['Affordability Fail','Credit Score Low','Adverse Listing','Income Unverified','Duplicate App','NCA Block'],
-  [38,27,16,10,6,3],'% of declines','rgba(248,81,73,0.7)'
+  [38,27,16,10,6,3],'% of declines','rgba(238,90,111,0.7)'
 ));
 
 new Chart(document.getElementById('dayOfWeek'), barData(
   ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-  [680,620,590,610,570,280,180],'Applications','rgba(88,166,255,0.7)'
+  [680,620,590,610,570,280,180],'Applications','rgba(255,193,7,0.7)'
 ));
 
 new Chart(document.getElementById('amountBuckets'), barData(
@@ -906,21 +902,21 @@ new Chart(document.getElementById('amountBuckets'), barData(
 new Chart(document.getElementById('creditScoreDist'), {type:'bar',
   data:{labels:['300-349','350-399','400-449','450-499','500-549','550-599','600-649','650-699','700-749','750-799','800-850'],
   datasets:[{data:[45,80,120,190,260,310,280,220,165,95,35],
-  backgroundColor:scores=>scores.dataIndex<4?'rgba(248,81,73,0.7)':scores.dataIndex<6?'rgba(210,153,34,0.7)':'rgba(63,185,80,0.7)',
+  backgroundColor:scores=>scores.dataIndex<4?'rgba(238,90,111,0.7)':scores.dataIndex<6?'rgba(243,156,18,0.7)':'rgba(39,174,96,0.7)',
   borderRadius:3}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+  scales:{x:{grid:{color:'#cddde1'}},y:{grid:{color:'#cddde1'}}}}
 });
 
 new Chart(document.getElementById('riskOutcome'), {type:'bar',
   data:{labels:['LOW','MEDIUM','HIGH','VERY HIGH','UNKNOWN'],
   datasets:[
-    {label:'Approved',data:[540,420,210,60,80],backgroundColor:'rgba(63,185,80,0.7)',borderRadius:3},
-    {label:'Declined',data:[80,190,310,160,50],backgroundColor:'rgba(248,81,73,0.7)',borderRadius:3},
-    {label:'Withdrawn',data:[40,90,120,60,30],backgroundColor:'rgba(210,153,34,0.7)',borderRadius:3},
+    {label:'Approved',data:[540,420,210,60,80],backgroundColor:'rgba(39,174,96,0.7)',borderRadius:3},
+    {label:'Declined',data:[80,190,310,160,50],backgroundColor:'rgba(238,90,111,0.7)',borderRadius:3},
+    {label:'Withdrawn',data:[40,90,120,60,30],backgroundColor:'rgba(243,156,18,0.7)',borderRadius:3},
   ]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
-  scales:{x:{stacked:false,grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+  scales:{x:{stacked:false,grid:{color:'#cddde1'}},y:{grid:{color:'#cddde1'}}}}
 });
 
 // Scatter — income vs affordability
@@ -928,39 +924,39 @@ const incomes=Array.from({length:200},()=>Math.random()*75000+5000);
 const afford=incomes.map(i=>i*(0.25+Math.random()*0.3));
 new Chart(document.getElementById('affordScatter'), {type:'scatter',
   data:{datasets:[{label:'Customer',data:incomes.map((x,i)=>({x,y:afford[i]})),
-  backgroundColor:'rgba(88,166,255,0.4)',pointRadius:3}]},
+  backgroundColor:'rgba(255,193,7,0.4)',pointRadius:3}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-  scales:{x:{title:{display:true,text:'Net Income ZAR'},grid:{color:'#21262d'}},
-         y:{title:{display:true,text:'Affordability ZAR'},grid:{color:'#21262d'}}}}
+  scales:{x:{title:{display:true,text:'Net Income ZAR'},grid:{color:'#cddde1'}},
+         y:{title:{display:true,text:'Affordability ZAR'},grid:{color:'#cddde1'}}}}
 });
 
 new Chart(document.getElementById('dsrByRisk'), barData(
   ['LOW','MEDIUM','HIGH','VERY HIGH'],
-  [0.18,0.32,0.48,0.64],'Avg DSR',['#3fb950','#d29922','#fb8f44','#f85149']
+  [0.18,0.32,0.48,0.64],'Avg DSR',['#1f9d6a','#e6a700','#e6812d','#d95c5c']
 ));
 
 // ── Repayment Charts ───────────────────────────────────────────────────
 const collRates=m18.map((_,i)=>58+Math.random()*20-i*0.3);
 new Chart(document.getElementById('collectionRate'), lineData(m18,[
   {label:'Collection Rate %',data:collRates.map(v=>v.toFixed(1)),
-  borderColor:'#3fb950',backgroundColor:'rgba(63,185,80,0.1)',tension:0.4,fill:true},
-  {label:'Target 80%',data:m18.map(()=>80),borderColor:'#d29922',borderDash:[5,3],pointRadius:0},
+  borderColor:'#1f9d6a',backgroundColor:'rgba(39,174,96,0.1)',tension:0.4,fill:true},
+  {label:'Target 80%',data:m18.map(()=>80),borderColor:'#e6a700',borderDash:[5,3],pointRadius:0},
 ]));
 
 new Chart(document.getElementById('schedStatusDount'), doughData(
   ['PAID','OVERDUE','PENDING','PART_PAID'],
   [2572,1503,1250,922],
-  ['#3fb950','#f85149','#58a6ff','#d29922']
+  ['#1f9d6a','#d95c5c','#ffbf00','#e6a700']
 ));
 
 new Chart(document.getElementById('daysLate'), barData(
   ['1-7','8-14','15-21','22-30','31-60','61-90','90+'],
-  [180,290,340,410,580,250,120],'Payments','rgba(248,81,73,0.7)'
+  [180,290,340,410,580,250,120],'Payments','rgba(238,90,111,0.7)'
 ));
 
 new Chart(document.getElementById('collByRisk'), barData(
   ['LOW','MEDIUM','HIGH','VERY HIGH'],
-  [88,74,58,34],'Collection Rate %',['#3fb950','#d29922','#fb8f44','#f85149']
+  [88,74,58,34],'Collection Rate %',['#1f9d6a','#e6a700','#e6812d','#d95c5c']
 ));
 
 // ── Marketing Charts ───────────────────────────────────────────────────
@@ -970,13 +966,13 @@ const defaultRates=[0.123,0.205,0.212,0.217,0.263,0.290,0.239];
 
 new Chart(document.getElementById('channelQuality'), {type:'bar',
   data:{labels:channels,datasets:[
-    {label:'Quality Score',data:qualityScores,backgroundColor:'rgba(63,185,80,0.7)',yAxisID:'y',borderRadius:3},
-    {label:'Default Rate',data:defaultRates,backgroundColor:'rgba(248,81,73,0.5)',yAxisID:'y2',borderRadius:3},
+    {label:'Quality Score',data:qualityScores,backgroundColor:'rgba(39,174,96,0.7)',yAxisID:'y',borderRadius:3},
+    {label:'Default Rate',data:defaultRates,backgroundColor:'rgba(238,90,111,0.5)',yAxisID:'y2',borderRadius:3},
   ]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
   scales:{
-    x:{grid:{color:'#21262d'}},
-    y:{grid:{color:'#21262d'},title:{display:true,text:'Quality Score'}},
+    x:{grid:{color:'#cddde1'}},
+    y:{grid:{color:'#cddde1'},title:{display:true,text:'Quality Score'}},
     y2:{position:'right',title:{display:true,text:'Default Rate'},grid:{display:false},
         ticks:{callback:v=>v+'%'}}
   }}
@@ -984,40 +980,40 @@ new Chart(document.getElementById('channelQuality'), {type:'bar',
 
 new Chart(document.getElementById('channelVolume'), doughData(channels,
   [154,151,165,143,133,183,210],
-  ['#3fb950','#58a6ff','#d29922','#3fb950','#bc8cff','#fb8f44','#8b949e']
+  ['#1f9d6a','#ffbf00','#e6a700','#1f9d6a','#006b78','#e6812d','#6c7a83']
 ));
 
 const spend18=m18.map(()=>Math.round(180000+Math.random()*80000));
 const disb18m=disb18.map(v=>v*Math.round(6000+Math.random()*2000));
 new Chart(document.getElementById('spendVsDisb'), lineData(m18,[
-  {label:'Marketing Spend (ZAR)',data:spend18,borderColor:'#d29922',tension:0.3,yAxisID:'y'},
-  {label:'Disbursed Loan Value',data:disb18m,borderColor:'#3fb950',tension:0.3,yAxisID:'y2'},
+  {label:'Marketing Spend (ZAR)',data:spend18,borderColor:'#e6a700',tension:0.3,yAxisID:'y'},
+  {label:'Disbursed Loan Value',data:disb18m,borderColor:'#1f9d6a',tension:0.3,yAxisID:'y2'},
 ]));
 
 new Chart(document.getElementById('referralFunnel'), {type:'bar',
   data:{labels:['Referrals Sent','Contacted','Accepted','In Progress','Converted'],
-  datasets:[{data:[600,390,240,150,72],backgroundColor:['#0d2a4a','#162a3d','#1a3028','#1a3d2a','#3fb950'],borderRadius:4}]},
+  datasets:[{data:[600,390,240,150,72],backgroundColor:['#dceff1','#c8e7ea','#dff2e9','#dff2e9','#1f9d6a'],borderRadius:4}]},
   options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+  scales:{x:{grid:{color:'#cddde1'}},y:{grid:{color:'#cddde1'}}}}
 });
 
 // ── ML Charts ──────────────────────────────────────────────────────────
 new Chart(document.getElementById('mlChannelQuality'), {type:'bar',
   data:{labels:channels,datasets:[
     {label:'Quality Score',data:qualityScores.map(v=>(v*100).toFixed(1)),
-    backgroundColor:['#3fb950','#58a6ff','#d29922','#d29922','#f85149','#f85149','#8b949e'],borderRadius:4},
+    backgroundColor:['#1f9d6a','#ffbf00','#e6a700','#e6a700','#d95c5c','#d95c5c','#6c7a83'],borderRadius:4},
   ]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-  scales:{x:{grid:{color:'#21262d'}},y:{max:80,grid:{color:'#21262d'},
+  scales:{x:{grid:{color:'#cddde1'}},y:{max:80,grid:{color:'#cddde1'},
   title:{display:true,text:'Quality Score (x100)'}}}}
 });
 
 new Chart(document.getElementById('mlFeatureImp'), {type:'bar',
   data:{labels:['credit_score','adverse_listings','dsr_ratio','net_income','affordability','risk_band_enc','open_accounts','judgements','afford_result','sa_id_flag','mobile_flag','banking_flag'],
   datasets:[{data:[0.22,0.18,0.15,0.12,0.10,0.08,0.06,0.05,0.02,0.01,0.01,0.01],
-  backgroundColor:'rgba(88,166,255,0.7)',borderRadius:3}]},
+  backgroundColor:'rgba(255,193,7,0.7)',borderRadius:3}]},
   options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-  scales:{x:{grid:{color:'#21262d'}},y:{grid:{color:'#21262d'}}}}
+  scales:{x:{grid:{color:'#cddde1'}},y:{grid:{color:'#cddde1'}}}}
 });
 </script>
 </body>

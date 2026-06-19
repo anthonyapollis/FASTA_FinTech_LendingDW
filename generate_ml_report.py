@@ -36,15 +36,15 @@ try:
                                   Border, Side, numbers)
     from openpyxl.utils import get_column_letter
 
-    TEAL   = "FF006272"
-    LTEAL  = "FFE0F0F1"
+    NAVY   = "FF1A2E44"
+    NAVY_LT = "FF2C3E50"
     WHITE  = "FFFFFFFF"
-    GOLD   = "FFFFC000"
-    RED    = "FFFF0000"
-    GREEN  = "FF00B050"
-    GREY   = "FFF2F2F2"
+    GOLD   = "FFFFC107"
+    RED    = "FFEE5a6f"
+    GREEN  = "FF27ae60"
+    GREY   = "FFF5f5f5"
 
-    def hdr(ws, row, col, value, bg=TEAL, fg=WHITE, bold=True, size=11):
+    def hdr(ws, row, col, value, bg=NAVY, fg=WHITE, bold=True, size=11):
         c = ws.cell(row=row, column=col, value=value)
         c.fill      = PatternFill("solid", fgColor=bg)
         c.font      = Font(color=fg, bold=bold, size=size, name="Calibri")
@@ -86,7 +86,7 @@ try:
 
     ws.merge_cells("A2:E2")
     hdr(ws, 2, 1, f"Run Date: {run_date}  |  Pipeline: {pipe['pipeline']}  |  Duration: {pipe['total_seconds']:.0f}s  |  Status: {pipe['steps_ok']}/{pipe['steps_ok']+pipe['steps_fail']} steps OK",
-        bg=LTEAL, fg="FF006272", bold=False, size=10)
+        bg=NAVY_LT, fg=GOLD, bold=False, size=10)
 
     row = 4
     for label, val in [
@@ -116,7 +116,7 @@ try:
 
     row = 10
     ws.merge_cells(f"A{row}:E{row}")
-    hdr(ws, row, 1, "Pipeline Execution Log", bg=LTEAL, fg="FF006272")
+    hdr(ws, row, 1, "Pipeline Execution Log", bg=NAVY_LT, fg=GOLD)
     row += 1
     for h, col in zip(["Notebook","Label","Status","Elapsed (sec)","Run At"], range(1,6)):
         hdr(ws, row, col, h, size=10)
@@ -154,7 +154,7 @@ try:
 
     row = 8
     ws2.merge_cells(f"A{row}:F{row}")
-    hdr(ws2, row, 1, "Model Comparison", bg=LTEAL, fg="FF006272")
+    hdr(ws2, row, 1, "Model Comparison", bg=NAVY_LT, fg=GOLD)
     row += 1
     for h, col in zip(["Model","AUC","Avg Precision","Brier Score","CV-AUC Mean","CV-AUC Std"], range(1,7)):
         hdr(ws2, row, col, h, size=10)
@@ -173,7 +173,7 @@ try:
 
     row += 1
     ws2.merge_cells(f"A{row}:F{row}")
-    hdr(ws2, row, 1, "Risk Decile Table", bg=LTEAL, fg="FF006272")
+    hdr(ws2, row, 1, "Risk Decile Table", bg=NAVY_LT, fg=GOLD)
     row += 1
     for h, col in zip(["Decile","N Loans","Defaults","Default Rate","Avg Prob"], range(1,6)):
         hdr(ws2, row, col, h, size=10)
@@ -217,7 +217,7 @@ try:
 
     row += 1
     ws3.merge_cells(f"A{row}:E{row}")
-    hdr(ws3, row, 1, "Stress Test Scenarios", bg=LTEAL, fg="FF006272")
+    hdr(ws3, row, 1, "Stress Test Scenarios", bg=NAVY_LT, fg=GOLD)
     row += 1
     for h, col in zip(["Scenario","Avg Affordability","% Unaffordable","% >R2K Available"], range(1,5)):
         hdr(ws3, row, col, h, size=10)
@@ -273,7 +273,7 @@ try:
 
     row += 1
     ws4.merge_cells(f"A{row}:E{row}")
-    hdr(ws4, row, 1, "Promise-to-Pay Model", bg=LTEAL, fg="FF006272")
+    hdr(ws4, row, 1, "Promise-to-Pay Model", bg=NAVY_LT, fg=GOLD)
     row += 1
     ptp_meta = [
         ("Definition", churn["ptp_model"]["definition"]),

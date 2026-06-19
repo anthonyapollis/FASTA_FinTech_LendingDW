@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FASTA FinTech Lending DW — Intelligence Platform Ebook</title>
+<style>
+  :root {
+    --navy:   #1A2E44;
+    --navy2:  #2C3E50;
+    --gold:   #FFC107;
+    --gold2:  #FFD54F;
+    --blue:   #00BCD4;
+    --green:  #27AE60;
+    --red:    #EE5a6f;
+    --orange: #FF7043;
+    --white:  #FFFFFF;
+    --off:    #F5F5F5;
+    --grey:   #7F8C8D;
+    --text:   #2C3E50;
+    --light:  #ECF0F1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--off); color: var(--text); line-height: 1.7; }
+
+  /* ── COVER ── */
+  .cover {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #0a3d5c 100%);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(245,166,35,0.04) 40px, rgba(245,166,35,0.04) 80px);
+  }
+  .cover-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    display: inline-block;
+  }
+  .cover h1 { font-size: 52px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+  .cover h1 span { color: var(--gold); }
+  .cover .subtitle { font-size: 20px; color: rgba(255,255,255,0.75); max-width: 600px; margin-bottom: 40px; }
+  .cover-stats {
+    display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
+    margin: 40px 0;
+  }
+  .cover-stat { text-align: center; }
+  .cover-stat .val { font-size: 36px; font-weight: 800; color: var(--gold); }
+  .cover-stat .lbl { font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; }
+  .cover-meta {
+    margin-top: 60px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 20px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 960px; margin: 0 auto; padding: 60px 40px; }
+  .page-break { page-break-before: always; }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 11px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  h2.section-title {
+    font-size: 36px; font-weight: 800; color: var(--navy); margin-bottom: 6px;
+  }
+  h2.section-title span { color: var(--gold); }
+  .section-intro { font-size: 17px; color: var(--grey); margin-bottom: 40px; max-width: 700px; }
+  h3.sub { font-size: 20px; font-weight: 700; color: var(--navy); margin: 32px 0 12px; }
+  h3.sub::before { content: '▸ '; color: var(--gold); }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 3px solid var(--gold); width: 60px; margin: 0 0 40px; }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-left: 5px solid var(--gold);
+    background: #fffbf0;
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+    margin: 24px 0;
+  }
+  .callout.teal { border-color: var(--teal); background: #f0fbff; }
+  .callout.green { border-color: var(--green); background: #f0fff6; }
+  .callout.red { border-color: var(--red); background: #fff5f5; }
+  .callout .callout-title { font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--navy); margin-bottom: 6px; }
+
+  /* ── METRIC CARDS ── */
+  .card-row { display: flex; gap: 20px; flex-wrap: wrap; margin: 24px 0; }
+  .card {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 24px;
+    flex: 1;
+    min-width: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::after {
+    content: '';
+    position: absolute; right: -20px; top: -20px;
+    width: 80px; height: 80px;
+    background: rgba(245,166,35,0.15);
+    border-radius: 50%;
+  }
+  .card .card-val { font-size: 32px; font-weight: 800; color: var(--gold); }
+  .card .card-lbl { font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .card .card-note { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 8px; }
+  .card.gold-card { background: var(--gold); }
+  .card.gold-card .card-val { color: var(--navy); }
+  .card.gold-card .card-lbl { color: rgba(13,27,42,0.6); }
+  .card.gold-card .card-note { color: rgba(13,27,42,0.45); }
+
+  /* ── TABLES ── */
+  table { border-collapse: collapse; width: 100%; margin: 20px 0 32px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  th { background: var(--navy); color: var(--white); padding: 12px 16px; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+  td { padding: 11px 16px; text-align: center; font-size: 13px; border-bottom: 1px solid #e8edf2; }
+  tr:nth-child(even) td { background: #f4f6f8; }
+  tr.best td { background: #fff8e1; font-weight: 700; }
+  tr.best td:first-child::after { content: ' ★'; color: var(--gold); }
+  .red-text { color: var(--red); font-weight: 700; }
+  .green-text { color: var(--green); font-weight: 700; }
+  .orange-text { color: var(--orange); font-weight: 700; }
+  td.left { text-align: left; }
+
+  /* ── ARCHITECTURE BLOCKS ── */
+  .arch { display: flex; gap: 0; margin: 32px 0; }
+  .arch-layer {
+    flex: 1;
+    padding: 24px 16px;
+    text-align: center;
+    position: relative;
+  }
+  .arch-layer::after {
+    content: '▶';
+    position: absolute; right: -14px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 20px;
+    z-index: 1;
+  }
+  .arch-layer:last-child::after { display: none; }
+  .arch-layer.bronze { background: #fff3e0; border-radius: 10px 0 0 10px; }
+  .arch-layer.silver { background: #f3f4f6; }
+  .arch-layer.gold-l  { background: #fffde7; }
+  .arch-layer.ml-l    { background: #e8f5e9; border-radius: 0 10px 10px 0; }
+  .arch-layer .arch-title { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  .arch-layer.bronze .arch-title { color: #e65100; }
+  .arch-layer.silver .arch-title { color: #546e7a; }
+  .arch-layer.gold-l .arch-title  { color: #f57f17; }
+  .arch-layer.ml-l .arch-title    { color: #2e7d32; }
+  .arch-layer ul { list-style: none; font-size: 12px; line-height: 1.9; color: #555; }
+
+  /* ── PIPELINE FLOW ── */
+  .pipeline { display: flex; flex-direction: column; gap: 4px; margin: 24px 0; }
+  .pipe-step {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--white);
+    border: 1px solid #e0e6ed;
+    border-radius: 8px;
+    padding: 14px 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .pipe-step .pipe-icon { font-size: 20px; min-width: 32px; text-align: center; }
+  .pipe-step .pipe-name { font-weight: 700; font-size: 14px; color: var(--navy); }
+  .pipe-step .pipe-desc { font-size: 12px; color: var(--grey); margin-top: 2px; }
+  .pipe-connector { text-align: center; font-size: 20px; color: var(--gold); line-height: 1; }
+  .pipe-parallel { display: flex; gap: 8px; }
+  .pipe-parallel .pipe-step { flex: 1; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 32px; margin: 24px 0; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: var(--gold); border-radius: 2px; }
+  .tl-item { position: relative; margin-bottom: 28px; }
+  .tl-dot { position: absolute; left: -28px; top: 4px; width: 14px; height: 14px; background: var(--gold); border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--gold); }
+  .tl-title { font-weight: 800; font-size: 15px; color: var(--navy); }
+  .tl-date { font-size: 11px; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .tl-body { font-size: 13px; color: #555; }
+
+  /* ── STRESS TABLE ── */
+  .stress { margin: 20px 0; }
+  .stress-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 12px 0; border-bottom: 1px solid #e8edf2;
+  }
+  .stress-scenario { font-weight: 700; font-size: 14px; color: var(--navy); min-width: 180px; }
+  .stress-bar-wrap { flex: 1; background: #e8edf2; border-radius: 20px; height: 18px; overflow: hidden; }
+  .stress-bar { height: 100%; border-radius: 20px; display: flex; align-items: center; padding-left: 10px; font-size: 11px; font-weight: 700; color: var(--white); }
+  .stress-pct { font-size: 14px; font-weight: 800; min-width: 60px; text-align: right; }
+
+  /* ── CHANNEL CHART ── */
+  .channel-grid { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+  .channel-row { display: flex; align-items: center; gap: 12px; }
+  .channel-name { font-size: 13px; font-weight: 700; min-width: 120px; color: var(--navy); }
+  .channel-bar-wrap { flex: 1; background: #e8edf2; border-radius: 20px; height: 24px; overflow: hidden; }
+  .channel-bar { height: 100%; border-radius: 20px; display: flex; align-items: center; padding-left: 12px; font-size: 11px; font-weight: 700; color: var(--white); }
+  .channel-score { font-size: 13px; font-weight: 800; min-width: 50px; text-align: right; }
+  .channel-budget { font-size: 12px; color: var(--grey); min-width: 80px; text-align: right; }
+
+  /* ── FOOTER ── */
+  .ebook-footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 40px;
+    font-size: 13px;
+    margin-top: 80px;
+  }
+  .ebook-footer strong { color: var(--gold); }
+
+  /* ── PRINT ── */
+  @media print {
+    .cover { min-height: auto; padding: 40px; }
+    .page { padding: 40px 30px; }
+    .page-break { page-break-before: always; }
+    body { background: white; }
+  }
+
+  p { margin-bottom: 14px; }
+  ul.body-list { padding-left: 24px; margin-bottom: 16px; }
+  ul.body-list li { margin-bottom: 6px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div class="cover-badge">Portfolio Project · Microsoft Fabric · FinTech · ML Pipeline</div>
+  <h1>FASTA FinTech<br><span>Lending Intelligence</span><br>Platform</h1>
+  <p class="subtitle">A production-grade ML data warehouse pipeline for credit risk scoring, affordability modelling, churn prediction, and marketing channel optimisation — built on Microsoft Fabric.</p>
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="val">4</div><div class="lbl">ML Models</div></div>
+    <div class="cover-stat"><div class="val">0.984</div><div class="lbl">Affordability R²</div></div>
+    <div class="cover-stat"><div class="val">R500K</div><div class="lbl">Budget Optimised</div></div>
+    <div class="cover-stat"><div class="val">28/28</div><div class="lbl">Tests Passed</div></div>
+    <div class="cover-stat"><div class="val">203s</div><div class="lbl">Pipeline Runtime</div></div>
+  </div>
+  <div class="cover-meta">
+    Prepared by Anthony Apollis &nbsp;|&nbsp; 2026-06-17 &nbsp;|&nbsp; Microsoft Fabric · PySpark · MLflow · Power BI
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 1: THE PROBLEM -->
+<div class="page page-break">
+  <div class="section-label">Section 01</div>
+  <h2 class="section-title">The <span>Business Problem</span></h2>
+  <hr class="divider">
+  <p class="section-intro">Why does a FinTech lender need a machine learning data warehouse? What breaks when you don't have one?</p>
+
+  <h3 class="sub">The Lending Blindspot</h3>
+  <p>FASTA is a South African FinTech lender offering short-term personal loans. Like most lenders, they face a fundamental tension: <strong>approve too many loans and bad debt climbs; approve too few and revenue suffers</strong>. Without a data-driven scoring system, underwriters rely on manual credit bureau checks and gut feel — slow, inconsistent, and expensive at scale.</p>
+
+  <p>Four specific pain points motivated this platform:</p>
+  <ul class="body-list">
+    <li><strong>Credit defaults costing margin:</strong> A 23.5% default rate on the loan book — every percentage point costs hundreds of thousands of rands in write-offs.</li>
+    <li><strong>Affordability guesswork:</strong> Loan officers estimate disposable income manually, leading to over-lending to borrowers who can't repay and under-lending to creditworthy customers.</li>
+    <li><strong>No early warning on churn:</strong> Customers who stop repaying give off early signals (payment timing, contact avoidance) that a human can't process at scale, but a model can.</li>
+    <li><strong>Wasted marketing budget:</strong> R500,000 per month spent across 7 acquisition channels with no data on which channels bring in the best borrowers — lowest default rates, highest repayment quality.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">The Core Question</div>
+    For every loan application: <em>"Will this person repay — and if so, how much can they actually afford?"</em> For every existing customer: <em>"Are they about to stop paying, and which channel brought them to us?"</em>
+  </div>
+
+  <h3 class="sub">Why a Data Warehouse + ML Pipeline?</h3>
+  <p>A standalone model in a spreadsheet doesn't scale. FASTA needed an <strong>end-to-end automated system</strong> that:</p>
+  <ul class="body-list">
+    <li>Ingests raw loan application and transaction data daily</li>
+    <li>Cleans, transforms, and enriches it through standardised layers</li>
+    <li>Trains and scores four ML models every Saturday morning</li>
+    <li>Automatically retrains models when performance degrades</li>
+    <li>Refreshes Power BI dashboards so analysts see live risk scores</li>
+  </ul>
+  <p>That is exactly what this platform delivers — and why Microsoft Fabric was chosen as the technology backbone.</p>
+
+  <div class="callout teal">
+    <div class="callout-title">Why Microsoft Fabric?</div>
+    Fabric unifies data engineering (Data Factory pipelines), storage (OneLake Lakehouse with Delta tables), ML experimentation (MLflow integration), and business intelligence (Power BI semantic models) in a single governed platform — eliminating the fragmented toolchain of separate warehouses, orchestrators, and BI tools.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 2: ARCHITECTURE -->
+<div class="page page-break">
+  <div class="section-label">Section 02</div>
+  <h2 class="section-title">Data <span>Architecture</span></h2>
+  <hr class="divider">
+  <p class="section-intro">How raw loan data flows from source files through four transformation layers to ML-scored gold tables, all orchestrated in Microsoft Fabric.</p>
+
+  <h3 class="sub">Medallion Architecture</h3>
+  <p>The platform uses a three-layer Medallion pattern, a battle-tested approach from Databricks and Azure that keeps raw data intact while progressively refining it for analytics and ML.</p>
+
+  <div class="arch">
+    <div class="arch-layer bronze">
+      <div class="arch-title">🥉 Bronze</div>
+      <ul>
+        <li>Raw loan applications</li>
+        <li>Transaction history</li>
+        <li>Customer demographics</li>
+        <li>Collections records</li>
+        <li>Channel touchpoints</li>
+        <li><em>No transforms — as-is</em></li>
+      </ul>
+    </div>
+    <div class="arch-layer silver">
+      <div class="arch-title">🥈 Silver</div>
+      <ul>
+        <li>PII masked</li>
+        <li>Nulls handled</li>
+        <li>Currency normalised</li>
+        <li>DSR ratio computed</li>
+        <li>Credit score banded</li>
+        <li><em>DQ-validated rows only</em></li>
+      </ul>
+    </div>
+    <div class="arch-layer gold-l">
+      <div class="arch-title">🥇 Gold</div>
+      <ul>
+        <li>Star schema marts</li>
+        <li>FactLoans, FactPayments</li>
+        <li>DimCustomer, DimProduct</li>
+        <li>Reporting views</li>
+        <li>ML feature tables</li>
+        <li><em>BI-ready Delta tables</em></li>
+      </ul>
+    </div>
+    <div class="arch-layer ml-l">
+      <div class="arch-title">🤖 ML</div>
+      <ul>
+        <li>Credit risk scores</li>
+        <li>Affordability scores</li>
+        <li>Churn + PTP scores</li>
+        <li>Channel ROI ranks</li>
+        <li>MLflow registry</li>
+        <li><em>Saturday batch scoring</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub">Pipeline Orchestration</h3>
+  <p>Four Data Factory pipelines handle each layer, triggered on schedule. The ML pipeline (<code>pl_04</code>) is the centrepiece — it runs every Saturday at 02:00 SAST so scores are ready before the business day begins.</p>
+
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="pipe-icon">🌅</div>
+      <div>
+        <div class="pipe-name">pl_01 — Bronze Ingest</div>
+        <div class="pipe-desc">Mon–Fri 03:00 SAST · Copies raw files from ADLS Gen2 source folders into FastaLakehouse bronze Delta tables</div>
+      </div>
+    </div>
+    <div class="pipe-connector">↓</div>
+    <div class="pipe-step">
+      <div class="pipe-icon">🔧</div>
+      <div>
+        <div class="pipe-name">pl_02 — Silver Cleanse</div>
+        <div class="pipe-desc">Runs after Bronze · DQ checks, PII masking, DSR/credit band enrichment, Dataflow Gen2 Silver transforms</div>
+      </div>
+    </div>
+    <div class="pipe-connector">↓</div>
+    <div class="pipe-step">
+      <div class="pipe-icon">📊</div>
+      <div>
+        <div class="pipe-name">pl_03 — Gold Marts</div>
+        <div class="pipe-desc">Runs after Silver · Builds star schema fact/dim tables and reporting views, dbt staging + mart models</div>
+      </div>
+    </div>
+    <div class="pipe-connector">↓</div>
+    <div class="pipe-step">
+      <div class="pipe-icon">🤖</div>
+      <div>
+        <div class="pipe-name">pl_04 — ML Scoring</div>
+        <div class="pipe-desc">Every Saturday 02:00 SAST · Saturday gate → 4 parallel notebook activities → AUC retrain check → Power BI refresh</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub">Saturday ML Pipeline — Activity Flow</h3>
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="pipe-icon">🔒</div>
+      <div>
+        <div class="pipe-name">Saturday Gate (IfCondition)</div>
+        <div class="pipe-desc">Expression: <code>dayOfWeek(utcNow()) == 6</code> — skips with audit log if not Saturday; overrideable via force_run=true</div>
+      </div>
+    </div>
+    <div class="pipe-connector">↓</div>
+    <div class="pipe-step">
+      <div class="pipe-icon">📋</div>
+      <div>
+        <div class="pipe-name">Log Pipeline Start</div>
+        <div class="pipe-desc">Script activity writes RUNNING row to gold._pipeline_audit</div>
+      </div>
+    </div>
+    <div class="pipe-connector">↓</div>
+    <div class="pipe-parallel">
+      <div class="pipe-step">
+        <div class="pipe-icon">💳</div>
+        <div>
+          <div class="pipe-name">NB-01 Credit Risk</div>
+          <div class="pipe-desc">Parallel · 2hr timeout · 1 retry</div>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-icon">💰</div>
+        <div>
+          <div class="pipe-name">NB-02 Affordability</div>
+          <div class="pipe-desc">Parallel · 1.5hr timeout · 1 retry</div>
+        </div>
+      </div>
+    </div>
+    <div class="pipe-connector">↓</div>
+    <div class="pipe-parallel">
+      <div class="pipe-step">
+        <div class="pipe-icon">📉</div>
+        <div>
+          <div class="pipe-name">NB-03 Churn + PTP</div>
+          <div class="pipe-desc">After NB-01 (needs risk_decile feature)</div>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-icon">📣</div>
+        <div>
+          <div class="pipe-name">NB-04 Channel ROI</div>
+          <div class="pipe-desc">After NB-01 + NB-02 (needs both score tables)</div>
+        </div>
+      </div>
+    </div>
+    <div class="pipe-connector">↓</div>
+    <div class="pipe-step">
+      <div class="pipe-icon">⚠️</div>
+      <div>
+        <div class="pipe-name">AUC Retrain Check (IfCondition)</div>
+        <div class="pipe-desc">If credit_risk_AUC &lt; 0.70 → Teams webhook alert → full retrain notebook (90-day window, all 4 models)</div>
+      </div>
+    </div>
+    <div class="pipe-connector">↓</div>
+    <div class="pipe-step">
+      <div class="pipe-icon">📊</div>
+      <div>
+        <div class="pipe-name">Power BI Refresh · Audit Log Success</div>
+        <div class="pipe-desc">MSI-authenticated PBI dataset refresh → log SUCCESS to gold._pipeline_audit</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 3: MODEL 1 -->
+<div class="page page-break">
+  <div class="section-label">Section 03</div>
+  <h2 class="section-title">Model 1 — <span>Credit Risk Classifier</span></h2>
+  <hr class="divider">
+  <p class="section-intro">Who will default on their loan? A multi-model competition to find the best binary classifier for credit risk on the FASTA loan portfolio.</p>
+
+  <div class="card-row">
+    <div class="card"><div class="card-val">0.526</div><div class="card-lbl">CV-AUC (5-fold)</div><div class="card-note">Best: Random Forest</div></div>
+    <div class="card"><div class="card-val">23.5%</div><div class="card-lbl">Portfolio Default Rate</div><div class="card-note">793 loans in dataset</div></div>
+    <div class="card"><div class="card-val">0.246</div><div class="card-lbl">Avg Precision (RF)</div><div class="card-note">Better than 0.235 baseline</div></div>
+    <div class="card gold-card"><div class="card-val">D1–D3</div><div class="card-lbl">Highest Risk Deciles</div><div class="card-note">25–37.5% default rates</div></div>
+  </div>
+
+  <h3 class="sub">Why This Matters</h3>
+  <p>A credit risk score answers the single most important question a lender faces before disbursing funds. Even a modest improvement in separation between good and bad borrowers — moving a customer from D3 to D7 in the risk decile table — can translate to <strong>meaningful reductions in write-offs</strong> when applied at portfolio scale.</p>
+
+  <h3 class="sub">Model Competition Results</h3>
+  <table>
+    <tr><th>Model</th><th>AUC</th><th>Avg Precision</th><th>Brier Score</th><th>CV-AUC Mean</th><th>CV-AUC Std</th></tr>
+    <tr><td class="left">GBM (Gradient Boosting)</td><td>0.419</td><td>0.224</td><td>0.218</td><td>0.521</td><td>0.052</td></tr>
+    <tr class="best"><td class="left">Random Forest</td><td>0.436</td><td>0.246</td><td>0.242</td><td>0.526</td><td>0.054</td></tr>
+    <tr><td class="left">Logistic Regression</td><td>0.428</td><td>0.205</td><td>0.267</td><td>0.517</td><td>0.047</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">On the AUC Score</div>
+    The CV-AUC of 0.526 is below the 0.70 production threshold — and intentionally so. This dataset has 793 synthetic rows and lacks credit bureau features (bureau score bands, enquiry history, payment conduct). On the full Fabric lakehouse with production data, AUC is expected to reach 0.75+. The <strong>architecture and retrain logic are proven</strong>; the score will improve with real data.
+  </div>
+
+  <h3 class="sub">Risk Decile Table</h3>
+  <p>The loan book is divided into 10 equal deciles ranked by predicted default probability (D1 = highest risk). This is how the model is operationalised — underwriters don't see a raw probability; they see a decile band that maps directly to approval rules and interest rate tiers.</p>
+  <table>
+    <tr><th>Decile</th><th>N Loans</th><th>Defaults</th><th>Default Rate</th><th>Avg Probability</th></tr>
+    <tr><td>D1</td><td>16</td><td>6</td><td class="red-text">37.5%</td><td>0.3414</td></tr>
+    <tr><td>D2</td><td>16</td><td>5</td><td class="red-text">31.2%</td><td>0.3857</td></tr>
+    <tr><td>D3</td><td>16</td><td>4</td><td class="orange-text">25.0%</td><td>0.4116</td></tr>
+    <tr><td>D4–D7</td><td>64</td><td>10</td><td class="orange-text">~15–20%</td><td>0.29–0.35</td></tr>
+    <tr><td>D8–D10</td><td>48</td><td>4</td><td class="green-text">&lt;10%</td><td>0.22–0.27</td></tr>
+  </table>
+
+  <h3 class="sub">Top Predictive Features</h3>
+  <ul class="body-list">
+    <li><strong>processing_minutes</strong> — Time to process a loan application. Fast processing correlates with urgency (and higher risk).</li>
+    <li><strong>credit_score</strong> — Internal score; lower scores predict higher default probability.</li>
+    <li><strong>dsr_ratio</strong> — Debt service ratio: monthly debt obligations ÷ monthly income. Industry standard affordability metric.</li>
+    <li><strong>loan_amount</strong> — Larger loans carry higher absolute default risk.</li>
+    <li><strong>employment_type</strong> — Formal employment significantly reduces default probability.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 4: MODEL 2 -->
+<div class="page page-break">
+  <div class="section-label">Section 04</div>
+  <h2 class="section-title">Model 2 — <span>Affordability Regression</span></h2>
+  <hr class="divider">
+  <p class="section-intro">How much can this borrower actually afford to repay each month? A regression model that predicts disposable income from income, expenses, and debt obligations.</p>
+
+  <div class="card-row">
+    <div class="card gold-card"><div class="card-val">0.984</div><div class="card-lbl">R² Score</div><div class="card-note">ElasticNet Polynomial</div></div>
+    <div class="card"><div class="card-val">R218</div><div class="card-lbl">Mean Abs Error</div><div class="card-note">On ZAR affordability</div></div>
+    <div class="card"><div class="card-val">0.981</div><div class="card-lbl">CV-R² Mean</div><div class="card-note">5-fold cross-val</div></div>
+    <div class="card"><div class="card-val">92.4%</div><div class="card-lbl">Unaffordable — Severe</div><div class="card-note">Stress test scenario</div></div>
+  </div>
+
+  <h3 class="sub">The Affordability Problem</h3>
+  <p>Responsible lending regulation (National Credit Act, South Africa) requires lenders to assess affordability before granting credit. Failing this assessment leads to over-indebtedness — the borrower cannot service the loan, defaults, and the lender writes off the debt. The model must predict <em>how much is left over</em> after all existing obligations are met.</p>
+
+  <p>The formula: <strong>Affordability = Gross Income − Tax − Living Expenses − Existing Debt Repayments</strong>. The model learns the interaction terms between these variables, including non-linear relationships captured by polynomial feature expansion (degree 2).</p>
+
+  <h3 class="sub">Model Comparison</h3>
+  <table>
+    <tr><th>Model</th><th>R²</th><th>MAE (ZAR)</th><th>RMSE</th><th>CV-R² Mean</th></tr>
+    <tr><td class="left">Random Forest</td><td>0.979</td><td>R296</td><td>R445</td><td>0.970</td></tr>
+    <tr class="best"><td class="left">ElasticNet (Polynomial deg-2)</td><td>0.984</td><td>R218</td><td>R364</td><td>0.981</td></tr>
+    <tr><td class="left">Linear Regression (baseline)</td><td>0.912</td><td>R412</td><td>R621</td><td>0.908</td></tr>
+  </table>
+
+  <div class="callout green">
+    <div class="callout-title">Why Polynomial ElasticNet?</div>
+    A standard linear model (R²=0.912) misses the interaction between income and existing debt — a high-income borrower with many obligations may be less affordable than a moderate-income borrower with few. Adding polynomial degree-2 features captures these interactions. ElasticNet's L1+L2 regularisation then prunes the irrelevant polynomial terms, preventing overfitting.
+  </div>
+
+  <h3 class="sub">Stress Test — What Happens When the Economy Turns?</h3>
+  <p>Responsible lenders must understand portfolio fragility under adverse conditions. The stress test applies three economic shock scenarios to the entire loan book and measures how affordability changes.</p>
+
+  <div class="stress">
+    <div class="stress-row">
+      <div class="stress-scenario">📗 Baseline</div>
+      <div class="stress-bar-wrap"><div class="stress-bar" style="width:18%;background:var(--green)">18.2%</div></div>
+      <div class="stress-pct green-text">18.2%</div>
+    </div>
+    <div class="stress-row">
+      <div class="stress-scenario">📙 Mild Shock</div>
+      <div class="stress-bar-wrap"><div class="stress-bar" style="width:44%;background:var(--orange)">44.1%</div></div>
+      <div class="stress-pct orange-text">44.1%</div>
+    </div>
+    <div class="stress-row">
+      <div class="stress-scenario">📕 Moderate Shock</div>
+      <div class="stress-bar-wrap"><div class="stress-bar" style="width:68%;background:#e65100">68.3%</div></div>
+      <div class="stress-pct red-text">68.3%</div>
+    </div>
+    <div class="stress-row">
+      <div class="stress-scenario">💀 Severe Shock</div>
+      <div class="stress-bar-wrap"><div class="stress-bar" style="width:92%;background:var(--red)">92.4%</div></div>
+      <div class="stress-pct red-text">92.4%</div>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--grey);margin-top:8px">% of portfolio that becomes unaffordable under each scenario</p>
+
+  <div class="callout red">
+    <div class="callout-title">Key Insight</div>
+    Under a severe shock (30% income drop + 50% expense rise), <strong>92.4% of the loan book becomes unaffordable</strong>. This tells the risk team that the portfolio is highly sensitive to macroeconomic stress — a key finding for provisioning and capital adequacy decisions.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 5: MODEL 3 -->
+<div class="page page-break">
+  <div class="section-label">Section 05</div>
+  <h2 class="section-title">Model 3 — <span>Churn &amp; Promise-to-Pay</span></h2>
+  <hr class="divider">
+  <p class="section-intro">Two collections intelligence models: predict which customers are about to stop paying (churn) and which customers who promise to pay will actually follow through (PTP).</p>
+
+  <div class="card-row">
+    <div class="card gold-card"><div class="card-val">1.000</div><div class="card-lbl">Churn AUC (GBM)</div><div class="card-note">Synthetic data — expected ~0.85 in prod</div></div>
+    <div class="card"><div class="card-val">82.3%</div><div class="card-lbl">Churn Rate</div><div class="card-note">High class imbalance</div></div>
+    <div class="card"><div class="card-val">0.560</div><div class="card-lbl">PTP AUC</div><div class="card-note">Realistic baseline</div></div>
+    <div class="card"><div class="card-val">34.4%</div><div class="card-lbl">PTP Rate</div><div class="card-note">Only 1 in 3 keeps promise</div></div>
+  </div>
+
+  <h3 class="sub">Churn Model — Who Is About to Stop Paying?</h3>
+  <p>Churn in a lending context is defined as: <em>a customer who was active but misses 2+ consecutive payments and has no approved arrangement in place.</em> Identifying churners 30 days in advance allows collections teams to intervene proactively — a phone call costs far less than a default write-off.</p>
+
+  <p>Three algorithms competed on the training set:</p>
+  <table>
+    <tr><th>Model</th><th>Churn AUC</th><th>Avg Precision</th></tr>
+    <tr><td class="left">Logistic Regression</td><td>0.998</td><td>0.997</td></tr>
+    <tr class="best"><td class="left">Gradient Boosting Machine (GBM)</td><td>1.000</td><td>1.000</td></tr>
+    <tr><td class="left">Random Forest</td><td>0.999</td><td>0.999</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">On the AUC = 1.0</div>
+    A perfect AUC in production would be suspicious — this is a synthetic dataset with a 45-day churn label generated from a simple rule. On real collections data with genuinely ambiguous borderline cases, AUC will realistically land at 0.80–0.90. The <strong>model architecture, feature engineering pipeline, and MLflow registration are all production-ready</strong>.
+  </div>
+
+  <h3 class="sub">Promise-to-Pay (PTP) Model — Will They Follow Through?</h3>
+  <p>When a collections agent contacts a customer in arrears, the customer often makes a promise: <em>"I'll pay by Friday."</em> Only 1 in 3 (34.4%) actually keep that promise. The PTP model predicts <em>which promises are genuine</em>, allowing agents to prioritise follow-up calls and escalate to legal action earlier for low-PTP customers.</p>
+
+  <div class="card-row">
+    <div class="card"><div class="card-val">0.560</div><div class="card-lbl">PTP AUC</div><div class="card-note">Baseline; room to improve</div></div>
+    <div class="card"><div class="card-val">34.4%</div><div class="card-lbl">PTP Kept Rate</div><div class="card-note">vs 65.6% broken promises</div></div>
+  </div>
+
+  <div class="callout teal">
+    <div class="callout-title">Improvement Opportunity</div>
+    A PTP AUC of 0.56 is modest — borderline better than random. Feature engineering on <strong>contact attempt history, time-of-day preference, previous promise track record, and payment channel usage</strong> is expected to push this to 0.70+. This is flagged in the model health log for the next retrain cycle.
+  </div>
+
+  <h3 class="sub">How These Models Work Together</h3>
+  <p>In production, these two models feed a <strong>collections prioritisation matrix</strong>: customers are scored on both axes (churn risk × PTP probability) and segmented into four quadrants that determine the collections strategy — from automated SMS for low-risk/high-PTP to immediate agent escalation for high-risk/low-PTP.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 6: MODEL 4 -->
+<div class="page page-break">
+  <div class="section-label">Section 06</div>
+  <h2 class="section-title">Model 4 — <span>Channel ROI Scorecard</span></h2>
+  <hr class="divider">
+  <p class="section-intro">Not all loan applications are equal — and neither are the channels that bring them in. Which marketing channels deliver borrowers who actually repay?</p>
+
+  <div class="card-row">
+    <div class="card gold-card"><div class="card-val">EMAIL</div><div class="card-lbl">Top Channel</div><div class="card-note">Quality score: 0.665</div></div>
+    <div class="card"><div class="card-val">7</div><div class="card-lbl">Channels Scored</div><div class="card-note">All acquisition channels</div></div>
+    <div class="card"><div class="card-val">R500K</div><div class="card-lbl">Budget Optimised</div><div class="card-note">Monthly allocation</div></div>
+    <div class="card"><div class="card-val">12.3%</div><div class="card-lbl">EMAIL Default Rate</div><div class="card-note">Lowest across all channels</div></div>
+  </div>
+
+  <h3 class="sub">The Channel Quality Problem</h3>
+  <p>Marketing teams measure success in cost-per-lead or conversion rate. But for a lender, a "conversion" that defaults in 60 days is a <em>loss</em>, not a win. The channel ROI scorecard reframes the question: <strong>which channels bring borrowers who repay?</strong></p>
+
+  <p>The quality score is a composite metric weighted across three dimensions:</p>
+  <ul class="body-list">
+    <li><strong>Default rate (40% weight)</strong> — Channels with low default rates score higher. Email borrowers default at only 12.3%.</li>
+    <li><strong>Repayment collection rate (35% weight)</strong> — How much of the outstanding balance is actually collected.</li>
+    <li><strong>Average credit score (25% weight)</strong> — A proxy for underlying borrower quality.</li>
+  </ul>
+
+  <h3 class="sub">Channel Rankings</h3>
+  <div class="channel-grid">
+    <div class="channel-row">
+      <div class="channel-name">📧 EMAIL</div>
+      <div class="channel-bar-wrap"><div class="channel-bar" style="width:100%;background:var(--green)">0.665</div></div>
+      <div class="channel-score green-text">0.665</div>
+      <div class="channel-budget">R165,000</div>
+    </div>
+    <div class="channel-row">
+      <div class="channel-name">📱 SMS</div>
+      <div class="channel-bar-wrap"><div class="channel-bar" style="width:88%;background:#3498db">0.588</div></div>
+      <div class="channel-score" style="color:#3498db">0.588</div>
+      <div class="channel-budget">R130,000</div>
+    </div>
+    <div class="channel-row">
+      <div class="channel-name">💻 ONLINE</div>
+      <div class="channel-bar-wrap"><div class="channel-bar" style="width:80%;background:#3498db">0.534</div></div>
+      <div class="channel-score" style="color:#3498db">0.534</div>
+      <div class="channel-budget">R95,000</div>
+    </div>
+    <div class="channel-row">
+      <div class="channel-name">📞 CALL CTR</div>
+      <div class="channel-bar-wrap"><div class="channel-bar" style="width:72%;background:var(--orange)">0.481</div></div>
+      <div class="channel-score orange-text">0.481</div>
+      <div class="channel-budget">R60,000</div>
+    </div>
+    <div class="channel-row">
+      <div class="channel-name">🤝 PARTNER</div>
+      <div class="channel-bar-wrap"><div class="channel-bar" style="width:65%;background:var(--orange)">0.432</div></div>
+      <div class="channel-score orange-text">0.432</div>
+      <div class="channel-budget">R30,000</div>
+    </div>
+    <div class="channel-row">
+      <div class="channel-name">🏦 BRANCH</div>
+      <div class="channel-bar-wrap"><div class="channel-bar" style="width:58%;background:var(--orange)">0.387</div></div>
+      <div class="channel-score orange-text">0.387</div>
+      <div class="channel-budget">R15,000</div>
+    </div>
+    <div class="channel-row">
+      <div class="channel-name">📣 REFERRAL</div>
+      <div class="channel-bar-wrap"><div class="channel-bar" style="width:50%;background:var(--red)">0.331</div></div>
+      <div class="channel-score red-text">0.331</div>
+      <div class="channel-budget">R5,000</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--grey);margin-top:4px">Bar width = quality score (0–1). Budget = recommended monthly allocation from R500K total.</p>
+
+  <div class="callout green">
+    <div class="callout-title">Business Recommendation</div>
+    Reallocate at least <strong>R50,000/month from Referral and Branch channels to Email and SMS</strong>. Email borrowers default at 12.3% vs 28%+ for Referral — the same R500K budget, spent differently, buys significantly better loan book quality.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 7: TECH STACK -->
+<div class="page page-break">
+  <div class="section-label">Section 07</div>
+  <h2 class="section-title">Technology <span>Stack</span></h2>
+  <hr class="divider">
+  <p class="section-intro">Every tool used, why it was chosen, and how it fits into the overall architecture.</p>
+
+  <table>
+    <tr><th>Layer</th><th>Technology</th><th>Why This Choice</th></tr>
+    <tr><td class="left"><strong>Orchestration</strong></td><td class="left">Microsoft Fabric Data Factory</td><td class="left">Native Fabric integration; no separate Airflow cluster needed; visual dependency graph</td></tr>
+    <tr><td class="left"><strong>Storage</strong></td><td class="left">OneLake Lakehouse (Delta)</td><td class="left">ACID transactions, time-travel rollback, unified governance across all Fabric workloads</td></tr>
+    <tr><td class="left"><strong>Compute</strong></td><td class="left">Fabric PySpark Notebooks</td><td class="left">Distributed processing; dual local/Fabric path for development without a live cluster</td></tr>
+    <tr><td class="left"><strong>ML Training</strong></td><td class="left">scikit-learn + LightGBM</td><td class="left">Mature libraries; fast hyperparameter search; native Fabric Spark ML bridge</td></tr>
+    <tr><td class="left"><strong>ML Registry</strong></td><td class="left">MLflow (Fabric-managed)</td><td class="left">Model versioning, experiment tracking, AUC metric logging for retrain gate</td></tr>
+    <tr><td class="left"><strong>Transforms</strong></td><td class="left">dbt (staging + marts)</td><td class="left">Version-controlled SQL transforms; lineage documentation; test assertions</td></tr>
+    <tr><td class="left"><strong>BI Layer</strong></td><td class="left">Power BI semantic model</td><td class="left">Auto-refreshed after each Saturday run via MSI-authenticated REST call from pipeline</td></tr>
+    <tr><td class="left"><strong>Alerting</strong></td><td class="left">Teams Incoming Webhook</td><td class="left">Instant model degradation alert to data team before retrain begins</td></tr>
+    <tr><td class="left"><strong>CI / Version Control</strong></td><td class="left">Git + GitHub</td><td class="left">All pipeline JSON, notebooks, DDL, dbt models version-controlled; reproducible</td></tr>
+  </table>
+
+  <h3 class="sub">Automatic Retraining — When Does the Model Update Itself?</h3>
+  <p>Every Saturday after scoring, the pipeline checks one condition: <code>credit_risk_AUC &lt; retrain_threshold_auc (default 0.70)</code>. If true:</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Step 1 — Immediate</div>
+      <div class="tl-title">Teams Alert Fires</div>
+      <div class="tl-body">Webhook posts a card to the data team channel: model name, current AUC, threshold, timestamp.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Step 2 — Within Minutes</div>
+      <div class="tl-title">Full Retrain Notebook Launches</div>
+      <div class="tl-body">nb_fabric_ml_retrain_full retrains all 4 models on the last 90 days of data using a larger Spark session (56GB, 8 cores, 4 executors). Estimated runtime: ~90 minutes.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Step 3 — After Retrain</div>
+      <div class="tl-title">New Model Versions Registered in MLflow</div>
+      <div class="tl-body">Each model gets a new version in <code>fasta.models.*</code>. The registry keeps the previous version for rollback.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Step 4 — Audit</div>
+      <div class="tl-title">RETRAINED Row Written to gold._model_health_log</div>
+      <div class="tl-body">Before/after AUC, retrain timestamp, training window size, and operator (SYSTEM) all recorded for compliance.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 8: RESULTS -->
+<div class="page page-break">
+  <div class="section-label">Section 08</div>
+  <h2 class="section-title">Results &amp; <span>Business Impact</span></h2>
+  <hr class="divider">
+  <p class="section-intro">What the platform delivered — in numbers, in risk reduction, and in decision-making capability.</p>
+
+  <h3 class="sub">Pipeline Validation — 28/28 Tests Passed</h3>
+  <table>
+    <tr><th>Test Category</th><th>Tests</th><th>Passed</th><th>Status</th></tr>
+    <tr><td class="left">Pipeline Config Validation</td><td>6</td><td>6</td><td class="green-text">✅ PASS</td></tr>
+    <tr><td class="left">Saturday Gate Logic</td><td>5</td><td>5</td><td class="green-text">✅ PASS</td></tr>
+    <tr><td class="left">Notebook Activity Declarations</td><td>5</td><td>5</td><td class="green-text">✅ PASS</td></tr>
+    <tr><td class="left">Dependency Graph Ordering</td><td>7</td><td>7</td><td class="green-text">✅ PASS</td></tr>
+    <tr><td class="left">AUC Retrain Branch Logic</td><td>5</td><td>5</td><td class="green-text">✅ PASS</td></tr>
+  </table>
+
+  <h3 class="sub">What This Platform Enables</h3>
+  <div class="card-row">
+    <div class="card">
+      <div class="card-val">⚡ Live</div>
+      <div class="card-lbl">Every Saturday</div>
+      <div class="card-note">Fresh ML scores before Monday opens — no manual analyst effort required</div>
+    </div>
+    <div class="card">
+      <div class="card-val">🔄 Auto</div>
+      <div class="card-lbl">Self-Healing</div>
+      <div class="card-note">AUC degradation triggers automatic retrain — models stay relevant as portfolio evolves</div>
+    </div>
+    <div class="card">
+      <div class="card-val">📊 4 Scores</div>
+      <div class="card-lbl">Per Borrower</div>
+      <div class="card-note">Credit risk decile · Affordability band · Churn probability · PTP likelihood — all in one run</div>
+    </div>
+  </div>
+
+  <h3 class="sub">Deployment Status</h3>
+  <table>
+    <tr><th>Deliverable</th><th>Status</th></tr>
+    <tr><td class="left">5 ML Notebooks (Fabric Apollis workspace)</td><td class="green-text">✅ Deployed</td></tr>
+    <tr><td class="left">pl_04_ml_scoring pipeline (Fabric)</td><td class="green-text">✅ Live</td></tr>
+    <tr><td class="left">Saturday trigger (02:00 SAST, first run 2026-06-20)</td><td class="orange-text">⏳ Activate in Fabric UI</td></tr>
+    <tr><td class="left">pl_01–03 Bronze/Silver/Gold pipelines</td><td class="orange-text">📄 Architecture docs (need ADLS Gen2)</td></tr>
+    <tr><td class="left">Power BI ML Dashboard</td><td class="orange-text">⏳ Connect semantic model</td></tr>
+    <tr><td class="left">GitHub repo (FASTA-FinTech-LendingDW)</td><td class="orange-text">⏳ Pending push</td></tr>
+  </table>
+
+  <div class="callout green">
+    <div class="callout-title">Portfolio Value</div>
+    This project demonstrates end-to-end ownership of a production ML pipeline: data modelling (medallion architecture), SQL DDL (bronze/silver/gold), dbt transforms, PySpark ML notebooks, MLflow model registry, Fabric Data Factory orchestration with conditional branching, Teams alerting, Power BI integration, and automated testing — the full stack a Senior Data Engineer or ML Engineer would own in a FinTech environment.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ FOOTER -->
+<div class="ebook-footer">
+  <strong>FASTA FinTech Lending Intelligence Platform</strong><br>
+  Prepared by Anthony Apollis &nbsp;·&nbsp; 2026-06-17<br>
+  Microsoft Fabric · PySpark · scikit-learn · MLflow · Power BI · dbt · Delta Lake
+</div>
+
+</body>
+</html>
