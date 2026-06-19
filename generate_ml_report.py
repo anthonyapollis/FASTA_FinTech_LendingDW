@@ -29,6 +29,57 @@ pipe = load("pipeline_run_log.json")
 
 run_date = datetime.now().strftime("%Y-%m-%d")
 
+executive_actions = [
+    {
+        "priority": "P1",
+        "theme": "Credit policy",
+        "insight": "The sample portfolio defaults at 23.5%, with the highest-risk deciles materially above portfolio average.",
+        "recommendation": "Use model deciles as decision bands: auto-approve low-risk bands, price or limit medium-risk bands, and route high-risk bands to manual review until production AUC clears 0.70.",
+        "owner": "Credit Risk",
+        "timeframe": "0-30 days",
+    },
+    {
+        "priority": "P1",
+        "theme": "Affordability",
+        "insight": "A 20% income shock moves unaffordable customers from 5.3% to 52.9%; the severe stress case reaches 92.4%.",
+        "recommendation": "Add a stress-tested affordability buffer before approval, especially for lower-income bands and applicants with high debt-service ratios.",
+        "owner": "Lending Ops",
+        "timeframe": "0-30 days",
+    },
+    {
+        "priority": "P2",
+        "theme": "Collections",
+        "insight": "Churn and promise-to-pay scores can separate proactive retention from costly late-stage collections.",
+        "recommendation": "Create a collections action matrix using churn risk x PTP probability: agent call for high-risk/low-PTP, payment-plan nudge for high-risk/high-PTP, automated SMS for low-risk customers.",
+        "owner": "Collections",
+        "timeframe": "30-60 days",
+    },
+    {
+        "priority": "P2",
+        "theme": "Acquisition ROI",
+        "insight": "Email has the best channel quality score and 12.3% default rate; WhatsApp has the weakest quality profile at 28.9% default.",
+        "recommendation": "Shift budget toward Email, Direct, and Organic Search; cap WhatsApp/Facebook spend until lead quality improves.",
+        "owner": "Marketing",
+        "timeframe": "30-60 days",
+    },
+    {
+        "priority": "P1",
+        "theme": "MLOps control",
+        "insight": "The production value is the operating loop: scheduled scoring, MLflow registration, audit logs, alerting, and retraining when AUC drops.",
+        "recommendation": "Keep the weekly model-health gate and add data drift checks before promoting new model versions.",
+        "owner": "MLOps",
+        "timeframe": "0-30 days",
+    },
+]
+
+decision_rules = [
+    ("Approve faster", "Low-risk deciles with affordability buffer above R2,000", "Instant approve or offer best available rate"),
+    ("Price for risk", "Medium-risk deciles or thin affordability buffer", "Lower limit, shorter term, or risk-adjusted price"),
+    ("Protect margin", "High-risk deciles, failed affordability, or severe stress sensitivity", "Manual review, decline, or request stronger evidence"),
+    ("Recover earlier", "High churn risk before missed-payment spiral", "Proactive call or payment-plan offer before collections escalation"),
+    ("Buy better customers", "Channels with lower default and stronger collection rate", "Reallocate acquisition budget to quality, not only volume"),
+]
+
 # ── Excel report ───────────────────────────────────────────────────────────────
 try:
     import openpyxl
@@ -131,6 +182,42 @@ try:
         cell(ws, row, 5, nb["run_at"],      bg=bg)
         row += 1
     border_range(ws, 11, row-1, 1, 5)
+
+    row += 2
+    ws.merge_cells(f"A{row}:E{row}")
+    hdr(ws, row, 1, "Executive Action Plan", bg=NAVY_LT, fg=GOLD)
+    row += 1
+    for h, col in zip(["Priority", "Theme", "Insight", "Recommendation", "Owner / Timing"], range(1,6)):
+        hdr(ws, row, col, h, size=10)
+    row += 1
+    start_row = row
+    for i, action in enumerate(executive_actions):
+        bg = GREY if i % 2 == 0 else WHITE
+        cell(ws, row, 1, action["priority"], bg=bg, bold=True)
+        cell(ws, row, 2, action["theme"], bg=bg, bold=True, align="left")
+        cell(ws, row, 3, action["insight"], bg=bg, align="left")
+        cell(ws, row, 4, action["recommendation"], bg=bg, align="left")
+        cell(ws, row, 5, f"{action['owner']} | {action['timeframe']}", bg=bg, align="left")
+        ws.row_dimensions[row].height = 48
+        row += 1
+    border_range(ws, start_row-1, row-1, 1, 5)
+
+    row += 1
+    ws.merge_cells(f"A{row}:E{row}")
+    hdr(ws, row, 1, "Decision Rules for FASTA", bg=NAVY_LT, fg=GOLD)
+    row += 1
+    for h, col in zip(["Decision", "Trigger", "Action"], range(1,4)):
+        hdr(ws, row, col, h, size=10)
+    row += 1
+    start_row = row
+    for i, (decision, trigger, action) in enumerate(decision_rules):
+        bg = GREY if i % 2 == 0 else WHITE
+        cell(ws, row, 1, decision, bg=bg, bold=True, align="left")
+        cell(ws, row, 2, trigger, bg=bg, align="left")
+        cell(ws, row, 3, action, bg=bg, align="left")
+        ws.row_dimensions[row].height = 34
+        row += 1
+    border_range(ws, start_row-1, row-1, 1, 3)
 
     # ── Sheet 2: Credit Risk ─────────────────────────────────────────────────
     ws2 = wb.create_sheet("Credit Risk")
@@ -352,6 +439,14 @@ html = f"""<!DOCTYPE html>
   .meta-card .val {{ font-size:22px; font-weight:bold; color:#006272 }}
   .meta-card .lbl {{ font-size:12px; color:#888; margin-top:4px }}
   .subtitle {{ color:#555; font-size:14px; margin:0 0 20px }}
+  .story {{ background:#fff; border:1px solid #ddd; border-radius:6px; padding:18px 22px; margin:18px 0 }}
+  .story h2 {{ margin-top:0 }}
+  .action-grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin:14px 0 22px }}
+  .action-card {{ background:#fff; border-left:5px solid #006272; border-radius:6px; padding:14px 16px; box-shadow:0 1px 5px rgba(0,0,0,.06) }}
+  .action-card .prio {{ color:#006272; font-weight:bold; font-size:12px; text-transform:uppercase }}
+  .action-card .theme {{ font-weight:bold; margin:4px 0 6px }}
+  .action-card p {{ margin:0; font-size:13px; line-height:1.45 }}
+  .left {{ text-align:left }}
 </style>
 </head>
 <body>
@@ -368,6 +463,36 @@ Steps: {pipe['steps_ok']}/{pipe['steps_ok']+pipe['steps_fail']} OK</p>
   <div class="meta-card"><div class="val">EMAIL</div><div class="lbl">Top Channel</div></div>
   <div class="meta-card"><div class="val">R500K</div><div class="lbl">Budget Optimised</div></div>
 </div>
+
+<div class="story">
+<h2>Executive Story — What FASTA Should Do Next</h2>
+<p>This report is not only a model scorecard. It is an operating plan for a lender: approve the right customers faster, protect margin under affordability stress, intervene earlier in collections, and spend marketing budget on channels that bring borrowers who repay.</p>
+<p><strong>Important context:</strong> the source data is synthetic, so credit-risk AUC is not presented as a production performance claim. The value demonstrated here is the full production pattern: governed data layers, repeatable scoring, MLflow registration, audit logging, model-health gates, and business-facing actions.</p>
+</div>
+
+<h2>Recommended Actions</h2>
+<div class="action-grid">
+"""
+for action in executive_actions:
+    html += f"""  <div class="action-card">
+    <div class="prio">{action['priority']} · {action['owner']} · {action['timeframe']}</div>
+    <div class="theme">{action['theme']}</div>
+    <p><strong>Insight:</strong> {action['insight']}</p>
+    <p><strong>Recommendation:</strong> {action['recommendation']}</p>
+  </div>
+"""
+
+html += """</div>
+
+<h2>Decision Rules</h2>
+<table>
+<tr><th>Decision</th><th>Trigger</th><th>Action</th></tr>
+"""
+for decision, trigger, action in decision_rules:
+    html += f'<tr><td class="left"><strong>{decision}</strong></td><td class="left">{trigger}</td><td class="left">{action}</td></tr>\n'
+
+html += """
+</table>
 
 <h2>Model 1 — Credit Risk Classifier</h2>
 <table>

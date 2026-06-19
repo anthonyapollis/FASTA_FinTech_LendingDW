@@ -243,6 +243,48 @@
   p { margin-bottom: 14px; }
   ul.body-list { padding-left: 24px; margin-bottom: 16px; }
   ul.body-list li { margin-bottom: 6px; font-size: 14px; }
+  .exec-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 28px 0; }
+  .exec-card {
+    background: var(--white);
+    border-left: 5px solid var(--gold);
+    border-radius: 8px;
+    padding: 20px 22px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .exec-card.priority { border-color: var(--red); }
+  .exec-card.growth { border-color: var(--green); }
+  .exec-card.ops { border-color: var(--blue); }
+  .exec-card .tag {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 6px;
+  }
+  .exec-card h3 { font-size: 18px; color: var(--navy); margin-bottom: 8px; }
+  .exec-card p { font-size: 14px; margin-bottom: 8px; }
+  .action-table td { text-align: left; vertical-align: top; }
+  .action-table td:first-child { font-weight: 800; color: var(--navy); white-space: nowrap; }
+  .decision-strip {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    margin: 24px 0 32px;
+  }
+  .decision {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 16px;
+    min-height: 150px;
+  }
+  .decision .num { color: var(--gold); font-size: 22px; font-weight: 800; }
+  .decision .name { font-weight: 800; margin: 6px 0; }
+  .decision .copy { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.45; }
+  @media (max-width: 800px) {
+    .exec-grid, .decision-strip { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -261,6 +303,73 @@
   </div>
   <div class="cover-meta">
     Prepared by Anthony Apollis &nbsp;|&nbsp; 2026-06-17 &nbsp;|&nbsp; Microsoft Fabric · PySpark · MLflow · Power BI
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ EXECUTIVE STORY -->
+<div class="page page-break">
+  <div class="section-label">Executive Story</div>
+  <h2 class="section-title">From ML Scores to <span>Lending Decisions</span></h2>
+  <hr class="divider">
+  <p class="section-intro">The platform is not just a data warehouse or a model catalogue. It is a decision system for a lender: approve profitable customers faster, protect the book from affordability shocks, intervene before accounts roll into collections, and spend acquisition budget where repayment quality is strongest.</p>
+
+  <div class="callout">
+    <div class="callout-title">Board-Level Message</div>
+    FASTA should move from reactive lending reports to an automated risk operating loop. The loop is: score every application, apply decision bands, monitor model health, retrain when performance drops, and push actions into credit, marketing, and collections workflows.
+  </div>
+
+  <div class="exec-grid">
+    <div class="exec-card priority">
+      <div class="tag">Priority 1 · Credit Risk · 0-30 days</div>
+      <h3>Tighten approval rules around risk deciles</h3>
+      <p><strong>Insight:</strong> The sample portfolio defaults at 23.5%, with several high-risk deciles materially above the portfolio average.</p>
+      <p><strong>Recommendation:</strong> Use model deciles as operating bands: instant approve low-risk/affordable applicants, price medium-risk applicants for risk, and route high-risk applicants to manual review until production AUC clears 0.70.</p>
+    </div>
+
+    <div class="exec-card priority">
+      <div class="tag">Priority 1 · Affordability · 0-30 days</div>
+      <h3>Add stress-tested affordability buffers</h3>
+      <p><strong>Insight:</strong> A 20% income shock moves unaffordable customers from 5.3% to 52.9%; the severe scenario reaches 92.4%.</p>
+      <p><strong>Recommendation:</strong> Require a buffer above expected instalment, with stricter thresholds for lower-income bands and high debt-service-ratio customers.</p>
+    </div>
+
+    <div class="exec-card ops">
+      <div class="tag">Priority 2 · Collections · 30-60 days</div>
+      <h3>Prioritise collections before accounts deteriorate</h3>
+      <p><strong>Insight:</strong> Churn and promise-to-pay scores turn collections from a queue into a triage system.</p>
+      <p><strong>Recommendation:</strong> Build a churn-risk x PTP-probability action matrix: agent calls for high-risk/low-PTP, payment-plan nudges for high-risk/high-PTP, and automated reminders for low-risk accounts.</p>
+    </div>
+
+    <div class="exec-card growth">
+      <div class="tag">Priority 2 · Marketing · 30-60 days</div>
+      <h3>Buy better borrowers, not just cheaper leads</h3>
+      <p><strong>Insight:</strong> Email has the best channel quality score and a 12.3% default rate; WhatsApp has the weakest quality profile at 28.9% default.</p>
+      <p><strong>Recommendation:</strong> Shift acquisition budget toward Email, Direct, and Organic Search. Cap WhatsApp and Facebook spend until lead quality improves.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Decision Rules to Operationalise</h3>
+  <div class="decision-strip">
+    <div class="decision"><div class="num">01</div><div class="name">Approve Faster</div><div class="copy">Low-risk decile plus affordability buffer above R2,000 triggers instant approval or better pricing.</div></div>
+    <div class="decision"><div class="num">02</div><div class="name">Price for Risk</div><div class="copy">Medium-risk decile or thin buffer gets lower limit, shorter term, or risk-adjusted price.</div></div>
+    <div class="decision"><div class="num">03</div><div class="name">Protect Margin</div><div class="copy">High-risk decile, failed affordability, or severe stress sensitivity routes to manual review or decline.</div></div>
+    <div class="decision"><div class="num">04</div><div class="name">Recover Earlier</div><div class="copy">High churn risk before missed-payment spiral triggers proactive contact or payment-plan offer.</div></div>
+    <div class="decision"><div class="num">05</div><div class="name">Acquire Quality</div><div class="copy">Channels with lower default and stronger collection rates receive more acquisition budget.</div></div>
+  </div>
+
+  <h3 class="sub">Action Plan</h3>
+  <table class="action-table">
+    <tr><th>Priority</th><th>Business Area</th><th>Action</th><th>Success Metric</th></tr>
+    <tr><td>P1</td><td>Credit Risk</td><td>Deploy decile-based approval rules for low, medium, and high-risk applications.</td><td>Lower default rate without reducing approval volume materially.</td></tr>
+    <tr><td>P1</td><td>Affordability</td><td>Add stress-tested affordability thresholds to the lending decision engine.</td><td>Fewer new loans entering arrears within first 60-90 days.</td></tr>
+    <tr><td>P1</td><td>MLOps</td><td>Keep weekly scoring, model-health checks, MLflow registration, alerting, and retrain gate.</td><td>Every production model has version, owner, metric, and retrain audit trail.</td></tr>
+    <tr><td>P2</td><td>Collections</td><td>Use churn and PTP scores to route customers to the right intervention path.</td><td>Higher kept-promise rate and lower roll-rate into late arrears.</td></tr>
+    <tr><td>P2</td><td>Marketing</td><td>Reallocate budget from weak-quality channels into channels with better repayment quality.</td><td>Lower default-adjusted cost per performing loan.</td></tr>
+  </table>
+
+  <div class="callout red">
+    <div class="callout-title">Evidence Quality Note</div>
+    The credit-risk sample uses synthetic data, so the AUC is not a claim of production predictive power. The project demonstrates the production pattern FASTA needs: governed data layers, scoring pipelines, model registry, audit logs, health gates, retraining logic, and business-ready decision rules.
   </div>
 </div>
 

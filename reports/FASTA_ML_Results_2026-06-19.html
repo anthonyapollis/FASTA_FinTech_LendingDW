@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FASTA ML Results — 2026-06-19</title>
+<style>
+  body { font-family: Calibri, Arial, sans-serif; background:#f8f9fa; color:#222; margin:0; padding:20px }
+  h1 { background:#006272; color:#fff; padding:18px 24px; border-radius:6px; margin-bottom:6px }
+  h2 { background:#e0f0f1; color:#006272; padding:10px 16px; border-radius:4px; margin:24px 0 8px }
+  h3 { color:#006272; margin:16px 0 4px }
+  table { border-collapse:collapse; width:100%; margin-bottom:16px; background:#fff; border-radius:4px; overflow:hidden }
+  th { background:#006272; color:#fff; padding:8px 12px; text-align:center; font-size:13px }
+  td { padding:7px 12px; text-align:center; font-size:13px; border-bottom:1px solid #eee }
+  tr:nth-child(even) td { background:#f2f2f2 }
+  .best { background:#FFC000 !important; font-weight:bold }
+  .good { color:#00B050; font-weight:bold }
+  .warn { color:#FF6600 }
+  .bad  { color:#FF0000; font-weight:bold }
+  .meta { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:16px }
+  .meta-card { background:#fff; border:1px solid #ddd; border-radius:6px; padding:14px 20px; min-width:160px }
+  .meta-card .val { font-size:22px; font-weight:bold; color:#006272 }
+  .meta-card .lbl { font-size:12px; color:#888; margin-top:4px }
+  .subtitle { color:#555; font-size:14px; margin:0 0 20px }
+  .story { background:#fff; border:1px solid #ddd; border-radius:6px; padding:18px 22px; margin:18px 0 }
+  .story h2 { margin-top:0 }
+  .action-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin:14px 0 22px }
+  .action-card { background:#fff; border-left:5px solid #006272; border-radius:6px; padding:14px 16px; box-shadow:0 1px 5px rgba(0,0,0,.06) }
+  .action-card .prio { color:#006272; font-weight:bold; font-size:12px; text-transform:uppercase }
+  .action-card .theme { font-weight:bold; margin:4px 0 6px }
+  .action-card p { margin:0; font-size:13px; line-height:1.45 }
+  .left { text-align:left }
+</style>
+</head>
+<body>
+<h1>FASTA FinTech Lending DW — ML Results</h1>
+<p class="subtitle">Run: 2026-06-19 &nbsp;|&nbsp; Pipeline: FASTA_FinTech_FabricML_Local &nbsp;|&nbsp;
+Duration: 203s &nbsp;|&nbsp;
+Steps: 6/6 OK</p>
+
+<div class="meta">
+  <div class="meta-card"><div class="val">0.526</div><div class="lbl">Credit Risk CV-AUC</div></div>
+  <div class="meta-card"><div class="val">0.984</div><div class="lbl">Affordability R²</div></div>
+  <div class="meta-card"><div class="val">R218</div><div class="lbl">Affordability MAE</div></div>
+  <div class="meta-card"><div class="val">1.000</div><div class="lbl">Churn AUC</div></div>
+  <div class="meta-card"><div class="val">EMAIL</div><div class="lbl">Top Channel</div></div>
+  <div class="meta-card"><div class="val">R500K</div><div class="lbl">Budget Optimised</div></div>
+</div>
+
+<div class="story">
+<h2>Executive Story — What FASTA Should Do Next</h2>
+<p>This report is not only a model scorecard. It is an operating plan for a lender: approve the right customers faster, protect margin under affordability stress, intervene earlier in collections, and spend marketing budget on channels that bring borrowers who repay.</p>
+<p><strong>Important context:</strong> the source data is synthetic, so credit-risk AUC is not presented as a production performance claim. The value demonstrated here is the full production pattern: governed data layers, repeatable scoring, MLflow registration, audit logging, model-health gates, and business-facing actions.</p>
+</div>
+
+<h2>Recommended Actions</h2>
+<div class="action-grid">
+  <div class="action-card">
+    <div class="prio">P1 · Credit Risk · 0-30 days</div>
+    <div class="theme">Credit policy</div>
+    <p><strong>Insight:</strong> The sample portfolio defaults at 23.5%, with the highest-risk deciles materially above portfolio average.</p>
+    <p><strong>Recommendation:</strong> Use model deciles as decision bands: auto-approve low-risk bands, price or limit medium-risk bands, and route high-risk bands to manual review until production AUC clears 0.70.</p>
+  </div>
+  <div class="action-card">
+    <div class="prio">P1 · Lending Ops · 0-30 days</div>
+    <div class="theme">Affordability</div>
+    <p><strong>Insight:</strong> A 20% income shock moves unaffordable customers from 5.3% to 52.9%; the severe stress case reaches 92.4%.</p>
+    <p><strong>Recommendation:</strong> Add a stress-tested affordability buffer before approval, especially for lower-income bands and applicants with high debt-service ratios.</p>
+  </div>
+  <div class="action-card">
+    <div class="prio">P2 · Collections · 30-60 days</div>
+    <div class="theme">Collections</div>
+    <p><strong>Insight:</strong> Churn and promise-to-pay scores can separate proactive retention from costly late-stage collections.</p>
+    <p><strong>Recommendation:</strong> Create a collections action matrix using churn risk x PTP probability: agent call for high-risk/low-PTP, payment-plan nudge for high-risk/high-PTP, automated SMS for low-risk customers.</p>
+  </div>
+  <div class="action-card">
+    <div class="prio">P2 · Marketing · 30-60 days</div>
+    <div class="theme">Acquisition ROI</div>
+    <p><strong>Insight:</strong> Email has the best channel quality score and 12.3% default rate; WhatsApp has the weakest quality profile at 28.9% default.</p>
+    <p><strong>Recommendation:</strong> Shift budget toward Email, Direct, and Organic Search; cap WhatsApp/Facebook spend until lead quality improves.</p>
+  </div>
+  <div class="action-card">
+    <div class="prio">P1 · MLOps · 0-30 days</div>
+    <div class="theme">MLOps control</div>
+    <p><strong>Insight:</strong> The production value is the operating loop: scheduled scoring, MLflow registration, audit logs, alerting, and retraining when AUC drops.</p>
+    <p><strong>Recommendation:</strong> Keep the weekly model-health gate and add data drift checks before promoting new model versions.</p>
+  </div>
+</div>
+
+<h2>Decision Rules</h2>
+<table>
+<tr><th>Decision</th><th>Trigger</th><th>Action</th></tr>
+<tr><td class="left"><strong>Approve faster</strong></td><td class="left">Low-risk deciles with affordability buffer above R2,000</td><td class="left">Instant approve or offer best available rate</td></tr>
+<tr><td class="left"><strong>Price for risk</strong></td><td class="left">Medium-risk deciles or thin affordability buffer</td><td class="left">Lower limit, shorter term, or risk-adjusted price</td></tr>
+<tr><td class="left"><strong>Protect margin</strong></td><td class="left">High-risk deciles, failed affordability, or severe stress sensitivity</td><td class="left">Manual review, decline, or request stronger evidence</td></tr>
+<tr><td class="left"><strong>Recover earlier</strong></td><td class="left">High churn risk before missed-payment spiral</td><td class="left">Proactive call or payment-plan offer before collections escalation</td></tr>
+<tr><td class="left"><strong>Buy better customers</strong></td><td class="left">Channels with lower default and stronger collection rate</td><td class="left">Reallocate acquisition budget to quality, not only volume</td></tr>
+
+</table>
+
+<h2>Model 1 — Credit Risk Classifier</h2>
+<table>
+<tr><th>Model</th><th>AUC</th><th>Avg Precision</th><th>Brier Score</th><th>CV-AUC Mean</th><th>CV-AUC Std</th></tr>
+<tr ><td>GBM</td><td>0.419</td><td>0.224</td><td>0.218</td><td>0.521</td><td>0.052</td></tr>
+<tr class="best"><td>Random Forest</td><td>0.436</td><td>0.246</td><td>0.242</td><td>0.526</td><td>0.054</td></tr>
+<tr ><td>Logistic Regression</td><td>0.428</td><td>0.205</td><td>0.267</td><td>0.517</td><td>0.047</td></tr>
+</table>
+<h3>Risk Decile Table</h3>
+<table>
+<tr><th>Decile</th><th>N Loans</th><th>Defaults</th><th>Default Rate</th><th>Avg Prob</th></tr>
+<tr><td>D1</td><td>16</td><td>6</td><td class="bad">37.5%</td><td>0.3414</td></tr>
+<tr><td>D2</td><td>16</td><td>5</td><td class="bad">31.2%</td><td>0.3857</td></tr>
+<tr><td>D3</td><td>16</td><td>4</td><td class="warn">25.0%</td><td>0.4116</td></tr>
+<tr><td>D4</td><td>16</td><td>3</td><td class="good">18.8%</td><td>0.4323</td></tr>
+<tr><td>D5</td><td>16</td><td>3</td><td class="good">18.8%</td><td>0.4508</td></tr>
+<tr><td>D6</td><td>15</td><td>2</td><td class="good">13.3%</td><td>0.4705</td></tr>
+<tr><td>D7</td><td>16</td><td>7</td><td class="bad">43.8%</td><td>0.4896</td></tr>
+<tr><td>D8</td><td>16</td><td>1</td><td class="good">6.2%</td><td>0.5162</td></tr>
+<tr><td>D9</td><td>16</td><td>2</td><td class="good">12.5%</td><td>0.5488</td></tr>
+<tr><td>D10</td><td>16</td><td>4</td><td class="warn">25.0%</td><td>0.5869</td></tr>
+</table>
+
+<h2>Model 2 — Affordability Regression</h2>
+<table>
+<tr><th>Model</th><th>R²</th><th>MAE (ZAR)</th><th>RMSE</th><th>CV-R² Mean</th></tr>
+<tr ><td>GBM Regressor</td><td>0.978</td><td>R621</td><td>R1,254</td><td>0.986</td></tr>
+<tr ><td>Random Forest</td><td>0.978</td><td>R735</td><td>R1,240</td><td>0.974</td></tr>
+<tr class="best"><td>ElasticNet</td><td>0.984</td><td>R218</td><td>R1,064</td><td>0.988</td></tr>
+<h3>Stress Test Scenarios</h3><table><tr><th>Scenario</th><th>Avg Affordability</th><th>% Unaffordable</th><th>% >R2K Available</th></tr>
+<tr><td>Base Case</td><td>R8,052</td><td class="good">5.3%</td><td>82.7%</td></tr>
+<tr><td>10% Income Drop</td><td>R3,549</td><td class="warn">30.7%</td><td>61.8%</td></tr>
+<tr><td>20% Income Drop</td><td>R-943</td><td class="bad">52.9%</td><td>34.7%</td></tr>
+<tr><td>30% Income Drop</td><td>R-5,512</td><td class="bad">74.2%</td><td>18.2%</td></tr>
+<tr><td>Expenses +15%</td><td>R3,917</td><td class="good">28.9%</td><td>64.0%</td></tr>
+<tr><td>Expenses +30%</td><td>R-157</td><td class="warn">47.1%</td><td>41.8%</td></tr>
+<tr><td>New Debt +R2000/mo</td><td>R3,780</td><td class="warn">35.6%</td><td>58.2%</td></tr>
+<tr><td>Severe: -25% + +20%</td><td>R-11,320</td><td class="bad">92.4%</td><td>3.6%</td></tr>
+</table>
+
+<h2>Model 3 — Churn + Promise-to-Pay</h2>
+<table>
+<tr><th>Model</th><th>Churn AUC</th><th>Avg Precision</th></tr>
+<tr class="best"><td>GBM</td><td>1.000</td><td>1.000</td></tr>
+<tr ><td>Extra Trees</td><td>0.997</td><td>0.999</td></tr>
+</table><p>PTP AUC: <strong>0.5596</strong> | Churn Rate: <strong>82.3%</strong> | PTP Rate: <strong>36.9%</strong></p>
+<h2>Model 4 — Channel ROI Scorecard (Total Budget: R500,000)</h2>
+<table>
+<tr><th>Rank</th><th>Channel</th><th>N Loans</th><th>Default Rate</th><th>Quality Score</th><th>Avg Collection</th><th>Avg Credit Score</th><th>Budget (ZAR)</th></tr>
+<tr class="best"><td>1</td><td>EMAIL</td><td>154</td><td class="good">12.3%</td><td>0.665</td><td>0.741</td><td>602</td><td>R73,900</td></tr>
+<tr ><td>2</td><td>DIRECT</td><td>151</td><td class="">20.5%</td><td>0.642</td><td>0.748</td><td>580</td><td>R71,400</td></tr>
+<tr ><td>3</td><td>ORGANIC SEARCH</td><td>143</td><td class="">21.7%</td><td>0.631</td><td>0.778</td><td>579</td><td>R70,000</td></tr>
+<tr ><td>4</td><td>GOOGLE SPONSORED SEARCH</td><td>165</td><td class="">21.2%</td><td>0.625</td><td>0.761</td><td>561</td><td>R70,100</td></tr>
+<tr ><td>5</td><td>UNKNOWN</td><td>452</td><td class="">23.4%</td><td>0.615</td><td>0.755</td><td>545</td><td>R78,300</td></tr>
+<tr ><td>6</td><td>FACEBOOK</td><td>133</td><td class="bad">26.3%</td><td>0.611</td><td>0.770</td><td>567</td><td>R67,600</td></tr>
+<tr ><td>7</td><td>WHATSAPP</td><td>183</td><td class="bad">29.0%</td><td>0.607</td><td>0.753</td><td>565</td><td>R68,800</td></tr>
+</table>
+<p style="color:#888;font-size:12px;margin-top:40px">Generated 2026-06-19 | FASTA FinTech LendingDW | Anthony Apollis</p>
+</body></html>
