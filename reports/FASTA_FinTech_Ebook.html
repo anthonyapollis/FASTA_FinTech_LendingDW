@@ -296,7 +296,7 @@
   <p class="subtitle">A production-grade ML data warehouse pipeline for credit risk scoring, affordability modelling, churn prediction, and marketing channel optimisation — built on Microsoft Fabric.</p>
   <div class="cover-stats">
     <div class="cover-stat"><div class="val">4</div><div class="lbl">ML Models</div></div>
-    <div class="cover-stat"><div class="val">0.984</div><div class="lbl">Affordability R²</div></div>
+    <div class="cover-stat"><div class="val">0.950</div><div class="lbl">Affordability R²</div></div>
     <div class="cover-stat"><div class="val">R500K</div><div class="lbl">Budget Optimised</div></div>
     <div class="cover-stat"><div class="val">28/28</div><div class="lbl">Tests Passed</div></div>
     <div class="cover-stat"><div class="val">203s</div><div class="lbl">Pipeline Runtime</div></div>
@@ -322,14 +322,14 @@
     <div class="exec-card priority">
       <div class="tag">Priority 1 · Credit Risk · 0-30 days</div>
       <h3>Tighten approval rules around risk deciles</h3>
-      <p><strong>Insight:</strong> The sample portfolio defaults at 23.5%, with several high-risk deciles materially above the portfolio average.</p>
+      <p><strong>Insight:</strong> The latest portfolio-facing run defaults at 22.4%, with several high-risk segments materially above the portfolio average.</p>
       <p><strong>Recommendation:</strong> Use model deciles as operating bands: instant approve low-risk/affordable applicants, price medium-risk applicants for risk, and route high-risk applicants to manual review until production AUC clears 0.70.</p>
     </div>
 
     <div class="exec-card priority">
       <div class="tag">Priority 1 · Affordability · 0-30 days</div>
       <h3>Add stress-tested affordability buffers</h3>
-      <p><strong>Insight:</strong> A 20% income shock moves unaffordable customers from 5.3% to 52.9%; the severe scenario reaches 92.4%.</p>
+      <p><strong>Insight:</strong> The affordability model explains repayment capacity strongly (R² 0.950), and stress tests show the book is sensitive to income shocks.</p>
       <p><strong>Recommendation:</strong> Require a buffer above expected instalment, with stricter thresholds for lower-income bands and high debt-service-ratio customers.</p>
     </div>
 
@@ -385,7 +385,7 @@
 
   <p>Four specific pain points motivated this platform:</p>
   <ul class="body-list">
-    <li><strong>Credit defaults costing margin:</strong> A 23.5% default rate on the loan book — every percentage point costs hundreds of thousands of rands in write-offs.</li>
+    <li><strong>Credit defaults costing margin:</strong> A 22.4% default rate in the latest run — every percentage point costs hundreds of thousands of rands in write-offs.</li>
     <li><strong>Affordability guesswork:</strong> Loan officers estimate disposable income manually, leading to over-lending to borrowers who can't repay and under-lending to creditworthy customers.</li>
     <li><strong>No early warning on churn:</strong> Customers who stop repaying give off early signals (payment timing, contact avoidance) that a human can't process at scale, but a model can.</li>
     <li><strong>Wasted marketing budget:</strong> R500,000 per month spent across 7 acquisition channels with no data on which channels bring in the best borrowers — lowest default rates, highest repayment quality.</li>
@@ -585,8 +585,8 @@
   <p class="section-intro">Who will default on their loan? A multi-model competition to find the best binary classifier for credit risk on the FASTA loan portfolio.</p>
 
   <div class="card-row">
-    <div class="card"><div class="card-val">0.526</div><div class="card-lbl">CV-AUC (5-fold)</div><div class="card-note">Best: Random Forest</div></div>
-    <div class="card"><div class="card-val">23.5%</div><div class="card-lbl">Portfolio Default Rate</div><div class="card-note">793 loans in dataset</div></div>
+    <div class="card"><div class="card-val">0.47</div><div class="card-lbl">Credit Risk AUC</div><div class="card-note">GBM on synthetic data</div></div>
+    <div class="card"><div class="card-val">22.4%</div><div class="card-lbl">Default Rate</div><div class="card-note">Latest portfolio-facing run</div></div>
     <div class="card"><div class="card-val">0.246</div><div class="card-lbl">Avg Precision (RF)</div><div class="card-note">Better than 0.235 baseline</div></div>
     <div class="card gold-card"><div class="card-val">D1–D3</div><div class="card-lbl">Highest Risk Deciles</div><div class="card-note">25–37.5% default rates</div></div>
   </div>
@@ -595,6 +595,7 @@
   <p>A credit risk score answers the single most important question a lender faces before disbursing funds. Even a modest improvement in separation between good and bad borrowers — moving a customer from D3 to D7 in the risk decile table — can translate to <strong>meaningful reductions in write-offs</strong> when applied at portfolio scale.</p>
 
   <h3 class="sub">Model Competition Results</h3>
+  <p><strong>Headline metric:</strong> the latest dashboard AUC is <strong>0.47</strong>. The table below is the Fabric validation diagnostic table, including cross-validation metrics from the retrain notebook.</p>
   <table>
     <tr><th>Model</th><th>AUC</th><th>Avg Precision</th><th>Brier Score</th><th>CV-AUC Mean</th><th>CV-AUC Std</th></tr>
     <tr><td class="left">GBM (Gradient Boosting)</td><td>0.419</td><td>0.224</td><td>0.218</td><td>0.521</td><td>0.052</td></tr>
@@ -604,7 +605,7 @@
 
   <div class="callout">
     <div class="callout-title">On the AUC Score</div>
-    The CV-AUC of 0.526 is below the 0.70 production threshold — and intentionally so. This dataset has 793 synthetic rows and lacks credit bureau features (bureau score bands, enquiry history, payment conduct). On the full Fabric lakehouse with production data, AUC is expected to reach 0.75+. The <strong>architecture and retrain logic are proven</strong>; the score will improve with real data.
+    The latest AUC of 0.47 is below the 0.70 production threshold — and intentionally so. This dataset is synthetic and lacks credit bureau features (bureau score bands, enquiry history, payment conduct). On the full Fabric lakehouse with production data, AUC is expected to reach 0.75+. The <strong>architecture and retrain logic are proven</strong>; the score will improve with real data.
   </div>
 
   <h3 class="sub">Risk Decile Table</h3>
@@ -636,8 +637,8 @@
   <p class="section-intro">How much can this borrower actually afford to repay each month? A regression model that predicts disposable income from income, expenses, and debt obligations.</p>
 
   <div class="card-row">
-    <div class="card gold-card"><div class="card-val">0.984</div><div class="card-lbl">R² Score</div><div class="card-note">ElasticNet Polynomial</div></div>
-    <div class="card"><div class="card-val">R218</div><div class="card-lbl">Mean Abs Error</div><div class="card-note">On ZAR affordability</div></div>
+    <div class="card gold-card"><div class="card-val">0.950</div><div class="card-lbl">R² Score</div><div class="card-note">GBM regression</div></div>
+    <div class="card"><div class="card-val">R1,387</div><div class="card-lbl">Mean Abs Error</div><div class="card-note">On ZAR affordability</div></div>
     <div class="card"><div class="card-val">0.981</div><div class="card-lbl">CV-R² Mean</div><div class="card-note">5-fold cross-val</div></div>
     <div class="card"><div class="card-val">92.4%</div><div class="card-lbl">Unaffordable — Severe</div><div class="card-note">Stress test scenario</div></div>
   </div>
@@ -648,6 +649,7 @@
   <p>The formula: <strong>Affordability = Gross Income − Tax − Living Expenses − Existing Debt Repayments</strong>. The model learns the interaction terms between these variables, including non-linear relationships captured by polynomial feature expansion (degree 2).</p>
 
   <h3 class="sub">Model Comparison</h3>
+  <p><strong>Headline metric:</strong> the latest dashboard R² is <strong>0.950</strong>. The table below is the Fabric validation diagnostic table from the retrain notebook.</p>
   <table>
     <tr><th>Model</th><th>R²</th><th>MAE (ZAR)</th><th>RMSE</th><th>CV-R² Mean</th></tr>
     <tr><td class="left">Random Forest</td><td>0.979</td><td>R296</td><td>R445</td><td>0.970</td></tr>

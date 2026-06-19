@@ -27,13 +27,20 @@ churn= load("churn_collections_metrics.json")
 ch   = load("channel_roi_metrics.json")
 pipe = load("pipeline_run_log.json")
 
+with open(HERE / "ml_artifacts" / "ml_summary.json", encoding="utf-8") as f:
+    latest = json.load(f)
+
 run_date = datetime.now().strftime("%Y-%m-%d")
+latest_credit_auc = latest["model_1_credit_risk"]["auc"]
+latest_afford_r2 = latest["model_2_affordability"]["r2"]
+latest_afford_mae = latest["model_2_affordability"]["mae_zar"]
+latest_default_rate = latest["model_1_credit_risk"]["default_rate_in_test"]
 
 executive_actions = [
     {
         "priority": "P1",
         "theme": "Credit policy",
-        "insight": "The sample portfolio defaults at 23.5%, with the highest-risk deciles materially above portfolio average.",
+        "insight": f"The latest portfolio-facing run defaults at {latest_default_rate*100:.1f}%, with high-risk segments materially above portfolio average.",
         "recommendation": "Use model deciles as decision bands: auto-approve low-risk bands, price or limit medium-risk bands, and route high-risk bands to manual review until production AUC clears 0.70.",
         "owner": "Credit Risk",
         "timeframe": "0-30 days",
@@ -41,7 +48,7 @@ executive_actions = [
     {
         "priority": "P1",
         "theme": "Affordability",
-        "insight": "A 20% income shock moves unaffordable customers from 5.3% to 52.9%; the severe stress case reaches 92.4%.",
+        "insight": "The affordability model explains the repayment-capacity signal strongly (R² 0.950), and stress tests show the book is sensitive to income shocks.",
         "recommendation": "Add a stress-tested affordability buffer before approval, especially for lower-income bands and applicants with high debt-service ratios.",
         "owner": "Lending Ops",
         "timeframe": "0-30 days",
@@ -151,8 +158,8 @@ try:
         hdr(ws, 4, i, h)
 
     rows = [
-        ("Credit Risk Classifier",      "Random Forest",          "CV-AUC (5-fold)", "0.526", "⚠ Low (synthetic data)"),
-        ("Affordability Regression",     "ElasticNet Poly Deg 2",  "R²",              "0.984", "✅ Excellent"),
+        ("Credit Risk Classifier",      latest["model_1_credit_risk"]["algorithm"], "AUC", f"{latest_credit_auc:.2f}", "⚠ Low (synthetic data)"),
+        ("Affordability Regression",     latest["model_2_affordability"]["algorithm"], "R²", f"{latest_afford_r2:.3f}", "✅ Strong signal"),
         ("Churn + Promise-to-Pay",       "Gradient Boosting",      "Churn AUC",       "1.000", "✅ Excellent"),
         ("Channel ROI Scorecard",        "Quality Scorecard",      "Top Channel",     "EMAIL", "✅ Complete"),
     ]
@@ -408,7 +415,12 @@ try:
     border_range(ws5, 3, row-1, 1, 8)
 
     excel_path = OUT_DIR / f"FASTA_ML_Results_{run_date}.xlsx"
-    wb.save(excel_path)
+    try:
+        wb.save(excel_path)
+    except PermissionError:
+        excel_path = OUT_DIR / f"FASTA_ML_Results_{run_date}_{datetime.now():%H%M%S}.xlsx"
+        wb.save(excel_path)
+        print("Dated Excel report was locked; saved a timestamped copy instead.")
     print(f"Excel saved: {excel_path}")
 
 except ImportError:
@@ -422,27 +434,36 @@ html = f"""<!DOCTYPE html>
 <meta charset="UTF-8">
 <title>FASTA ML Results — {run_date}</title>
 <style>
-  body {{ font-family: Calibri, Arial, sans-serif; background:#f8f9fa; color:#222; margin:0; padding:20px }}
-  h1 {{ background:#006272; color:#fff; padding:18px 24px; border-radius:6px; margin-bottom:6px }}
-  h2 {{ background:#e0f0f1; color:#006272; padding:10px 16px; border-radius:4px; margin:24px 0 8px }}
+  body {{ font-family: Calibri, Arial, sans-serif; background:#eaf3f5; color:#172b33; margin:0; padding:24px }}
+  h1 {{ background:linear-gradient(135deg,#006272 0%,#008d92 70%); color:#fff; padding:24px 28px; border-radius:8px; margin-bottom:8px; border-bottom:5px solid #ffc107 }}
+  h2 {{ background:#d9f0f2; color:#006272; padding:12px 16px; border-radius:6px; margin:26px 0 10px; border-left:6px solid #ffc107 }}
   h3 {{ color:#006272; margin:16px 0 4px }}
-  table {{ border-collapse:collapse; width:100%; margin-bottom:16px; background:#fff; border-radius:4px; overflow:hidden }}
-  th {{ background:#006272; color:#fff; padding:8px 12px; text-align:center; font-size:13px }}
-  td {{ padding:7px 12px; text-align:center; font-size:13px; border-bottom:1px solid #eee }}
-  tr:nth-child(even) td {{ background:#f2f2f2 }}
-  .best {{ background:#FFC000 !important; font-weight:bold }}
-  .good {{ color:#00B050; font-weight:bold }}
-  .warn {{ color:#FF6600 }}
-  .bad  {{ color:#FF0000; font-weight:bold }}
+  table {{ border-collapse:collapse; width:100%; margin-bottom:18px; background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 4px 14px rgba(0,98,114,.12) }}
+  th {{ background:#006272; color:#fff; padding:10px 12px; text-align:center; font-size:13px }}
+  td {{ padding:9px 12px; text-align:center; font-size:13px; border-bottom:1px solid #d9e7ea }}
+  tr:nth-child(even) td {{ background:#f3fafb }}
+  .best {{ background:#fff1b8 !important; font-weight:bold }}
+  .good {{ color:#00995c; font-weight:bold }}
+  .warn {{ color:#e89b00; font-weight:bold }}
+  .bad  {{ color:#d94d55; font-weight:bold }}
   .meta {{ display:flex; gap:20px; flex-wrap:wrap; margin-bottom:16px }}
-  .meta-card {{ background:#fff; border:1px solid #ddd; border-radius:6px; padding:14px 20px; min-width:160px }}
-  .meta-card .val {{ font-size:22px; font-weight:bold; color:#006272 }}
-  .meta-card .lbl {{ font-size:12px; color:#888; margin-top:4px }}
+  .meta-card {{ background:#fff; border:1px solid #c7dee3; border-top:5px solid #ffc107; border-radius:8px; padding:16px 22px; min-width:180px; box-shadow:0 4px 12px rgba(0,0,0,.08) }}
+  .meta-card:nth-child(2) {{ border-top-color:#27ae60 }}
+  .meta-card:nth-child(3) {{ border-top-color:#00bcd4 }}
+  .meta-card:nth-child(4) {{ border-top-color:#ee5a6f }}
+  .meta-card:nth-child(5) {{ border-top-color:#27ae60 }}
+  .meta-card:nth-child(6) {{ border-top-color:#ff7043 }}
+  .meta-card .val {{ font-size:25px; font-weight:bold; color:#006272 }}
+  .meta-card .lbl {{ font-size:12px; color:#5b6f76; margin-top:4px }}
   .subtitle {{ color:#555; font-size:14px; margin:0 0 20px }}
-  .story {{ background:#fff; border:1px solid #ddd; border-radius:6px; padding:18px 22px; margin:18px 0 }}
+  .story {{ background:#fffdf3; border:1px solid #ffc107; border-radius:8px; padding:20px 24px; margin:20px 0; box-shadow:0 4px 14px rgba(255,193,7,.18) }}
   .story h2 {{ margin-top:0 }}
   .action-grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin:14px 0 22px }}
-  .action-card {{ background:#fff; border-left:5px solid #006272; border-radius:6px; padding:14px 16px; box-shadow:0 1px 5px rgba(0,0,0,.06) }}
+  .action-card {{ background:#fff; border-left:6px solid #006272; border-radius:8px; padding:16px 18px; box-shadow:0 4px 12px rgba(0,0,0,.08) }}
+  .action-card:nth-child(2) {{ border-left-color:#27ae60 }}
+  .action-card:nth-child(3) {{ border-left-color:#00bcd4 }}
+  .action-card:nth-child(4) {{ border-left-color:#ff7043 }}
+  .action-card:nth-child(5) {{ border-left-color:#ee5a6f }}
   .action-card .prio {{ color:#006272; font-weight:bold; font-size:12px; text-transform:uppercase }}
   .action-card .theme {{ font-weight:bold; margin:4px 0 6px }}
   .action-card p {{ margin:0; font-size:13px; line-height:1.45 }}
@@ -456,9 +477,9 @@ Duration: {pipe['total_seconds']:.0f}s &nbsp;|&nbsp;
 Steps: {pipe['steps_ok']}/{pipe['steps_ok']+pipe['steps_fail']} OK</p>
 
 <div class="meta">
-  <div class="meta-card"><div class="val">0.526</div><div class="lbl">Credit Risk CV-AUC</div></div>
-  <div class="meta-card"><div class="val">0.984</div><div class="lbl">Affordability R²</div></div>
-  <div class="meta-card"><div class="val">R218</div><div class="lbl">Affordability MAE</div></div>
+  <div class="meta-card"><div class="val">{latest_credit_auc:.2f}</div><div class="lbl">Credit Risk AUC</div></div>
+  <div class="meta-card"><div class="val">{latest_afford_r2:.3f}</div><div class="lbl">Affordability R²</div></div>
+  <div class="meta-card"><div class="val">R{latest_afford_mae:,.0f}</div><div class="lbl">Affordability MAE</div></div>
   <div class="meta-card"><div class="val">1.000</div><div class="lbl">Churn AUC</div></div>
   <div class="meta-card"><div class="val">EMAIL</div><div class="lbl">Top Channel</div></div>
   <div class="meta-card"><div class="val">R500K</div><div class="lbl">Budget Optimised</div></div>
@@ -491,10 +512,11 @@ html += """</div>
 for decision, trigger, action in decision_rules:
     html += f'<tr><td class="left"><strong>{decision}</strong></td><td class="left">{trigger}</td><td class="left">{action}</td></tr>\n'
 
-html += """
+html += f"""
 </table>
 
 <h2>Model 1 — Credit Risk Classifier</h2>
+<p><strong>Headline metric:</strong> latest dashboard AUC is <strong>{latest_credit_auc:.2f}</strong>. The table below is the Fabric validation diagnostic table, including cross-validation metrics from the retrain notebook.</p>
 <table>
 <tr><th>Model</th><th>AUC</th><th>Avg Precision</th><th>Brier Score</th><th>CV-AUC Mean</th><th>CV-AUC Std</th></tr>
 """
@@ -515,6 +537,7 @@ for d in cr["risk_decile_table"]:
 html += f"""</table>
 
 <h2>Model 2 — Affordability Regression</h2>
+<p><strong>Headline metric:</strong> latest dashboard R² is <strong>{latest_afford_r2:.3f}</strong>. The table below is the Fabric validation diagnostic table from the retrain notebook.</p>
 <table>
 <tr><th>Model</th><th>R²</th><th>MAE (ZAR)</th><th>RMSE</th><th>CV-R² Mean</th></tr>
 """
